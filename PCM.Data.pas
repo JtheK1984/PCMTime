@@ -40,7 +40,7 @@ uses
   Vcl.Dialogs,
   vcl.forms,
   Vcl.ImgList,
-  winapi.Windows;
+  winapi.Windows, cxClasses, dxLayoutLookAndFeels;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -81,6 +81,9 @@ type
     qry_Work: TFDQuery;
     qry_Work1: TFDQuery;
     qry_work2: TFDQuery;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel;
+    dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

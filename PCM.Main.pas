@@ -159,6 +159,8 @@ type
     ppmbtn_Trenn6: TMenuItem;
     tb_main: TdxBar;
     trayic_Main: TTrayIcon;
+    navbrgrp_Stammdaten: TdxNavBarGroup;
+    iMitarbeiter: TdxNavBarItem;
     procedure btn_CloseModulClick(Sender: TObject);
     procedure btn_ModulleisteClick(Sender: TObject);
     procedure btn_RefreshRightsClick(Sender: TObject);
@@ -219,9 +221,10 @@ uses
   PCM.Functions.Login,
   PCM.Functions.Synch.Wait,
   PCM.Handbuch,
-  PCMManager.Modul.H_ZE,
+  PCM.Modul.C_ZE,
   PCM.Strings,
-  PCM.SQL, PCM.splash;
+  PCM.SQL,
+  PCM.splash, PCM.Modul.C_ZE.Contacts;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -371,6 +374,7 @@ begin
   Modules.Clear;
   RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
   RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
+  RegisterForm('iMitarbeiter', Tfrm_UserZE, @frm_UserZE, 1);
   RegisterForm('iZeiterfassung',Tfrm_ZE, @frm_ZE, 1);
   RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
   RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
@@ -449,7 +453,7 @@ begin
       begin
         sModul:= Module.ModuleName;
         sModulCaption:= Module.ModuleName;
-        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iDesign','iDatensicherung','iSysteminfo','iInfo','iHandbuch']) of
+        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iDesign','iMitarbeiter','iSysteminfo','iInfo','iHandbuch']) of
 
         0:
           begin
@@ -463,7 +467,7 @@ begin
           end;
         2:
           begin
-            sModulCaption := 'i'  + rs_PCMBackup_BackupMod;
+            sModulCaption := 'i'  + 'Mitarbeiter';
             dm_PCM.iModulTab:= 1;
           end;
         3:

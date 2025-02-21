@@ -48,6 +48,15 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Item = iDesign
         end>
     end
+    object navbrgrp_Stammdaten: TdxNavBarGroup
+      Caption = 'Stammdaten'
+      SelectedLinkIndex = -1
+      TopVisibleLinkIndex = 0
+      Links = <
+        item
+          Item = iMitarbeiter
+        end>
+    end
     object navbrgrp_Kontake: TdxNavBarGroup
       Caption = 'Zeiterfassung'
       SelectedLinkIndex = -1
@@ -144,6 +153,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Caption = 'Sprache'
       SmallImageIndex = 81
       OnClick = iSpracheClick
+    end
+    object iMitarbeiter: TdxNavBarItem
+      Caption = 'Mitarbeiter'
+      SmallImageIndex = 90
+      OnClick = NavBarClick
     end
     object navbrStyleIt_main: TdxNavBarStyleItem
       Style.BackColor = clGray

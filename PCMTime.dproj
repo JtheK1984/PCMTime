@@ -165,52 +165,64 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>SplashScreen</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Feiertage.Aktualisieren.pas">
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Feiertage.Aktualisieren.pas">
             <Form>frm_FeiertageAktualisieren</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Feiertage.Neu.Berechnen.pas"/>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Feiertage.Neu.pas">
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Feiertage.Neu.Berechnen.pas"/>
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Feiertage.Neu.pas">
             <Form>fFeiertageBerechnen</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.User.pas">
-            <Form>frm_Userze</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Booking.pas">
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.pas">
             <Form>frm_Booking</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.ChooseMonth.pas">
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.ChooseMonth.pas">
             <Form>frm_ChooseDate</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Fehltage.Edit.pas">
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Fehltage.Edit.pas">
             <Form>frm_Fehltageeintragen</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Fehltage.pas">
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Fehltage.pas">
             <Form>frm_Fehltage</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Feiertage.pas">
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Feiertage.pas">
             <Form>frm_Feiertage</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Monatswerte.pas">
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Monatswerte.pas">
             <Form>frm_monatswerte</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.pas">
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.pas">
             <Form>frm_ZE</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.G_Finanzen.Filter.Date.pas">
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Filter.Date.pas">
             <Form>frm_PCManagerChooseDate</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Helper\PCMTime.Calculate.pas"/>
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Contacts.Neu.pas">
+            <Form>frm_PCManagerNewContact</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Contacts.pas">
+            <Form>frm_Userze</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Contacts.Konfession.pas">
+            <Form>frm_PCM_Konfession</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCM.Modul.C_ZE.Contacts.Staatsangehoerigkeit.pas">
+            <Form>frm_PCM_Staatsangehoerigkeit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
