@@ -34,8 +34,6 @@ object frm_Booking: Tfrm_Booking
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitTop = 58
-    ExplicitHeight = 327
     object lucmbbx_Fehltag: TcxDBLookupComboBox
       AlignWithMargins = True
       Left = 670

@@ -16,9 +16,9 @@ object frm_Userze: Tfrm_Userze
   TextHeight = 15
   object lactrl_Main: TdxLayoutControl
     Left = 0
-    Top = 63
+    Top = 0
     Width = 1600
-    Height = 837
+    Height = 900
     Margins.Left = 0
     Margins.Top = 0
     Margins.Right = 0
@@ -27,6 +27,8 @@ object frm_Userze: Tfrm_Userze
     TabOrder = 2
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
+    ExplicitTop = 63
+    ExplicitHeight = 837
     object tedt_Sollstunden: TcxDBTimeEdit
       Left = 10000
       Top = 10000
@@ -1013,7 +1015,7 @@ object frm_Userze: Tfrm_Userze
       Left = 26
       Top = 212
       Width = 1544
-      Height = 595
+      Height = 658
       BevelInner = bvNone
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -2826,11 +2828,6 @@ object frm_Userze: Tfrm_Userze
     Left = 112
     Top = 488
     PixelsPerInch = 96
-    DockControlHeights = (
-      0
-      0
-      63
-      0)
     object tb_Contacts: TdxBar
       Caption = 'tb_Contacts'
       CaptionButtons = <>
@@ -2882,7 +2879,7 @@ object frm_Userze: Tfrm_Userze
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = True
+      Visible = False
       WholeRow = False
     end
     object btn_New: TdxBarLargeButton

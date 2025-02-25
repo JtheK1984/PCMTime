@@ -11,7 +11,8 @@ uses
   cxLookAndFeelPainters, ComCtrls, ToolWin, dxBar, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, cxNavigator, dxDateRanges, dxScrollbarAnnotations;
+  FireDAC.Comp.Client, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
+  dxLayoutContainer, dxLayoutControl;
 
 type
   Tfrm_PCM_Staatsangehoerigkeit = class(TForm)
@@ -26,6 +27,12 @@ type
     btn_StaatsangehoerigkeitSave: TdxBarLargeButton;
     btn_StaatsangehoerigkeitClose: TdxBarLargeButton;
     btn_StaatsangehoerigkeitDelete: TdxBarLargeButton;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxBarDockControl1: TdxBarDockControl;
+    dxLayoutItem3: TdxLayoutItem;
     procedure btn_StaatsangehoerigkeitCloseClick(Sender: TObject);
     procedure btn_StaatsangehoerigkeitNewClick(Sender: TObject);
     procedure btn_StaatsangehoerigkeitSaveClick(Sender: TObject);

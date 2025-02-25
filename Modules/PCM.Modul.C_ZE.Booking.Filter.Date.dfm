@@ -4,30 +4,30 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Bitte Monat und Jahr ausw'#228'hlen...'
-  ClientHeight = 83
-  ClientWidth = 268
+  ClientHeight = 98
+  ClientWidth = 329
   Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
+  Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
-  Font.Name = 'Tahoma'
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 23
-  object cxGroupBox1: TcxGroupBox
+  TextHeight = 15
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
+    Width = 329
+    Height = 98
     Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
     TabOrder = 0
-    Height = 83
-    Width = 268
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object btn_PCManagerChooseDate_Cancel: TcxButton
-      Left = 140
-      Top = 54
-      Width = 126
+      Left = 168
+      Top = 59
+      Width = 149
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
@@ -42,9 +42,9 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       OnClick = btn_PCManagerChooseDate_CancelClick
     end
     object btn_PCManagerChooseDate_Ok: TcxButton
-      Left = 8
-      Top = 54
-      Width = 126
+      Left = 12
+      Top = 59
+      Width = 149
       Height = 25
       Caption = 'Ok'
       OptionsImage.ImageIndex = 56
@@ -59,8 +59,8 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       OnClick = btn_PCManagerChooseDate_OkClick
     end
     object cbx_PCManagerChooseDate_Month: TcxComboBox
-      Left = 8
-      Top = 27
+      Left = 12
+      Top = 33
       ParentFont = False
       Properties.Items.Strings = (
         'Januar'
@@ -80,13 +80,15 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 0
-      Width = 126
+      Width = 149
     end
     object cbx_PCManagerChooseDate_Year: TcxComboBox
-      Left = 140
-      Top = 27
+      Left = 168
+      Top = 33
       ParentFont = False
       Properties.Items.Strings = (
         '2020'
@@ -174,35 +176,94 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 1
-      Width = 126
+      Width = 149
     end
-    object lbl_PCManagerChooseDate_Month: TcxLabel
-      Left = 8
-      Top = 8
-      Caption = 'Monat:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
     end
-    object lbl_PCManagerChooseDate_Year: TcxLabel
-      Left = 140
-      Top = 8
-      Caption = 'Jahr:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object lbl_PCManagerChooseDate_Month: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Monat:'
+      CaptionOptions.Layout = clTop
+      Control = cbx_PCManagerChooseDate_Month
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 126
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Jahr:'
+      CaptionOptions.Layout = clTop
+      Control = cbx_PCManagerChooseDate_Year
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 126
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PCManagerChooseDate_Ok'
+      CaptionOptions.Visible = False
+      Control = btn_PCManagerChooseDate_Ok
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 126
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PCManagerChooseDate_Cancel'
+      CaptionOptions.Visible = False
+      Control = btn_PCManagerChooseDate_Cancel
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 126
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup6: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
     end
   end
 end

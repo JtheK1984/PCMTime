@@ -255,7 +255,7 @@ uses
   PCM.Reports,
   PCM.Data,
   PCM.Functions.Synch.Wait,
-  PCM.Modul.C_ZE;
+  PCM.Modul.C_ZE, PCM.Main;
   {$EndRegion Type}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -652,17 +652,17 @@ end;
 
 procedure Tfrm_monatswerte.FormShow(Sender: TObject);
 begin
-  AuswertungsJahr.value:= StrToint(frm_Ze.cbx_FilterYear.EditValue);
-  SetMonth(frm_Ze.cbx_FilterMonth.itemindex+1);
-  grpbx_MonatInfo.Caption:= 'Auswertung von ' + DateToStr(StartOfAMonth(StrToint(frm_Ze.cbx_FilterYear.EditValue),frm_Ze.cbx_FilterMonth.itemindex+1))
-                      + ' bis ' + DateToStr(EndOfAMonth(StrToint(frm_Ze.cbx_FilterYear.EditValue),frm_Ze.cbx_FilterMonth.itemindex+1));
+  AuswertungsJahr.value:= frm_PCM_Main.iAuswertungJahr;
+  SetMonth(frm_PCM_Main.iAuswertungMonat);
+  grpbx_MonatInfo.Caption:= 'Auswertung von ' + DateToStr(StartOfAMonth(frm_PCM_Main.iAuswertungJahr,frm_PCM_Main.iAuswertungMonat))
+                      + ' bis ' + DateToStr(EndOfAMonth(frm_PCM_Main.iAuswertungJahr,frm_PCM_Main.iAuswertungMonat));
   dm_PCM.qry_Work.SQL.Text:= 'Select vorName, Nachname from time_user where ID_Zeiterfasser = :ID_Benutzer';
   dm_PCM.qry_Work.ParamByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_Work.Open;
   lbl_name.Caption:= dm_pcm.qry_Work.FieldByName('vorName').AsString;
   lbl_nachname.Caption:=dm_pcm.qry_Work.FieldByName('Nachname').AsString;
   dm_PCM.qry_Work.Close;
-  GetData(frm_Ze.cbx_FilterMonth.itemindex+1,AuswertungsJahr.value);
+  GetData(frm_PCM_Main.iAuswertungMonat,AuswertungsJahr.value);
 end;
 {$EndRegion FormFunktionen}
 end.

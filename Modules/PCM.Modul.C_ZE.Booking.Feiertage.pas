@@ -67,7 +67,7 @@ uses
   Vcl.Menus,
   Vcl.StdCtrls,
   Winapi.Messages,
-  Winapi.Windows;
+  Winapi.Windows, dxLayoutContainer, dxLayoutControl;
   {$EndRegion Uses}
 type
   {$Region type}
@@ -86,9 +86,14 @@ type
     grdDBTblView_FeiertageMonat: TcxGridDBColumn;
     grdDBTblView_FeiertageTag: TcxGridDBColumn;
     grdlvl_Feiertage: TcxGridLevel;
-    grpbx_Feiertage: TcxGroupBox;
     qry_FT1: TFDQuery;
     tb_Feiertage: TdxBar;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutGroup3: TdxLayoutGroup;
     procedure btn_FeiertageNewClick(Sender: TObject);
     procedure btn_FeiertageDeleteClick(Sender: TObject);
     procedure btn_FeiertageWriteClick(Sender: TObject);

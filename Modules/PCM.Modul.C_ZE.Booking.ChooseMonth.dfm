@@ -2,7 +2,7 @@ object frm_ChooseDate: Tfrm_ChooseDate
   Left = 0
   Top = 0
   Caption = 'Bitte Monat und Jahr ausw'#228'hlen'
-  ClientHeight = 86
+  ClientHeight = 97
   ClientWidth = 434
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,19 +13,23 @@ object frm_ChooseDate: Tfrm_ChooseDate
   Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 15
-  object grpbx_Design: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 86
     Width = 434
+    Height = 97
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitLeft = 72
+    ExplicitTop = -64
+    ExplicitWidth = 300
+    ExplicitHeight = 250
     object btn_Cancel: TcxButton
       Left = 221
-      Top = 54
-      Width = 205
+      Top = 59
+      Width = 201
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
@@ -40,9 +44,9 @@ object frm_ChooseDate: Tfrm_ChooseDate
       OnClick = btn_CancelClick
     end
     object btn_Ok: TcxButton
-      Left = 8
-      Top = 54
-      Width = 205
+      Left = 12
+      Top = 59
+      Width = 202
       Height = 25
       Caption = 'Ok'
       OptionsImage.ImageIndex = 56
@@ -57,8 +61,8 @@ object frm_ChooseDate: Tfrm_ChooseDate
       OnClick = btn_OkClick
     end
     object cbx_Month: TcxComboBox
-      Left = 8
-      Top = 27
+      Left = 12
+      Top = 33
       ParentFont = False
       Properties.Items.Strings = (
         'Januar'
@@ -79,13 +83,15 @@ object frm_ChooseDate: Tfrm_ChooseDate
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 0
-      Width = 205
+      Width = 202
     end
     object cbx_Year: TcxComboBox
       Left = 221
-      Top = 27
+      Top = 33
       ParentFont = False
       Properties.Items.Strings = (
         '2020'
@@ -173,35 +179,95 @@ object frm_ChooseDate: Tfrm_ChooseDate
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 1
-      Width = 205
+      Width = 201
     end
-    object lbl_Month: TcxLabel
-      Left = 8
-      Top = 8
-      Caption = 'Monat:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
     end
-    object lbl_Year: TcxLabel
-      Left = 221
-      Top = 8
-      Caption = 'Jahr:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Monat:'
+      CaptionOptions.Layout = clTop
+      Control = cbx_Month
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 205
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Jahr:'
+      CaptionOptions.Layout = clTop
+      Control = cbx_Year
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 205
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_Ok'
+      CaptionOptions.Visible = False
+      Control = btn_Ok
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 417
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_Cancel'
+      CaptionOptions.Visible = False
+      Control = btn_Cancel
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 417
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup6: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup7: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
     end
   end
 end

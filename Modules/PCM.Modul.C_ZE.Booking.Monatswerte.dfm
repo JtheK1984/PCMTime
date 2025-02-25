@@ -540,7 +540,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Height = 69
       Caption = 'Berechne Monat'
       OptionsImage.ImageIndex = 12
-      OptionsImage.Images = frm_ZE.imglst_32x32
+      OptionsImage.Images = frm_PCM_Main.imglst_32x32
       OptionsImage.Layout = blGlyphTop
       TabOrder = 4
       OnClick = cxButton1Click
@@ -554,7 +554,7 @@ object frm_monatswerte: Tfrm_monatswerte
       DropDownMenu = dxBarPopupMenu1
       Kind = cxbkDropDown
       OptionsImage.ImageIndex = 15
-      OptionsImage.Images = frm_ZE.imglst_32x32
+      OptionsImage.Images = frm_PCM_Main.imglst_32x32
       OptionsImage.Layout = blGlyphTop
       TabOrder = 5
     end
@@ -1308,17 +1308,20 @@ object frm_monatswerte: Tfrm_monatswerte
             end
             object grd_TagDBTableView1Tag: TcxGridDBColumn
               DataBinding.FieldName = 'Tag'
+              DataBinding.IsNullValueType = True
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
               Width = 30
             end
             object grd_TagDBTableView1Datum: TcxGridDBColumn
               DataBinding.FieldName = 'Datum'
+              DataBinding.IsNullValueType = True
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
               Width = 65
             end
             object grd_TagDBTableView1Sollstunden: TcxGridDBColumn
               Caption = 'Soll Std.'
               DataBinding.FieldName = 'SollStundenStd'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxTextEditProperties'
               Properties.Alignment.Horz = taRightJustify
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
@@ -1327,6 +1330,7 @@ object frm_monatswerte: Tfrm_monatswerte
             object grd_TagDBTableView1Column1: TcxGridDBColumn
               Caption = 'Soll Dez.'
               DataBinding.FieldName = 'SollStundenDez'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCurrencyEditProperties'
               Properties.DisplayFormat = ',0.00;-,0.00'
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
@@ -1335,6 +1339,7 @@ object frm_monatswerte: Tfrm_monatswerte
             object grd_TagDBTableView1Tagesbrutto: TcxGridDBColumn
               Caption = 'Brutto Std.'
               DataBinding.FieldName = 'BruttotStd'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxTextEditProperties'
               Properties.Alignment.Horz = taRightJustify
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
@@ -1343,6 +1348,7 @@ object frm_monatswerte: Tfrm_monatswerte
             object grd_TagDBTableView1Column2: TcxGridDBColumn
               Caption = 'Brutto Dez.'
               DataBinding.FieldName = 'BruttoDez'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCurrencyEditProperties'
               Properties.DisplayFormat = ',0.00;-,0.00'
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
@@ -1351,6 +1357,7 @@ object frm_monatswerte: Tfrm_monatswerte
             object grd_TagDBTableView1Pause: TcxGridDBColumn
               Caption = 'Pause Std.'
               DataBinding.FieldName = 'PausenStd'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxTextEditProperties'
               Properties.Alignment.Horz = taRightJustify
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
@@ -1359,6 +1366,7 @@ object frm_monatswerte: Tfrm_monatswerte
             object grd_TagDBTableView1Column4: TcxGridDBColumn
               Caption = 'Pause Dez.'
               DataBinding.FieldName = 'PausenDez'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCurrencyEditProperties'
               Properties.DisplayFormat = ',0.00;-,0.00'
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
@@ -1367,6 +1375,7 @@ object frm_monatswerte: Tfrm_monatswerte
             object grd_TagDBTableView1Tagesnetto: TcxGridDBColumn
               Caption = 'Netto Std.'
               DataBinding.FieldName = 'NettoStd'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxTextEditProperties'
               Properties.Alignment.Horz = taRightJustify
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
@@ -1375,6 +1384,7 @@ object frm_monatswerte: Tfrm_monatswerte
             object grd_TagDBTableView1Column3: TcxGridDBColumn
               Caption = 'Netto Dez.'
               DataBinding.FieldName = 'NettoDez'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCurrencyEditProperties'
               Properties.DisplayFormat = ',0.00;-,0.00'
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
@@ -1383,6 +1393,7 @@ object frm_monatswerte: Tfrm_monatswerte
             object grd_TagDBTableView1Mehrarbeit: TcxGridDBColumn
               Caption = 'GLZ Std.'
               DataBinding.FieldName = 'MehrarbeitStd'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxTextEditProperties'
               Properties.Alignment.Horz = taRightJustify
               OnCustomDrawCell = grd_TagDBTableView1MehrarbeitCustomDrawCell
@@ -1391,6 +1402,7 @@ object frm_monatswerte: Tfrm_monatswerte
             object grd_TagDBTableView1Column5: TcxGridDBColumn
               Caption = 'GLZ Dez.'
               DataBinding.FieldName = 'MehrarbeitDez'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxCurrencyEditProperties'
               Properties.DisplayFormat = ',0.00;-,0.00'
               OnCustomDrawCell = grd_TagDBTableView1MehrarbeitCustomDrawCell
@@ -1398,11 +1410,13 @@ object frm_monatswerte: Tfrm_monatswerte
             end
             object grd_TagDBTableView1Fehltag: TcxGridDBColumn
               DataBinding.FieldName = 'Fehltag'
+              DataBinding.IsNullValueType = True
               OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
               Width = 50
             end
             object grd_TagDBTableView1Feiertag: TcxGridDBColumn
               DataBinding.FieldName = 'Feiertag'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxImageComboBoxProperties'
               Properties.Alignment.Horz = taLeftJustify
               Properties.Items = <
@@ -1423,6 +1437,7 @@ object frm_monatswerte: Tfrm_monatswerte
             end
             object grd_TagDBTableView1BA: TcxGridDBColumn
               DataBinding.FieldName = 'Buchungsart'
+              DataBinding.IsNullValueType = True
               PropertiesClassName = 'TcxImageComboBoxProperties'
               Properties.Alignment.Horz = taLeftJustify
               Properties.Items = <

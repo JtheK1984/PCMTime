@@ -81,329 +81,41 @@ object frm_ZE: Tfrm_ZE
       Index = 4
     end
   end
-  object pc_Ze: TcxPageControl
+  object pc_ze: TcxPageControl
     Left = 0
     Top = 124
     Width = 1157
-    Height = 552
+    Height = 554
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = ts_Grid
+    Properties.ActivePage = ts_Kalender
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    Properties.HotTrack = True
-    ClientRectBottom = 551
+    Properties.Style = 11
+    ClientRectBottom = 553
     ClientRectLeft = 1
     ClientRectRight = 1156
     ClientRectTop = 1
-    object ts_Grid: TcxTabSheet
-      Caption = 'Grid'
+    object ts_Online: TcxTabSheet
+      Caption = 'ts_Online'
       ImageIndex = 0
       ExplicitLeft = 0
       ExplicitTop = 0
-      ExplicitWidth = 1157
-      ExplicitHeight = 552
-      object grd_Booking: TcxGrid
-        Left = 0
-        Top = 0
-        Width = 1155
-        Height = 550
-        Align = alClient
-        TabOrder = 0
-        ExplicitWidth = 1157
-        ExplicitHeight = 552
-        object grdDBTblView_Booking: TcxGridDBTableView
-          Navigator.Buttons.CustomButtons = <>
-          ScrollbarAnnotations.CustomAnnotations = <>
-          OnCellDblClick = grdDBTblView_BookingCellDblClick
-          DataController.DataSource = ds_Buchungen
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <>
-          DataController.Summary.SummaryGroups = <>
-          OptionsData.CancelOnExit = False
-          OptionsData.Deleting = False
-          OptionsData.DeletingConfirmation = False
-          OptionsData.Editing = False
-          OptionsData.Inserting = False
-          OptionsSelection.CellSelect = False
-          OptionsView.GroupByBox = False
-          OptionsView.HeaderFilterButtonShowMode = fbmButton
-          OptionsView.Indicator = True
-          OptionsView.IndicatorWidth = 16
-          object grdDBTblViewCol_BookingID: TcxGridDBColumn
-            DataBinding.FieldName = 'ID'
-            Visible = False
-          end
-          object grdDBTblViewCol_BookingTag: TcxGridDBColumn
-            DataBinding.FieldName = 'Tag'
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 30
-          end
-          object grdDBTblViewCol_BookingDatum: TcxGridDBColumn
-            DataBinding.FieldName = 'Datum'
-            PropertiesClassName = 'TcxDateEditProperties'
-            Properties.DisplayFormat = 'dd.MM.YYYY'
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 70
-          end
-          object grdDBTblViewCol_BookingKommen: TcxGridDBColumn
-            DataBinding.FieldName = 'Kommen'
-            PropertiesClassName = 'TcxTimeEditProperties'
-            Properties.Alignment.Horz = taRightJustify
-            Properties.SpinButtons.Visible = False
-            Properties.TimeFormat = tfHourMin
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 60
-          end
-          object grdDBTblViewCol_BookingGehen: TcxGridDBColumn
-            DataBinding.FieldName = 'Gehen'
-            PropertiesClassName = 'TcxTimeEditProperties'
-            Properties.Alignment.Horz = taRightJustify
-            Properties.SpinButtons.Visible = False
-            Properties.TimeFormat = tfHourMin
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 50
-          end
-          object grdDBTblViewCol_BookingPause1Beginn: TcxGridDBColumn
-            Caption = '1. Pau. Beg'
-            DataBinding.FieldName = 'Pause1Beginn'
-            PropertiesClassName = 'TcxTimeEditProperties'
-            Properties.Alignment.Horz = taRightJustify
-            Properties.SpinButtons.Visible = False
-            Properties.TimeFormat = tfHourMin
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 65
-          end
-          object grdDBTblViewCol_BookingPause1Ende: TcxGridDBColumn
-            Caption = '1. Pau. End'
-            DataBinding.FieldName = 'Pause1Ende'
-            PropertiesClassName = 'TcxTimeEditProperties'
-            Properties.Alignment.Horz = taRightJustify
-            Properties.SpinButtons.Visible = False
-            Properties.TimeFormat = tfHourMin
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 65
-          end
-          object grdDBTblViewCol_BookingPause2Begin: TcxGridDBColumn
-            Caption = '2. Pau. Beg'
-            DataBinding.FieldName = 'Pause2Beginn'
-            PropertiesClassName = 'TcxTimeEditProperties'
-            Properties.Alignment.Horz = taRightJustify
-            Properties.SpinButtons.Visible = False
-            Properties.TimeFormat = tfHourMin
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 65
-          end
-          object grdDBTblViewCol_BookingPause2Ende: TcxGridDBColumn
-            Caption = '2. Pau. End'
-            DataBinding.FieldName = 'Pause2Ende'
-            PropertiesClassName = 'TcxTimeEditProperties'
-            Properties.Alignment.Horz = taRightJustify
-            Properties.SpinButtons.Visible = False
-            Properties.TimeFormat = tfHourMin
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 65
-          end
-          object grdDBTblViewCol_BookingSollstunden: TcxGridDBColumn
-            Caption = 'Soll Std.'
-            DataBinding.FieldName = 'SollStundenStd'
-            PropertiesClassName = 'TcxTimeEditProperties'
-            Properties.Alignment.Horz = taRightJustify
-            Properties.SpinButtons.Visible = False
-            Properties.TimeFormat = tfHourMin
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 50
-          end
-          object grdDBTblView_BookingColumn1: TcxGridDBColumn
-            Caption = 'Soll Dez.'
-            DataBinding.FieldName = 'SollStundenDez'
-            PropertiesClassName = 'TcxCurrencyEditProperties'
-            Properties.DisplayFormat = ',0.00;-,0.00'
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 50
-          end
-          object grdDBTblView_BookingColumn2: TcxGridDBColumn
-            Caption = 'Ist Std.'
-            DataBinding.FieldName = 'ArbeitszeitStd'
-            PropertiesClassName = 'TcxTimeEditProperties'
-            Properties.Alignment.Horz = taRightJustify
-            Properties.TimeFormat = tfHourMin
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 50
-          end
-          object grdDBTblView_BookingColumn3: TcxGridDBColumn
-            Caption = 'Ist Dez.'
-            DataBinding.FieldName = 'ArbeitszeitDez'
-            PropertiesClassName = 'TcxCurrencyEditProperties'
-            Properties.DisplayFormat = ',0.00;-,0.00'
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 70
-          end
-          object grdDBTblView_BookingColumn4: TcxGridDBColumn
-            Caption = 'Pau. Std.'
-            DataBinding.FieldName = 'PausenStd'
-            PropertiesClassName = 'TcxTimeEditProperties'
-            Properties.Alignment.Horz = taRightJustify
-            Properties.TimeFormat = tfHourMin
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 70
-          end
-          object grdDBTblView_BookingColumn5: TcxGridDBColumn
-            Caption = 'Pau. Dez.'
-            DataBinding.FieldName = 'PausenDez'
-            PropertiesClassName = 'TcxCurrencyEditProperties'
-            Properties.DisplayFormat = ',0.00;-,0.00'
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 70
-          end
-          object grdDBTblViewCol_BookingMehrarbeit: TcxGridDBColumn
-            Caption = 'GLZ Std.'
-            DataBinding.FieldName = 'MehrarbeitStd'
-            PropertiesClassName = 'TcxTextEditProperties'
-            Properties.Alignment.Horz = taRightJustify
-            OnCustomDrawCell = grdDBTblViewCol_BookingMehrarbeitCustomDrawCell
-            Width = 70
-          end
-          object grdDBTblView_BookingColumn6: TcxGridDBColumn
-            Caption = 'GLZ Dez.'
-            DataBinding.FieldName = 'MehrarbeitDez'
-            PropertiesClassName = 'TcxCurrencyEditProperties'
-            Properties.DisplayFormat = ',0.00;-,0.00'
-            OnCustomDrawCell = grdDBTblViewCol_BookingMehrarbeitCustomDrawCell
-            Width = 70
-          end
-          object grdDBTblView_BookingBuchungsart: TcxGridDBColumn
-            DataBinding.FieldName = 'Buchungsart'
-            PropertiesClassName = 'TcxImageComboBoxProperties'
-            Properties.Alignment.Horz = taLeftJustify
-            Properties.Items = <
-              item
-                Description = 'B'#252'ro'
-                ImageIndex = 0
-                Value = 0
-              end
-              item
-                Description = 'HomeOffice'
-                Value = 1
-              end
-              item
-                Value = -1
-              end>
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 100
-          end
-          object grdDBTblViewCol_BookingFeiertag: TcxGridDBColumn
-            DataBinding.FieldName = 'Feiertag'
-            PropertiesClassName = 'TcxImageComboBoxProperties'
-            Properties.Alignment.Horz = taLeftJustify
-            Properties.Items = <
-              item
-                ImageIndex = 0
-                Value = 0
-              end
-              item
-                Description = 'ganzer Feiertag'
-                Value = 1
-              end
-              item
-                Description = 'halber Feiertag'
-                Value = 2
-              end>
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 90
-          end
-          object grdDBTblViewCol_BookingFehltag: TcxGridDBColumn
-            DataBinding.FieldName = 'Fehltag'
-            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
-            Width = 60
-          end
-        end
-        object grdLvl_Booking: TcxGridLevel
-          GridView = grdDBTblView_Booking
-        end
-      end
-    end
-    object ts_Kalender: TcxTabSheet
-      Caption = 'Kalender'
-      ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 1157
-      ExplicitHeight = 552
-      object sched_Kalender: TcxScheduler
-        Left = 0
-        Top = 0
-        Width = 1155
-        Height = 550
-        DateNavigator.RowCount = 4
-        ViewDay.Active = True
-        ViewDay.AlwaysShowEventTime = True
-        ViewDay.TimeRulerMinutes = True
-        ViewDay.WorkTimeOnly = True
-        ViewTimeGrid.EventImagesLayout = eilVertical
-        ViewTimeGrid.Scales.TimeStep = 1
-        ViewTimeGrid.ShowTimeAsClock = True
-        OnCustomDrawEvent = sched_KalenderCustomDrawEvent
-        Align = alClient
-        ContentPopupMenu.UseBuiltInPopupMenu = False
-        ControlBox.Visible = False
-        EventOperations.Deleting = False
-        EventOperations.DialogEditing = False
-        EventOperations.DialogShowing = False
-        EventOperations.InplaceEditing = False
-        EventOperations.MovingBetweenResources = False
-        EventPopupMenu.UseBuiltInPopupMenu = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        OptionsView.DayBorderColor = clActiveBorder
-        OptionsView.EventBorderColor = cl3DDkShadow
-        OptionsView.GroupingKind = gkByResource
-        OptionsView.ResourcesPerPage = 5
-        OptionsView.StartOfWeek = swMonday
-        OptionsView.WorkStart = 0.291666666666666700
-        OptionsView.WorkFinish = 0.833333333333333400
-        ResourceNavigator.Buttons.First.Visible = False
-        ResourceNavigator.Buttons.Last.Visible = False
-        ResourceNavigator.Buttons.ShowFewerResources.Visible = False
-        ResourceNavigator.Buttons.ShowMoreResources.Visible = False
-        ResourceNavigator.ShowButtons = False
-        ResourceNavigator.Visibility = snvNever
-        ShowHint = True
-        Storage = schedDBStrg_Kalender
-        TabOrder = 0
-        OnGetEventModernStyleHintInfo = sched_KalenderGetEventModernStyleHintInfo
-        ExplicitWidth = 1157
-        ExplicitHeight = 552
-        Splitters = {
-          950000007E0000008406000083000000EE03000001000000F303000025020000}
-        StoredClientBounds = {01000000010000008204000025020000}
-      end
-    end
-    object ts_Online: TcxTabSheet
-      Caption = 'ts_Online'
-      ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 1157
-      ExplicitHeight = 552
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dxLayoutControl1: TdxLayoutControl
         Left = 0
         Top = 0
         Width = 1155
-        Height = 550
+        Height = 552
         Align = alClient
         TabOrder = 0
         LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-        ExplicitWidth = 1157
-        ExplicitHeight = 552
         object btn_BookingWorkBegin: TcxButton
           Left = 21
           Top = 74
           Width = 553
-          Height = 222
+          Height = 223
           Margins.Left = 50
           Margins.Top = 100
           Margins.Right = 25
@@ -659,7 +371,7 @@ object frm_ZE: Tfrm_ZE
           Left = 581
           Top = 74
           Width = 553
-          Height = 222
+          Height = 223
           Margins.Left = 25
           Margins.Top = 100
           Margins.Right = 25
@@ -880,9 +592,9 @@ object frm_ZE: Tfrm_ZE
         end
         object btn_BookingBreakEnd: TcxButton
           Left = 581
-          Top = 303
+          Top = 304
           Width = 553
-          Height = 222
+          Height = 223
           Margins.Left = 25
           Margins.Top = 100
           Margins.Right = 25
@@ -1051,9 +763,9 @@ object frm_ZE: Tfrm_ZE
         end
         object btn_BookingBreakBegin: TcxButton
           Left = 21
-          Top = 303
+          Top = 304
           Width = 553
-          Height = 222
+          Height = 223
           Margins.Left = 25
           Margins.Top = 100
           Margins.Right = 25
@@ -1249,7 +961,6 @@ object frm_ZE: Tfrm_ZE
           AlignHorz = ahClient
           AlignVert = avClient
           CaptionOptions.Text = 'Online-Buchung'
-          ItemIndex = 1
           Index = 0
         end
         object dxLayoutItem1: TdxLayoutItem
@@ -1331,12 +1042,290 @@ object frm_ZE: Tfrm_ZE
         end
       end
     end
+    object ts_Grid: TcxTabSheet
+      Caption = 'ts_Grid'
+      ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+      object grd_Booking: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 1155
+        Height = 552
+        Align = alClient
+        TabOrder = 0
+        object grdDBTblView_Booking: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          ScrollbarAnnotations.CustomAnnotations = <>
+          OnCellDblClick = grdDBTblView_BookingCellDblClick
+          DataController.DataSource = ds_Buchungen
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.CancelOnExit = False
+          OptionsData.Deleting = False
+          OptionsData.DeletingConfirmation = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsSelection.CellSelect = False
+          OptionsView.GroupByBox = False
+          OptionsView.HeaderFilterButtonShowMode = fbmButton
+          OptionsView.Indicator = True
+          OptionsView.IndicatorWidth = 16
+          object grdDBTblViewCol_BookingID: TcxGridDBColumn
+            DataBinding.FieldName = 'ID'
+            Visible = False
+          end
+          object grdDBTblViewCol_BookingTag: TcxGridDBColumn
+            DataBinding.FieldName = 'Tag'
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 30
+          end
+          object grdDBTblViewCol_BookingDatum: TcxGridDBColumn
+            DataBinding.FieldName = 'Datum'
+            PropertiesClassName = 'TcxDateEditProperties'
+            Properties.DisplayFormat = 'dd.MM.YYYY'
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 70
+          end
+          object grdDBTblViewCol_BookingKommen: TcxGridDBColumn
+            DataBinding.FieldName = 'Kommen'
+            PropertiesClassName = 'TcxTimeEditProperties'
+            Properties.Alignment.Horz = taRightJustify
+            Properties.SpinButtons.Visible = False
+            Properties.TimeFormat = tfHourMin
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 60
+          end
+          object grdDBTblViewCol_BookingGehen: TcxGridDBColumn
+            DataBinding.FieldName = 'Gehen'
+            PropertiesClassName = 'TcxTimeEditProperties'
+            Properties.Alignment.Horz = taRightJustify
+            Properties.SpinButtons.Visible = False
+            Properties.TimeFormat = tfHourMin
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 50
+          end
+          object grdDBTblViewCol_BookingPause1Beginn: TcxGridDBColumn
+            Caption = '1. Pau. Beg'
+            DataBinding.FieldName = 'Pause1Beginn'
+            PropertiesClassName = 'TcxTimeEditProperties'
+            Properties.Alignment.Horz = taRightJustify
+            Properties.SpinButtons.Visible = False
+            Properties.TimeFormat = tfHourMin
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 65
+          end
+          object grdDBTblViewCol_BookingPause1Ende: TcxGridDBColumn
+            Caption = '1. Pau. End'
+            DataBinding.FieldName = 'Pause1Ende'
+            PropertiesClassName = 'TcxTimeEditProperties'
+            Properties.Alignment.Horz = taRightJustify
+            Properties.SpinButtons.Visible = False
+            Properties.TimeFormat = tfHourMin
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 65
+          end
+          object grdDBTblViewCol_BookingPause2Begin: TcxGridDBColumn
+            Caption = '2. Pau. Beg'
+            DataBinding.FieldName = 'Pause2Beginn'
+            PropertiesClassName = 'TcxTimeEditProperties'
+            Properties.Alignment.Horz = taRightJustify
+            Properties.SpinButtons.Visible = False
+            Properties.TimeFormat = tfHourMin
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 65
+          end
+          object grdDBTblViewCol_BookingPause2Ende: TcxGridDBColumn
+            Caption = '2. Pau. End'
+            DataBinding.FieldName = 'Pause2Ende'
+            PropertiesClassName = 'TcxTimeEditProperties'
+            Properties.Alignment.Horz = taRightJustify
+            Properties.SpinButtons.Visible = False
+            Properties.TimeFormat = tfHourMin
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 65
+          end
+          object grdDBTblViewCol_BookingSollstunden: TcxGridDBColumn
+            Caption = 'Soll Std.'
+            DataBinding.FieldName = 'SollStundenStd'
+            PropertiesClassName = 'TcxTimeEditProperties'
+            Properties.Alignment.Horz = taRightJustify
+            Properties.SpinButtons.Visible = False
+            Properties.TimeFormat = tfHourMin
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 50
+          end
+          object grdDBTblView_BookingColumn1: TcxGridDBColumn
+            Caption = 'Soll Dez.'
+            DataBinding.FieldName = 'SollStundenDez'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Properties.DisplayFormat = ',0.00;-,0.00'
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 50
+          end
+          object grdDBTblView_BookingColumn2: TcxGridDBColumn
+            Caption = 'Ist Std.'
+            DataBinding.FieldName = 'ArbeitszeitStd'
+            PropertiesClassName = 'TcxTimeEditProperties'
+            Properties.Alignment.Horz = taRightJustify
+            Properties.TimeFormat = tfHourMin
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 50
+          end
+          object grdDBTblView_BookingColumn3: TcxGridDBColumn
+            Caption = 'Ist Dez.'
+            DataBinding.FieldName = 'ArbeitszeitDez'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Properties.DisplayFormat = ',0.00;-,0.00'
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 70
+          end
+          object grdDBTblView_BookingColumn4: TcxGridDBColumn
+            Caption = 'Pau. Std.'
+            DataBinding.FieldName = 'PausenStd'
+            PropertiesClassName = 'TcxTimeEditProperties'
+            Properties.Alignment.Horz = taRightJustify
+            Properties.TimeFormat = tfHourMin
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 70
+          end
+          object grdDBTblView_BookingColumn5: TcxGridDBColumn
+            Caption = 'Pau. Dez.'
+            DataBinding.FieldName = 'PausenDez'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Properties.DisplayFormat = ',0.00;-,0.00'
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 70
+          end
+          object grdDBTblViewCol_BookingMehrarbeit: TcxGridDBColumn
+            Caption = 'GLZ Std.'
+            DataBinding.FieldName = 'MehrarbeitStd'
+            PropertiesClassName = 'TcxTextEditProperties'
+            Properties.Alignment.Horz = taRightJustify
+            OnCustomDrawCell = grdDBTblViewCol_BookingMehrarbeitCustomDrawCell
+            Width = 70
+          end
+          object grdDBTblView_BookingColumn6: TcxGridDBColumn
+            Caption = 'GLZ Dez.'
+            DataBinding.FieldName = 'MehrarbeitDez'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Properties.DisplayFormat = ',0.00;-,0.00'
+            OnCustomDrawCell = grdDBTblViewCol_BookingMehrarbeitCustomDrawCell
+            Width = 70
+          end
+          object grdDBTblView_BookingBuchungsart: TcxGridDBColumn
+            DataBinding.FieldName = 'Buchungsart'
+            PropertiesClassName = 'TcxImageComboBoxProperties'
+            Properties.Alignment.Horz = taLeftJustify
+            Properties.Items = <
+              item
+                Description = 'B'#252'ro'
+                ImageIndex = 0
+                Value = 0
+              end
+              item
+                Description = 'HomeOffice'
+                Value = 1
+              end
+              item
+                Value = -1
+              end>
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 100
+          end
+          object grdDBTblViewCol_BookingFeiertag: TcxGridDBColumn
+            DataBinding.FieldName = 'Feiertag'
+            PropertiesClassName = 'TcxImageComboBoxProperties'
+            Properties.Alignment.Horz = taLeftJustify
+            Properties.Items = <
+              item
+                ImageIndex = 0
+                Value = 0
+              end
+              item
+                Description = 'ganzer Feiertag'
+                Value = 1
+              end
+              item
+                Description = 'halber Feiertag'
+                Value = 2
+              end>
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 90
+          end
+          object grdDBTblViewCol_BookingFehltag: TcxGridDBColumn
+            DataBinding.FieldName = 'Fehltag'
+            OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
+            Width = 60
+          end
+        end
+        object grdLvl_Booking: TcxGridLevel
+          GridView = grdDBTblView_Booking
+        end
+      end
+    end
+    object ts_Kalender: TcxTabSheet
+      Caption = 'ts_Kalender'
+      ImageIndex = 2
+      object sched_Kalender: TcxScheduler
+        Left = 0
+        Top = 0
+        Width = 1155
+        Height = 552
+        DateNavigator.RowCount = 4
+        ViewDay.Active = True
+        ViewDay.AlwaysShowEventTime = True
+        ViewDay.TimeRulerMinutes = True
+        ViewDay.WorkTimeOnly = True
+        ViewTimeGrid.EventImagesLayout = eilVertical
+        ViewTimeGrid.Scales.TimeStep = 1
+        ViewTimeGrid.ShowTimeAsClock = True
+        OnCustomDrawEvent = sched_KalenderCustomDrawEvent
+        Align = alClient
+        ContentPopupMenu.UseBuiltInPopupMenu = False
+        ControlBox.Visible = False
+        EventOperations.Deleting = False
+        EventOperations.DialogEditing = False
+        EventOperations.DialogShowing = False
+        EventOperations.InplaceEditing = False
+        EventOperations.MovingBetweenResources = False
+        EventPopupMenu.UseBuiltInPopupMenu = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        OptionsView.DayBorderColor = clActiveBorder
+        OptionsView.EventBorderColor = cl3DDkShadow
+        OptionsView.GroupingKind = gkByResource
+        OptionsView.ResourcesPerPage = 5
+        OptionsView.StartOfWeek = swMonday
+        OptionsView.WorkStart = 0.291666666666666700
+        OptionsView.WorkFinish = 0.833333333333333400
+        ResourceNavigator.Buttons.First.Visible = False
+        ResourceNavigator.Buttons.Last.Visible = False
+        ResourceNavigator.Buttons.ShowFewerResources.Visible = False
+        ResourceNavigator.Buttons.ShowMoreResources.Visible = False
+        ResourceNavigator.ShowButtons = False
+        ResourceNavigator.Visibility = snvNever
+        ShowHint = True
+        Storage = schedDBStrg_Kalender
+        TabOrder = 0
+        OnGetEventModernStyleHintInfo = sched_KalenderGetEventModernStyleHintInfo
+        Splitters = {
+          950000007E0000008406000083000000EE03000001000000F303000027020000}
+        StoredClientBounds = {01000000010000008204000027020000}
+      end
+    end
   end
   object stbr_ZE: TdxStatusBar
     Left = 0
-    Top = 676
+    Top = 678
     Width = 1157
-    Height = 20
+    Height = 18
     Panels = <
       item
         PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
@@ -1526,13 +1515,12 @@ object frm_ZE: Tfrm_ZE
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = True
+      Visible = False
       WholeRow = False
     end
     object tb_kalender: TdxBar
       Caption = 'Kalender'
       CaptionButtons = <>
-      DockedDockingStyle = dsTop
       DockedLeft = 0
       DockedTop = 0
       FloatLeft = 1133
@@ -1560,7 +1548,7 @@ object frm_ZE: Tfrm_ZE
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = True
+      Visible = False
       WholeRow = False
     end
     object tb_Optionen: TdxBar
@@ -1592,13 +1580,12 @@ object frm_ZE: Tfrm_ZE
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = True
+      Visible = False
       WholeRow = False
     end
     object tb_Drucken: TdxBar
       Caption = 'Drucke Ansicht'
       CaptionButtons = <>
-      DockedDockingStyle = dsTop
       DockedLeft = 110
       DockedTop = 0
       FloatLeft = 1121
@@ -1617,13 +1604,12 @@ object frm_ZE: Tfrm_ZE
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = True
+      Visible = False
       WholeRow = False
     end
     object tb_DruckeGrid: TdxBar
       Caption = 'Drucke Daten'
       CaptionButtons = <>
-      DockedDockingStyle = dsTop
       DockedLeft = 0
       DockedTop = 0
       FloatLeft = 1946
@@ -1641,7 +1627,7 @@ object frm_ZE: Tfrm_ZE
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = True
+      Visible = False
       WholeRow = False
     end
     object tb_Monatswerte: TdxBar
@@ -1665,7 +1651,10 @@ object frm_ZE: Tfrm_ZE
         end>
       OneOnRow = False
       Row = 0
+      ShowMark = False
+      SizeGrip = False
       UseOwnFont = False
+      UseRestSpace = True
       Visible = True
       WholeRow = False
     end
@@ -1685,7 +1674,10 @@ object frm_ZE: Tfrm_ZE
         end>
       OneOnRow = False
       Row = 0
+      ShowMark = False
+      SizeGrip = False
       UseOwnFont = False
+      UseRestSpace = True
       Visible = True
       WholeRow = False
     end
@@ -1843,7 +1835,7 @@ object frm_ZE: Tfrm_ZE
       Hint = 'Benutzer'
       Visible = ivAlways
       OnClick = btn_userClick
-      LargeImageIndex = 13
+      LargeImageIndex = 19
       Width = 100
     end
     object btn_Feiertage: TdxBarLargeButton
@@ -4140,6 +4132,88 @@ object frm_ZE: Tfrm_ZE
           0000000000000000000000000000000000000000000000000000000000000000
           0000000000000000000000000000000000000000000000000000000000000000
           0000000000000000000000000000000000000000000000000000}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000000774494D4507D8040F0D2E2DD95A447E000000097048597300000B12
+          00000B1201D2DD7EFC0000000467414D410000B18F0BFC610500000945494441
+          5478DACD56696C5C67153DEFBD79B3CFD8E37D8F5D3B716D12A724B193A66E15
+          27759A340D553149210535A04AA801548AFA278010FD838454552DA888AA0284
+          5051AB4A50484B9422B5B1DD90BDB653C74EBCCEC4637BF6F52DF376EE4CFED0
+          90144B2D82CFFA347EA379DF77EEB9E79E7B81FFF1623EAF830E3D3C50C3DAAD
+          673D0E6BA8DCEF6ECF0BA2766329795192E557462F2FBCF15F0570F4D0E04376
+          87E3F507766EA9ECBAAB052C47C79A26E61616F1873FBE65293AF3835367675E
+          FADC013C327484AB7709DFF6B8B99706767C91375405A665422EC8C826E248C6
+          96D1D0D6897F5C9A36E3F1D4F67746272FDD7A86ED4E876FDEB6B3C3E0F8EFF2
+          0EF72E97D757619846863331CCC17875F4BDB7278BBFF121FE7C5373FB0FD737
+          55318220229D88209D4C229F4D239F4E62D7C12FE3C6EC75D4045C6CE8867C94
+          5E591B80BB376FEB3339FEFDAF7DFD494F7FFFFD703A1D48A432CD97C727368D
+          8C0C3FBD7DEF977E159D0A3C776371E4C3E8C2559DDDD6C42752129C9E009C0E
+          27B29914BEB0750752A9349289180CDD8452907AD694820D9B7734B83D9E89FE
+          81C1AAAEB666CA270BCEE106CBDB010B500D1323A3A3D6ECD5F1BF5D1E6E7BF4
+          E9C786DF7CE2D19EA1BB376E81A0BA90CEA9145501A74E4F4310F34884833034
+          0D9767562F5D9849F7FE470658463FD6D4DA5E95231A973201CC5DB9089E77A0
+          ACB2061EAF8F00D9515F5BCF6492D1031BB64C3D07D684AE531C761FAA2A9B50
+          D716006B6470EEFC1482731162234B0CA8B48DD8ED18606FFDC2D0F4DD966940
+          20008AA6E39EFE4104E717317375124BA12032990C6C2E37D66FEC83DBEDFE0E
+          63E97945D7093881B00C58668100E968AA77A22AE0C5B1A706E170F0602D6BEC
+          76006EA301A6511173D0E8BCF87218369B1D8F3DBC055BD731584A9A8891B818
+          79117679090BFCEA070CE7082BB20143CD43E79C2500A65640951FD8D3DF0446
+          CF211C152CC5B24EAE0980A16BBA4A6564183A929115302C83C70F54A0AB631D
+          B613615A21092119C4471757D052AEA52DDDCACA547EF412BD1BA114D9601113
+          1E37100878F0E7137308C7F297A7A3EA99B5A5405743AAAAC2E5B4231689A2DD
+          9B44F75D7560EC945B6705C0F9C0F03E98A45F43B7187AF8289E962C5591A12A
+          1214390F299F01CBDA601230C352D0DD59F5933B95FBBF01602CEB42B5DFC40B
+          DFACC4E1C1767A5649FCF4671468CB74AD098E58118976D8B8E035143E5C5ACD
+          275445804ED417B76928A4150136DE8DB6BBDAE06DE96B593300B2B213F3A18C
+          254B22F66FD4B0BB4BA1A872144D7193A28B9F860A4D33485846341AD8CF2EC6
+          8CD1D1336348C7C2585D0A616EFA1A22E15534B777A1A5E7614C848D9736F50F
+          ECBF1D00EED62F3299D412EFF21DB079AA1AEFDDE807CF19143179006340A728
+          35DA0645393D134428E35BADE2BCBF296FDEBCCDD638809EAD7B20453F869DE7
+          B0E9BE4710333A10B75A4903295B2E151FAAAD5B7732125E5CFD5400C5D5DA58
+          36D5ECD7BED5DB5D41227490A82C701C77B39E499C3AE5FAD2F802D2FCC6DE83
+          07F67B6A2A2BD0DF7B0FCAEB3A30C3EF44FFEE6FC0DFB2033A5B8E303192CAE6
+          E172FB6C8A9839D4DCD471EE46703674E714D03AB2B352DAD21980BFAC82EC34
+          5BAA6F852ED568EBAA04551630133151D7D8C2488A4675EEA0EA10F1DB711129
+          8D07C798C8504F48445729551ACA3D645E3595D8BEB3BFC25BEE7E6FD74307BF
+          FA690098E3EFFB7FEA6EDE81406D1319928020B5D57C3A8102291C54EF272E26
+          30926C86466C2C2CAD606C7A1E653E17FE343A09BF9E26960C5CF978120BC110
+          D5B98EDA801F0DD50174B635E1F1C3871DF575D5BF1BD8B7AFEDB63E60EFBCFF
+          47AAA3E260AE72101222E8E9BB17572E9C412CBC028B4A2BE1DE8C5FE407A177
+          E6F176388EF55842BDCF8665CD0FB6A1020D2C79C45816A746CFA3DCE743B9D7
+          85544E404F673B2AAA6B90CE668BCC3A17161787E8BA173E0160CB83879F5815
+          ADE7B395DDCCEF27F278EAD1AF201E8FA1C5DE0B211343DEA8C0EEDE01D84263
+          60498C11F2892859C11157012F0E47A02C27D0B2AF13BF7EF324422B31C49D39
+          2A6313EB5B892D227B667E01AAAA81B7DBE1F778B77E42849DFD8FED5338FE8D
+          94AFDD56564FEC54756076760607B7B582F7D4C15FD38172EA8CE2D573787F3E
+          8D685E4121344E7A10C13A3C08092CBC4616D5661C17AE5C230FB0419604D81D
+          2EE42489A8B6904A6790A66D5047CD65538599E9A9D74A00BC9B07EED319FB09
+          A9AADBE56DEE828D5EF290002F2E26119B3E8FAEA6008AEE6812F2F15FFE0C8D
+          0FECC1DF272330E534182106D1E249A7946B17109D1DA7FEE184A6CA14A98B3A
+          A90D629EFA84AE219B17204A726906B8367D1D2B4BC1175977E7FDEB4CD37E82
+          6DEDF3946FE8838FDA2E153AD2CBF360C4145EBD24E0CC95792468B0187BE704
+          3C44E5C1BE0EC842960EBA394E28F4BF2EA4905B9E8524CA2456010EA78BFC03
+          C48244CF12CD063224492E0974251A273E989A521538DCDEEFF9D76D0A34F43E
+          4274B921A7A34587433634499764C0992A9E797D0CBACD8DF6810761160428A7
+          FF8AD66A0FCD9D64C7244C251B8392A64624C641AD8CCAD2496714A71D8B5C93
+          7C834A512610C5CB655921768A2D5B592C6940B1B98F71E58D7733AE3270761E
+          A66E418C874A2D55CD44C138BDE4CE16DEFA60024FEEEDC1F577FF02756E0A13
+          812E2CAF2C135B644ED988655AC6B376713527E6855A02E6520A3253207D64D3
+          C44C36432C50F4A6864C2A85E8CAF235DDB086622B4B711BCFBB6A6908412E1A
+          041BE3E0F095110BB1927A0D52BA199D0357D102C960F0FD57DEC5D1AA5A2C4E
+          4EC0CC7D543228434C59644E3FD7C2575E5E005E2E46D5CDDFDBE6E0980E8B65
+          CA0AAAA69BB2A1332C17F07A1D9CC998C1B1B367468B8DB7E403166336583AE5
+          2D19294D8805A2D2D4A8031203F4127D52AF8FCE10887518BE1A42771983EA54
+          0E2E334C7DD107A3903B6DC5E68EFF6B394F5D3A5BA477116B58946EA3967C94
+          462AAB945F5DCAC224CBB50A39BA5CA528CD9B4D32310F27CD83EF8435441249
+          60651E5A323C678ACA91B55C74A74553037453931CA6942338245B120A850532
+          7E5208F914C3DE04419266A438A2BC1F9302F5062174ADC999DB1B2E52F61916
+          075759D452E5039CCBCB1629A78104962A166BAB7431539C6C48D9A64CCC6496
+          0D23171BA69A3E6ED3A467E6F542FAB35C5E5C370BB9BEEB3ED6EEF931CB3BF6
+          D085364B4C8549592316CB3AC1B9680032A8F759674DA1F01ED2339F29E2FFBB
+          F54F537EF4C08E9CC0170000000049454E44AE426082}
       end>
   end
   object schedDBStrg_Kalender: TcxSchedulerDBStorage
@@ -4348,7 +4422,6 @@ object frm_ZE: Tfrm_ZE
     Top = 152
     PixelsPerInch = 96
     object comp_PrintCalLink1: TcxSchedulerReportLink
-      Component = sched_Kalender
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True

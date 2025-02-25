@@ -61,7 +61,8 @@ uses
   Vcl.Menus,
   Vcl.StdCtrls,
   Winapi.Messages,
-  Winapi.Windows;
+  Winapi.Windows, dxLayoutContainer, dxLayoutcxEditAdapters,
+  dxLayoutControlAdapters, dxLayoutControl;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -85,13 +86,21 @@ type
     grdDBTblView_BookingTage: TcxGridDBColumn;
     grdDBTblView_BookingVon: TcxGridDBColumn;
     grdLvl_Booking: TcxGridLevel;
-    grpbx_Detail: TcxGroupBox;
-    grpbx_FT: TcxGroupBox;
-    lbl_FTBis: TcxLabel;
-    lbl_FTFT: TcxLabel;
-    lbl_FTVon: TcxLabel;
     qry_FT: TFDQuery;
     tb_Fehltage: TdxBar;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutGroup10: TdxLayoutGroup;
     procedure btn_FTCancelClick(Sender: TObject);
     procedure btn_FTCloseClick(Sender: TObject);
     procedure btn_FTDeleteClick(Sender: TObject);
@@ -124,7 +133,8 @@ uses
 procedure Tfrm_Fehltageeintragen.btn_FTCancelClick(Sender: TObject);
 begin
   qry_Ft.Cancel;
-  frm_Fehltageeintragen.ClientHeight:= 526;
+  dxLayoutGroup3.Visible:= false;
+  frm_Fehltageeintragen.ClientHeight:= 545;
 end;
 procedure Tfrm_Fehltageeintragen.btn_FTCloseClick(Sender: TObject);
 begin
@@ -152,7 +162,8 @@ begin
 end;
 procedure Tfrm_Fehltageeintragen.btn_FTNEwClick(Sender: TObject);
 begin
-  frm_Fehltageeintragen.ClientHeight:= 688;
+  dxLayoutGroup3.visible:= true;
+  frm_Fehltageeintragen.ClientHeight:= 758;
   if qry_Ft.State in [dsInsert, dsedit] then
     qry_Ft.Post;
   qry_Ft.Append;

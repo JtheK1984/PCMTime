@@ -14,28 +14,28 @@ object frm_Fehltage: Tfrm_Fehltage
   Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 15
-  object brdckCtrl_FT: TdxBarDockControl
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
     Width = 1600
-    Height = 63
-    Align = dalTop
-    BarManager = brmgr_Config
-  end
-  object grpbx_Feiertage: TcxGroupBox
-    Left = 0
-    Top = 63
+    Height = 900
     Align = alClient
-    Caption = 'Fehltage'
-    TabOrder = 1
-    Height = 837
-    Width = 1600
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    object brdckCtrl_FT: TdxBarDockControl
+      Left = 12
+      Top = 12
+      Width = 1576
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Config
+    end
     object grd_Feiertage: TcxGrid
-      Left = 3
-      Top = 177
-      Width = 1594
+      Left = 21
+      Top = 172
+      Width = 1558
       Height = 651
-      Align = alClient
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -43,7 +43,7 @@ object frm_Fehltage: Tfrm_Fehltage
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 8
       TabStop = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Feiertage: TcxGridDBTableView
@@ -173,174 +173,273 @@ object frm_Fehltage: Tfrm_Fehltage
         GridView = grdDBTblView_Feiertage
       end
     end
-    object grpbx_FTDetail: TcxGroupBox
-      Left = 3
-      Top = 17
-      Align = alTop
-      PanelStyle.Active = True
-      Style.BorderStyle = ebsNone
-      TabOrder = 0
-      Height = 160
-      Width = 1594
-      object lbl_FTKuerzel: TcxLabel
-        AlignWithMargins = True
-        Left = 5
-        Top = 3
-        Margins.Left = 2
-        Margins.Top = 0
-        Margins.Right = 2
-        Margins.Bottom = 0
-        Align = alTop
-        Caption = 'K'#252'rzel:'
-        Transparent = True
-      end
-      object edt_FTKuerzel: TcxDBTextEdit
-        AlignWithMargins = True
-        Left = 6
-        Top = 25
-        Align = alTop
-        DataBinding.DataField = 'Kuerzel'
-        DataBinding.DataSource = ds_FT
-        TabOrder = 0
-        Width = 1582
-      end
-      object lbl_FTDesc: TcxLabel
-        AlignWithMargins = True
-        Left = 5
-        Top = 51
-        Margins.Left = 2
-        Margins.Top = 0
-        Margins.Right = 2
-        Margins.Bottom = 0
-        Align = alTop
-        Caption = 'Beschreibung:'
-        Transparent = True
-      end
-      object edt_FTDesc: TcxDBTextEdit
-        AlignWithMargins = True
-        Left = 6
-        Top = 73
-        Align = alTop
-        DataBinding.DataField = 'Beschreibung'
-        DataBinding.DataSource = ds_FT
-        TabOrder = 1
-        Width = 1582
-      end
-      object lbl_FTTyp: TcxLabel
-        Left = 6
-        Top = 102
-        Caption = 'Fehltagstyp:'
-        Transparent = True
-      end
-      object lbl_FTGutschrift: TcxLabel
-        Left = 223
-        Top = 102
-        Caption = 'Gutschrift:'
-        Transparent = True
-      end
-      object lbl_FTSoll: TcxLabel
-        Left = 443
-        Top = 102
-        Caption = 'Sollstunden:'
-        Transparent = True
-      end
-      object imgcmbbx_FTSoll: TcxDBImageComboBox
-        Left = 443
-        Top = 127
-        DataBinding.DataField = 'Bezahlt'
-        DataBinding.DataSource = ds_FT
-        Properties.Items = <
-          item
-            Description = 'keine Sollzeitgutschrift'
-            ImageIndex = 0
-            Value = 0
-          end
-          item
-            Description = 'Sollzeitgutschrift'
-            Value = 1
-          end>
-        TabOrder = 4
-        Width = 210
-      end
-      object imgcmbbx_FTGutschrift: TcxDBImageComboBox
-        Left = 223
-        Top = 127
-        DataBinding.DataField = 'Faktor'
-        DataBinding.DataSource = ds_FT
-        Properties.Alignment.Horz = taLeftJustify
-        Properties.Items = <
-          item
-            Description = 'keine Gutschrift'
-            ImageIndex = 0
-            Value = 0
-          end
-          item
-            Description = 'Gutschrift ganzer Tag'
-            Value = 1
-          end
-          item
-            Description = 'Gutschrift halber Tag'
-            Value = 2
-          end>
-        TabOrder = 3
-        Width = 214
-      end
-      object imgcmbbx_FTTyp: TcxDBImageComboBox
-        Left = 6
-        Top = 127
-        DataBinding.DataField = 'Typ'
-        DataBinding.DataSource = ds_FT
-        Properties.Alignment.Horz = taLeftJustify
-        Properties.Items = <
-          item
-            Description = 'Urlaub'
-            ImageIndex = 0
-            Value = 1
-          end
-          item
-            Description = 'Krankheit'
-            Value = 2
-          end>
-        TabOrder = 2
-        Width = 210
-      end
-      object lbl_FTColEvent: TcxLabel
-        Left = 659
-        Top = 102
-        Caption = 'Farbe Fehltag:'
-        Transparent = True
-      end
-      object colcmbbx_FTEvent: TcxDBColorComboBox
-        Left = 659
-        Top = 127
-        DataBinding.DataField = 'Color'
-        DataBinding.DataSource = ds_FT
-        Properties.AllowSelectColor = True
-        Properties.ColorBoxWidth = 170
-        Properties.CustomColors = <>
-        Properties.DefaultDescription = 'Keine Farbe gew'#228'hlt'
-        Properties.NamingConvention = cxncHTML4
-        TabOrder = 11
-        Width = 210
-      end
-      object colcmbbx_FTFont: TcxDBColorComboBox
-        Left = 875
-        Top = 127
-        DataBinding.DataField = 'ColorFont'
-        DataBinding.DataSource = ds_FT
-        Properties.AllowSelectColor = True
-        Properties.ColorBoxWidth = 170
-        Properties.CustomColors = <>
-        Properties.NamingConvention = cxncHTML4
-        TabOrder = 12
-        Width = 210
-      end
-      object lbl_FTColFont: TcxLabel
-        Left = 875
-        Top = 102
-        Caption = 'Farbe Schrift:'
-        Transparent = True
-      end
+    object edt_FTKuerzel: TcxDBTextEdit
+      AlignWithMargins = True
+      Left = 106
+      Top = 116
+      DataBinding.DataField = 'Kuerzel'
+      DataBinding.DataSource = ds_FT
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 1
+      Width = 691
+    end
+    object edt_FTDesc: TcxDBTextEdit
+      AlignWithMargins = True
+      Left = 889
+      Top = 116
+      DataBinding.DataField = 'Beschreibung'
+      DataBinding.DataSource = ds_FT
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 2
+      Width = 690
+    end
+    object imgcmbbx_FTSoll: TcxDBImageComboBox
+      Left = 718
+      Top = 144
+      DataBinding.DataField = 'Bezahlt'
+      DataBinding.DataSource = ds_FT
+      Properties.Items = <
+        item
+          Description = 'keine Sollzeitgutschrift'
+          ImageIndex = 0
+          Value = 0
+        end
+        item
+          Description = 'Sollzeitgutschrift'
+          Value = 1
+        end>
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 5
+      Width = 230
+    end
+    object imgcmbbx_FTGutschrift: TcxDBImageComboBox
+      Left = 406
+      Top = 144
+      DataBinding.DataField = 'Faktor'
+      DataBinding.DataSource = ds_FT
+      Properties.Alignment.Horz = taLeftJustify
+      Properties.Items = <
+        item
+          Description = 'keine Gutschrift'
+          ImageIndex = 0
+          Value = 0
+        end
+        item
+          Description = 'Gutschrift ganzer Tag'
+          Value = 1
+        end
+        item
+          Description = 'Gutschrift halber Tag'
+          Value = 2
+        end>
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 4
+      Width = 234
+    end
+    object imgcmbbx_FTTyp: TcxDBImageComboBox
+      Left = 106
+      Top = 144
+      DataBinding.DataField = 'Typ'
+      DataBinding.DataSource = ds_FT
+      Properties.Alignment.Horz = taLeftJustify
+      Properties.Items = <
+        item
+          Description = 'Urlaub'
+          ImageIndex = 0
+          Value = 1
+        end
+        item
+          Description = 'Krankheit'
+          Value = 2
+        end>
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 3
+      Width = 232
+    end
+    object colcmbbx_FTEvent: TcxDBColorComboBox
+      Left = 1035
+      Top = 144
+      DataBinding.DataField = 'Color'
+      DataBinding.DataSource = ds_FT
+      Properties.AllowSelectColor = True
+      Properties.ColorBoxWidth = 170
+      Properties.CustomColors = <>
+      Properties.DefaultDescription = 'Keine Farbe gew'#228'hlt'
+      Properties.NamingConvention = cxncHTML4
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 6
+      Width = 231
+    end
+    object colcmbbx_FTFont: TcxDBColorComboBox
+      Left = 1348
+      Top = 144
+      DataBinding.DataField = 'ColorFont'
+      DataBinding.DataSource = ds_FT
+      Properties.AllowSelectColor = True
+      Properties.ColorBoxWidth = 170
+      Properties.CustomColors = <>
+      Properties.NamingConvention = cxncHTML4
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 7
+      Width = 231
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckCtrl_FT'
+      CaptionOptions.Visible = False
+      Control = brdckCtrl_FT
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1600
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      CaptionOptions.Text = 'Fehltage'
+      Index = 1
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'K'#252'rzel:'
+      CaptionOptions.Width = 80
+      Control = edt_FTKuerzel
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 1582
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Beschreibung:'
+      CaptionOptions.Width = 80
+      Control = edt_FTDesc
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 1582
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Fehltagstyp:'
+      Control = imgcmbbx_FTTyp
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 210
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Gutschrift:'
+      Control = imgcmbbx_FTGutschrift
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 214
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Sollstunden:'
+      Control = imgcmbbx_FTSoll
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 210
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem7: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Farbe Fehltag:'
+      Control = colcmbbx_FTEvent
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 210
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutItem8: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Farbe Schrift:'
+      Control = colcmbbx_FTFont
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 210
+      ControlOptions.ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutItem9: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_Feiertage'
+      CaptionOptions.Visible = False
+      Control = grd_Feiertage
+      ControlOptions.OriginalHeight = 651
+      ControlOptions.OriginalWidth = 1594
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup8: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup9: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup10: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
     end
   end
   object qry_FT1: TFDQuery

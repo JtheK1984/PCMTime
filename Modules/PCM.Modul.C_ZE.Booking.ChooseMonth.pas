@@ -27,7 +27,8 @@ uses
   Vcl.Menus,
   Vcl.StdCtrls,
   Winapi.Messages,
-  Winapi.Windows;
+  Winapi.Windows, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
+  dxLayoutContainer, cxClasses, dxLayoutControl;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -36,9 +37,15 @@ type
     btn_Ok: TcxButton;
     cbx_Month: TcxComboBox;
     cbx_Year: TcxComboBox;
-    lbl_Month: TcxLabel;
-    lbl_Year: TcxLabel;
-    grpbx_Design: TcxGroupBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup7: TdxLayoutGroup;
     procedure btn_OkClick(Sender: TObject);
     procedure btn_CancelClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

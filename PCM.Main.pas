@@ -85,7 +85,7 @@ uses
   VCLTee.TeeProcs,
   Winapi.Messages,
   Winapi.Windows,
-  SYSTEM.uitypes;
+  SYSTEM.uitypes, dxLayoutContainer, dxLayoutControl, cxImageList;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -161,6 +161,22 @@ type
     trayic_Main: TTrayIcon;
     navbrgrp_Stammdaten: TdxNavBarGroup;
     iMitarbeiter: TdxNavBarItem;
+    iFehltage: TdxNavBarItem;
+    iFeiertage: TdxNavBarItem;
+    navbr_mainGroup1: TdxNavBarGroup;
+    navbr_mainItem3: TdxNavBarItem;
+    iMonatswerte: TdxNavBarItem;
+    ts_Dashboard: TcxTabSheet;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutSplitterItem1: TdxLayoutSplitterItem;
+    dxLayoutSplitterItem2: TdxLayoutSplitterItem;
+    imglst_32x32: TcxImageList;
     procedure btn_CloseModulClick(Sender: TObject);
     procedure btn_ModulleisteClick(Sender: TObject);
     procedure btn_RefreshRightsClick(Sender: TObject);
@@ -191,6 +207,8 @@ type
 
   public
     { Public-Deklarationen }
+    iAuswertungMonat: Integer;
+    iAuswertungJahr: Integer;
     bAbmelden: Boolean;
     Modules: TCollection;
     function CurrentModule: TForm;
@@ -224,7 +242,8 @@ uses
   PCM.Modul.C_ZE,
   PCM.Strings,
   PCM.SQL,
-  PCM.splash, PCM.Modul.C_ZE.Contacts;
+  PCM.splash, PCM.Modul.C_ZE.Contacts, PCM.Modul.C_ZE.Booking.Fehltage,
+  PCM.Modul.C_ZE.Booking.Feiertage, PCM.Modul.C_ZE.Booking.Monatswerte;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -258,7 +277,7 @@ procedure Tfrm_PCM_Main.CloseModules;
 var
   iPage: Integer;
 begin
-  for iPage := pc_Main.PageCount - 1 downto 0 do
+  for iPage := pc_Main.PageCount - 1 downto 1 do
   begin
     try
       TForm(pc_Main.Pages[iPage].Controls[0]).Close;
@@ -306,13 +325,16 @@ begin
 end;
 procedure Tfrm_PCM_Main.btn_CloseModulClick(Sender: TObject);
 begin
-  if pc_Main.PageCount > 0 then
+  if pc_Main.PageCount > 1 then
   begin
-    if pc_Main.PageCount = 1 then
-    brstc_OpenModule.Caption := 'Bitte Modul wählen';
-    TForm(pc_Main.ActivePage.Controls[0]).Close;
-    TForm(pc_Main.ActivePage.Controls[0]).Free;
-    pc_Main.ActivePage.Free;
+    if pc_Main.PageCount = 2 then
+      brstc_OpenModule.Caption := 'Dashboard';
+    if pc_Main.ActivePage <> ts_Dashboard  then
+    begin
+      TForm(pc_Main.ActivePage.Controls[0]).Close;
+      TForm(pc_Main.ActivePage.Controls[0]).Free;
+      pc_Main.ActivePage.Free;
+    end;
   end;
 end;
 procedure Tfrm_PCM_Main.Abmelden;
@@ -375,6 +397,10 @@ begin
   RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
   RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
   RegisterForm('iMitarbeiter', Tfrm_UserZE, @frm_UserZE, 1);
+  RegisterForm('iFehltage', Tfrm_Fehltage, @frm_Fehltage, 1);
+  RegisterForm('iFeiertage', Tfrm_Feiertage, @frm_Feiertage, 1);
+  RegisterForm('iMonatswerte', Tfrm_monatswerte, @frm_monatswerte, 1);
+
   RegisterForm('iZeiterfassung',Tfrm_ZE, @frm_ZE, 1);
   RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
   RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
@@ -382,7 +408,6 @@ begin
   RegisterEvent('iAbmelden', Abmelden);
   RegisterEvent('iBeenden', Close);
 end;
-
 {$ENDREGION}
 ////////////////////////////////////////////////////////////////////////////////
 // Navbarfunktionen                                                           //
@@ -630,6 +655,8 @@ begin
   BarResize;
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
+var
+  iJahr,iMonat,iTag: Word;
 begin
   {$ifdef WIn32}
   iSprache.Visible:= false;
@@ -655,6 +682,9 @@ begin
       WriteLog(PCM_Logname,rs_PCM_Start,0);
     end;
   end;
+  DecodeDate(Date, iJahr,iMonat,iTag);
+  frm_PCM_Main.iAuswertungMonat:= iMonat;
+  frm_PCM_Main.iAuswertungJahr:= iJahr;
 end;
 {$ENDRegion}
 ////////////////////////////////////////////////////////////////////////////////

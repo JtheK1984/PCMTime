@@ -68,15 +68,14 @@ uses
   system.math,
   system.UITypes,
   SysUtils,
-  Windows;
+  Windows, dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
+  dxLayoutControl;
   {$EndRegion uses}
 type
   {$Region type}
   TcxGridSiteAccess = class (TcxGridSite);
   TcxControlScrollBarsAccess = class (TcxControlScrollBars);
   TfFeiertageBerechnen = class(TForm)
-    Bevel1: TBevel;
-    Bevel2: TBevel;
     btn_Abort: TcxButton;
     btn_Berechnen: TcxButton;
     btn_OK: TcxButton;
@@ -86,9 +85,6 @@ type
     ds_Feiertage: TDataSource;
     edt_Jahr: TcxSpinEdit;
     grd_FT: TcxGrid;
-    grpbx_Design: TcxGroupBox;
-    lbl_FTBundesland: TcxLabel;
-    lbl_FTJahr: TcxLabel;
     memData_Feiertage: TdxMemData;
     memData_FeiertageBezeichnung: TStringField;
     memData_FeiertageJahr: TIntegerField;
@@ -105,6 +101,19 @@ type
     tvFeiertageMarked: TcxGridDBColumn;
     tvFeiertageMonat: TcxGridDBColumn;
     tvFeiertageTag: TcxGridDBColumn;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutSeparatorItem1: TdxLayoutSeparatorItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutSeparatorItem2: TdxLayoutSeparatorItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup1: TdxLayoutGroup;
     procedure btn_AbortClick(Sender: TObject);
     procedure btn_BerechnenClick(Sender: TObject);
     procedure btn_OKClick(Sender: TObject);

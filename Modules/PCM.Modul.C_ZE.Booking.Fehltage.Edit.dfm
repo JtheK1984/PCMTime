@@ -4,7 +4,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
   BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'PCM - Zeiterfassung: Fehltage eintragen'
-  ClientHeight = 526
+  ClientHeight = 545
   ClientWidth = 480
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,163 +15,264 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
   Position = poScreenCenter
   OnShow = FormShow
   TextHeight = 15
-  object grpbx_Detail: TcxGroupBox
-    Left = 0
-    Top = 458
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 68
-    Width = 480
-    object brdckCtrl_Fehltage: TdxBarDockControl
-      Left = 3
-      Top = 3
-      Width = 474
-      Height = 63
-      Align = dalTop
-      BarManager = brmgr_Fehltage
-    end
-    object grpbx_FT: TcxGroupBox
-      Left = 3
-      Top = 66
-      Align = alTop
-      PanelStyle.Active = True
-      Style.BorderStyle = ebs3D
-      TabOrder = 1
-      Height = 167
-      Width = 474
-      object lbl_FTVon: TcxLabel
-        Left = 3
-        Top = 3
-        Align = alTop
-        Caption = 'Zeitraum Von:'
-        Transparent = True
-      end
-      object dedt_Von: TcxDateEdit
-        Left = 3
-        Top = 22
-        Align = alTop
-        TabOrder = 1
-        Width = 468
-      end
-      object lbl_FTBis: TcxLabel
-        Left = 3
-        Top = 43
-        Align = alTop
-        Caption = 'Zeitraum Bis:'
-        Transparent = True
-      end
-      object dedt_Bis: TcxDateEdit
-        Left = 3
-        Top = 62
-        Align = alTop
-        TabOrder = 3
-        ExplicitTop = 64
-        Width = 468
-      end
-      object lbl_FTFT: TcxLabel
-        Left = 3
-        Top = 83
-        Align = alTop
-        Caption = 'Fehltag:'
-        Transparent = True
-      end
-      object cmbbx_Fehltage: TcxComboBox
-        Left = 3
-        Top = 102
-        Align = alTop
-        Properties.DropDownListStyle = lsEditFixedList
-        TabOrder = 5
-        ExplicitTop = 106
-        Width = 468
-      end
-      object btn_FTSave: TcxButton
-        Left = 2
-        Top = 134
-        Width = 205
-        Height = 25
-        Caption = 'Speichern'
-        OptionsImage.ImageIndex = 56
-        OptionsImage.Images = dm_PCM.imglst_16x16
-        TabOrder = 6
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        OnClick = btn_FTSaveClick
-      end
-      object btn_FTCancel: TcxButton
-        Left = 269
-        Top = 134
-        Width = 205
-        Height = 25
-        Caption = 'Abbrechen'
-        OptionsImage.ImageIndex = 57
-        OptionsImage.Images = dm_PCM.imglst_16x16
-        TabOrder = 7
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        OnClick = btn_FTCancelClick
-      end
-    end
-  end
-  object grd_Booking: TcxGrid
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
     Width = 480
-    Height = 458
-    Align = alTop
-    TabOrder = 1
-    object grdDBTblView_Booking: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      ScrollbarAnnotations.CustomAnnotations = <>
-      DataController.DataSource = ds_FT
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsData.CancelOnExit = False
-      OptionsData.Deleting = False
-      OptionsData.DeletingConfirmation = False
-      OptionsData.Editing = False
-      OptionsData.Inserting = False
-      OptionsSelection.CellSelect = False
-      OptionsView.GroupByBox = False
-      OptionsView.HeaderFilterButtonShowMode = fbmButton
-      OptionsView.Indicator = True
-      OptionsView.IndicatorWidth = 16
-      object grdDBTblView_BookingVon: TcxGridDBColumn
-        DataBinding.FieldName = 'Von'
-        DataBinding.IsNullValueType = True
+    Height = 545
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitLeft = 96
+    ExplicitTop = 160
+    ExplicitWidth = 300
+    ExplicitHeight = 250
+    object brdckCtrl_Fehltage: TdxBarDockControl
+      Left = 12
+      Top = 477
+      Width = 439
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Fehltage
+    end
+    object dedt_Von: TcxDateEdit
+      Left = 21
+      Top = 581
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 2
+      Width = 421
+    end
+    object dedt_Bis: TcxDateEdit
+      Left = 21
+      Top = 630
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 3
+      Width = 421
+    end
+    object cmbbx_Fehltage: TcxComboBox
+      Left = 21
+      Top = 679
+      Properties.DropDownListStyle = lsEditFixedList
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 4
+      Width = 421
+    end
+    object btn_FTSave: TcxButton
+      Left = 21
+      Top = 707
+      Width = 207
+      Height = 25
+      Caption = 'Speichern'
+      OptionsImage.ImageIndex = 56
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      TabOrder = 5
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = btn_FTSaveClick
+    end
+    object btn_FTCancel: TcxButton
+      Left = 235
+      Top = 707
+      Width = 207
+      Height = 25
+      Caption = 'Abbrechen'
+      OptionsImage.ImageIndex = 57
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      TabOrder = 6
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = btn_FTCancelClick
+    end
+    object grd_Booking: TcxGrid
+      Left = 12
+      Top = 12
+      Width = 439
+      Height = 458
+      TabOrder = 0
+      object grdDBTblView_Booking: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_FT
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsData.CancelOnExit = False
+        OptionsData.Deleting = False
+        OptionsData.DeletingConfirmation = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.Indicator = True
+        OptionsView.IndicatorWidth = 16
+        object grdDBTblView_BookingVon: TcxGridDBColumn
+          DataBinding.FieldName = 'Von'
+          DataBinding.IsNullValueType = True
+        end
+        object grdDBTblView_BookingBis: TcxGridDBColumn
+          DataBinding.FieldName = 'Bis'
+          DataBinding.IsNullValueType = True
+        end
+        object grdDBTblView_BookingKuerzel: TcxGridDBColumn
+          DataBinding.FieldName = 'Kuerzel'
+          DataBinding.IsNullValueType = True
+          Width = 60
+        end
+        object grdDBTblView_BookingBeschreibung: TcxGridDBColumn
+          DataBinding.FieldName = 'Beschreibung'
+          DataBinding.IsNullValueType = True
+          Width = 200
+        end
+        object grdDBTblView_BookingTage: TcxGridDBColumn
+          DataBinding.FieldName = 'Tage'
+          DataBinding.IsNullValueType = True
+          Width = 50
+        end
       end
-      object grdDBTblView_BookingBis: TcxGridDBColumn
-        DataBinding.FieldName = 'Bis'
-        DataBinding.IsNullValueType = True
-      end
-      object grdDBTblView_BookingKuerzel: TcxGridDBColumn
-        DataBinding.FieldName = 'Kuerzel'
-        DataBinding.IsNullValueType = True
-        Width = 60
-      end
-      object grdDBTblView_BookingBeschreibung: TcxGridDBColumn
-        DataBinding.FieldName = 'Beschreibung'
-        DataBinding.IsNullValueType = True
-        Width = 200
-      end
-      object grdDBTblView_BookingTage: TcxGridDBColumn
-        DataBinding.FieldName = 'Tage'
-        DataBinding.IsNullValueType = True
-        Width = 50
+      object grdLvl_Booking: TcxGridLevel
+        GridView = grdDBTblView_Booking
       end
     end
-    object grdLvl_Booking: TcxGridLevel
-      GridView = grdDBTblView_Booking
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'grd_Booking'
+      CaptionOptions.Visible = False
+      Control = grd_Booking
+      ControlOptions.OriginalHeight = 458
+      ControlOptions.OriginalWidth = 480
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckCtrl_Fehltage'
+      CaptionOptions.Visible = False
+      Control = brdckCtrl_Fehltage
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 474
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      Visible = False
+      ItemIndex = 3
+      Index = 1
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Zeitraum Von:'
+      CaptionOptions.Layout = clTop
+      Control = dedt_Von
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 468
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Zeitraum Bis:'
+      CaptionOptions.Layout = clTop
+      Control = dedt_Bis
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 468
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Fehltag:'
+      CaptionOptions.Layout = clTop
+      Control = cmbbx_Fehltage
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 468
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_FTSave'
+      CaptionOptions.Visible = False
+      Control = btn_FTSave
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 205
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem7: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_FTCancel'
+      CaptionOptions.Visible = False
+      Control = btn_FTCancel
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 205
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup8: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup9: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup10: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
     end
   end
   object brmgr_Fehltage: TdxBarManager

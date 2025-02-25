@@ -33,7 +33,8 @@ uses
   SysUtils,
   Variants,
   Vcl.ComCtrls,
-  Windows;
+  Windows, dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
+  cxClasses, dxLayoutControl;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -42,12 +43,17 @@ type
     btn_OK: TcxButton;
     dEdt_Bis: TcxDateEdit;
     dEdt_Von: TcxDateEdit;
-    lbl_Bis: TcxLabel;
-    lbl_Hinweis: TcxLabel;
-    lbl_Von: TcxLabel;
-    grpbx_Data: TcxGroupBox;
-    grpbx_DesignMain: TcxGroupBox;
-    grpbx_Hinweis: TcxGroupBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup5: TdxLayoutGroup;
+    lbl_Hinweis: TdxLayoutLabeledItem;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutGroup1: TdxLayoutGroup;
     procedure btn_AbortClick(Sender: TObject);
     procedure btn_OKClick(Sender: TObject);
   private

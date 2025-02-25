@@ -56,7 +56,7 @@ uses
   Vcl.Forms,
   Vcl.Graphics,
   Winapi.Messages,
-  Winapi.Windows;
+  Winapi.Windows, dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControl;
   {$EndRegion Uses}
 type
   {$Region type}
@@ -83,20 +83,27 @@ type
     grdDBTblView_FeiertageKuerzel: TcxGridDBColumn;
     grdDBTblView_FeiertageTyp: TcxGridDBColumn;
     grdlvl_Feiertage: TcxGridLevel;
-    grpbx_Feiertage: TcxGroupBox;
-    grpbx_FTDetail: TcxGroupBox;
     imgcmbbx_FTGutschrift: TcxDBImageComboBox;
     imgcmbbx_FTSoll: TcxDBImageComboBox;
     imgcmbbx_FTTyp: TcxDBImageComboBox;
-    lbl_FTColEvent: TcxLabel;
-    lbl_FTColFont: TcxLabel;
-    lbl_FTDesc: TcxLabel;
-    lbl_FTGutschrift: TcxLabel;
-    lbl_FTKuerzel: TcxLabel;
-    lbl_FTSoll: TcxLabel;
-    lbl_FTTyp: TcxLabel;
     qry_FT1: TFDQuery;
     tb_Feiertage: TdxBar;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutGroup10: TdxLayoutGroup;
     procedure btn_FTCancelClick(Sender: TObject);
     procedure btn_FTCloseClick(Sender: TObject);
     procedure btn_FTDeleteClick(Sender: TObject);

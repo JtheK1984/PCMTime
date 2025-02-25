@@ -16,33 +16,23 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
   OnClose = FormClose
   OnShow = FormShow
   TextHeight = 13
-  object grpbx_Design: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 459
     Width = 422
-    object Bevel1: TBevel
-      Left = 16
-      Top = 416
-      Width = 394
-      Height = 2
-      Shape = bsTopLine
-    end
-    object Bevel2: TBevel
-      Left = 16
-      Top = 40
-      Width = 395
-      Height = 2
-      Shape = bsTopLine
-    end
+    Height = 459
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitLeft = 72
+    ExplicitTop = 128
+    ExplicitWidth = 300
+    ExplicitHeight = 250
     object btn_Abort: TcxButton
-      Left = 321
+      Left = 287
       Top = 424
-      Width = 90
+      Width = 125
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
@@ -52,7 +42,7 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
     end
     object btn_Berechnen: TcxButton
       Left = 328
-      Top = 12
+      Top = 10
       Width = 84
       Height = 21
       Caption = 'Berechnen'
@@ -61,9 +51,9 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       OnClick = btn_BerechnenClick
     end
     object btn_OK: TcxButton
-      Left = 120
+      Left = 10
       Top = 424
-      Width = 195
+      Width = 271
       Height = 25
       Caption = 'Gew'#228'hlte Feiertage '#252'bernehmen'
       OptionsImage.ImageIndex = 56
@@ -72,8 +62,8 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       OnClick = btn_OKClick
     end
     object cmbbx_Bundesland: TcxComboBox
-      Left = 177
-      Top = 12
+      Left = 167
+      Top = 10
       Properties.Items.Strings = (
         'Baden-W'#252'rttemberg'
         'Bayern'
@@ -91,23 +81,24 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
         'Sachsen-Anhalt'
         'Schleswig-Holstein'
         'Th'#252'ringen')
-      Style.BorderStyle = ebsFlat
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       TabOrder = 1
-      Width = 145
+      Width = 155
     end
     object edt_Jahr: TcxSpinEdit
-      Left = 45
-      Top = 12
-      Style.BorderStyle = ebsFlat
+      Left = 40
+      Top = 10
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       TabOrder = 0
       Width = 57
     end
     object grd_FT: TcxGrid
-      Left = 16
-      Top = 48
-      Width = 395
-      Height = 362
-      Align = alCustom
+      Left = 10
+      Top = 49
+      Width = 402
+      Height = 357
       TabOrder = 3
       object tvFeiertage: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -180,17 +171,120 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
         GridView = tvFeiertage
       end
     end
-    object lbl_FTJahr: TcxLabel
-      Left = 16
-      Top = 13
-      Caption = 'Jahr:'
-      Transparent = True
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
     end
-    object lbl_FTBundesland: TcxLabel
-      Left = 112
-      Top = 13
-      Caption = 'Bundesland:'
-      Transparent = True
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Jahr:'
+      Control = edt_Jahr
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 57
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Bundesland:'
+      Control = cmbbx_Bundesland
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 145
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahRight
+      CaptionOptions.Text = 'btn_Berechnen'
+      CaptionOptions.Visible = False
+      Control = btn_Berechnen
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 84
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutSeparatorItem1: TdxLayoutSeparatorItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      Index = 1
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_FT'
+      CaptionOptions.Visible = False
+      Control = grd_FT
+      ControlOptions.OriginalHeight = 362
+      ControlOptions.OriginalWidth = 395
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutSeparatorItem2: TdxLayoutSeparatorItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      Index = 3
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_OK'
+      CaptionOptions.Visible = False
+      Control = btn_OK
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 195
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_Abort'
+      CaptionOptions.Visible = False
+      Control = btn_Abort
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 90
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup7: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup8: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 4
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 4
     end
   end
   object ds_Feiertage: TDataSource

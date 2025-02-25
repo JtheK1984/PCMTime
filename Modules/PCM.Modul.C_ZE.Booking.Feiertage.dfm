@@ -13,20 +13,20 @@ object frm_Feiertage: Tfrm_Feiertage
   Position = poScreenCenter
   OnShow = FormShow
   TextHeight = 15
-  object grpbx_Feiertage: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
-    Top = 63
-    Align = alClient
-    Caption = 'Feiertage'
-    TabOrder = 0
-    Height = 837
+    Top = 0
     Width = 1600
+    Height = 900
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object grd_Feiertage: TcxGrid
-      Left = 3
-      Top = 17
-      Width = 1594
-      Height = 811
-      Align = alClient
+      Left = 21
+      Top = 116
+      Width = 1558
+      Height = 759
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -34,7 +34,7 @@ object frm_Feiertage: Tfrm_Feiertage
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 1
       TabStop = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Feiertage: TcxGridDBTableView
@@ -106,14 +106,62 @@ object frm_Feiertage: Tfrm_Feiertage
         GridView = grdDBTblView_Feiertage
       end
     end
-  end
-  object brdckCtrl_Feiertage: TdxBarDockControl
-    Left = 0
-    Top = 0
-    Width = 1600
-    Height = 63
-    Align = dalTop
-    BarManager = brmgr_Feiertage
+    object brdckCtrl_Feiertage: TdxBarDockControl
+      Left = 12
+      Top = 12
+      Width = 1576
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Feiertage
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckCtrl_Feiertage'
+      CaptionOptions.Visible = False
+      Control = brdckCtrl_Feiertage
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1600
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Feiertage'
+      LayoutDirection = ldHorizontal
+      Index = 1
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_Feiertage'
+      CaptionOptions.Visible = False
+      Control = grd_Feiertage
+      ControlOptions.OriginalHeight = 811
+      ControlOptions.OriginalWidth = 1594
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 0
+    end
   end
   object brmgr_Feiertage: TdxBarManager
     AllowReset = False

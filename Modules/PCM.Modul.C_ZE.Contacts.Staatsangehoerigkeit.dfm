@@ -5,73 +5,130 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
   BorderStyle = bsSingle
   Caption = 'Staatsangeh'#246'rigkeit bearbeiten'
   ClientHeight = 244
-  ClientWidth = 658
+  ClientWidth = 654
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
-  Font.Name = 'Segoe UI Light'
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
   OnShow = FormShow
-  TextHeight = 25
-  object grd_Staatsangehoerigkeit: TcxGrid
+  TextHeight = 15
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
-    Top = 58
-    Width = 658
-    Height = 186
+    Top = 0
+    Width = 654
+    Height = 244
     Align = alClient
-    BorderStyle = cxcbsNone
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
     TabOrder = 0
-    LockedStateImageOptions.Effect = lsieDark
-    LookAndFeel.Kind = lfFlat
-    LookAndFeel.NativeStyle = False
-    object grdDBTblView_Staatsangehoerigkeit: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      FilterBox.CustomizeDialog = False
-      ScrollbarAnnotations.CustomAnnotations = <>
-      DataController.DataSource = frm_Userze.ds_Contact_Staatsangehoerigkeit
-      DataController.Filter.PercentWildcard = '*'
-      DataController.Filter.UnderscoreWildcard = '?'
-      DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Kind = skCount
-        end>
-      DataController.Summary.SummaryGroups = <
-        item
-          Links = <
-            item
-            end>
-          SummaryItems = <
-            item
-            end>
-        end>
-      OptionsBehavior.IncSearch = True
-      OptionsBehavior.ShowHourglassCursor = False
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsData.Deleting = False
-      OptionsData.Inserting = False
-      OptionsView.CellEndEllipsis = True
-      OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-      OptionsView.GroupByBox = False
-      OptionsView.HeaderFilterButtonShowMode = fbmButton
-      OptionsView.IndicatorWidth = 14
-      object grdDBTblView_StaatsangehoerigkeitBezeichnung: TcxGridDBColumn
-        Caption = 'Staatsangeh'#246'rigkeit'
-        DataBinding.FieldName = 'Bezeichnung'
-        Width = 632
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    object grd_Staatsangehoerigkeit: TcxGrid
+      Left = 12
+      Top = 82
+      Width = 630
+      Height = 150
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      LockedStateImageOptions.Effect = lsieDark
+      LookAndFeel.Kind = lfFlat
+      LookAndFeel.NativeStyle = False
+      object grdDBTblView_Staatsangehoerigkeit: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = frm_Userze.ds_Contact_Staatsangehoerigkeit
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Inserting = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_StaatsangehoerigkeitBezeichnung: TcxGridDBColumn
+          Caption = 'Staatsangeh'#246'rigkeit'
+          DataBinding.FieldName = 'Bezeichnung'
+          Width = 600
+        end
+      end
+      object grdlvl_Staatsangehoerigkeit: TcxGridLevel
+        GridView = grdDBTblView_Staatsangehoerigkeit
       end
     end
-    object grdlvl_Staatsangehoerigkeit: TcxGridLevel
-      GridView = grdDBTblView_Staatsangehoerigkeit
+    object dxBarDockControl1: TdxBarDockControl
+      Left = 12
+      Top = 12
+      Width = 630
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Staatsangehoerigkeit
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_Staatsangehoerigkeit'
+      CaptionOptions.Visible = False
+      Control = grd_Staatsangehoerigkeit
+      ControlOptions.OriginalHeight = 244
+      ControlOptions.OriginalWidth = 658
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      CaptionOptions.Text = 'dxBarDockControl1'
+      CaptionOptions.Visible = False
+      Control = dxBarDockControl1
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 100
+      ControlOptions.ShowBorder = False
+      Index = 0
     end
   end
   object brmgr_Staatsangehoerigkeit: TdxBarManager
@@ -96,18 +153,13 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     Left = 392
     Top = 120
     PixelsPerInch = 96
-    DockControlHeights = (
-      0
-      0
-      58
-      0)
     object tb_Staatsangehoerigkeit: TdxBar
       Caption = 'tb_Staatsangehoerigkeit'
       CaptionButtons = <>
-      DockedDockingStyle = dsTop
+      DockControl = dxBarDockControl1
+      DockedDockControl = dxBarDockControl1
       DockedLeft = 0
       DockedTop = 0
-      DockingStyle = dsTop
       FloatLeft = 830
       FloatTop = 2
       FloatClientWidth = 0
