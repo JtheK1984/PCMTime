@@ -17,10 +17,10 @@ object frm_ZE: Tfrm_ZE
     Left = 0
     Top = 0
     Width = 1157
-    Height = 124
+    Height = 126
     BarManager = brmgr_Main
     ColorSchemeAccent = rcsaBlue
-    ColorSchemeName = 'DevExpressDarkStyle'
+    ColorSchemeName = 'Blue'
     Contexts = <>
     TabOrder = 0
     TabStop = False
@@ -83,39 +83,35 @@ object frm_ZE: Tfrm_ZE
   end
   object pc_ze: TcxPageControl
     Left = 0
-    Top = 124
+    Top = 126
     Width = 1157
-    Height = 554
+    Height = 552
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = ts_Kalender
+    Properties.ActivePage = ts_Online
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
     Properties.Style = 11
-    ClientRectBottom = 553
-    ClientRectLeft = 1
-    ClientRectRight = 1156
-    ClientRectTop = 1
+    ClientRectBottom = 550
+    ClientRectLeft = 2
+    ClientRectRight = 1155
+    ClientRectTop = 2
     object ts_Online: TcxTabSheet
       Caption = 'ts_Online'
       ImageIndex = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object dxLayoutControl1: TdxLayoutControl
         Left = 0
         Top = 0
-        Width = 1155
-        Height = 552
+        Width = 1153
+        Height = 548
         Align = alClient
         TabOrder = 0
         LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
         object btn_BookingWorkBegin: TcxButton
-          Left = 21
-          Top = 74
-          Width = 553
-          Height = 223
+          Left = 26
+          Top = 61
+          Width = 440
+          Height = 215
           Margins.Left = 50
           Margins.Top = 100
           Margins.Right = 25
@@ -368,10 +364,10 @@ object frm_ZE: Tfrm_ZE
           OnClick = btn_BookingWorkBeginClick
         end
         object btn_BookingWorkEnd: TcxButton
-          Left = 581
-          Top = 74
-          Width = 553
-          Height = 223
+          Left = 473
+          Top = 61
+          Width = 440
+          Height = 215
           Margins.Left = 25
           Margins.Top = 100
           Margins.Right = 25
@@ -591,10 +587,10 @@ object frm_ZE: Tfrm_ZE
           OnClick = btn_BookingWorkEndClick
         end
         object btn_BookingBreakEnd: TcxButton
-          Left = 581
-          Top = 304
-          Width = 553
-          Height = 223
+          Left = 473
+          Top = 283
+          Width = 440
+          Height = 215
           Margins.Left = 25
           Margins.Top = 100
           Margins.Right = 25
@@ -762,10 +758,10 @@ object frm_ZE: Tfrm_ZE
           OnClick = btn_BookingBreakEndClick
         end
         object btn_BookingBreakBegin: TcxButton
-          Left = 21
-          Top = 304
-          Width = 553
-          Height = 223
+          Left = 26
+          Top = 283
+          Width = 440
+          Height = 215
           Margins.Left = 25
           Margins.Top = 100
           Margins.Right = 25
@@ -934,8 +930,8 @@ object frm_ZE: Tfrm_ZE
         end
         object cmbbx_Bookingtype: TcxComboBox
           AlignWithMargins = True
-          Left = 98
-          Top = 46
+          Left = 103
+          Top = 33
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 0
@@ -947,7 +943,7 @@ object frm_ZE: Tfrm_ZE
           Style.TransparentBorder = False
           TabOrder = 0
           Text = 'HomeOffice'
-          Width = 1036
+          Width = 1024
         end
         object dxLayoutControl1Group_Root: TdxLayoutGroup
           AlignHorz = ahClient
@@ -961,6 +957,7 @@ object frm_ZE: Tfrm_ZE
           AlignHorz = ahClient
           AlignVert = avClient
           CaptionOptions.Text = 'Online-Buchung'
+          ItemIndex = 1
           Index = 0
         end
         object dxLayoutItem1: TdxLayoutItem
@@ -975,7 +972,7 @@ object frm_ZE: Tfrm_ZE
           Index = 0
         end
         object dxLayoutItem2: TdxLayoutItem
-          Parent = dxLayoutAutoCreatedGroup2
+          Parent = dxLayoutGroup3
           AlignHorz = ahClient
           AlignVert = avClient
           CaptionOptions.Text = 'New Item'
@@ -987,7 +984,7 @@ object frm_ZE: Tfrm_ZE
           Index = 0
         end
         object dxLayoutItem3: TdxLayoutItem
-          Parent = dxLayoutAutoCreatedGroup3
+          Parent = dxLayoutGroup4
           AlignHorz = ahClient
           AlignVert = avClient
           CaptionOptions.Text = 'New Item'
@@ -999,7 +996,8 @@ object frm_ZE: Tfrm_ZE
           Index = 0
         end
         object dxLayoutItem4: TdxLayoutItem
-          Parent = dxLayoutAutoCreatedGroup2
+          Parent = dxLayoutGroup3
+          AlignHorz = ahClient
           AlignVert = avClient
           CaptionOptions.Text = 'New Item'
           CaptionOptions.Visible = False
@@ -1010,7 +1008,7 @@ object frm_ZE: Tfrm_ZE
           Index = 1
         end
         object dxLayoutItem5: TdxLayoutItem
-          Parent = dxLayoutAutoCreatedGroup3
+          Parent = dxLayoutGroup4
           AlignHorz = ahClient
           AlignVert = avClient
           CaptionOptions.Text = 'New Item'
@@ -1021,23 +1019,23 @@ object frm_ZE: Tfrm_ZE
           ControlOptions.ShowBorder = False
           Index = 1
         end
-        object dxLayoutAutoCreatedGroup1: TdxLayoutAutoCreatedGroup
+        object dxLayoutGroup2: TdxLayoutGroup
           Parent = dxLayoutGroup1
-          AlignHorz = ahClient
-          AlignVert = avClient
+          CaptionOptions.Text = 'New Group'
           LayoutDirection = ldHorizontal
+          ShowBorder = False
           Index = 1
         end
-        object dxLayoutAutoCreatedGroup2: TdxLayoutAutoCreatedGroup
-          Parent = dxLayoutAutoCreatedGroup1
-          AlignHorz = ahClient
-          AlignVert = avClient
+        object dxLayoutGroup3: TdxLayoutGroup
+          Parent = dxLayoutGroup2
+          CaptionOptions.Text = 'New Group'
+          ShowBorder = False
           Index = 0
         end
-        object dxLayoutAutoCreatedGroup3: TdxLayoutAutoCreatedGroup
-          Parent = dxLayoutAutoCreatedGroup1
-          AlignHorz = ahClient
-          AlignVert = avClient
+        object dxLayoutGroup4: TdxLayoutGroup
+          Parent = dxLayoutGroup2
+          CaptionOptions.Text = 'New Group'
+          ShowBorder = False
           Index = 1
         end
       end
@@ -1273,8 +1271,8 @@ object frm_ZE: Tfrm_ZE
       object sched_Kalender: TcxScheduler
         Left = 0
         Top = 0
-        Width = 1155
-        Height = 552
+        Width = 1153
+        Height = 548
         DateNavigator.RowCount = 4
         ViewDay.Active = True
         ViewDay.AlwaysShowEventTime = True
@@ -1316,8 +1314,8 @@ object frm_ZE: Tfrm_ZE
         TabOrder = 0
         OnGetEventModernStyleHintInfo = sched_KalenderGetEventModernStyleHintInfo
         Splitters = {
-          950000007E0000008406000083000000EE03000001000000F303000027020000}
-        StoredClientBounds = {01000000010000008204000027020000}
+          950000007E0000008406000083000000EC03000001000000F103000023020000}
+        StoredClientBounds = {01000000010000008004000023020000}
       end
     end
   end
@@ -1338,11 +1336,6 @@ object frm_ZE: Tfrm_ZE
         Width = 300
       end>
     PaintStyle = stpsUseLookAndFeel
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
-    Font.Style = []
   end
   object brmgr_Main: TdxBarManager
     AllowReset = False
@@ -1406,7 +1399,7 @@ object frm_ZE: Tfrm_ZE
     object tb_FilterMonatJahr: TdxBar
       Caption = 'Filter Monat und Jahr'
       CaptionButtons = <>
-      DockedLeft = 310
+      DockedLeft = 309
       DockedTop = 0
       FloatLeft = 934
       FloatTop = 2
@@ -1448,7 +1441,7 @@ object frm_ZE: Tfrm_ZE
     object tb_FilterVonBis: TdxBar
       Caption = 'Filter Von - Bis'
       CaptionButtons = <>
-      DockedLeft = 554
+      DockedLeft = 552
       DockedTop = 0
       FloatLeft = 934
       FloatTop = 2
@@ -1490,6 +1483,7 @@ object frm_ZE: Tfrm_ZE
     object tb_Edit: TdxBar
       Caption = 'Bearbeiten'
       CaptionButtons = <>
+      DockedDockingStyle = dsTop
       DockedLeft = 0
       DockedTop = 0
       FloatLeft = 934
@@ -1521,6 +1515,7 @@ object frm_ZE: Tfrm_ZE
     object tb_kalender: TdxBar
       Caption = 'Kalender'
       CaptionButtons = <>
+      DockedDockingStyle = dsTop
       DockedLeft = 0
       DockedTop = 0
       FloatLeft = 1133
@@ -1554,6 +1549,7 @@ object frm_ZE: Tfrm_ZE
     object tb_Optionen: TdxBar
       Caption = 'Optionen'
       CaptionButtons = <>
+      DockedDockingStyle = dsTop
       DockedLeft = 0
       DockedTop = 0
       FloatLeft = 1121
@@ -1586,6 +1582,7 @@ object frm_ZE: Tfrm_ZE
     object tb_Drucken: TdxBar
       Caption = 'Drucke Ansicht'
       CaptionButtons = <>
+      DockedDockingStyle = dsTop
       DockedLeft = 110
       DockedTop = 0
       FloatLeft = 1121
@@ -1610,6 +1607,7 @@ object frm_ZE: Tfrm_ZE
     object tb_DruckeGrid: TdxBar
       Caption = 'Drucke Daten'
       CaptionButtons = <>
+      DockedDockingStyle = dsTop
       DockedLeft = 0
       DockedTop = 0
       FloatLeft = 1946
@@ -1633,7 +1631,7 @@ object frm_ZE: Tfrm_ZE
     object tb_Monatswerte: TdxBar
       Caption = 'Monatswerte'
       CaptionButtons = <>
-      DockedLeft = 803
+      DockedLeft = 800
       DockedTop = 0
       FloatLeft = 1948
       FloatTop = 2
@@ -1661,7 +1659,7 @@ object frm_ZE: Tfrm_ZE
     object tb_fehltage: TdxBar
       Caption = 'Fehltage'
       CaptionButtons = <>
-      DockedLeft = 1013
+      DockedLeft = 1009
       DockedTop = 0
       FloatLeft = 1028
       FloatTop = 2

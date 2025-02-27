@@ -124,7 +124,7 @@ uses
   Vcl.StdCtrls,
   Winapi.Messages,
   Winapi.Windows, dxLayoutcxEditAdapters, dxLayoutContainer, cxCurrencyEdit,
-  dxLayoutControl, dxLayoutControlAdapters;
+  dxLayoutControl, dxLayoutControlAdapters, dxUIAClasses;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -222,9 +222,6 @@ type
     dxLayoutItem3: TdxLayoutItem;
     dxLayoutItem4: TdxLayoutItem;
     dxLayoutItem5: TdxLayoutItem;
-    dxLayoutAutoCreatedGroup1: TdxLayoutAutoCreatedGroup;
-    dxLayoutAutoCreatedGroup2: TdxLayoutAutoCreatedGroup;
-    dxLayoutAutoCreatedGroup3: TdxLayoutAutoCreatedGroup;
     pc_ze: TcxPageControl;
     ts_Online: TcxTabSheet;
     ts_Grid: TcxTabSheet;
@@ -254,6 +251,9 @@ type
     grdDBTblViewCol_BookingFeiertag: TcxGridDBColumn;
     grdDBTblViewCol_BookingFehltag: TcxGridDBColumn;
     grdLvl_Booking: TcxGridLevel;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btn_ViewCalClick(Sender: TObject);
