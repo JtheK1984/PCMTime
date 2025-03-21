@@ -150,7 +150,6 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 288
     Top = 120
