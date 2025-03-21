@@ -29,7 +29,8 @@ uses
   PCM.Modul.C_ZE.Contacts.Neu in 'Modules\PCM.Modul.C_ZE.Contacts.Neu.pas' {frm_PCManagerNewContact},
   PCM.Modul.C_ZE.Contacts in 'Modules\PCM.Modul.C_ZE.Contacts.pas' {frm_Userze},
   PCM.Modul.C_ZE.Contacts.Konfession in 'Modules\PCM.Modul.C_ZE.Contacts.Konfession.pas' {frm_PCM_Konfession},
-  PCM.Modul.C_ZE.Contacts.Staatsangehoerigkeit in 'Modules\PCM.Modul.C_ZE.Contacts.Staatsangehoerigkeit.pas' {frm_PCM_Staatsangehoerigkeit};
+  PCM.Modul.C_ZE.Contacts.Staatsangehoerigkeit in 'Modules\PCM.Modul.C_ZE.Contacts.Staatsangehoerigkeit.pas' {frm_PCM_Staatsangehoerigkeit},
+  PCMTime.dxSettings in 'PCMTime.dxSettings.pas';
 
 {$R *.res}
 

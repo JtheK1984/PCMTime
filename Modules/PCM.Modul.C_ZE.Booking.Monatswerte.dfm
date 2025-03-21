@@ -13,1561 +13,2351 @@ object frm_monatswerte: Tfrm_monatswerte
   Position = poScreenCenter
   OnShow = FormShow
   TextHeight = 15
-  object grpbx_Statistik: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alTop
-    PanelStyle.Active = True
-    TabOrder = 0
-    Height = 75
     Width = 1650
-    object grpbx_MonatInfo: TcxGroupBox
-      Left = 188
-      Top = 3
-      Align = alLeft
-      Caption = 'Monatsinfo'
-      PanelStyle.Active = True
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = [fsBold]
-      Style.IsFontAssigned = True
-      TabOrder = 0
-      Height = 69
-      Width = 321
-      object grpbx_MonatInfoDetail: TcxGroupBox
-        Left = 0
-        Top = 20
-        PanelStyle.Active = True
-        TabOrder = 0
-        Height = 50
-        Width = 321
-        object dxBarDockControl1: TdxBarDockControl
-          Left = 3
-          Top = 3
-          Width = 315
-          Height = 42
-          Align = dalTop
-          BarManager = brmgr_MW
-        end
-      end
+    Height = 900
+    Align = alClient
+    TabOrder = 0
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    object lbl_D6: TcxLabel
+      Left = 278
+      Top = 297
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 25
+      Transparent = True
+      Height = 19
+      Width = 56
     end
-    object grpbx_Personal: TcxGroupBox
-      Left = 3
-      Top = 3
-      Align = alLeft
-      Caption = 'Zeiterfasser'
-      PanelStyle.Active = True
+    object lbl_D3: TcxLabel
+      Left = 278
+      Top = 219
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 19
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_D4: TcxLabel
+      Left = 278
+      Top = 245
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 21
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_D5: TcxLabel
+      Left = 278
+      Top = 271
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 23
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_D7: TcxLabel
+      Left = 278
+      Top = 323
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,00'
+      ParentBiDiMode = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -12
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = [fsBold]
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
+      TabOrder = 27
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_TG1: TcxLabel
+      Left = 215
+      Top = 396
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,0'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 28
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_TG2: TcxLabel
+      Left = 215
+      Top = 422
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '2'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 30
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_TG1Dez: TcxLabel
+      Left = 278
+      Top = 396
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 29
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_TG2Dez: TcxLabel
+      Left = 278
+      Top = 422
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 31
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_TG3Dez: TcxLabel
+      Left = 278
+      Top = 448
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 33
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_FTM: TcxLabel
+      Left = 215
+      Top = 500
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,0'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 36
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_FTMDez: TcxLabel
+      Left = 278
+      Top = 500
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 37
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_ULunb: TcxLabel
+      Left = 215
+      Top = 474
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,0'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 34
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_ULunbDez: TcxLabel
+      Left = 278
+      Top = 474
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 35
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_kr: TcxLabel
+      Left = 215
+      Top = 526
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '5'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 38
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_krunb: TcxLabel
+      Left = 215
+      Top = 552
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '5'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 40
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_krunbdez: TcxLabel
+      Left = 278
+      Top = 552
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 41
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_krDez: TcxLabel
+      Left = 278
+      Top = 526
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 39
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_Buero: TcxLabel
+      Left = 215
+      Top = 578
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '5'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 42
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_HO: TcxLabel
+      Left = 215
+      Top = 604
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '5'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 44
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_BueroDez: TcxLabel
+      Left = 278
+      Top = 578
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 43
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_BHOGes: TcxLabel
+      Left = 215
+      Top = 630
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '5'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 46
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_HODez: TcxLabel
+      Left = 278
+      Top = 604
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 45
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_BHOGesDez: TcxLabel
+      Left = 278
+      Top = 630
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 47
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_TG3: TcxLabel
+      Left = 215
+      Top = 448
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '5'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 32
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object dxBarDockControl1: TdxBarDockControl
+      Left = 193
+      Top = 44
+      Width = 317
+      Height = 42
+      Align = dalNone
+      BarManager = brmgr_MW
+    end
+    object AuswertungsJahr: TcxSpinEdit
+      Left = 510
+      Top = 44
+      ParentFont = False
+      Properties.MinValue = 2.000000000000000000
+      Properties.UseCtrlIncrement = True
+      Properties.OnChange = AuswertungsJahrPropertiesChange
+      Style.HotTrack = False
+      Style.TextStyle = [fsBold]
+      Style.TransparentBorder = False
       TabOrder = 1
-      Height = 69
-      Width = 185
-      object cxGroupBox4: TcxGroupBox
-        Left = 0
-        Top = 20
-        PanelStyle.Active = True
-        TabOrder = 0
-        Height = 50
-        Width = 185
-        object cxLabel5: TcxLabel
-          Left = 6
-          Top = 4
-          Caption = 'Vorname:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-        end
-        object cxLabel6: TcxLabel
-          Left = 6
-          Top = 29
-          Caption = 'Nachname:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-        end
-        object lbl_name: TcxLabel
-          Left = 78
-          Top = 4
-          Caption = 'wert'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-        end
-        object lbl_nachname: TcxLabel
-          Left = 78
-          Top = 29
-          Caption = 'wert'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-        end
-      end
+      Value = 2014
+      Width = 53
     end
-    object grpbx_Jahr: TcxGroupBox
-      Left = 509
-      Top = 3
-      Align = alLeft
-      Caption = 'Jahr'
-      PanelStyle.Active = True
+    object lbl_RulVJ: TcxLabel
+      Left = 694
+      Top = 40
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -12
       Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = [fsBold]
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 2
-      Height = 69
-      Width = 62
-      object grpbx_JahrDetail: TcxGroupBox
-        Left = 0
-        Top = 20
-        PanelStyle.Active = True
-        TabOrder = 0
-        Height = 50
-        Width = 62
-        object AuswertungsJahr: TcxSpinEdit
-          Left = 4
-          Top = 4
-          ParentFont = False
-          Properties.MinValue = 2.000000000000000000
-          Properties.UseCtrlIncrement = True
-          Properties.OnChange = AuswertungsJahrPropertiesChange
-          Style.TextStyle = [fsBold]
-          TabOrder = 0
-          Value = 2014
-          Width = 53
-        end
-      end
+      Transparent = True
+      Height = 19
+      Width = 27
     end
-    object grpbx_Stat: TcxGroupBox
-      Left = 571
-      Top = 3
-      Align = alLeft
-      Caption = 'Zeiterfasser'
-      PanelStyle.Active = True
+    object lbl_genULGes: TcxLabel
+      Left = 694
+      Top = 59
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -12
       Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = [fsBold]
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_geplULGes: TcxLabel
+      Left = 857
+      Top = 40
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 3
-      Height = 69
-      Width = 860
-      object cxGroupBox11: TcxGroupBox
-        Left = 0
-        Top = 20
-        PanelStyle.Active = True
-        TabOrder = 0
-        Height = 50
-        Width = 860
-        object cxLabel1: TcxLabel
-          Left = 6
-          Top = 4
-          AutoSize = False
-          Caption = 'Resturlaub Vorjahr:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 110
-        end
-        object cxLabel2: TcxLabel
-          Left = 6
-          Top = 29
-          AutoSize = False
-          Caption = 'genommener Urlaub:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 123
-        end
-        object lbl_RulVJ: TcxLabel
-          Left = 135
-          Top = 4
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '1'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 27
-        end
-        object lbl_genULGes: TcxLabel
-          Left = 135
-          Top = 29
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '1'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 27
-        end
-        object cxLabel7: TcxLabel
-          Left = 182
-          Top = 4
-          AutoSize = False
-          Caption = 'geplanter  Urlaub:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 104
-        end
-        object cxLabel8: TcxLabel
-          Left = 182
-          Top = 29
-          AutoSize = False
-          Caption = 'verf'#252'gbarer Urlaub:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 115
-        end
-        object lbl_geplULGes: TcxLabel
-          Left = 303
-          Top = 4
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '1'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 27
-        end
-        object lbl_VerfUL: TcxLabel
-          Left = 303
-          Top = 29
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '1'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 27
-        end
-        object lbl_bezKr: TcxLabel
-          Left = 615
-          Top = 3
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '1'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 27
-        end
-        object lbl_unbKr: TcxLabel
-          Left = 615
-          Top = 28
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '1'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 27
-        end
-        object cxLabel13: TcxLabel
-          Left = 511
-          Top = 28
-          AutoSize = False
-          Caption = 'Krank unbezahlt:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 98
-        end
-        object cxLabel14: TcxLabel
-          Left = 511
-          Top = 3
-          AutoSize = False
-          Caption = 'Krank bezahlt:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 84
-        end
-        object cxLabel15: TcxLabel
-          Left = 664
-          Top = 28
-          AutoSize = False
-          Caption = 'HomeOfficetage:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 101
-        end
-        object cxLabel16: TcxLabel
-          Left = 664
-          Top = 3
-          AutoSize = False
-          Caption = 'B'#252'rotage:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 59
-        end
-        object lbl_HomeOffGes: TcxLabel
-          Left = 771
-          Top = 27
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '1'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 27
-        end
-        object lbl_OfficeGes: TcxLabel
-          Left = 771
-          Top = 3
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '1'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 27
-        end
-        object cxLabel19: TcxLabel
-          Left = 352
-          Top = 29
-          AutoSize = False
-          Caption = 'Feiertage:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 60
-        end
-        object lbl_FT: TcxLabel
-          Left = 462
-          Top = 29
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '1'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 27
-        end
-        object cxLabel21: TcxLabel
-          Left = 352
-          Top = 4
-          AutoSize = False
-          Caption = 'Urlaub unbezahlt:'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 104
-        end
-        object lbl_unbUL: TcxLabel
-          Left = 462
-          Top = 4
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '1'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = []
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 27
-        end
-      end
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_VerfUL: TcxLabel
+      Left = 857
+      Top = 59
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 8
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_bezKr: TcxLabel
+      Left = 1143
+      Top = 40
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 5
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_unbKr: TcxLabel
+      Left = 1143
+      Top = 59
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 10
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_HomeOffGes: TcxLabel
+      Left = 1286
+      Top = 59
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 11
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_OfficeGes: TcxLabel
+      Left = 1286
+      Top = 40
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 6
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_FT: TcxLabel
+      Left = 1000
+      Top = 59
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 9
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_unbUL: TcxLabel
+      Left = 1000
+      Top = 40
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 4
+      Transparent = True
+      Height = 19
+      Width = 27
     end
     object cxButton1: TcxButton
-      Left = 1432
-      Top = 3
+      Left = 1322
+      Top = 12
       Width = 100
-      Height = 69
+      Height = 61
       Caption = 'Berechne Monat'
       OptionsImage.ImageIndex = 12
       OptionsImage.Images = frm_PCM_Main.imglst_32x32
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 4
+      TabOrder = 12
       OnClick = cxButton1Click
     end
     object cxButton2: TcxButton
-      Left = 1538
-      Top = 3
-      Width = 100
-      Height = 69
+      Left = 1429
+      Top = 12
+      Width = 99
+      Height = 61
       Caption = 'Auswertungen'
       DropDownMenu = dxBarPopupMenu1
       Kind = cxbkDropDown
       OptionsImage.ImageIndex = 15
       OptionsImage.Images = frm_PCM_Main.imglst_32x32
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 5
+      TabOrder = 13
     end
-  end
-  object grpbx_MWDetail: TcxGroupBox
-    Left = 0
-    Top = 75
-    Align = alClient
-    Caption = 'Auswertung'
-    TabOrder = 1
-    Height = 825
-    Width = 1650
-    object sclbx_MW: TScrollBox
-      Left = 3
-      Top = 17
-      Width = 1644
-      Height = 799
-      Align = alClient
-      BorderStyle = bsNone
-      TabOrder = 0
-      object grpbx_MWMonat: TcxGroupBox
-        Left = 0
-        Top = 0
-        Align = alLeft
-        Caption = 'Monatswerte'
-        TabOrder = 0
-        Height = 799
-        Width = 389
-        object Bevel2: TBevel
-          Left = 196
-          Top = 226
-          Width = 61
-          Height = 247
-        end
-        object Bevel3: TBevel
-          Left = 311
-          Top = 226
-          Width = 61
-          Height = 247
-        end
-        object Panel13: TPanel
-          Left = 17
-          Top = 16
-          Width = 355
-          Height = 16
-          Alignment = taLeftJustify
-          Caption = 
-            '                                                                ' +
-            ' hh:mm                        Dezimal'
-          Color = clSkyBlue
-          ParentBackground = False
-          TabOrder = 0
-        end
-        object Panel16: TPanel
-          Left = 17
-          Top = 208
-          Width = 355
-          Height = 16
-          Alignment = taLeftJustify
-          Caption = 
-            '                                                                ' +
-            '       Tage                         hh:mm'
-          Color = clSkyBlue
-          ParentBackground = False
-          TabOrder = 1
-        end
-        object lbl_T2: TcxLabel
-          Left = 198
-          Top = 62
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_T6: TcxLabel
-          Left = 198
-          Top = 158
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_T7: TcxLabel
-          Left = 198
-          Top = 182
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWIStBrutto: TcxLabel
-          Left = 17
-          Top = 38
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Iststunden brutto:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 124
-        end
-        object lbl_T1: TcxLabel
-          Left = 198
-          Top = 38
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWPausen: TcxLabel
-          Left = 17
-          Top = 62
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Pausen:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 124
-        end
-        object lbl_D6: TcxLabel
-          Left = 313
-          Top = 158
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '0,00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWIstNetto: TcxLabel
-          Left = 17
-          Top = 86
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Iststunden netto:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 124
-        end
-        object lbl_T3: TcxLabel
-          Left = 198
-          Top = 86
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_D3: TcxLabel
-          Left = 313
-          Top = 86
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '0,00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_D2: TcxLabel
-          Left = 313
-          Top = 62
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '0,00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_D1: TcxLabel
-          Left = 313
-          Top = 38
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '0,00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWSoll: TcxLabel
-          Left = 17
-          Top = 110
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Sollstunden:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 124
-        end
-        object lbl_T4: TcxLabel
-          Left = 198
-          Top = 110
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_D4: TcxLabel
-          Left = 313
-          Top = 110
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '0,00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_D5: TcxLabel
-          Left = 313
-          Top = 134
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '0,00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_T5: TcxLabel
-          Left = 198
-          Top = 134
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWGLZ: TcxLabel
-          Left = 16
-          Top = 134
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Minder/Mehrarbeit:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 124
-        end
-        object lbl_D7: TcxLabel
-          Left = 313
-          Top = 182
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '0,00'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWGLZVM: TcxLabel
-          Left = 17
-          Top = 158
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Gleitzeit'#252'bertrag Vormonat:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 160
-        end
-        object lbl_MWGLZAkt: TcxLabel
-          Left = 17
-          Top = 182
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Gleitzeit'#252'bertrag Folgemonat:'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 180
-        end
-        object lbl_MWULgen: TcxLabel
-          Left = 17
-          Top = 230
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Urlaub genommen:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 173
-        end
-        object lbl_TG1: TcxLabel
-          Left = 198
-          Top = 230
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '0,0'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWULgepl: TcxLabel
-          Left = 17
-          Top = 254
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Urlaub geplant:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 173
-        end
-        object lbl_TG2: TcxLabel
-          Left = 198
-          Top = 254
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '2'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWRestUL: TcxLabel
-          Left = 17
-          Top = 278
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Resturlaub:'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 173
-        end
-        object lbl_TG1Dez: TcxLabel
-          Left = 313
-          Top = 230
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_TG2Dez: TcxLabel
-          Left = 313
-          Top = 254
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_TG3Dez: TcxLabel
-          Left = 313
-          Top = 278
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWULunbez: TcxLabel
-          Left = 17
-          Top = 302
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Urlaub unbezahlt:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 173
-        end
-        object lbl_FTM: TcxLabel
-          Left = 198
-          Top = 326
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '0,0'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_FTMDez: TcxLabel
-          Left = 313
-          Top = 326
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWKrbez: TcxLabel
-          Left = 17
-          Top = 350
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Krank bezahlt:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 173
-        end
-        object lbl_MWKrunbez: TcxLabel
-          Left = 17
-          Top = 374
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Krank unbezahlt:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 173
-        end
-        object lbl_MWFT: TcxLabel
-          Left = 17
-          Top = 326
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Feiertage:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 173
-        end
-        object lbl_ULunb: TcxLabel
-          Left = 198
-          Top = 302
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '0,0'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_MWBuero: TcxLabel
-          Left = 17
-          Top = 398
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'B'#252'ro-Tage:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 173
-        end
-        object lbl_MWHomeoffice: TcxLabel
-          Left = 17
-          Top = 422
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'HomeOffice-Tage:'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 173
-        end
-        object lbl_ULunbDez: TcxLabel
-          Left = 313
-          Top = 302
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_kr: TcxLabel
-          Left = 198
-          Top = 350
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '5'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_krunb: TcxLabel
-          Left = 198
-          Top = 374
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '5'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_krunbdez: TcxLabel
-          Left = 313
-          Top = 374
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_krDez: TcxLabel
-          Left = 313
-          Top = 350
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_Buero: TcxLabel
-          Left = 198
-          Top = 398
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '5'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_HO: TcxLabel
-          Left = 198
-          Top = 422
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '5'
-          ParentBiDiMode = False
-          Transparent = True
-          Height = 19
-          Width = 56
-        end
-        object lbl_BueroDez: TcxLabel
-          Left = 313
-          Top = 398
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
+    object lbl_T2: TcxLabel
+      Left = 215
+      Top = 193
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 16
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_T6: TcxLabel
+      Left = 215
+      Top = 297
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 24
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_T7: TcxLabel
+      Left = 215
+      Top = 323
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 26
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_T1: TcxLabel
+      Left = 215
+      Top = 167
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 14
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_T3: TcxLabel
+      Left = 215
+      Top = 219
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 18
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_D2: TcxLabel
+      Left = 278
+      Top = 193
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 17
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_D1: TcxLabel
+      Left = 278
+      Top = 167
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 15
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_T4: TcxLabel
+      Left = 215
+      Top = 245
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 20
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_T5: TcxLabel
+      Left = 215
+      Top = 271
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 22
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object grd_Tag: TcxGrid
+      Left = 373
+      Top = 133
+      Width = 1252
+      Height = 742
+      BorderStyle = cxcbsNone
+      TabOrder = 48
+      LookAndFeel.NativeStyle = False
+      object grd_TagDBTableView1: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.First.Visible = True
+        Navigator.Buttons.PriorPage.Visible = True
+        Navigator.Buttons.Prior.Visible = True
+        Navigator.Buttons.Next.Visible = True
+        Navigator.Buttons.NextPage.Visible = True
+        Navigator.Buttons.Last.Visible = True
+        Navigator.Buttons.Insert.Visible = True
+        Navigator.Buttons.Delete.Visible = True
+        Navigator.Buttons.Edit.Visible = True
+        Navigator.Buttons.Post.Visible = True
+        Navigator.Buttons.Cancel.Visible = True
+        Navigator.Buttons.Refresh.Visible = True
+        Navigator.Buttons.SaveBookmark.Visible = True
+        Navigator.Buttons.GotoBookmark.Visible = True
+        Navigator.Buttons.Filter.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_Day
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsCustomize.ColumnFiltering = False
+        OptionsCustomize.ColumnGrouping = False
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.ExpandButtonsForEmptyDetails = False
+        OptionsView.GridLines = glVertical
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.Indicator = True
+        object grd_TagDBTableView1Column6: TcxGridDBColumn
+          DataBinding.FieldName = 'ID'
+          DataBinding.IsNullValueType = True
           Visible = False
-          Height = 19
-          Width = 56
+          VisibleForCustomization = False
+          VisibleForEditForm = bFalse
         end
-        object lbl_BHOGes: TcxLabel
-          Left = 198
-          Top = 446
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '5'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 56
+        object grd_TagDBTableView1Tag: TcxGridDBColumn
+          DataBinding.FieldName = 'Tag'
+          DataBinding.IsNullValueType = True
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 30
         end
-        object lbl_HODez: TcxLabel
-          Left = 313
-          Top = 422
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          Transparent = True
-          Visible = False
-          Height = 19
-          Width = 56
+        object grd_TagDBTableView1Datum: TcxGridDBColumn
+          DataBinding.FieldName = 'Datum'
+          DataBinding.IsNullValueType = True
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 65
         end
-        object lbl_BHOGesDez: TcxLabel
-          Left = 313
-          Top = 446
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '00:00'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Visible = False
-          Height = 19
-          Width = 56
+        object grd_TagDBTableView1Sollstunden: TcxGridDBColumn
+          Caption = 'Soll Std.'
+          DataBinding.FieldName = 'SollStundenStd'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 50
         end
-        object lbl_MWSumWorkDays: TcxLabel
-          Left = 17
-          Top = 446
-          AutoSize = False
-          BiDiMode = bdLeftToRight
-          Caption = 'Arbeitstage gesamt:'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 173
+        object grd_TagDBTableView1Column1: TcxGridDBColumn
+          Caption = 'Soll Dez.'
+          DataBinding.FieldName = 'SollStundenDez'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = ',0.00;-,0.00'
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 50
         end
-        object lbl_TG3: TcxLabel
-          Left = 198
-          Top = 278
-          AutoSize = False
-          BiDiMode = bdRightToLeft
-          Caption = '5'
-          ParentBiDiMode = False
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Transparent = True
-          Height = 19
-          Width = 56
+        object grd_TagDBTableView1Tagesbrutto: TcxGridDBColumn
+          Caption = 'Brutto Std.'
+          DataBinding.FieldName = 'BruttotStd'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 65
+        end
+        object grd_TagDBTableView1Column2: TcxGridDBColumn
+          Caption = 'Brutto Dez.'
+          DataBinding.FieldName = 'BruttoDez'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = ',0.00;-,0.00'
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 65
+        end
+        object grd_TagDBTableView1Pause: TcxGridDBColumn
+          Caption = 'Pause Std.'
+          DataBinding.FieldName = 'PausenStd'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 65
+        end
+        object grd_TagDBTableView1Column4: TcxGridDBColumn
+          Caption = 'Pause Dez.'
+          DataBinding.FieldName = 'PausenDez'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = ',0.00;-,0.00'
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 65
+        end
+        object grd_TagDBTableView1Tagesnetto: TcxGridDBColumn
+          Caption = 'Netto Std.'
+          DataBinding.FieldName = 'NettoStd'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 60
+        end
+        object grd_TagDBTableView1Column3: TcxGridDBColumn
+          Caption = 'Netto Dez.'
+          DataBinding.FieldName = 'NettoDez'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = ',0.00;-,0.00'
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 65
+        end
+        object grd_TagDBTableView1Mehrarbeit: TcxGridDBColumn
+          Caption = 'GLZ Std.'
+          DataBinding.FieldName = 'MehrarbeitStd'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.Alignment.Horz = taRightJustify
+          OnCustomDrawCell = grd_TagDBTableView1MehrarbeitCustomDrawCell
+          Width = 55
+        end
+        object grd_TagDBTableView1Column5: TcxGridDBColumn
+          Caption = 'GLZ Dez.'
+          DataBinding.FieldName = 'MehrarbeitDez'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+          Properties.DisplayFormat = ',0.00;-,0.00'
+          OnCustomDrawCell = grd_TagDBTableView1MehrarbeitCustomDrawCell
+          Width = 55
+        end
+        object grd_TagDBTableView1Fehltag: TcxGridDBColumn
+          DataBinding.FieldName = 'Fehltag'
+          DataBinding.IsNullValueType = True
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 50
+        end
+        object grd_TagDBTableView1Feiertag: TcxGridDBColumn
+          DataBinding.FieldName = 'Feiertag'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxImageComboBoxProperties'
+          Properties.Alignment.Horz = taLeftJustify
+          Properties.Items = <
+            item
+              ImageIndex = 0
+              Value = 0
+            end
+            item
+              Description = 'ganzer Feiertag'
+              Value = 1
+            end
+            item
+              Description = 'halber Feiertag'
+              Value = 2
+            end>
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 90
+        end
+        object grd_TagDBTableView1BA: TcxGridDBColumn
+          DataBinding.FieldName = 'Buchungsart'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxImageComboBoxProperties'
+          Properties.Alignment.Horz = taLeftJustify
+          Properties.Items = <
+            item
+              ImageIndex = 0
+              Value = -1
+            end
+            item
+              Description = 'B'#252'ro'
+              Value = 0
+            end
+            item
+              Description = 'Homeoffice'
+              Value = 1
+            end>
+          OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
+          Width = 80
         end
       end
-      object grpbx_MWtag: TcxGroupBox
-        Left = 389
-        Top = 0
-        Align = alClient
-        Caption = 'Tageswerte'
-        TabOrder = 1
-        Height = 799
-        Width = 1255
-        object grd_Tag: TcxGrid
-          Left = 3
-          Top = 17
-          Width = 1249
-          Height = 773
-          Align = alClient
-          BorderStyle = cxcbsNone
-          TabOrder = 0
-          LookAndFeel.NativeStyle = False
-          object grd_TagDBTableView1: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
-            Navigator.Buttons.First.Visible = True
-            Navigator.Buttons.PriorPage.Visible = True
-            Navigator.Buttons.Prior.Visible = True
-            Navigator.Buttons.Next.Visible = True
-            Navigator.Buttons.NextPage.Visible = True
-            Navigator.Buttons.Last.Visible = True
-            Navigator.Buttons.Insert.Visible = True
-            Navigator.Buttons.Delete.Visible = True
-            Navigator.Buttons.Edit.Visible = True
-            Navigator.Buttons.Post.Visible = True
-            Navigator.Buttons.Cancel.Visible = True
-            Navigator.Buttons.Refresh.Visible = True
-            Navigator.Buttons.SaveBookmark.Visible = True
-            Navigator.Buttons.GotoBookmark.Visible = True
-            Navigator.Buttons.Filter.Visible = True
-            ScrollbarAnnotations.CustomAnnotations = <>
-            DataController.DataSource = ds_Day
-            DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
-            DataController.Summary.SummaryGroups = <>
-            OptionsCustomize.ColumnFiltering = False
-            OptionsCustomize.ColumnGrouping = False
-            OptionsData.Deleting = False
-            OptionsData.Editing = False
-            OptionsData.Inserting = False
-            OptionsSelection.CellSelect = False
-            OptionsView.ExpandButtonsForEmptyDetails = False
-            OptionsView.GridLines = glVertical
-            OptionsView.GroupByBox = False
-            OptionsView.HeaderFilterButtonShowMode = fbmButton
-            OptionsView.Indicator = True
-            object grd_TagDBTableView1Column6: TcxGridDBColumn
-              DataBinding.FieldName = 'ID'
-              DataBinding.IsNullValueType = True
-              Visible = False
-              VisibleForCustomization = False
-              VisibleForEditForm = bFalse
-            end
-            object grd_TagDBTableView1Tag: TcxGridDBColumn
-              DataBinding.FieldName = 'Tag'
-              DataBinding.IsNullValueType = True
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 30
-            end
-            object grd_TagDBTableView1Datum: TcxGridDBColumn
-              DataBinding.FieldName = 'Datum'
-              DataBinding.IsNullValueType = True
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 65
-            end
-            object grd_TagDBTableView1Sollstunden: TcxGridDBColumn
-              Caption = 'Soll Std.'
-              DataBinding.FieldName = 'SollStundenStd'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxTextEditProperties'
-              Properties.Alignment.Horz = taRightJustify
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 50
-            end
-            object grd_TagDBTableView1Column1: TcxGridDBColumn
-              Caption = 'Soll Dez.'
-              DataBinding.FieldName = 'SollStundenDez'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxCurrencyEditProperties'
-              Properties.DisplayFormat = ',0.00;-,0.00'
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 50
-            end
-            object grd_TagDBTableView1Tagesbrutto: TcxGridDBColumn
-              Caption = 'Brutto Std.'
-              DataBinding.FieldName = 'BruttotStd'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxTextEditProperties'
-              Properties.Alignment.Horz = taRightJustify
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 65
-            end
-            object grd_TagDBTableView1Column2: TcxGridDBColumn
-              Caption = 'Brutto Dez.'
-              DataBinding.FieldName = 'BruttoDez'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxCurrencyEditProperties'
-              Properties.DisplayFormat = ',0.00;-,0.00'
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 65
-            end
-            object grd_TagDBTableView1Pause: TcxGridDBColumn
-              Caption = 'Pause Std.'
-              DataBinding.FieldName = 'PausenStd'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxTextEditProperties'
-              Properties.Alignment.Horz = taRightJustify
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 65
-            end
-            object grd_TagDBTableView1Column4: TcxGridDBColumn
-              Caption = 'Pause Dez.'
-              DataBinding.FieldName = 'PausenDez'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxCurrencyEditProperties'
-              Properties.DisplayFormat = ',0.00;-,0.00'
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 65
-            end
-            object grd_TagDBTableView1Tagesnetto: TcxGridDBColumn
-              Caption = 'Netto Std.'
-              DataBinding.FieldName = 'NettoStd'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxTextEditProperties'
-              Properties.Alignment.Horz = taRightJustify
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 60
-            end
-            object grd_TagDBTableView1Column3: TcxGridDBColumn
-              Caption = 'Netto Dez.'
-              DataBinding.FieldName = 'NettoDez'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxCurrencyEditProperties'
-              Properties.DisplayFormat = ',0.00;-,0.00'
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 65
-            end
-            object grd_TagDBTableView1Mehrarbeit: TcxGridDBColumn
-              Caption = 'GLZ Std.'
-              DataBinding.FieldName = 'MehrarbeitStd'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxTextEditProperties'
-              Properties.Alignment.Horz = taRightJustify
-              OnCustomDrawCell = grd_TagDBTableView1MehrarbeitCustomDrawCell
-              Width = 55
-            end
-            object grd_TagDBTableView1Column5: TcxGridDBColumn
-              Caption = 'GLZ Dez.'
-              DataBinding.FieldName = 'MehrarbeitDez'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxCurrencyEditProperties'
-              Properties.DisplayFormat = ',0.00;-,0.00'
-              OnCustomDrawCell = grd_TagDBTableView1MehrarbeitCustomDrawCell
-              Width = 55
-            end
-            object grd_TagDBTableView1Fehltag: TcxGridDBColumn
-              DataBinding.FieldName = 'Fehltag'
-              DataBinding.IsNullValueType = True
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 50
-            end
-            object grd_TagDBTableView1Feiertag: TcxGridDBColumn
-              DataBinding.FieldName = 'Feiertag'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxImageComboBoxProperties'
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Items = <
-                item
-                  ImageIndex = 0
-                  Value = 0
-                end
-                item
-                  Description = 'ganzer Feiertag'
-                  Value = 1
-                end
-                item
-                  Description = 'halber Feiertag'
-                  Value = 2
-                end>
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 90
-            end
-            object grd_TagDBTableView1BA: TcxGridDBColumn
-              DataBinding.FieldName = 'Buchungsart'
-              DataBinding.IsNullValueType = True
-              PropertiesClassName = 'TcxImageComboBoxProperties'
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Items = <
-                item
-                  ImageIndex = 0
-                  Value = -1
-                end
-                item
-                  Description = 'B'#252'ro'
-                  Value = 0
-                end
-                item
-                  Description = 'Homeoffice'
-                  Value = 1
-                end>
-              OnCustomDrawCell = grd_TagDBTableView1TagCustomDrawCell
-              Width = 80
-            end
-          end
-          object grd_TagDBTableView2: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
-            Navigator.Buttons.First.Visible = True
-            Navigator.Buttons.PriorPage.Visible = True
-            Navigator.Buttons.Prior.Visible = True
-            Navigator.Buttons.Next.Visible = True
-            Navigator.Buttons.NextPage.Visible = True
-            Navigator.Buttons.Last.Visible = True
-            Navigator.Buttons.Insert.Visible = True
-            Navigator.Buttons.Delete.Visible = True
-            Navigator.Buttons.Edit.Visible = True
-            Navigator.Buttons.Post.Visible = True
-            Navigator.Buttons.Cancel.Visible = True
-            Navigator.Buttons.Refresh.Visible = True
-            Navigator.Buttons.SaveBookmark.Visible = True
-            Navigator.Buttons.GotoBookmark.Visible = True
-            Navigator.Buttons.Filter.Visible = True
-            ScrollbarAnnotations.CustomAnnotations = <>
-            DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
-            DataController.Summary.SummaryGroups = <>
-            OptionsData.Deleting = False
-            OptionsData.Editing = False
-            OptionsData.Inserting = False
-            OptionsView.GroupByBox = False
-            OptionsView.Indicator = True
-          end
-          object tvTageswerte: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
-            Navigator.Buttons.First.Visible = True
-            Navigator.Buttons.PriorPage.Visible = True
-            Navigator.Buttons.Prior.Visible = True
-            Navigator.Buttons.Next.Visible = True
-            Navigator.Buttons.NextPage.Visible = True
-            Navigator.Buttons.Last.Visible = True
-            Navigator.Buttons.Insert.Visible = True
-            Navigator.Buttons.Delete.Visible = True
-            Navigator.Buttons.Edit.Visible = True
-            Navigator.Buttons.Post.Visible = True
-            Navigator.Buttons.Cancel.Visible = True
-            Navigator.Buttons.Refresh.Visible = True
-            Navigator.Buttons.SaveBookmark.Visible = True
-            Navigator.Buttons.GotoBookmark.Visible = True
-            Navigator.Buttons.Filter.Visible = True
-            ScrollbarAnnotations.CustomAnnotations = <>
-            DataController.DataModeController.SyncMode = False
-            DataController.DetailKeyFieldNames = 'Datum'
-            DataController.KeyFieldNames = 'AuftragNr'
-            DataController.MasterKeyFieldNames = 'Datum'
-            DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
-            DataController.Summary.SummaryGroups = <>
-            OptionsCustomize.ColumnFiltering = False
-            OptionsData.Deleting = False
-            OptionsData.Editing = False
-            OptionsData.Inserting = False
-            OptionsSelection.CellSelect = False
-            OptionsView.GridLines = glVertical
-            OptionsView.GroupByBox = False
-            OptionsView.HeaderFilterButtonShowMode = fbmButton
-            OptionsView.Indicator = True
-            object tvTageswerteBuchungsArt: TcxGridDBColumn
-              Tag = 6409508
-              Caption = 'Art'
-              DataBinding.FieldName = 'BuchungsArt'
-              DataBinding.IsNullValueType = True
-              Width = 29
-            end
-            object tvTageswerteMe1: TcxGridDBColumn
-              Tag = 42559168
-              Caption = '1. Buchung'
-              DataBinding.FieldName = 'Me1'
-              DataBinding.IsNullValueType = True
-            end
-            object tvTageswerteMe2: TcxGridDBColumn
-              Tag = 42600172
-              Caption = '2. Buchung'
-              DataBinding.FieldName = 'Me2'
-              DataBinding.IsNullValueType = True
-            end
-            object tvTageswerteBSumme: TcxGridDBColumn
-              Tag = 42620740
-              Caption = 'Summe'
-              DataBinding.FieldName = 'BSumme'
-              DataBinding.IsNullValueType = True
-            end
-            object tvTageswerteAuftragNr: TcxGridDBColumn
-              Tag = 42624096
-              Caption = 'Auftrag-Nr'
-              DataBinding.FieldName = 'AuftragNr'
-              DataBinding.IsNullValueType = True
-            end
-            object tvTageswerteTaetigkNr: TcxGridDBColumn
-              Tag = 42699484
-              Caption = 'Taetigk-Nr'
-              DataBinding.FieldName = 'TaetigkNr'
-              DataBinding.IsNullValueType = True
-            end
-            object tvTageswerteKostenstelle: TcxGridDBColumn
-              Tag = 42700972
-              DataBinding.FieldName = 'Kostenstelle'
-              DataBinding.IsNullValueType = True
-            end
-          end
-          object grd_TagLevel1: TcxGridLevel
-            GridView = grd_TagDBTableView1
-            Options.DetailFrameColor = clWindow
-            Options.DetailFrameWidth = 4
-          end
+      object grd_TagDBTableView2: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.First.Visible = True
+        Navigator.Buttons.PriorPage.Visible = True
+        Navigator.Buttons.Prior.Visible = True
+        Navigator.Buttons.Next.Visible = True
+        Navigator.Buttons.NextPage.Visible = True
+        Navigator.Buttons.Last.Visible = True
+        Navigator.Buttons.Insert.Visible = True
+        Navigator.Buttons.Delete.Visible = True
+        Navigator.Buttons.Edit.Visible = True
+        Navigator.Buttons.Post.Visible = True
+        Navigator.Buttons.Cancel.Visible = True
+        Navigator.Buttons.Refresh.Visible = True
+        Navigator.Buttons.SaveBookmark.Visible = True
+        Navigator.Buttons.GotoBookmark.Visible = True
+        Navigator.Buttons.Filter.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsView.GroupByBox = False
+        OptionsView.Indicator = True
+      end
+      object tvTageswerte: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.First.Visible = True
+        Navigator.Buttons.PriorPage.Visible = True
+        Navigator.Buttons.Prior.Visible = True
+        Navigator.Buttons.Next.Visible = True
+        Navigator.Buttons.NextPage.Visible = True
+        Navigator.Buttons.Last.Visible = True
+        Navigator.Buttons.Insert.Visible = True
+        Navigator.Buttons.Delete.Visible = True
+        Navigator.Buttons.Edit.Visible = True
+        Navigator.Buttons.Post.Visible = True
+        Navigator.Buttons.Cancel.Visible = True
+        Navigator.Buttons.Refresh.Visible = True
+        Navigator.Buttons.SaveBookmark.Visible = True
+        Navigator.Buttons.GotoBookmark.Visible = True
+        Navigator.Buttons.Filter.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataModeController.SyncMode = False
+        DataController.DetailKeyFieldNames = 'Datum'
+        DataController.KeyFieldNames = 'AuftragNr'
+        DataController.MasterKeyFieldNames = 'Datum'
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsCustomize.ColumnFiltering = False
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.GridLines = glVertical
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.Indicator = True
+        object tvTageswerteBuchungsArt: TcxGridDBColumn
+          Tag = 6409508
+          Caption = 'Art'
+          DataBinding.FieldName = 'BuchungsArt'
+          DataBinding.IsNullValueType = True
+          Width = 29
+        end
+        object tvTageswerteMe1: TcxGridDBColumn
+          Tag = 42559168
+          Caption = '1. Buchung'
+          DataBinding.FieldName = 'Me1'
+          DataBinding.IsNullValueType = True
+        end
+        object tvTageswerteMe2: TcxGridDBColumn
+          Tag = 42600172
+          Caption = '2. Buchung'
+          DataBinding.FieldName = 'Me2'
+          DataBinding.IsNullValueType = True
+        end
+        object tvTageswerteBSumme: TcxGridDBColumn
+          Tag = 42620740
+          Caption = 'Summe'
+          DataBinding.FieldName = 'BSumme'
+          DataBinding.IsNullValueType = True
+        end
+        object tvTageswerteAuftragNr: TcxGridDBColumn
+          Tag = 42624096
+          Caption = 'Auftrag-Nr'
+          DataBinding.FieldName = 'AuftragNr'
+          DataBinding.IsNullValueType = True
+        end
+        object tvTageswerteTaetigkNr: TcxGridDBColumn
+          Tag = 42699484
+          Caption = 'Taetigk-Nr'
+          DataBinding.FieldName = 'TaetigkNr'
+          DataBinding.IsNullValueType = True
+        end
+        object tvTageswerteKostenstelle: TcxGridDBColumn
+          Tag = 42700972
+          DataBinding.FieldName = 'Kostenstelle'
+          DataBinding.IsNullValueType = True
         end
       end
+      object grd_TagLevel1: TcxGridLevel
+        GridView = grd_TagDBTableView1
+        Options.DetailFrameColor = clWindow
+        Options.DetailFrameWidth = 4
+      end
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Abwesenheitswerte'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object lagrp_MA: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      CaptionOptions.Visible = False
+      LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel2
+      Offsets.Left = -4
+      Offsets.Right = -4
+      SizeOptions.Width = 180
+      ItemIndex = 3
+      Index = 0
+    end
+    object dxLayoutLabeledItem1: TdxLayoutLabeledItem
+      Parent = lagrp_MA
+      Offsets.Bottom = 4
+      CaptionOptions.Text = '[B]Zeiterfasser[/B]'
+      Index = 0
+    end
+    object dxLayoutLabeledItem2: TdxLayoutLabeledItem
+      Parent = laitm_MANachname
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = '[B]Nachname:[/B]'
+      CaptionOptions.Width = 70
+      Index = 0
+    end
+    object dxLayoutLabeledItem3: TdxLayoutLabeledItem
+      Parent = laitm_MAVorname
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = '[B]Vorname:[/B]'
+      CaptionOptions.Width = 70
+      Index = 0
+    end
+    object lbl_name: TdxLayoutLabeledItem
+      Parent = laitm_MANachname
+      AlignVert = avClient
+      CaptionOptions.Text = 'Label'
+      Index = 1
+    end
+    object laitm_MASep: TdxLayoutSeparatorItem
+      Parent = lagrp_MA
+      CaptionOptions.Text = 'Separator'
+      Index = 1
+    end
+    object laitm_MAVorname: TdxLayoutGroup
+      Parent = lagrp_MA
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object laitm_MANachname: TdxLayoutGroup
+      Parent = lagrp_MA
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      Offsets.Top = 8
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
+    end
+    object lbl_nachname: TdxLayoutLabeledItem
+      Parent = laitm_MAVorname
+      AlignVert = avClient
+      CaptionOptions.Text = 'Label'
+      Index = 1
+    end
+    object lagrp_MW: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      CaptionOptions.Visible = False
+      LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel2
+      Offsets.Left = -4
+      Offsets.Right = -4
+      Index = 1
+    end
+    object grpbx_MonatInfo: TdxLayoutLabeledItem
+      Parent = lagrp_MW
+      CaptionOptions.Text = '[B]Monatsinfo[/B]'
+      Index = 0
+    end
+    object dxLayoutSeparatorItem2: TdxLayoutSeparatorItem
+      Parent = lagrp_MW
+      Offsets.Top = 4
+      CaptionOptions.Text = 'Separator'
+      Index = 1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = dxBarDockControl1
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 42
+      ControlOptions.OriginalWidth = 317
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object lagrp_Values: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      CaptionOptions.Visible = False
+      LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel2
+      Offsets.Left = -4
+      Offsets.Right = -4
+      ItemIndex = 2
+      Index = 2
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = AuswertungsJahr
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 53
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_OfficeGes
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 27
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object grpbx_Stat: TdxLayoutLabeledItem
+      Parent = lagrp_Values
+      CaptionOptions.Text = 'Label'
+      Index = 0
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup8
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_bezKr
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 27
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutSeparatorItem3: TdxLayoutSeparatorItem
+      Parent = lagrp_Values
+      CaptionOptions.Text = 'Separator'
+      Index = 1
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutGroup39
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_unbUL
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 27
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup4
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_geplULGes
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 27
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem7: TdxLayoutItem
+      Parent = dxLayoutGroup9
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_RulVJ
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 27
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup6: TdxLayoutGroup
+      Parent = lagrp_MW
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutLabeledItem5: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup9
+      AlignHorz = ahLeft
+      CaptionOptions.Text = '[B]Resturlaub Vorjahr:[/B]'
+      CaptionOptions.Width = 120
+      Index = 0
+    end
+    object dxLayoutLabeledItem6: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup4
+      Offsets.Left = 16
+      CaptionOptions.Text = '[B]geplanter  Urlaub:[/B]'
+      CaptionOptions.Width = 120
+      Index = 0
+    end
+    object dxLayoutLabeledItem7: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup7
+      Offsets.Left = 16
+      CaptionOptions.Text = '[B]B'#252'rotage:[/B]'
+      CaptionOptions.Width = 100
+      Index = 0
+    end
+    object dxLayoutLabeledItem8: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup8
+      Offsets.Left = 16
+      CaptionOptions.Text = '[B]Krank bezahlt:[/B]'
+      CaptionOptions.Width = 100
+      Index = 0
+    end
+    object dxLayoutLabeledItem9: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup5
+      Offsets.Left = 16
+      CaptionOptions.Text = '[B]Urlaub unbezahlt:[/B]'
+      CaptionOptions.Width = 100
+      Index = 0
+    end
+    object dxLayoutGroup13: TdxLayoutGroup
+      Parent = dxLayoutGroup39
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutLabeledItem10: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup38
+      CaptionOptions.Text = '[B]genommener Urlaub:[/B]'
+      CaptionOptions.Width = 120
+      Index = 0
+    end
+    object dxLayoutItem8: TdxLayoutItem
+      Parent = dxLayoutGroup38
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_genULGes
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 27
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutLabeledItem11: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup35
+      Offsets.Left = 16
+      CaptionOptions.Text = '[B]verf'#252'gbarer Urlaub:[/B]'
+      CaptionOptions.Width = 120
+      Index = 0
+    end
+    object dxLayoutItem9: TdxLayoutItem
+      Parent = dxLayoutGroup35
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_VerfUL
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 27
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutLabeledItem12: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup12
+      Offsets.Left = 16
+      CaptionOptions.Text = '[B]Feiertage:[/B]'
+      CaptionOptions.Width = 100
+      Index = 0
+    end
+    object dxLayoutLabeledItem13: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup11
+      Offsets.Left = 16
+      CaptionOptions.Text = '[B]Krank unbezahlt:[/B]'
+      CaptionOptions.Width = 100
+      Index = 0
+    end
+    object dxLayoutLabeledItem14: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup10
+      Offsets.Left = 16
+      CaptionOptions.Text = '[B]HomeOfficetage:[/B]'
+      CaptionOptions.Width = 100
+      Index = 0
+    end
+    object dxLayoutItem10: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_HomeOffGes
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 27
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem11: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_unbKr
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 27
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem12: TdxLayoutItem
+      Parent = dxLayoutGroup12
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_FT
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 27
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup14: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      CaptionOptions.Visible = False
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutItem13: TdxLayoutItem
+      Parent = dxLayoutGroup14
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = cxButton2
+      ControlOptions.OriginalHeight = 61
+      ControlOptions.OriginalWidth = 99
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem14: TdxLayoutItem
+      Parent = dxLayoutGroup14
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = cxButton1
+      ControlOptions.OriginalHeight = 61
+      ControlOptions.OriginalWidth = 100
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup15: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Auswertung'
+      LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup16: TdxLayoutGroup
+      Parent = dxLayoutGroup15
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      CaptionOptions.Text = 'Monatswerte:'
+      LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+      Index = 0
+    end
+    object dxLayoutGroup17: TdxLayoutGroup
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Tageswerte'
+      LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+      Index = 1
+    end
+    object dxLayoutItem15: TdxLayoutItem
+      Parent = dxLayoutGroup17
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = grd_Tag
+      ControlOptions.OriginalHeight = 600
+      ControlOptions.OriginalWidth = 1253
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup19: TdxLayoutGroup
+      Parent = dxLayoutGroup16
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 
+        '[B]Stundenwerte                                     hh:mm      D' +
+        'ezimal[/B]'
+      Index = 0
+    end
+    object dxLayoutGroup20: TdxLayoutGroup
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 6
+    end
+    object dxLayoutItem16: TdxLayoutItem
+      Parent = dxLayoutGroup23
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_D1
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem17: TdxLayoutItem
+      Parent = dxLayoutGroup23
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_T1
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutLabeledItem15: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup23
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Iststunden brutto:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem18: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup24
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Pausen:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem19: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup27
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Minder/Mehrarbeit:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem20: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup25
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Sollstunden:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem21: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup28
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Iststunden netto:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem22: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup20
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = '[B]Gleitzeit'#252'bertrag Folgemonat:[/B]'
+      Index = 0
+    end
+    object dxLayoutItem18: TdxLayoutItem
+      Parent = dxLayoutGroup25
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_T4
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem19: TdxLayoutItem
+      Parent = dxLayoutGroup28
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_T3
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem20: TdxLayoutItem
+      Parent = dxLayoutGroup24
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_D2
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem21: TdxLayoutItem
+      Parent = dxLayoutGroup24
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_T2
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutLabeledItem17: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup26
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Gleitzeit'#252'bertrag Vormonat:'
+      Index = 0
+    end
+    object dxLayoutItem22: TdxLayoutItem
+      Parent = dxLayoutGroup27
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_D5
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem23: TdxLayoutItem
+      Parent = dxLayoutGroup25
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_D4
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem24: TdxLayoutItem
+      Parent = dxLayoutGroup26
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_T6
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem25: TdxLayoutItem
+      Parent = dxLayoutGroup28
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_D3
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem26: TdxLayoutItem
+      Parent = dxLayoutGroup20
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_T7
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem27: TdxLayoutItem
+      Parent = dxLayoutGroup27
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_T5
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem28: TdxLayoutItem
+      Parent = dxLayoutGroup26
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_D6
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem29: TdxLayoutItem
+      Parent = dxLayoutGroup20
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_D7
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup23: TdxLayoutGroup
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup24: TdxLayoutGroup
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup25: TdxLayoutGroup
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutGroup26: TdxLayoutGroup
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 5
+    end
+    object dxLayoutGroup27: TdxLayoutGroup
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutGroup28: TdxLayoutGroup
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup18: TdxLayoutGroup
+      Parent = dxLayoutGroup16
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 
+        '[B]Abwesenheitswerte                                Tage       h' +
+        'h:mm[/B]'
+      Index = 1
+    end
+    object dxLayoutGroup21: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutGroup22: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup29: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup30: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutLabeledItem16: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup30
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Urlaub genommen:'
+      CaptionOptions.Width = 170
+      Index = 0
+    end
+    object dxLayoutItem30: TdxLayoutItem
+      Parent = dxLayoutGroup30
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_TG1Dez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem31: TdxLayoutItem
+      Parent = dxLayoutGroup30
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_TG1
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutLabeledItem23: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup29
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Urlaub geplant:'
+      CaptionOptions.Width = 170
+      Index = 0
+    end
+    object dxLayoutItem32: TdxLayoutItem
+      Parent = dxLayoutGroup29
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_TG2Dez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem33: TdxLayoutItem
+      Parent = dxLayoutGroup29
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_TG2
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutLabeledItem24: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup22
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = '[B]Resturlaub:[/B]'
+      CaptionOptions.Width = 170
+      Index = 0
+    end
+    object dxLayoutItem34: TdxLayoutItem
+      Parent = dxLayoutGroup22
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_TG3Dez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem35: TdxLayoutItem
+      Parent = dxLayoutGroup22
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_TG3
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup31: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutGroup32: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 5
+    end
+    object dxLayoutGroup33: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 6
+    end
+    object dxLayoutGroup34: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 7
+    end
+    object dxLayoutGroup36: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 8
+    end
+    object dxLayoutGroup37: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 9
+    end
+    object dxLayoutLabeledItem25: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup33
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Krank unbezahlt:'
+      CaptionOptions.Width = 170
+      Index = 0
+    end
+    object dxLayoutLabeledItem26: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup32
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Krank bezahlt:'
+      CaptionOptions.Width = 170
+      Index = 0
+    end
+    object dxLayoutLabeledItem27: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup31
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Feiertage:'
+      CaptionOptions.Width = 170
+      Index = 0
+    end
+    object dxLayoutLabeledItem28: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup21
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Urlaub unbezahlt:'
+      CaptionOptions.Width = 170
+      Index = 0
+    end
+    object dxLayoutLabeledItem29: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup36
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'HomeOffice-Tage:'
+      CaptionOptions.Width = 170
+      Index = 0
+    end
+    object dxLayoutLabeledItem30: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup34
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'B'#252'ro-Tage:'
+      CaptionOptions.Width = 170
+      Index = 0
+    end
+    object dxLayoutLabeledItem31: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup37
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = '[B]Arbeitstage gesamt:[/B]'
+      CaptionOptions.Width = 170
+      Index = 0
+    end
+    object dxLayoutItem36: TdxLayoutItem
+      Parent = dxLayoutGroup31
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_FTM
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem37: TdxLayoutItem
+      Parent = dxLayoutGroup21
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_ULunbDez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem38: TdxLayoutItem
+      Parent = dxLayoutGroup21
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_ULunb
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem39: TdxLayoutItem
+      Parent = dxLayoutGroup31
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_FTMDez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem40: TdxLayoutItem
+      Parent = dxLayoutGroup32
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_krDez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem41: TdxLayoutItem
+      Parent = dxLayoutGroup32
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_kr
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem42: TdxLayoutItem
+      Parent = dxLayoutGroup33
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_krunb
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem43: TdxLayoutItem
+      Parent = dxLayoutGroup33
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_krunbdez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem44: TdxLayoutItem
+      Parent = dxLayoutGroup34
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_Buero
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem45: TdxLayoutItem
+      Parent = dxLayoutGroup34
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_BueroDez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem46: TdxLayoutItem
+      Parent = dxLayoutGroup36
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_HO
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem47: TdxLayoutItem
+      Parent = dxLayoutGroup36
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_HODez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem48: TdxLayoutItem
+      Parent = dxLayoutGroup37
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_BHOGes
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem49: TdxLayoutItem
+      Parent = dxLayoutGroup37
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_BHOGesDez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup4: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup7: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutGroup8: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutGroup9: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup10: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutGroup11: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutGroup12: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup35: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup38: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup39: TdxLayoutGroup
+      Parent = lagrp_Values
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 2
     end
   end
   object brmgr_MW: TdxBarManager
@@ -1590,7 +2380,6 @@ object frm_monatswerte: Tfrm_monatswerte
     ImageOptions.LargeImages = imglst_16x16
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseFullReset = True
     UseSystemFont = True
     Left = 472
@@ -1835,7 +2624,7 @@ object frm_monatswerte: Tfrm_monatswerte
   object imglst_16x16: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 12058912
+    DesignInfo = 6291904
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'

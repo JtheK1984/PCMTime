@@ -223,6 +223,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>frm_PCM_Staatsangehoerigkeit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="PCMTime.dxSettings.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

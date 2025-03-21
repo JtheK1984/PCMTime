@@ -67,14 +67,13 @@ uses
   Vcl.NumberBox,
   Vcl.StdCtrls,
   Winapi.Messages,
-  Winapi.Windows, cxCurrencyEdit;
+  Winapi.Windows, cxCurrencyEdit, dxUIAClasses, dxLayoutContainer,
+  dxLayoutControl, dxLayoutcxEditAdapters, dxLayoutControlAdapters;
   {$EndRegion uses}
 type
   {$Region Type}
   Tfrm_monatswerte = class(TForm)
     AuswertungsJahr: TcxSpinEdit;
-    Bevel2: TBevel;
-    Bevel3: TBevel;
     brmgr_MW: TdxBarManager;
     btn_01: TdxBarLargeButton;
     btn_02: TdxBarLargeButton;
@@ -88,20 +87,6 @@ type
     btn_10: TdxBarLargeButton;
     btn_11: TdxBarLargeButton;
     btn_12: TdxBarLargeButton;
-    cxGroupBox11: TcxGroupBox;
-    cxGroupBox4: TcxGroupBox;
-    cxLabel1: TcxLabel;
-    cxLabel13: TcxLabel;
-    cxLabel14: TcxLabel;
-    cxLabel15: TcxLabel;
-    cxLabel16: TcxLabel;
-    cxLabel19: TcxLabel;
-    cxLabel2: TcxLabel;
-    cxLabel21: TcxLabel;
-    cxLabel5: TcxLabel;
-    cxLabel6: TcxLabel;
-    cxLabel7: TcxLabel;
-    cxLabel8: TcxLabel;
     ds_Day: TDataSource;
     dxBarDockControl1: TdxBarDockControl;
     grd_Tag: TcxGrid;
@@ -118,16 +103,6 @@ type
     grd_TagDBTableView1Tagesnetto: TcxGridDBColumn;
     grd_TagDBTableView2: TcxGridDBTableView;
     grd_TagLevel1: TcxGridLevel;
-    grpbx_Jahr: TcxGroupBox;
-    grpbx_JahrDetail: TcxGroupBox;
-    grpbx_MonatInfo: TcxGroupBox;
-    grpbx_MonatInfoDetail: TcxGroupBox;
-    grpbx_MWDetail: TcxGroupBox;
-    grpbx_MWMonat: TcxGroupBox;
-    grpbx_MWtag: TcxGroupBox;
-    grpbx_Personal: TcxGroupBox;
-    grpbx_Stat: TcxGroupBox;
-    grpbx_Statistik: TcxGroupBox;
     imglst_16x16: TcxImageList;
     lbl_bezKr: TcxLabel;
     lbl_BHOGes: TcxLabel;
@@ -153,25 +128,6 @@ type
     lbl_krDez: TcxLabel;
     lbl_krunb: TcxLabel;
     lbl_krunbdez: TcxLabel;
-    lbl_MWBuero: TcxLabel;
-    lbl_MWFT: TcxLabel;
-    lbl_MWGLZ: TcxLabel;
-    lbl_MWGLZAkt: TcxLabel;
-    lbl_MWGLZVM: TcxLabel;
-    lbl_MWHomeoffice: TcxLabel;
-    lbl_MWIStBrutto: TcxLabel;
-    lbl_MWIstNetto: TcxLabel;
-    lbl_MWKrbez: TcxLabel;
-    lbl_MWKrunbez: TcxLabel;
-    lbl_MWPausen: TcxLabel;
-    lbl_MWRestUL: TcxLabel;
-    lbl_MWSoll: TcxLabel;
-    lbl_MWSumWorkDays: TcxLabel;
-    lbl_MWULgen: TcxLabel;
-    lbl_MWULgepl: TcxLabel;
-    lbl_MWULunbez: TcxLabel;
-    lbl_nachname: TcxLabel;
-    lbl_name: TcxLabel;
     lbl_OfficeGes: TcxLabel;
     lbl_RulVJ: TcxLabel;
     lbl_T1: TcxLabel;
@@ -192,10 +148,7 @@ type
     lbl_unbKr: TcxLabel;
     lbl_unbUL: TcxLabel;
     lbl_VerfUL: TcxLabel;
-    Panel13: TPanel;
-    Panel16: TPanel;
     qry_Day: TFDQuery;
-    sclbx_MW: TScrollBox;
     tb_MW: TdxBar;
     tvTageswerte: TcxGridDBTableView;
     tvTageswerteAuftragNr: TcxGridDBColumn;
@@ -219,6 +172,138 @@ type
     grd_TagDBTableView1Column4: TcxGridDBColumn;
     grd_TagDBTableView1Column5: TcxGridDBColumn;
     grd_TagDBTableView1Column6: TcxGridDBColumn;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    lagrp_MA: TdxLayoutGroup;
+    dxLayoutLabeledItem1: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem2: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem3: TdxLayoutLabeledItem;
+    lbl_name: TdxLayoutLabeledItem;
+    laitm_MASep: TdxLayoutSeparatorItem;
+    laitm_MAVorname: TdxLayoutGroup;
+    laitm_MANachname: TdxLayoutGroup;
+    lbl_nachname: TdxLayoutLabeledItem;
+    lagrp_MW: TdxLayoutGroup;
+    grpbx_MonatInfo: TdxLayoutLabeledItem;
+    dxLayoutSeparatorItem2: TdxLayoutSeparatorItem;
+    dxLayoutItem1: TdxLayoutItem;
+    lagrp_Values: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    grpbx_Stat: TdxLayoutLabeledItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutSeparatorItem3: TdxLayoutSeparatorItem;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutLabeledItem5: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem6: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem7: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem8: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem9: TdxLayoutLabeledItem;
+    dxLayoutGroup13: TdxLayoutGroup;
+    dxLayoutLabeledItem10: TdxLayoutLabeledItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutLabeledItem11: TdxLayoutLabeledItem;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutLabeledItem12: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem13: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem14: TdxLayoutLabeledItem;
+    dxLayoutItem10: TdxLayoutItem;
+    dxLayoutItem11: TdxLayoutItem;
+    dxLayoutItem12: TdxLayoutItem;
+    dxLayoutGroup14: TdxLayoutGroup;
+    dxLayoutItem13: TdxLayoutItem;
+    dxLayoutItem14: TdxLayoutItem;
+    dxLayoutGroup15: TdxLayoutGroup;
+    dxLayoutGroup16: TdxLayoutGroup;
+    dxLayoutGroup17: TdxLayoutGroup;
+    dxLayoutItem15: TdxLayoutItem;
+    dxLayoutGroup19: TdxLayoutGroup;
+    dxLayoutGroup20: TdxLayoutGroup;
+    dxLayoutItem16: TdxLayoutItem;
+    dxLayoutItem17: TdxLayoutItem;
+    dxLayoutLabeledItem15: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem18: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem19: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem20: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem21: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem22: TdxLayoutLabeledItem;
+    dxLayoutItem18: TdxLayoutItem;
+    dxLayoutItem19: TdxLayoutItem;
+    dxLayoutItem20: TdxLayoutItem;
+    dxLayoutItem21: TdxLayoutItem;
+    dxLayoutLabeledItem17: TdxLayoutLabeledItem;
+    dxLayoutItem22: TdxLayoutItem;
+    dxLayoutItem23: TdxLayoutItem;
+    dxLayoutItem24: TdxLayoutItem;
+    dxLayoutItem25: TdxLayoutItem;
+    dxLayoutItem26: TdxLayoutItem;
+    dxLayoutItem27: TdxLayoutItem;
+    dxLayoutItem28: TdxLayoutItem;
+    dxLayoutItem29: TdxLayoutItem;
+    dxLayoutGroup23: TdxLayoutGroup;
+    dxLayoutGroup24: TdxLayoutGroup;
+    dxLayoutGroup25: TdxLayoutGroup;
+    dxLayoutGroup26: TdxLayoutGroup;
+    dxLayoutGroup27: TdxLayoutGroup;
+    dxLayoutGroup28: TdxLayoutGroup;
+    dxLayoutGroup18: TdxLayoutGroup;
+    dxLayoutGroup21: TdxLayoutGroup;
+    dxLayoutGroup22: TdxLayoutGroup;
+    dxLayoutGroup29: TdxLayoutGroup;
+    dxLayoutGroup30: TdxLayoutGroup;
+    dxLayoutLabeledItem16: TdxLayoutLabeledItem;
+    dxLayoutItem30: TdxLayoutItem;
+    dxLayoutItem31: TdxLayoutItem;
+    dxLayoutLabeledItem23: TdxLayoutLabeledItem;
+    dxLayoutItem32: TdxLayoutItem;
+    dxLayoutItem33: TdxLayoutItem;
+    dxLayoutLabeledItem24: TdxLayoutLabeledItem;
+    dxLayoutItem34: TdxLayoutItem;
+    dxLayoutItem35: TdxLayoutItem;
+    dxLayoutGroup31: TdxLayoutGroup;
+    dxLayoutGroup32: TdxLayoutGroup;
+    dxLayoutGroup33: TdxLayoutGroup;
+    dxLayoutGroup34: TdxLayoutGroup;
+    dxLayoutGroup36: TdxLayoutGroup;
+    dxLayoutGroup37: TdxLayoutGroup;
+    dxLayoutLabeledItem25: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem26: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem27: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem28: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem29: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem30: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem31: TdxLayoutLabeledItem;
+    dxLayoutItem36: TdxLayoutItem;
+    dxLayoutItem37: TdxLayoutItem;
+    dxLayoutItem38: TdxLayoutItem;
+    dxLayoutItem39: TdxLayoutItem;
+    dxLayoutItem40: TdxLayoutItem;
+    dxLayoutItem41: TdxLayoutItem;
+    dxLayoutItem42: TdxLayoutItem;
+    dxLayoutItem43: TdxLayoutItem;
+    dxLayoutItem44: TdxLayoutItem;
+    dxLayoutItem45: TdxLayoutItem;
+    dxLayoutItem46: TdxLayoutItem;
+    dxLayoutItem47: TdxLayoutItem;
+    dxLayoutItem48: TdxLayoutItem;
+    dxLayoutItem49: TdxLayoutItem;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutGroup10: TdxLayoutGroup;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutGroup12: TdxLayoutGroup;
+    dxLayoutGroup35: TdxLayoutGroup;
+    dxLayoutGroup38: TdxLayoutGroup;
+    dxLayoutGroup39: TdxLayoutGroup;
     procedure AuswertungsJahrPropertiesChange(Sender: TObject);
     procedure SetMonatswerte(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -384,7 +469,7 @@ begin
   DecodeDate(Date,iJahr,iMonat,iTag);
   // Urlaubsanspruch
   iULANsp:= GetULAnspruch;
-  grpbx_Stat.Caption:= 'Statistik: Urlaubsanspruch für Jahr ' + IntToStr(AJahr) + ' ' + FormatFloat('0.0', iULANsp) + ' Tage';
+  grpbx_Stat.Caption:= '[B]Statistik: Urlaubsanspruch für Jahr ' + IntToStr(AJahr) + ' ' + FormatFloat('0.0', iULANsp) + ' Tage[/B]';
   // Urlaub Vorjahr
   iULVJ:= GetULVorJahr(AJahr -1,12);
   lbl_RulVJ.Caption:= FormatFloat('0.0', iULVJ);
@@ -621,8 +706,8 @@ end;
 procedure Tfrm_monatswerte.AuswertungsJahrPropertiesChange(Sender: TObject);
 begin
   SetMonth(1);
-  grpbx_MonatInfo.Caption:= 'Auswertung von ' + DateToStr(StartOfAMonth(AuswertungsJahr.value,1))
-                          + ' bis ' + DateToStr(EndOfAMonth(AuswertungsJahr.value,1));
+  grpbx_MonatInfo.Caption:= '[B]Auswertung von ' + DateToStr(StartOfAMonth(AuswertungsJahr.value,1))
+                          + ' bis ' + DateToStr(EndOfAMonth(AuswertungsJahr.value,1))+'[/B]';
   GetData(1,AuswertungsJahr.value);
 end;
 procedure Tfrm_monatswerte.SetMonatswerte(Sender: TObject);
@@ -631,8 +716,8 @@ var
 begin
   iMonat := (Sender as TComponent).Tag;
   SetMonth(iMonat);
-  grpbx_MonatInfo.Caption:= 'Auswertung von ' + DateToStr(StartOfAMonth(AuswertungsJahr.value,iMonat))
-                      + ' bis ' + DateToStr(EndOfAMonth(AuswertungsJahr.value,iMonat));
+  grpbx_MonatInfo.Caption:= '[B]Auswertung von ' + DateToStr(StartOfAMonth(AuswertungsJahr.value,iMonat))
+                      + ' bis ' + DateToStr(EndOfAMonth(AuswertungsJahr.value,iMonat))+'[/B]';
   GetData(iMonat,AuswertungsJahr.value);
 end;
 procedure Tfrm_monatswerte.cxButton1Click(Sender: TObject);
@@ -648,14 +733,13 @@ end;
 // Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region FormFunktionen}
-
-
 procedure Tfrm_monatswerte.FormShow(Sender: TObject);
 begin
+  dm_PCM.qry_Kalender_Kalender.Open;
   AuswertungsJahr.value:= frm_PCM_Main.iAuswertungJahr;
   SetMonth(frm_PCM_Main.iAuswertungMonat);
-  grpbx_MonatInfo.Caption:= 'Auswertung von ' + DateToStr(StartOfAMonth(frm_PCM_Main.iAuswertungJahr,frm_PCM_Main.iAuswertungMonat))
-                      + ' bis ' + DateToStr(EndOfAMonth(frm_PCM_Main.iAuswertungJahr,frm_PCM_Main.iAuswertungMonat));
+  grpbx_MonatInfo.Caption:= '[B]Auswertung von ' + DateToStr(StartOfAMonth(frm_PCM_Main.iAuswertungJahr,frm_PCM_Main.iAuswertungMonat))
+                      + ' bis ' + DateToStr(EndOfAMonth(frm_PCM_Main.iAuswertungJahr,frm_PCM_Main.iAuswertungMonat))+'[/B]';
   dm_PCM.qry_Work.SQL.Text:= 'Select vorName, Nachname from time_user where ID_Zeiterfasser = :ID_Benutzer';
   dm_PCM.qry_Work.ParamByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_Work.Open;

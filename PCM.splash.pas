@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, Vcl.ExtCtrls,
   dxGDIPlusClasses, dxActivityIndicator, cxContainer, cxEdit, cxProgressBar,
-  cxImage, cxLabel, cxGroupBox, cxClasses, inifiles;
+  cxImage, cxLabel, cxGroupBox, cxClasses, inifiles, dxUIAClasses;
 
 type
   TSplashScreen = class(TForm)
@@ -221,12 +221,12 @@ begin
   case dm_PCM.iBackup of
   0:
     begin
-      frm_PCm_Main.navbrgrp_Kontake.Visible:= false;
+      frm_PCm_Main.navbrgrp_Bewegungsdaten.Visible:= false;
       frm_PCm_Main.ppmbtn_Backup.Visible:= false;
     end;
   1,2,3:
     begin
-      frm_PCm_Main.navbrgrp_Kontake.Visible:= true;
+      frm_PCm_Main.navbrgrp_Bewegungsdaten.Visible:= true;
       frm_PCm_Main.ppmbtn_Backup.Visible:= true;
     end;
   end;

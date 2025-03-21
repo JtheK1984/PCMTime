@@ -37,7 +37,7 @@ uses
   Vcl.Graphics,
   Winapi.Messages,
   Winapi.Windows, dxLayoutcxEditAdapters, dxLayoutContainer, cxCurrencyEdit,
-  cxCalendar, dxLayoutControl, dxLayoutLookAndFeels;
+  cxCalendar, dxLayoutControl, dxLayoutLookAndFeels, dxUIAClasses;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -80,8 +80,6 @@ type
     itm_102Feiertag: TdxLayoutItem;
     dxLayoutItem7: TdxLayoutItem;
     dxLayoutGroup1: TdxLayoutGroup;
-    dxLayoutAutoCreatedGroup1: TdxLayoutAutoCreatedGroup;
-    dxLayoutAutoCreatedGroup4: TdxLayoutAutoCreatedGroup;
     dxLayoutItem1: TdxLayoutItem;
     edt_SollStd: TcxTextEdit;
     dxLayoutItem2: TdxLayoutItem;

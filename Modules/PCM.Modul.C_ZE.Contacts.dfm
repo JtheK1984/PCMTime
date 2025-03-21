@@ -16,19 +16,19 @@ object frm_Userze: Tfrm_Userze
   TextHeight = 15
   object lactrl_Main: TdxLayoutControl
     Left = 0
-    Top = 0
+    Top = 63
     Width = 1600
-    Height = 900
+    Height = 837
     Margins.Left = 0
     Margins.Top = 0
     Margins.Right = 0
     Margins.Bottom = 0
     Align = alClient
-    TabOrder = 2
+    TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitTop = 63
-    ExplicitHeight = 837
+    ExplicitTop = 51
+    ExplicitHeight = 849
     object tedt_Sollstunden: TcxDBTimeEdit
       Left = 10000
       Top = 10000
@@ -219,7 +219,7 @@ object frm_Userze: Tfrm_Userze
       Width = 1021
     end
     object cmbbx_KontaktSucheArt: TcxComboBox
-      Left = 102
+      Left = 106
       Top = 139
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -235,7 +235,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheAbteilung: TcxTextEdit
-      Left = 810
+      Left = 814
       Top = 113
       AutoSize = False
       ParentFont = False
@@ -253,7 +253,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheFirma: TcxTextEdit
-      Left = 810
+      Left = 814
       Top = 87
       AutoSize = False
       ParentFont = False
@@ -271,7 +271,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheFunktion: TcxTextEdit
-      Left = 810
+      Left = 814
       Top = 139
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -287,7 +287,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheNachname: TcxTextEdit
-      Left = 102
+      Left = 106
       Top = 87
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -306,12 +306,13 @@ object frm_Userze: Tfrm_Userze
       StyleFocused.TextStyle = []
       StyleHot.LookAndFeel.NativeStyle = False
       StyleHot.TextStyle = []
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 0
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Width = 234
     end
     object edt_KontaktSucheOrt: TcxTextEdit
-      Left = 460
+      Left = 464
       Top = 139
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -327,7 +328,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSuchePLZ: TcxTextEdit
-      Left = 460
+      Left = 464
       Top = 113
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -343,7 +344,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheStrasse: TcxTextEdit
-      Left = 460
+      Left = 464
       Top = 87
       AutoSize = False
       ParentFont = False
@@ -361,7 +362,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheVorname: TcxTextEdit
-      Left = 102
+      Left = 106
       Top = 113
       AutoSize = False
       ParentFont = False
@@ -1015,7 +1016,7 @@ object frm_Userze: Tfrm_Userze
       Left = 26
       Top = 212
       Width = 1544
-      Height = 658
+      Height = 595
       BevelInner = bvNone
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -2793,8 +2794,8 @@ object frm_Userze: Tfrm_Userze
     Connection = dm_PCM.con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From time_Konfession')
-    Left = 661
-    Top = 338
+    Left = 669
+    Top = 234
   end
   object brmgr_Contacts: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
@@ -2817,17 +2818,20 @@ object frm_Userze: Tfrm_Userze
       True
       True
       True)
-    ImageOptions.Images = dm_PCM.imglst_16x16
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     ImageOptions.LargeIcons = True
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 112
     Top = 488
     PixelsPerInch = 96
+    DockControlHeights = (
+      0
+      0
+      63
+      0)
     object tb_Contacts: TdxBar
       Caption = 'tb_Contacts'
       CaptionButtons = <>
@@ -2871,6 +2875,10 @@ object frm_Userze: Tfrm_Userze
         item
           Visible = True
           ItemName = 'btn_Last'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_Close'
         end>
       NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
       OneOnRow = True
@@ -2879,7 +2887,7 @@ object frm_Userze: Tfrm_Userze
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = False
+      Visible = True
       WholeRow = False
     end
     object btn_New: TdxBarLargeButton
@@ -2892,7 +2900,7 @@ object frm_Userze: Tfrm_Userze
       LargeImageIndex = 27
       Width = 125
       SyncImageIndex = False
-      ImageIndex = -1
+      ImageIndex = 27
     end
     object btn_Next: TdxBarLargeButton
       Caption = 'n'#228'chster Mitarbeiter'
@@ -2977,6 +2985,16 @@ object frm_Userze: Tfrm_Userze
       Width = 125
       SyncImageIndex = False
       ImageIndex = -1
+    end
+    object btn_Close: TdxBarLargeButton
+      Align = iaRight
+      Caption = 'Schlie'#223'en'
+      Category = 0
+      Hint = 'Schlie'#223'en'
+      Visible = ivAlways
+      OnClick = btn_CloseClick
+      AutoGrayScale = False
+      LargeImageIndex = 23
     end
   end
   object qry_Contact_Kontaktart: TFDQuery

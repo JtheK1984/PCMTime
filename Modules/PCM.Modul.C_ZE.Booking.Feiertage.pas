@@ -67,7 +67,7 @@ uses
   Vcl.Menus,
   Vcl.StdCtrls,
   Winapi.Messages,
-  Winapi.Windows, dxLayoutContainer, dxLayoutControl;
+  Winapi.Windows, dxLayoutContainer, dxLayoutControl, dxUIAClasses;
   {$EndRegion Uses}
 type
   {$Region type}
@@ -210,7 +210,8 @@ begin
   end;
   frm_FeiertageAktualisieren.Free;
   dm_pcm.qry_Kalender_Kalender.Refresh;
-  close;
+  if not frm_Feiertage.HasParent then
+    close;
 end;
 procedure Tfrm_Feiertage.btn_FeiertageNewClick(Sender: TObject);
 begin

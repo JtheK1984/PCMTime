@@ -25,10 +25,8 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 72
-    ExplicitTop = 128
-    ExplicitWidth = 300
-    ExplicitHeight = 250
+    ExplicitWidth = 416
+    ExplicitHeight = 442
     object btn_Abort: TcxButton
       Left = 287
       Top = 424

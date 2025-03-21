@@ -28,7 +28,7 @@ uses
   Vcl.StdCtrls,
   Winapi.Messages,
   Winapi.Windows, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
-  dxLayoutContainer, cxClasses, dxLayoutControl;
+  dxLayoutContainer, cxClasses, dxLayoutControl, dxUIAClasses;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -37,8 +37,8 @@ type
     btn_Ok: TcxButton;
     cbx_Month: TcxComboBox;
     cbx_Year: TcxComboBox;
-    dxLayoutControl1Group_Root: TdxLayoutGroup;
-    dxLayoutControl1: TdxLayoutControl;
+    lactrl_DatechooseGroup_Root: TdxLayoutGroup;
+    lactrl_Datechoose: TdxLayoutControl;
     dxLayoutItem1: TdxLayoutItem;
     dxLayoutItem2: TdxLayoutItem;
     dxLayoutItem3: TdxLayoutItem;

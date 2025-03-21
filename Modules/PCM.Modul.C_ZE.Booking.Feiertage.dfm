@@ -23,9 +23,9 @@ object frm_Feiertage: Tfrm_Feiertage
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object grd_Feiertage: TcxGrid
-      Left = 21
+      Left = 25
       Top = 116
-      Width = 1558
+      Width = 1550
       Height = 759
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -181,7 +181,6 @@ object frm_Feiertage: Tfrm_Feiertage
     ImageOptions.LargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 400
     Top = 313

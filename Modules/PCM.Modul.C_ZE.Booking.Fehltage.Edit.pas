@@ -62,7 +62,8 @@ uses
   Vcl.StdCtrls,
   Winapi.Messages,
   Winapi.Windows, dxLayoutContainer, dxLayoutcxEditAdapters,
-  dxLayoutControlAdapters, dxLayoutControl;
+  dxLayoutControlAdapters, dxLayoutControl, dxUIAClasses, dxBarBuiltInMenu,
+  cxGridCustomPopupMenu, cxGridPopupMenu;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -101,6 +102,8 @@ type
     dxLayoutGroup8: TdxLayoutGroup;
     dxLayoutGroup9: TdxLayoutGroup;
     dxLayoutGroup10: TdxLayoutGroup;
+    dxBarLargeButton1: TdxBarLargeButton;
+    cxGridPopupMenu1: TcxGridPopupMenu;
     procedure btn_FTCancelClick(Sender: TObject);
     procedure btn_FTCloseClick(Sender: TObject);
     procedure btn_FTDeleteClick(Sender: TObject);
@@ -134,7 +137,6 @@ procedure Tfrm_Fehltageeintragen.btn_FTCancelClick(Sender: TObject);
 begin
   qry_Ft.Cancel;
   dxLayoutGroup3.Visible:= false;
-  frm_Fehltageeintragen.ClientHeight:= 545;
 end;
 procedure Tfrm_Fehltageeintragen.btn_FTCloseClick(Sender: TObject);
 begin
@@ -163,7 +165,6 @@ end;
 procedure Tfrm_Fehltageeintragen.btn_FTNEwClick(Sender: TObject);
 begin
   dxLayoutGroup3.visible:= true;
-  frm_Fehltageeintragen.ClientHeight:= 758;
   if qry_Ft.State in [dsInsert, dsedit] then
     qry_Ft.Post;
   qry_Ft.Append;
@@ -250,7 +251,8 @@ begin
         iID_Fehltage:= qry_Fehltage.FieldByName('ID').AsInteger;
         qry_Fehltage.Close;
         qry_Fehltage.UnPrepare;
-        qry_Fehltage.SQL.Text:= 'Update time_buchungen Set Fehltag = :Fehltag, ID_Fehltage = :ID Where SollstundenI > 0 and Feiertag <> 1 and Datum >= :Von and Datum <= :Bis';
+        qry_Fehltage.SQL.Text:= 'Update time_buchungen Set Fehltag = :Fehltag, ID_Fehltage = :ID Where Sollstunden <> :Soll and Feiertag <> 1 and Datum >= :Von and Datum <= :Bis';
+        qry_Fehltage.ParamByName('Soll').AsTime:= StrToTime('00:00:00');
         qry_Fehltage.ParamByName('Fehltag').AsString:= sFehltag;
         qry_Fehltage.ParamByName('ID').asInteger:= iID_Fehltage;
         qry_Fehltage.ParamByName('Von').AsDate:= dedt_Von.Date;
@@ -267,7 +269,7 @@ begin
         qry_Fehltage.UnPrepare;
         qry_Fehltage.Free;
         qry_FT.Refresh;
-        frm_Fehltageeintragen.ClientHeight:= 526;
+        dxLayoutGroup3.Visible:= false;
       end;
     end;
   end;
@@ -281,9 +283,12 @@ procedure Tfrm_Fehltageeintragen.FormShow(Sender: TObject);
 var
   qry_Fehltage: TFDQuery;
 begin
-  qry_FT.SQL.Text:= 'Select * From time_Fehltage Where Year(Von) >= :Jahr and Year(Von) <= :Jahr1';
-  qry_FT.ParamByName('Jahr').asInteger:= Yearof (Date) - 1;
-  qry_FT.ParamByName('Jahr1').asInteger:= Yearof(Date) + 1;
+  if frm_Fehltageeintragen.HasParent then
+    btn_FTClose.Visible:= ivnever
+  else
+    btn_FTClose.Visible:= ivAlways;
+  qry_FT.SQL.Text:= 'Select * From time_Fehltage Where Year(Von) = :Jahr';// and Year(Von) <= :Jahr1';
+  qry_FT.ParamByName('Jahr').asInteger:= Yearof (Date);
   qry_FT.Open;
   qry_Fehltage:= TFDQuery.Create(nil);
   qry_Fehltage.Connection:= dm_PCM.con_PCM;

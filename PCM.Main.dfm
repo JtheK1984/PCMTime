@@ -36,6 +36,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
+    ExplicitTop = 30
+    ExplicitHeight = 770
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -57,22 +59,31 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Item = iMitarbeiter
         end
         item
-          Item = iFehltage
+          Item = iFehltag
         end
         item
           Item = iFeiertage
         end>
     end
-    object navbrgrp_Kontake: TdxNavBarGroup
-      Caption = 'Zeiterfassung'
+    object navbrgrp_Bewegungsdaten: TdxNavBarGroup
+      Caption = 'Bewegungsdaten'
       SelectedLinkIndex = -1
       TopVisibleLinkIndex = 0
       Links = <
         item
+          Item = iFehltage
+        end
+        item
           Item = iZeiterfassung
+        end
+        item
+          Item = iBuchungen
+        end
+        item
+          Item = iKalender
         end>
     end
-    object navbr_mainGroup1: TdxNavBarGroup
+    object navbrgrp_Auswertung: TdxNavBarGroup
       Caption = 'Auswertung'
       SelectedLinkIndex = -1
       TopVisibleLinkIndex = 0
@@ -81,7 +92,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Item = iMonatswerte
         end
         item
-          Item = navbr_mainItem3
+          Item = iReports
         end>
     end
     object navbrgrp_Info: TdxNavBarGroup
@@ -118,7 +129,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
         end>
     end
     object iZeiterfassung: TdxNavBarItem
-      Caption = 'Zeiterfassung'
+      Caption = 'Online-Buchung'
       SmallImageIndex = 88
       OnClick = NavBarClick
     end
@@ -177,7 +188,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
       SmallImageIndex = 90
       OnClick = NavBarClick
     end
-    object iFehltage: TdxNavBarItem
+    object iFehltag: TdxNavBarItem
       Caption = 'Fehltage'
       SmallImageIndex = 92
       OnClick = NavBarClick
@@ -187,15 +198,29 @@ object frm_PCM_Main: Tfrm_PCM_Main
       SmallImageIndex = 10
       OnClick = NavBarClick
     end
-    object navbr_mainItem3: TdxNavBarItem
+    object iReports: TdxNavBarItem
       Caption = 'Reports'
       SmallImageIndex = 91
-      Visible = False
       OnClick = NavBarClick
     end
     object iMonatswerte: TdxNavBarItem
       Caption = 'Monatswerte'
       SmallImageIndex = 93
+      OnClick = NavBarClick
+    end
+    object iFehltage: TdxNavBarItem
+      Caption = 'Fehltage'#252'bersicht'
+      SmallImageIndex = 92
+      OnClick = NavBarClick
+    end
+    object iBuchungen: TdxNavBarItem
+      Caption = 'Buchungs'#252'bersicht'
+      SmallImageIndex = 77
+      OnClick = NavBarClick
+    end
+    object iKalender: TdxNavBarItem
+      Caption = 'Kalender'
+      SmallImageIndex = 10
       OnClick = NavBarClick
     end
     object navbrStyleIt_main: TdxNavBarStyleItem
@@ -216,6 +241,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
+    ExplicitTop = 30
+    ExplicitHeight = 770
     Height = 765
     Width = 1080
     object pc_main: TcxPageControl
@@ -238,6 +265,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       Properties.Style = 11
       OnPageChanging = pc_mainPageChanging
+      ExplicitLeft = 2
+      ExplicitTop = 2
+      ExplicitWidth = 1076
+      ExplicitHeight = 766
       ClientRectBottom = 753
       ClientRectLeft = 2
       ClientRectRight = 1068
@@ -245,6 +276,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 79
+        ExplicitTop = 23
+        ExplicitWidth = 1072
+        ExplicitHeight = 741
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
@@ -253,6 +287,145 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+          ExplicitWidth = 1072
+          ExplicitHeight = 741
+          object chartctrl_Birthday: TdxChartControl
+            Left = 10000
+            Top = 10000
+            Width = 1018
+            Height = 246
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            Visible = False
+            object chartctrl_BirthdayChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_BirthdaySeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.DataSource = dm_PCM.ds_ChartGeburtstage
+                DataBinding.ArgumentField.FieldName = 'Monatbes'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.LineLength = 10.000000000000000000
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                ColorSchemeIndex = 0
+              end
+            end
+          end
+          object cxGrid1: TcxGrid
+            Left = 10000
+            Top = 10000
+            Width = 1018
+            Height = 400
+            TabOrder = 3
+            Visible = False
+            object cxGrid1DBTableView1: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              ScrollbarAnnotations.CustomAnnotations = <>
+              DataController.DataSource = dm_PCM.ds_FT
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsData.CancelOnExit = False
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
+              OptionsData.Editing = False
+              OptionsData.Inserting = False
+              OptionsSelection.CellSelect = False
+              OptionsView.GroupByBox = False
+              OptionsView.Indicator = True
+              OptionsView.IndicatorWidth = 16
+              object cxGrid1DBTableView1Datum: TcxGridDBColumn
+                DataBinding.FieldName = 'Datum'
+                Width = 100
+              end
+              object cxGrid1DBTableView1Bezeichnung: TcxGridDBColumn
+                DataBinding.FieldName = 'Bezeichnung'
+                Width = 500
+              end
+            end
+            object cxGrid1Level1: TcxGridLevel
+              GridView = cxGrid1DBTableView1
+            end
+          end
+          object dxChartControl1: TdxChartControl
+            Left = 10000
+            Top = 10000
+            Width = 1018
+            Height = 246
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            Visible = False
+            object dxChartSimpleDiagram1: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object dxChartSimpleSeries1: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.DataSource = dm_PCM.ds_Abw
+                DataBinding.ArgumentField.FieldName = 'Monatbes'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.LineLength = 10.000000000000000000
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                ColorSchemeIndex = 0
+              end
+            end
+          end
+          object cxGrid2: TcxGrid
+            Left = 10000
+            Top = 10000
+            Width = 1018
+            Height = 400
+            TabOrder = 1
+            Visible = False
+            object cxGrid2DBTableView1: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              ScrollbarAnnotations.CustomAnnotations = <>
+              DataController.DataSource = dm_PCM.ds_Fehltag
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsData.CancelOnExit = False
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
+              OptionsData.Editing = False
+              OptionsData.Inserting = False
+              OptionsSelection.CellSelect = False
+              OptionsView.GroupByBox = False
+              OptionsView.Indicator = True
+              OptionsView.IndicatorWidth = 16
+              object cxGrid2DBTableView1Kuerzel: TcxGridDBColumn
+                Caption = 'K'#252'rzel'
+                DataBinding.FieldName = 'Kuerzel'
+                Width = 60
+              end
+              object cxGrid2DBTableView1Beschreibung: TcxGridDBColumn
+                DataBinding.FieldName = 'Beschreibung'
+                Width = 200
+              end
+              object cxGrid2DBTableView1Von: TcxGridDBColumn
+                DataBinding.FieldName = 'Von'
+                Width = 100
+              end
+              object cxGrid2DBTableView1Bis: TcxGridDBColumn
+                DataBinding.FieldName = 'Bis'
+                Width = 100
+              end
+            end
+            object cxGrid2Level1: TcxGridLevel
+              GridView = cxGrid2DBTableView1
+            end
+          end
           object dxLayoutControl1Group_Root: TdxLayoutGroup
             AlignHorz = ahClient
             AlignVert = avClient
@@ -266,7 +439,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'New Group'
-            ItemIndex = 2
+            LayoutDirection = ldTabbed
             ShowBorder = False
             Index = 0
           end
@@ -274,47 +447,653 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Parent = dxLayoutGroup1
             AlignHorz = ahClient
             AlignVert = avClient
-            CaptionOptions.Text = 'Aktuelle Werte:'
+            CaptionOptions.Text = 'Aktuelle Werte'
+            ItemIndex = 3
             Index = 0
-          end
-          object dxLayoutGroup3: TdxLayoutGroup
-            Parent = dxLayoutGroup1
-            AlignHorz = ahClient
-            AlignVert = avClient
-            CaptionOptions.Text = 'New Group'
-            ItemIndex = 1
-            LayoutDirection = ldHorizontal
-            ShowBorder = False
-            Index = 2
           end
           object dxLayoutGroup4: TdxLayoutGroup
-            Parent = dxLayoutGroup3
-            AlignHorz = ahClient
-            AlignVert = avClient
+            Parent = dxLayoutGroup1
             CaptionOptions.Text = 'Fehltage'
-            Index = 0
+            ItemIndex = 1
+            Index = 1
           end
           object dxLayoutGroup5: TdxLayoutGroup
-            Parent = dxLayoutGroup3
+            Parent = dxLayoutGroup1
             AlignHorz = ahClient
-            AlignVert = avClient
+            AlignVert = avTop
             CaptionOptions.Text = 'Feiertage'
             Index = 2
           end
-          object dxLayoutSplitterItem1: TdxLayoutSplitterItem
-            Parent = dxLayoutGroup1
-            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
-            SizeOptions.SizableHorz = False
-            SizeOptions.SizableVert = False
-            CaptionOptions.Text = 'Splitter'
+          object dxLayoutItem1: TdxLayoutItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Item'
+            CaptionOptions.Visible = False
+            Control = dxChartControl1
+            ControlOptions.OriginalHeight = 250
+            ControlOptions.OriginalWidth = 1018
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutItem2: TdxLayoutItem
+            Parent = dxLayoutGroup5
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Item'
+            CaptionOptions.Visible = False
+            Control = chartctrl_Birthday
+            ControlOptions.OriginalHeight = 418
+            ControlOptions.OriginalWidth = 996
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutGroup3: TdxLayoutGroup
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avTop
+            CaptionOptions.Text = '[B]Letzte Buchung[/B]'
+            Index = 2
+          end
+          object dxLayoutGroup6: TdxLayoutGroup
+            Parent = dxLayoutGroup17
+            AlignHorz = ahClient
+            AlignVert = avTop
+            CaptionOptions.Text = 
+              '[B]Stundenwerte                                                 ' +
+              '                    hh:mm         Dezimal[/B]'
+            ItemIndex = 2
+            LayoutDirection = ldHorizontal
+            Index = 0
+          end
+          object lblitm_LastBooking: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup3
+            CaptionOptions.Text = 'Label'
+            Index = 0
+          end
+          object dxLayoutGroup7: TdxLayoutGroup
+            Parent = dxLayoutGroup17
+            CaptionOptions.Text = 
+              '[B]An/Abwesenheitswerte                                         ' +
+              '              Tage           hh:mm[/B]'
+            ItemIndex = 2
+            LayoutDirection = ldHorizontal
             Index = 1
           end
-          object dxLayoutSplitterItem2: TdxLayoutSplitterItem
-            Parent = dxLayoutGroup3
-            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
-            SizeOptions.SizableHorz = False
-            SizeOptions.SizableVert = False
-            CaptionOptions.Text = 'Splitter'
+          object dxLayoutGroup8: TdxLayoutGroup
+            Parent = dxLayoutGroup6
+            AlignHorz = ahLeft
+            AlignVert = avTop
+            CaptionOptions.Text = 'New Group'
+            ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutGroup9: TdxLayoutGroup
+            Parent = dxLayoutGroup6
+            CaptionOptions.Text = 'New Group'
+            Offsets.Left = 16
+            ShowBorder = False
+            Index = 2
+          end
+          object dxLayoutGroup10: TdxLayoutGroup
+            Parent = dxLayoutGroup6
+            CaptionOptions.Text = 'New Group'
+            ShowBorder = False
+            Index = 1
+          end
+          object dxLayoutLabeledItem2: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup8
+            AlignHorz = ahLeft
+            AlignVert = avTop
+            CaptionOptions.Text = 'Gleitzeit'#252'bertrag Vormonat:'
+            CaptionOptions.Width = 270
+            Index = 5
+          end
+          object dxLayoutLabeledItem3: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup8
+            AlignHorz = ahLeft
+            AlignVert = avTop
+            CaptionOptions.Text = 'Minder/Mehrarbeit:'
+            CaptionOptions.Width = 270
+            Index = 4
+          end
+          object dxLayoutLabeledItem4: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup8
+            AlignHorz = ahLeft
+            AlignVert = avTop
+            CaptionOptions.Text = 'Sollstunden:'
+            CaptionOptions.Width = 270
+            Index = 3
+          end
+          object dxLayoutLabeledItem5: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup8
+            AlignHorz = ahLeft
+            AlignVert = avTop
+            CaptionOptions.Text = 'Iststunden netto:'
+            CaptionOptions.Width = 270
+            Index = 2
+          end
+          object dxLayoutLabeledItem6: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup8
+            AlignHorz = ahLeft
+            AlignVert = avTop
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 270
+            Index = 1
+          end
+          object dxLayoutLabeledItem7: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup8
+            AlignHorz = ahLeft
+            AlignVert = avTop
+            CaptionOptions.Text = 'Iststunden brutto:'
+            CaptionOptions.Width = 270
+            Index = 0
+          end
+          object dxLayoutLabeledItem8: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup8
+            AlignHorz = ahLeft
+            AlignVert = avTop
+            CaptionOptions.Text = '[B]Gleitzeit'#252'bertrag Folgemonat:[/B]'
+            CaptionOptions.Width = 270
+            Index = 6
+          end
+          object lbl_T6: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup10
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 5
+          end
+          object lbl_T5: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup10
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 4
+          end
+          object lbl_T2: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup10
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 1
+          end
+          object lbl_D1: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup9
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 0
+          end
+          object lbl_T4: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup10
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 3
+          end
+          object lbl_T1: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup10
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 0
+          end
+          object lbl_T3: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup10
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 2
+          end
+          object lbl_T7: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup10
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 6
+          end
+          object lbl_D4: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup9
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 3
+          end
+          object lbl_D3: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup9
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 2
+          end
+          object lbl_D2: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup9
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 1
+          end
+          object dxLayoutLabeledItem20: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup11
+            CaptionOptions.Text = 'Urlaub genommen:'
+            CaptionOptions.Width = 270
+            Index = 0
+          end
+          object lbl_D7: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup9
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 6
+          end
+          object lbl_D6: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup9
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 5
+          end
+          object lbl_D5: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup9
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 4
+          end
+          object dxLayoutLabeledItem24: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup11
+            CaptionOptions.Text = 'Urlaub geplant:'
+            CaptionOptions.Width = 270
+            Index = 1
+          end
+          object dxLayoutLabeledItem25: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup11
+            CaptionOptions.Text = '[B]Resturlaub:[/B]'
+            CaptionOptions.Width = 270
+            Index = 2
+          end
+          object dxLayoutLabeledItem26: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup11
+            CaptionOptions.Text = 'Urlaub unbezahlt:'
+            CaptionOptions.Width = 270
+            Index = 3
+          end
+          object dxLayoutLabeledItem27: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup11
+            CaptionOptions.Text = 'Feiertage:'
+            CaptionOptions.Width = 270
+            Index = 4
+          end
+          object dxLayoutLabeledItem28: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup11
+            CaptionOptions.Text = 'Krank bezahlt:'
+            CaptionOptions.Width = 270
+            Index = 5
+          end
+          object dxLayoutLabeledItem29: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup11
+            CaptionOptions.Text = 'Krank unbezahlt:'
+            CaptionOptions.Width = 270
+            Index = 6
+          end
+          object dxLayoutLabeledItem30: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup11
+            CaptionOptions.Text = 'B'#252'ro-Tage:'
+            CaptionOptions.Width = 270
+            Index = 7
+          end
+          object dxLayoutLabeledItem31: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup11
+            CaptionOptions.Text = 'HomeOffice-Tage'
+            CaptionOptions.Width = 270
+            Index = 8
+          end
+          object dxLayoutLabeledItem32: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup11
+            CaptionOptions.Text = '[B]Arbeitstage gesamt:[/B]'
+            CaptionOptions.Width = 270
+            Index = 9
+          end
+          object dxLayoutGroup11: TdxLayoutGroup
+            Parent = dxLayoutGroup7
+            CaptionOptions.Text = 'New Group'
+            ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutGroup12: TdxLayoutGroup
+            Parent = dxLayoutGroup7
+            CaptionOptions.Text = 'New Group'
+            ShowBorder = False
+            Index = 1
+          end
+          object lbl_TG1: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup12
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 0
+          end
+          object lbl_TG2: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup12
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 1
+          end
+          object lbl_TG3: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup12
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 2
+          end
+          object lbl_BHOGes: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup12
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 9
+          end
+          object lbl_HO: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup12
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 8
+          end
+          object lbl_ULunb: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup12
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 3
+          end
+          object lbl_Buero: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup12
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 7
+          end
+          object lbl_krunb: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup12
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 6
+          end
+          object lbl_kr: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup12
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 5
+          end
+          object lbl_FTM: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup12
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 4
+          end
+          object dxLayoutGroup13: TdxLayoutGroup
+            Parent = dxLayoutGroup7
+            CaptionOptions.Text = 'New Group'
+            Offsets.Left = 16
+            ShowBorder = False
+            Index = 2
+          end
+          object dxLayoutGroup14: TdxLayoutGroup
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avTop
+            CaptionOptions.Text = '[B]n'#228'chster Feiertag[/B]'
+            Index = 1
+          end
+          object dxLayoutGroup15: TdxLayoutGroup
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avTop
+            CaptionOptions.Text = '[B]n'#228'chste Abwesenheit[/B]'
+            Index = 0
+          end
+          object lblitm_NextAbs: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup15
+            CaptionOptions.Text = 'Label'
+            Index = 0
+          end
+          object lblitm_NextFT: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup14
+            CaptionOptions.Text = 'Label'
+            Index = 0
+          end
+          object lbl_TG2Dez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup13
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 1
+          end
+          object lbl_TG1Dez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup13
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 0
+          end
+          object lbl_TG3Dez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup13
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 2
+          end
+          object lbl_ULunbDez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup13
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 3
+          end
+          object lbl_krDez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup13
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 5
+          end
+          object lbl_FTMDez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup13
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 4
+          end
+          object lbl_BHOGesDez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup13
+            AlignHorz = ahClient
+            AlignVert = avTop
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 9
+          end
+          object lbl_HODez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup13
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 8
+          end
+          object lbl_BueroDez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup13
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 7
+          end
+          object lbl_krunbDez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup13
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 6
+          end
+          object dxLayoutGroup16: TdxLayoutGroup
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avTop
+            CaptionOptions.Text = 'Auswertung'
+            LayoutDirection = ldTabbed
+            ShowBorder = False
+            Index = 3
+          end
+          object dxLayoutGroup17: TdxLayoutGroup
+            Parent = dxLayoutGroup16
+            AlignHorz = ahClient
+            AlignVert = avTop
+            CaptionOptions.Text = '[B]Aktuell[/B]'
+            Index = 0
+          end
+          object dxLayoutGroup18: TdxLayoutGroup
+            Parent = dxLayoutGroup16
+            AlignHorz = ahClient
+            AlignVert = avTop
+            CaptionOptions.Text = '[B]Jahreswerte[/B]'
+            Index = 1
+          end
+          object dxLayoutGroup19: TdxLayoutGroup
+            Parent = dxLayoutGroup18
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 
+              '[B]An/Abwesenheitswerte                                         ' +
+              '              Tage[/B]'
+            ItemIndex = 1
+            LayoutDirection = ldHorizontal
+            Index = 0
+          end
+          object dxLayoutGroup21: TdxLayoutGroup
+            Parent = dxLayoutGroup19
+            CaptionOptions.Text = 'New Group'
+            ItemIndex = 2
+            ShowBorder = False
+            Index = 1
+          end
+          object dxLayoutGroup22: TdxLayoutGroup
+            Parent = dxLayoutGroup19
+            CaptionOptions.Text = 'New Group'
+            ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutLabeledItem1: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup22
+            CaptionOptions.Text = 'Resturlaub Vorjahr:'
+            CaptionOptions.Width = 270
+            Index = 0
+          end
+          object dxLayoutLabeledItem9: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup22
+            CaptionOptions.Text = 'Urlaubstage:'
+            Index = 1
+          end
+          object lblb: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup22
+            CaptionOptions.Text = 'Kranktage:'
+            Index = 2
+          end
+          object dxLayoutLabeledItem11: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup22
+            CaptionOptions.Text = 'Feiertage:'
+            Index = 3
+          end
+          object dxLayoutLabeledItem12: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup22
+            CaptionOptions.Text = 'B'#252'ro-Tage:'
+            Index = 4
+          end
+          object dxLayoutLabeledItem13: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup22
+            CaptionOptions.Text = 'HomeOffice-Tage:'
+            Index = 5
+          end
+          object dxLayoutLabeledItem14: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup22
+            CaptionOptions.Text = '[B]Arbeitstage gesamt:[/B]'
+            Index = 6
+          end
+          object lbl_RulVJ: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup21
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 0
+          end
+          object lbl_OffHomeOffGes: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup21
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 6
+          end
+          object lbl_HomeOffGes: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup21
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 5
+          end
+          object lbl_OfficeGes: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup21
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 4
+          end
+          object lbl_FT: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup21
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 3
+          end
+          object lbl_bezKr: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup21
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 2
+          end
+          object lbl_genULGes: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup21
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            CaptionOptions.Width = 50
+            Index = 1
+          end
+          object dxLayoutItem3: TdxLayoutItem
+            Parent = dxLayoutGroup5
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'New Item'
+            CaptionOptions.Visible = False
+            Control = cxGrid1
+            ControlOptions.OriginalHeight = 400
+            ControlOptions.OriginalWidth = 250
+            ControlOptions.ShowBorder = False
+            Index = 1
+          end
+          object dxLayoutItem4: TdxLayoutItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'New Item'
+            CaptionOptions.Visible = False
+            Control = cxGrid2
+            ControlOptions.OriginalHeight = 400
+            ControlOptions.OriginalWidth = 577
+            ControlOptions.ShowBorder = False
             Index = 1
           end
         end
@@ -323,11 +1102,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
   end
   object loc_Lang: TcxLocalizer
     FileName = '.\cxLocalLang.ini'
-    Left = 272
-    Top = 232
+    Left = 288
+    Top = 104
   end
   object lafCtrl_Main: TcxLookAndFeelController
     Kind = lfFlat
+    NativeStyle = False
     ScrollbarMode = sbmClassic
     ScrollMode = scmClassic
     SkinName = 'DevExpressDarkStyle'
@@ -4106,7 +4886,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     MenusShowRecentItemsFirst = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 472
     Top = 192

@@ -69,7 +69,7 @@ uses
   system.UITypes,
   SysUtils,
   Windows, dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
-  dxLayoutControl;
+  dxLayoutControl, dxUIAClasses;
   {$EndRegion uses}
 type
   {$Region type}

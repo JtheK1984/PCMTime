@@ -34,7 +34,7 @@ uses
   Variants,
   Vcl.ComCtrls,
   Windows, dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
-  cxClasses, dxLayoutControl;
+  cxClasses, dxLayoutControl, dxUIAClasses;
   {$EndRegion Uses}
 type
   {$Region Type}
