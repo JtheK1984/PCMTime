@@ -11,12 +11,6 @@ uses
 
 type
   TSplashScreen = class(TForm)
-    ActivityIndicator: TdxActivityIndicator;
-    grpbx_Design: TcxGroupBox;
-    img_Splash: TImage;
-    lbl_Progname: TcxLabel;
-    lbl_ProgVersion: TcxLabel;
-    prgbr_Splash: TcxProgressBar;
     Timer1: TTimer;
     Timer2: TTimer;
     Timer3: TTimer;
@@ -24,6 +18,12 @@ type
     Timer5: TTimer;
     Timer6: TTimer;
     Timer11: TTimer;
+    Panel1: TPanel;
+    img_Splash: TImage;
+    ActivityIndicator: TdxActivityIndicator;
+    lbl_Progname: TcxLabel;
+    lbl_ProgVersion: TcxLabel;
+    prgbr_Splash: TcxProgressBar;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
