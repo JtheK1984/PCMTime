@@ -106,6 +106,9 @@ type
     lagrp_FTEditRow1: TdxLayoutGroup;
     lagrp_FTEditRow3: TdxLayoutGroup;
     lagrp_FTEditRow2: TdxLayoutGroup;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    imgcmbbx_FTSollAbzug: TcxDBImageComboBox;
     procedure btn_FTCancelClick(Sender: TObject);
     procedure btn_FTCloseClick(Sender: TObject);
     procedure btn_FTDeleteClick(Sender: TObject);

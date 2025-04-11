@@ -7,6 +7,7 @@ interface
 {$Region Deklaration}
 // Functions
 function GetBuchungsart(ATyp: integer; AVon,ABis: TDate) : integer;
+function GetFehltagSumKik(AFeiertag, ATyp, ABezahlt, ASoll: integer;AVon,ABis:TDate) : double;
 function GetFehltagSum(AFeiertag, ATyp, ABezahlt: integer;AVon,ABis:TDate) : double;
 function GetFehltagTage(AID_Fehltage: integer) : double;
 function GetFeiertage(AVon,ABis: TDate): double;
@@ -81,6 +82,32 @@ begin
   qry_BA.UnPrepare;
   qry_BA.free;
 end;
+function GetFehltagSumKik(AFeiertag, ATyp, ABezahlt,ASoll: integer;AVon,ABis:TDate) : double;
+var
+  qry_FT: TFDQuery;
+begin
+  qry_FT:= TFDQuery.Create(nil);
+  qry_FT.Connection:= dm_PCM.con_PCM;
+  qry_FT.SQL.Text:=  'SELECT Count(*) as Anzahl ' +
+                     'FROM time_buchungen zeb ' +
+                     'LEFT OUTER JOIN time_user zeu ON ID_Zeiterfasser = :ID ' +
+                     'LEFT OUTER JOIN time_Fehltag zeft ON zeft.Kuerzel = zeb.Fehltag ' +
+                     'WHERE  zeb.Feiertag <> :Feiertag and zeb.Datum >= :Von and zeb.Datum <= :Bis AND zeft.Typ = :Typ AND zeft.Bezahlt = :Bezahlt AND zeft.SollAbziehen = :Soll';
+  qry_FT.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  qry_FT.ParamByName('Von').asDate:= AVon;
+  qry_FT.ParamByName('Bis').asDate:= ABis;
+  qry_FT.ParamByName('Feiertag').AsInteger:= AFeiertag;
+  qry_FT.ParamByName('Typ').AsInteger:= ATyp;
+  qry_FT.ParamByName('Bezahlt').AsInteger:= ABezahlt;
+  qry_FT.ParamByName('Soll').AsInteger:= ASoll;
+  qry_FT.Prepare;
+  qry_FT.open;
+  result:= qry_FT.FieldByName('Anzahl').AsFloat;
+  qry_FT.close;
+  qry_FT.UnPrepare;
+  qry_FT.free;
+end;
+
 function GetFehltagSum(AFeiertag, ATyp, ABezahlt: integer;AVon,ABis:TDate) : double;
 var
   qry_FT: TFDQuery;
@@ -355,6 +382,10 @@ begin
       iSollstunden:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
       if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
         iFehltag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+
+      if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 0) and  (dm_pcm.qry_Calc.FieldByName('SollAbziehen').AsInteger = 1))  then
+        iSollstunden:= 0;
+
       if  ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 2)) then
         iFehltag:= Round(MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
       if (dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger = 2) then

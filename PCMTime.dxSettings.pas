@@ -38,7 +38,7 @@ implementation
 procedure LoadToRoot(ARoot: TcxRootLookAndFeel);
 begin
   ARoot.Kind := lfUltraFlat;
-  ARoot.NativeStyle := False;
+  ARoot.NativeStyle := True;
   ARoot.ScrollbarMode := sbmDefault;
   ARoot.ScrollMode := scmDefault;
   ARoot.SkinName := '';

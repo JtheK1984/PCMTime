@@ -22,8 +22,8 @@ object frm_monatswerte: Tfrm_monatswerte
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object lbl_D6: TcxLabel
-      Left = 278
-      Top = 297
+      Left = 273
+      Top = 267
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -36,8 +36,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_D3: TcxLabel
-      Left = 278
-      Top = 219
+      Left = 273
+      Top = 189
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -50,8 +50,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_D4: TcxLabel
-      Left = 278
-      Top = 245
+      Left = 273
+      Top = 215
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -64,8 +64,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_D5: TcxLabel
-      Left = 278
-      Top = 271
+      Left = 273
+      Top = 241
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -78,8 +78,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_D7: TcxLabel
-      Left = 278
-      Top = 323
+      Left = 273
+      Top = 293
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -99,8 +99,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_TG1: TcxLabel
-      Left = 215
-      Top = 396
+      Left = 210
+      Top = 346
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,0'
@@ -113,8 +113,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_TG2: TcxLabel
-      Left = 215
-      Top = 422
+      Left = 210
+      Top = 372
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '2'
@@ -127,8 +127,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_TG1Dez: TcxLabel
-      Left = 278
-      Top = 396
+      Left = 273
+      Top = 346
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -141,8 +141,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_TG2Dez: TcxLabel
-      Left = 278
-      Top = 422
+      Left = 273
+      Top = 372
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -155,8 +155,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_TG3Dez: TcxLabel
-      Left = 278
-      Top = 448
+      Left = 273
+      Top = 398
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -176,8 +176,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_FTM: TcxLabel
-      Left = 215
-      Top = 500
+      Left = 210
+      Top = 450
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,0'
@@ -190,8 +190,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_FTMDez: TcxLabel
-      Left = 278
-      Top = 500
+      Left = 273
+      Top = 450
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -204,8 +204,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_ULunb: TcxLabel
-      Left = 215
-      Top = 474
+      Left = 210
+      Top = 424
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,0'
@@ -218,8 +218,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_ULunbDez: TcxLabel
-      Left = 278
-      Top = 474
+      Left = 273
+      Top = 424
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -232,22 +232,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_kr: TcxLabel
-      Left = 215
-      Top = 526
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '5'
-      ParentBiDiMode = False
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 38
-      Transparent = True
-      Height = 19
-      Width = 56
-    end
-    object lbl_krunb: TcxLabel
-      Left = 215
-      Top = 552
+      Left = 210
+      Top = 502
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '5'
@@ -259,37 +245,9 @@ object frm_monatswerte: Tfrm_monatswerte
       Height = 19
       Width = 56
     end
-    object lbl_krunbdez: TcxLabel
-      Left = 278
-      Top = 552
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '00:00'
-      ParentBiDiMode = False
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 41
-      Transparent = True
-      Height = 19
-      Width = 56
-    end
-    object lbl_krDez: TcxLabel
-      Left = 278
-      Top = 526
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '00:00'
-      ParentBiDiMode = False
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 39
-      Transparent = True
-      Height = 19
-      Width = 56
-    end
-    object lbl_Buero: TcxLabel
-      Left = 215
-      Top = 578
+    object lbl_krunb: TcxLabel
+      Left = 210
+      Top = 528
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '5'
@@ -301,23 +259,9 @@ object frm_monatswerte: Tfrm_monatswerte
       Height = 19
       Width = 56
     end
-    object lbl_HO: TcxLabel
-      Left = 215
-      Top = 604
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '5'
-      ParentBiDiMode = False
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 44
-      Transparent = True
-      Height = 19
-      Width = 56
-    end
-    object lbl_BueroDez: TcxLabel
-      Left = 278
-      Top = 578
+    object lbl_krunbdez: TcxLabel
+      Left = 273
+      Top = 528
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -329,9 +273,65 @@ object frm_monatswerte: Tfrm_monatswerte
       Height = 19
       Width = 56
     end
+    object lbl_krDez: TcxLabel
+      Left = 273
+      Top = 502
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 41
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_Buero: TcxLabel
+      Left = 210
+      Top = 554
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '5'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 44
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_HO: TcxLabel
+      Left = 210
+      Top = 580
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '5'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 46
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_BueroDez: TcxLabel
+      Left = 273
+      Top = 554
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 45
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
     object lbl_BHOGes: TcxLabel
-      Left = 215
-      Top = 630
+      Left = 210
+      Top = 606
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '5'
@@ -345,28 +345,28 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 46
+      TabOrder = 48
       Transparent = True
       Height = 19
       Width = 56
     end
     object lbl_HODez: TcxLabel
-      Left = 278
-      Top = 604
+      Left = 273
+      Top = 580
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 45
+      TabOrder = 47
       Transparent = True
       Height = 19
       Width = 56
     end
     object lbl_BHOGesDez: TcxLabel
-      Left = 278
-      Top = 630
+      Left = 273
+      Top = 606
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -380,14 +380,14 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 47
+      TabOrder = 49
       Transparent = True
       Height = 19
       Width = 56
     end
     object lbl_TG3: TcxLabel
-      Left = 215
-      Top = 448
+      Left = 210
+      Top = 398
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '5'
@@ -407,16 +407,16 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object dxBarDockControl1: TdxBarDockControl
-      Left = 193
-      Top = 44
+      Left = 190
+      Top = 51
       Width = 317
       Height = 42
       Align = dalNone
       BarManager = brmgr_MW
     end
     object AuswertungsJahr: TcxSpinEdit
-      Left = 510
-      Top = 44
+      Left = 507
+      Top = 51
       ParentFont = False
       Properties.MinValue = 2.000000000000000000
       Properties.UseCtrlIncrement = True
@@ -429,8 +429,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 53
     end
     object lbl_RulVJ: TcxLabel
-      Left = 694
-      Top = 40
+      Left = 685
+      Top = 47
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '1'
@@ -450,8 +450,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_genULGes: TcxLabel
-      Left = 694
-      Top = 59
+      Left = 685
+      Top = 66
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '1'
@@ -471,8 +471,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_geplULGes: TcxLabel
-      Left = 857
-      Top = 40
+      Left = 848
+      Top = 47
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '1'
@@ -492,8 +492,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_VerfUL: TcxLabel
-      Left = 857
-      Top = 59
+      Left = 848
+      Top = 66
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '1'
@@ -513,8 +513,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_bezKr: TcxLabel
-      Left = 1143
-      Top = 40
+      Left = 1134
+      Top = 47
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '1'
@@ -534,8 +534,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_unbKr: TcxLabel
-      Left = 1143
-      Top = 59
+      Left = 1134
+      Top = 66
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '1'
@@ -555,8 +555,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_HomeOffGes: TcxLabel
-      Left = 1286
-      Top = 59
+      Left = 1277
+      Top = 66
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '1'
@@ -576,8 +576,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_OfficeGes: TcxLabel
-      Left = 1286
-      Top = 40
+      Left = 1277
+      Top = 47
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '1'
@@ -597,8 +597,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_FT: TcxLabel
-      Left = 1000
-      Top = 59
+      Left = 991
+      Top = 66
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '1'
@@ -618,8 +618,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_unbUL: TcxLabel
-      Left = 1000
-      Top = 40
+      Left = 991
+      Top = 47
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '1'
@@ -639,7 +639,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object cxButton1: TcxButton
-      Left = 1322
+      Left = 1310
       Top = 12
       Width = 100
       Height = 61
@@ -651,7 +651,7 @@ object frm_monatswerte: Tfrm_monatswerte
       OnClick = cxButton1Click
     end
     object cxButton2: TcxButton
-      Left = 1429
+      Left = 1417
       Top = 12
       Width = 99
       Height = 61
@@ -664,8 +664,8 @@ object frm_monatswerte: Tfrm_monatswerte
       TabOrder = 13
     end
     object lbl_T2: TcxLabel
-      Left = 215
-      Top = 193
+      Left = 210
+      Top = 163
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -678,8 +678,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_T6: TcxLabel
-      Left = 215
-      Top = 297
+      Left = 210
+      Top = 267
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -692,8 +692,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_T7: TcxLabel
-      Left = 215
-      Top = 323
+      Left = 210
+      Top = 293
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -713,8 +713,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_T1: TcxLabel
-      Left = 215
-      Top = 167
+      Left = 210
+      Top = 137
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -727,8 +727,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_T3: TcxLabel
-      Left = 215
-      Top = 219
+      Left = 210
+      Top = 189
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -741,8 +741,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_D2: TcxLabel
-      Left = 278
-      Top = 193
+      Left = 273
+      Top = 163
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -755,8 +755,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_D1: TcxLabel
-      Left = 278
-      Top = 167
+      Left = 273
+      Top = 137
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -769,8 +769,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_T4: TcxLabel
-      Left = 215
-      Top = 245
+      Left = 210
+      Top = 215
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -783,8 +783,8 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object lbl_T5: TcxLabel
-      Left = 215
-      Top = 271
+      Left = 210
+      Top = 241
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -797,12 +797,12 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object grd_Tag: TcxGrid
-      Left = 373
-      Top = 133
-      Width = 1252
-      Height = 742
+      Left = 359
+      Top = 120
+      Width = 1269
+      Height = 758
       BorderStyle = cxcbsNone
-      TabOrder = 48
+      TabOrder = 50
       LookAndFeel.NativeStyle = False
       object grd_TagDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -1105,6 +1105,34 @@ object frm_monatswerte: Tfrm_monatswerte
         Options.DetailFrameWidth = 4
       end
     end
+    object lbl_KikTag: TcxLabel
+      Left = 210
+      Top = 476
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '0,0'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 38
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
+    object lbl_KikDez: TcxLabel
+      Left = 273
+      Top = 476
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '00:00'
+      ParentBiDiMode = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 39
+      Transparent = True
+      Height = 19
+      Width = 56
+    end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
@@ -1117,6 +1145,7 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -1255,7 +1284,7 @@ object frm_monatswerte: Tfrm_monatswerte
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = AuswertungsJahr
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 53
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1512,6 +1541,7 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignVert = avClient
       CaptionOptions.Text = 'Monatswerte:'
       LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+      ItemIndex = 1
       Index = 0
     end
     object dxLayoutGroup17: TdxLayoutGroup
@@ -1836,6 +1866,7 @@ object frm_monatswerte: Tfrm_monatswerte
       CaptionOptions.Text = 
         '[B]Abwesenheitswerte                                Tage       h' +
         'h:mm[/B]'
+      ItemIndex = 5
       Index = 1
     end
     object dxLayoutGroup21: TdxLayoutGroup
@@ -1976,7 +2007,7 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 2
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 4
@@ -1986,10 +2017,9 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 5
+      Index = 6
     end
     object dxLayoutGroup33: TdxLayoutGroup
       Parent = dxLayoutGroup18
@@ -1998,7 +2028,7 @@ object frm_monatswerte: Tfrm_monatswerte
       CaptionOptions.Text = 'New Group'
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 6
+      Index = 7
     end
     object dxLayoutGroup34: TdxLayoutGroup
       Parent = dxLayoutGroup18
@@ -2007,7 +2037,7 @@ object frm_monatswerte: Tfrm_monatswerte
       CaptionOptions.Text = 'New Group'
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 7
+      Index = 8
     end
     object dxLayoutGroup36: TdxLayoutGroup
       Parent = dxLayoutGroup18
@@ -2017,7 +2047,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ItemIndex = 2
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 8
+      Index = 9
     end
     object dxLayoutGroup37: TdxLayoutGroup
       Parent = dxLayoutGroup18
@@ -2027,7 +2057,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ItemIndex = 2
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 9
+      Index = 10
     end
     object dxLayoutLabeledItem25: TdxLayoutLabeledItem
       Parent = dxLayoutGroup33
@@ -2359,6 +2389,45 @@ object frm_monatswerte: Tfrm_monatswerte
       ShowBorder = False
       Index = 2
     end
+    object dxLayoutGroup40: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 5
+    end
+    object dxLayoutLabeledItem4: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup40
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Krank Kind'
+      Index = 0
+    end
+    object dxLayoutItem50: TdxLayoutItem
+      Parent = dxLayoutGroup40
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_KikDez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem51: TdxLayoutItem
+      Parent = dxLayoutGroup40
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lbl_KikTag
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
   end
   object brmgr_MW: TdxBarManager
     AllowReset = False
@@ -2380,6 +2449,7 @@ object frm_monatswerte: Tfrm_monatswerte
     ImageOptions.LargeImages = imglst_16x16
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseFullReset = True
     UseSystemFont = True
     Left = 472

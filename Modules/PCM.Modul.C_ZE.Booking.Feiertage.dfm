@@ -23,10 +23,10 @@ object frm_Feiertage: Tfrm_Feiertage
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object grd_Feiertage: TcxGrid
-      Left = 25
-      Top = 116
-      Width = 1550
-      Height = 759
+      Left = 22
+      Top = 94
+      Width = 1556
+      Height = 784
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -110,7 +110,7 @@ object frm_Feiertage: Tfrm_Feiertage
       Left = 12
       Top = 12
       Width = 1576
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Feiertage
     end
@@ -129,7 +129,7 @@ object frm_Feiertage: Tfrm_Feiertage
       CaptionOptions.Visible = False
       Control = brdckCtrl_Feiertage
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1600
       ControlOptions.ShowBorder = False
       Index = 0
@@ -181,6 +181,7 @@ object frm_Feiertage: Tfrm_Feiertage
     ImageOptions.LargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 400
     Top = 313

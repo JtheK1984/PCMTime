@@ -16,9 +16,9 @@ object frm_Userze: Tfrm_Userze
   TextHeight = 15
   object lactrl_Main: TdxLayoutControl
     Left = 0
-    Top = 63
+    Top = 58
     Width = 1600
-    Height = 837
+    Height = 842
     Margins.Left = 0
     Margins.Top = 0
     Margins.Right = 0
@@ -27,8 +27,8 @@ object frm_Userze: Tfrm_Userze
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitTop = 51
-    ExplicitHeight = 849
+    ExplicitWidth = 1594
+    ExplicitHeight = 825
     object tedt_Sollstunden: TcxDBTimeEdit
       Left = 10000
       Top = 10000
@@ -219,8 +219,8 @@ object frm_Userze: Tfrm_Userze
       Width = 1021
     end
     object cmbbx_KontaktSucheArt: TcxComboBox
-      Left = 106
-      Top = 139
+      Left = 97
+      Top = 115
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -235,8 +235,8 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheAbteilung: TcxTextEdit
-      Left = 814
-      Top = 113
+      Left = 805
+      Top = 89
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -253,8 +253,8 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheFirma: TcxTextEdit
-      Left = 814
-      Top = 87
+      Left = 805
+      Top = 63
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -271,8 +271,8 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheFunktion: TcxTextEdit
-      Left = 814
-      Top = 139
+      Left = 805
+      Top = 115
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -287,8 +287,8 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheNachname: TcxTextEdit
-      Left = 106
-      Top = 87
+      Left = 97
+      Top = 63
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -312,8 +312,8 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheOrt: TcxTextEdit
-      Left = 464
-      Top = 139
+      Left = 455
+      Top = 115
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -328,8 +328,8 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSuchePLZ: TcxTextEdit
-      Left = 464
-      Top = 113
+      Left = 455
+      Top = 89
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -344,8 +344,8 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheStrasse: TcxTextEdit
-      Left = 464
-      Top = 87
+      Left = 455
+      Top = 63
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -362,8 +362,8 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheVorname: TcxTextEdit
-      Left = 106
-      Top = 113
+      Left = 97
+      Top = 89
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1013,10 +1013,10 @@ object frm_Userze: Tfrm_Userze
       OnClick = btn_Mail2PrivateClick
     end
     object grd_Suche: TcxGrid
-      Left = 26
-      Top = 212
-      Width = 1544
-      Height = 595
+      Left = 20
+      Top = 185
+      Width = 1560
+      Height = 637
       BevelInner = bvNone
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -1317,8 +1317,8 @@ object frm_Userze: Tfrm_Userze
       end
     end
     object btn_ClearFilter: TcxButton
-      Left = 170
-      Top = 178
+      Left = 164
+      Top = 151
       Width = 137
       Height = 27
       Caption = 'Filter l'#246'schen'
@@ -1334,8 +1334,8 @@ object frm_Userze: Tfrm_Userze
       OnClick = btn_ClearFilterClick
     end
     object btn_kontaktsuchen: TcxButton
-      Left = 26
-      Top = 178
+      Left = 20
+      Top = 151
       Width = 137
       Height = 27
       Caption = 'Mitarbeiter suchen'
@@ -2823,6 +2823,7 @@ object frm_Userze: Tfrm_Userze
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 112
     Top = 488
@@ -2830,7 +2831,7 @@ object frm_Userze: Tfrm_Userze
     DockControlHeights = (
       0
       0
-      63
+      58
       0)
     object tb_Contacts: TdxBar
       Caption = 'tb_Contacts'

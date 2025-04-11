@@ -28,39 +28,39 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       Left = 12
       Top = 477
       Width = 439
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Fehltage
     end
     object dedt_Von: TcxDateEdit
-      Left = 25
-      Top = 581
+      Left = 22
+      Top = 580
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 413
+      Width = 419
     end
     object dedt_Bis: TcxDateEdit
-      Left = 25
-      Top = 630
+      Left = 22
+      Top = 629
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Width = 413
+      Width = 419
     end
     object cmbbx_Fehltage: TcxComboBox
-      Left = 25
-      Top = 679
+      Left = 22
+      Top = 678
       Properties.DropDownListStyle = lsEditFixedList
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
-      Width = 413
+      Width = 419
     end
     object btn_FTSave: TcxButton
-      Left = 25
-      Top = 707
-      Width = 203
+      Left = 22
+      Top = 706
+      Width = 206
       Height = 25
       Caption = 'Speichern'
       OptionsImage.ImageIndex = 56
@@ -76,8 +76,8 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
     end
     object btn_FTCancel: TcxButton
       Left = 235
-      Top = 707
-      Width = 203
+      Top = 706
+      Width = 206
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
@@ -171,7 +171,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       CaptionOptions.Visible = False
       Control = brdckCtrl_Fehltage
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 474
       ControlOptions.ShowBorder = False
       Index = 0
@@ -290,6 +290,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 200
     Top = 352

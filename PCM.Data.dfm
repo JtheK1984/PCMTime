@@ -8,11 +8,12 @@ object dm_PCM: Tdm_PCM
       'Database=pcm'
       'User_Name=root'
       'Password=pcm'
-      'Server=127.0.0.1'
+      'Server=pcm-dev'
       'Port=3307'
       'DriverID=MySQL')
     ResourceOptions.AssignedValues = [rvAutoReconnect]
     ResourceOptions.AutoReconnect = True
+    Connected = True
     LoginPrompt = False
     BeforeConnect = con_PCMBeforeConnect
     Left = 612
@@ -22314,20 +22315,30 @@ object dm_PCM: Tdm_PCM
   end
   object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
     object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
-      PixelsPerInch = 96
+      Offsets.ControlOffsetHorz = 5
+      Offsets.ControlOffsetVert = 5
+      Offsets.ItemOffset = 6
+      Offsets.RootItemsAreaOffsetHorz = 11
+      Offsets.RootItemsAreaOffsetVert = 11
+      PixelsPerInch = 144
     end
     object dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel
       Offsets.ControlOffsetHorz = 0
       Offsets.ControlOffsetVert = 0
       Offsets.ItemOffset = 0
-      Offsets.ItemsAreaOffsetHorz = -4
-      Offsets.ItemsAreaOffsetVert = -4
+      Offsets.ItemsAreaOffsetHorz = -6
+      Offsets.ItemsAreaOffsetVert = -6
       Offsets.RootItemsAreaOffsetHorz = 0
       Offsets.RootItemsAreaOffsetVert = 0
-      PixelsPerInch = 96
+      PixelsPerInch = 144
     end
     object dxLayoutSkinLookAndFeel3: TdxLayoutSkinLookAndFeel
-      PixelsPerInch = 96
+      Offsets.ControlOffsetHorz = 5
+      Offsets.ControlOffsetVert = 5
+      Offsets.ItemOffset = 6
+      Offsets.RootItemsAreaOffsetHorz = 11
+      Offsets.RootItemsAreaOffsetVert = 11
+      PixelsPerInch = 144
     end
   end
   object imglst_32x32_1: TcxImageList

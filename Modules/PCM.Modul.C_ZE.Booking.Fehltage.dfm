@@ -28,14 +28,14 @@ object frm_Fehltage: Tfrm_Fehltage
       Left = 12
       Top = 12
       Width = 1576
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
     end
     object grd_Feiertage: TcxGrid
-      Left = 25
-      Top = 200
-      Width = 1550
+      Left = 22
+      Top = 178
+      Width = 1556
       Height = 651
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -44,7 +44,7 @@ object frm_Fehltage: Tfrm_Fehltage
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 9
       TabStop = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Feiertage: TcxGridDBTableView
@@ -84,18 +84,15 @@ object frm_Fehltage: Tfrm_Fehltage
         object grdDBTblViewCol_FeiertageKuerzel: TcxGridDBColumn
           Caption = 'K'#252'rzel'
           DataBinding.FieldName = 'Kuerzel'
-          DataBinding.IsNullValueType = True
           Width = 100
         end
         object grdDBTblViewCol_FeiertageBeschreibung: TcxGridDBColumn
           DataBinding.FieldName = 'Beschreibung'
-          DataBinding.IsNullValueType = True
           Width = 300
         end
         object grdDBTblViewCol_FeiertageTyp: TcxGridDBColumn
           Caption = 'Fehltagstyp'
           DataBinding.FieldName = 'Typ'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxImageComboBoxProperties'
           Properties.Alignment.Horz = taLeftJustify
           Properties.Items = <
@@ -125,7 +122,6 @@ object frm_Fehltage: Tfrm_Fehltage
         object grdDBTblViewCol_FeiertageFaktor: TcxGridDBColumn
           Caption = 'Gutschrift'
           DataBinding.FieldName = 'Faktor'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxImageComboBoxProperties'
           Properties.Alignment.Horz = taLeftJustify
           Properties.Items = <
@@ -147,7 +143,6 @@ object frm_Fehltage: Tfrm_Fehltage
         object grdDBTblViewCol_FeiertageBezahlt: TcxGridDBColumn
           Caption = 'Sollstunden'
           DataBinding.FieldName = 'Bezahlt'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxImageComboBoxProperties'
           Properties.Items = <
             item
@@ -164,7 +159,6 @@ object frm_Fehltage: Tfrm_Fehltage
         object grdDBTblViewCol_FeiertageColor: TcxGridDBColumn
           Caption = 'Termin'
           DataBinding.FieldName = 'Color'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxColorComboBoxProperties'
           Properties.ColorBoxWidth = 66
           Properties.CustomColors = <>
@@ -174,7 +168,6 @@ object frm_Fehltage: Tfrm_Fehltage
         object grdDBTblViewCol_FeiertageColorFont: TcxGridDBColumn
           Caption = 'Schrift'
           DataBinding.FieldName = 'ColorFont'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxColorComboBoxProperties'
           Properties.ColorBoxWidth = 66
           Properties.CustomColors = <>
@@ -188,29 +181,29 @@ object frm_Fehltage: Tfrm_Fehltage
     end
     object edt_FTKuerzel: TcxDBTextEdit
       AlignWithMargins = True
-      Left = 110
-      Top = 116
+      Left = 107
+      Top = 94
       DataBinding.DataField = 'Kuerzel'
       DataBinding.DataSource = ds_FT
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 687
+      Width = 690
     end
     object edt_FTDesc: TcxDBTextEdit
       AlignWithMargins = True
       Left = 889
-      Top = 116
+      Top = 94
       DataBinding.DataField = 'Beschreibung'
       DataBinding.DataSource = ds_FT
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 686
+      Width = 689
     end
     object imgcmbbx_FTSoll: TcxDBImageComboBox
-      Left = 1139
-      Top = 144
+      Left = 937
+      Top = 122
       DataBinding.DataField = 'Bezahlt'
       DataBinding.DataSource = ds_FT
       Properties.Items = <
@@ -226,11 +219,11 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 5
-      Width = 436
+      Width = 338
     end
     object imgcmbbx_FTGutschrift: TcxDBImageComboBox
-      Left = 625
-      Top = 144
+      Left = 520
+      Top = 122
       DataBinding.DataField = 'Faktor'
       DataBinding.DataSource = ds_FT
       Properties.Alignment.Horz = taLeftJustify
@@ -251,11 +244,11 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
-      Width = 436
+      Width = 339
     end
     object imgcmbbx_FTTyp: TcxDBImageComboBox
-      Left = 110
-      Top = 144
+      Left = 107
+      Top = 122
       DataBinding.DataField = 'Typ'
       DataBinding.DataSource = ds_FT
       Properties.Alignment.Horz = taLeftJustify
@@ -284,11 +277,11 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Width = 447
+      Width = 345
     end
     object colcmbbx_FTEvent: TcxDBColorComboBox
-      Left = 110
-      Top = 172
+      Left = 107
+      Top = 150
       DataBinding.DataField = 'Color'
       DataBinding.DataSource = ds_FT
       Properties.AllowSelectColor = True
@@ -298,12 +291,12 @@ object frm_Fehltage: Tfrm_Fehltage
       Properties.NamingConvention = cxncHTML4
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 6
-      Width = 700
+      TabOrder = 7
+      Width = 703
     end
     object colcmbbx_FTFont: TcxDBColorComboBox
       Left = 892
-      Top = 172
+      Top = 150
       DataBinding.DataField = 'ColorFont'
       DataBinding.DataSource = ds_FT
       Properties.AllowSelectColor = True
@@ -312,8 +305,28 @@ object frm_Fehltage: Tfrm_Fehltage
       Properties.NamingConvention = cxncHTML4
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 7
-      Width = 683
+      TabOrder = 8
+      Width = 686
+    end
+    object imgcmbbx_FTSollAbzug: TcxDBImageComboBox
+      Left = 1378
+      Top = 122
+      DataBinding.DataField = 'SollAbziehen'
+      DataBinding.DataSource = ds_FT
+      Properties.Items = <
+        item
+          Description = 'nicht Abziehen'
+          ImageIndex = 0
+          Value = 0
+        end
+        item
+          Description = 'Abziehen'
+          Value = 1
+        end>
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 6
+      Width = 200
     end
     object lagrp_FTRoot: TdxLayoutGroup
       AlignHorz = ahClient
@@ -330,7 +343,7 @@ object frm_Fehltage: Tfrm_Fehltage
       CaptionOptions.Visible = False
       Control = brdckCtrl_FT
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1600
       ControlOptions.ShowBorder = False
       Index = 0
@@ -443,7 +456,7 @@ object frm_Fehltage: Tfrm_Fehltage
     object lagrp_FTEdit: TdxLayoutGroup
       Parent = lagrp_FTDetail
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 2
+      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -471,12 +484,27 @@ object frm_Fehltage: Tfrm_Fehltage
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 3
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
     end
+    object dxLayoutGroup1: TdxLayoutGroup
+      CaptionOptions.Text = 'New Group'
+      Index = -1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = lagrp_FTEditRow2
+      CaptionOptions.Text = 'Sollzeit abziehen:'
+      Control = imgcmbbx_FTSollAbzug
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 200
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
   end
   object qry_FT1: TFDQuery
+    Active = True
     Connection = dm_PCM.con_PCM
     SQL.Strings = (
       'SELECT *'
@@ -508,6 +536,7 @@ object frm_Fehltage: Tfrm_Fehltage
     ImageOptions.LargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 400
     Top = 313

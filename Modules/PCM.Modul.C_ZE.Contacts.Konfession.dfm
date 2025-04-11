@@ -26,9 +26,9 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object grd_Konfession: TcxGrid
       Left = 12
-      Top = 82
+      Top = 77
       Width = 492
-      Height = 149
+      Height = 154
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -86,7 +86,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
       Left = 12
       Top = 12
       Width = 492
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Konfession
     end
@@ -127,7 +127,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 516
       ControlOptions.ShowBorder = False
       Index = 0
@@ -150,6 +150,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 288
     Top = 120

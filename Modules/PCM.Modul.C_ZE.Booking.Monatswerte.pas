@@ -304,6 +304,12 @@ type
     dxLayoutGroup35: TdxLayoutGroup;
     dxLayoutGroup38: TdxLayoutGroup;
     dxLayoutGroup39: TdxLayoutGroup;
+    dxLayoutGroup40: TdxLayoutGroup;
+    dxLayoutLabeledItem4: TdxLayoutLabeledItem;
+    dxLayoutItem50: TdxLayoutItem;
+    dxLayoutItem51: TdxLayoutItem;
+    lbl_KikTag: TcxLabel;
+    lbl_KikDez: TcxLabel;
     procedure AuswertungsJahrPropertiesChange(Sender: TObject);
     procedure SetMonatswerte(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -576,6 +582,11 @@ begin
   var ikr:=  GetFehltagSum(1, 2, 1, StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
   lbl_kr.caption:= FormatFloat('0.00',ikr);
   lbl_krDez.caption:= GetTimeValue(Round(ikr * 480 ));
+
+  var ikrk:=  GetFehltagSumKik(1, 2, 0, 1, StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
+  lbl_KikTag.caption:= FormatFloat('0.00',ikrk);
+  lbl_KikDez.caption:= GetTimeValue(0);
+
   var ikrunb:=  GetFehltagSum(1, 2, 0, StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
   lbl_krunb.caption:= FormatFloat('0.00',ikrunb);
   lbl_krunbDez.caption:= GetTimeValue(Round(ikrunb * 480 ));

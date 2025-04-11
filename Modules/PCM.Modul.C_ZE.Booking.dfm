@@ -3,8 +3,8 @@ object frm_Booking: Tfrm_Booking
   Top = 0
   BorderIcons = []
   Caption = 'PCM - Manager: Buchungs'#252'bersicht'
-  ClientHeight = 390
-  ClientWidth = 936
+  ClientHeight = 416
+  ClientWidth = 938
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,9 +17,9 @@ object frm_Booking: Tfrm_Booking
   object dxLayoutControl1: TdxLayoutControl
     AlignWithMargins = True
     Left = 0
-    Top = 63
-    Width = 936
-    Height = 327
+    Top = 58
+    Width = 938
+    Height = 358
     Margins.Left = 0
     Margins.Top = 0
     Margins.Right = 0
@@ -34,12 +34,12 @@ object frm_Booking: Tfrm_Booking
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 907
-    ExplicitHeight = 305
+    ExplicitWidth = 930
+    ExplicitHeight = 315
     object lucmbbx_Fehltag: TcxDBLookupComboBox
       AlignWithMargins = True
-      Left = 674
-      Top = 46
+      Left = 671
+      Top = 29
       Margins.Left = 6
       Margins.Top = 0
       Margins.Right = 6
@@ -62,8 +62,8 @@ object frm_Booking: Tfrm_Booking
       Width = 220
     end
     object tedt_Gehen: TcxDBTimeEdit
-      Left = 214
-      Top = 123
+      Left = 211
+      Top = 86
       Margins.Left = 6
       Margins.Top = 0
       Margins.Right = 6
@@ -79,8 +79,8 @@ object frm_Booking: Tfrm_Booking
       Width = 80
     end
     object tedt_Kommen: TcxDBTimeEdit
-      Left = 76
-      Top = 123
+      Left = 73
+      Top = 86
       Margins.Left = 6
       Margins.Top = 0
       Margins.Right = 6
@@ -96,8 +96,8 @@ object frm_Booking: Tfrm_Booking
     end
     object tedt_Pause1Beginn: TcxDBTimeEdit
       AlignWithMargins = True
-      Left = 382
-      Top = 123
+      Left = 373
+      Top = 86
       Margins.Left = 6
       Margins.Top = 0
       Margins.Right = 6
@@ -113,8 +113,8 @@ object frm_Booking: Tfrm_Booking
     end
     object tedt_Pause1Ende: TcxDBTimeEdit
       AlignWithMargins = True
-      Left = 522
-      Top = 123
+      Left = 513
+      Top = 86
       Margins.Left = 6
       Margins.Top = 0
       Margins.Right = 6
@@ -131,8 +131,8 @@ object frm_Booking: Tfrm_Booking
     end
     object tedt_Pause2Beginn: TcxDBTimeEdit
       AlignWithMargins = True
-      Left = 690
-      Top = 123
+      Left = 675
+      Top = 86
       Margins.Left = 6
       Margins.Top = 0
       Margins.Right = 6
@@ -148,8 +148,8 @@ object frm_Booking: Tfrm_Booking
     end
     object tedt_Pause2Ende: TcxDBTimeEdit
       AlignWithMargins = True
-      Left = 830
-      Top = 123
+      Left = 815
+      Top = 86
       Margins.Left = 6
       Margins.Top = 0
       Margins.Right = 6
@@ -166,8 +166,8 @@ object frm_Booking: Tfrm_Booking
     end
     object imgcmbbx_Arbeitsort: TcxDBImageComboBox
       AlignWithMargins = True
-      Left = 76
-      Top = 198
+      Left = 73
+      Top = 143
       Margins.Left = 6
       Margins.Top = 0
       Margins.Right = 6
@@ -194,8 +194,8 @@ object frm_Booking: Tfrm_Booking
       Width = 816
     end
     object edt_101Tag: TcxDBSpinEdit
-      Left = 214
-      Top = 46
+      Left = 211
+      Top = 29
       AutoSize = False
       DataBinding.DataField = 'Tag'
       DataBinding.DataSource = frm_ZE.ds_Buchungen
@@ -208,8 +208,8 @@ object frm_Booking: Tfrm_Booking
       Width = 80
     end
     object edt_100Date: TcxDBDateEdit
-      Left = 76
-      Top = 46
+      Left = 73
+      Top = 29
       DataBinding.DataField = 'Datum'
       DataBinding.DataSource = frm_ZE.ds_Buchungen
       Enabled = False
@@ -219,8 +219,8 @@ object frm_Booking: Tfrm_Booking
       Width = 80
     end
     object lucmbbx_Feiertag: TcxDBImageComboBox
-      Left = 376
-      Top = 46
+      Left = 373
+      Top = 29
       AutoSize = False
       DataBinding.DataField = 'Feiertag'
       DataBinding.DataSource = frm_ZE.ds_Buchungen
@@ -246,8 +246,8 @@ object frm_Booking: Tfrm_Booking
       Width = 220
     end
     object edt_SollStd: TcxTextEdit
-      Left = 76
-      Top = 273
+      Left = 73
+      Top = 200
       AutoSize = False
       BiDiMode = bdRightToLeft
       Enabled = False
@@ -260,8 +260,8 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_SollDez: TcxTextEdit
-      Left = 123
-      Top = 273
+      Left = 120
+      Top = 200
       AutoSize = False
       BiDiMode = bdRightToLeft
       Enabled = False
@@ -274,8 +274,8 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_BruttoStd: TcxTextEdit
-      Left = 262
-      Top = 273
+      Left = 259
+      Top = 200
       AutoSize = False
       BiDiMode = bdRightToLeft
       Enabled = False
@@ -288,8 +288,8 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_BruttoDez: TcxTextEdit
-      Left = 309
-      Top = 273
+      Left = 306
+      Top = 200
       AutoSize = False
       BiDiMode = bdRightToLeft
       Enabled = False
@@ -302,8 +302,8 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_NettoStd: TcxTextEdit
-      Left = 629
-      Top = 273
+      Left = 626
+      Top = 200
       AutoSize = False
       BiDiMode = bdRightToLeft
       Enabled = False
@@ -316,8 +316,8 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_NettoDez: TcxTextEdit
-      Left = 676
-      Top = 273
+      Left = 673
+      Top = 200
       AutoSize = False
       BiDiMode = bdRightToLeft
       Enabled = False
@@ -330,8 +330,8 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_PauseDez: TcxTextEdit
-      Left = 493
-      Top = 273
+      Left = 490
+      Top = 200
       AutoSize = False
       BiDiMode = bdRightToLeft
       Enabled = False
@@ -344,8 +344,8 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_PauseStd: TcxTextEdit
-      Left = 446
-      Top = 273
+      Left = 443
+      Top = 200
       AutoSize = False
       BiDiMode = bdRightToLeft
       Enabled = False
@@ -358,8 +358,8 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_MAStd: TcxTextEdit
-      Left = 803
-      Top = 273
+      Left = 800
+      Top = 200
       AutoSize = False
       BiDiMode = bdRightToLeft
       Enabled = False
@@ -372,8 +372,8 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_MADez: TcxTextEdit
-      Left = 850
-      Top = 273
+      Left = 847
+      Top = 200
       AutoSize = False
       BiDiMode = bdRightToLeft
       Enabled = False
@@ -413,7 +413,7 @@ object frm_Booking: Tfrm_Booking
       CaptionOptions.Text = 'Datum:'
       CaptionOptions.Width = 46
       Control = edt_100Date
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 80
       ControlOptions.ShowBorder = False
       Enabled = False
@@ -438,7 +438,7 @@ object frm_Booking: Tfrm_Booking
       CaptionOptions.Text = 'Beginn:'
       CaptionOptions.Width = 46
       Control = tedt_Kommen
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 80
       ControlOptions.ShowBorder = False
       Index = 0
@@ -450,7 +450,7 @@ object frm_Booking: Tfrm_Booking
       Offsets.Left = 16
       CaptionOptions.Text = 'Ende:'
       Control = tedt_Gehen
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 80
       ControlOptions.ShowBorder = False
       Index = 1
@@ -460,7 +460,7 @@ object frm_Booking: Tfrm_Booking
       CaptionOptions.Text = 'Beginn:'
       CaptionOptions.Width = 50
       Control = tedt_Pause1Beginn
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 80
       ControlOptions.ShowBorder = False
       Index = 0
@@ -470,7 +470,7 @@ object frm_Booking: Tfrm_Booking
       Offsets.Left = 18
       CaptionOptions.Text = 'Ende:'
       Control = tedt_Pause1Ende
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 80
       ControlOptions.ShowBorder = False
       Index = 1
@@ -482,7 +482,7 @@ object frm_Booking: Tfrm_Booking
       CaptionOptions.Text = 'Beginn:'
       CaptionOptions.Width = 50
       Control = tedt_Pause2Beginn
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 80
       ControlOptions.ShowBorder = False
       Index = 0
@@ -492,7 +492,7 @@ object frm_Booking: Tfrm_Booking
       Offsets.Left = 18
       CaptionOptions.Text = 'Ende:'
       Control = tedt_Pause2Ende
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 80
       ControlOptions.ShowBorder = False
       Index = 1
@@ -572,7 +572,7 @@ object frm_Booking: Tfrm_Booking
       CaptionOptions.Text = 'Ort:'
       CaptionOptions.Width = 46
       Control = imgcmbbx_Arbeitsort
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 816
       ControlOptions.ShowBorder = False
       Index = 0
@@ -724,6 +724,7 @@ object frm_Booking: Tfrm_Booking
       True)
     ImageOptions.LargeImages = frm_ZE.imglst_32x32
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 400
     Top = 200
@@ -731,7 +732,7 @@ object frm_Booking: Tfrm_Booking
     DockControlHeights = (
       0
       0
-      63
+      58
       0)
     object tb_Data: TdxBar
       Caption = 'Custom 1'

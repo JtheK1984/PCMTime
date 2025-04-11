@@ -98,6 +98,8 @@ object frm_ZE: Tfrm_ZE
         Width = 300
       end>
     PaintStyle = stpsUseLookAndFeel
+    ExplicitTop = 661
+    ExplicitWidth = 1151
   end
   object dxLayoutControl2: TdxLayoutControl
     Left = 0
@@ -107,10 +109,8 @@ object frm_ZE: Tfrm_ZE
     Align = alClient
     TabOrder = 2
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 26
-    ExplicitTop = 400
-    ExplicitWidth = 714
-    ExplicitHeight = 448
+    ExplicitWidth = 1151
+    ExplicitHeight = 535
     object btn_BookingWorkBegin: TcxButton
       Left = 10000
       Top = 10000
@@ -1194,10 +1194,10 @@ object frm_ZE: Tfrm_ZE
       end
     end
     object sched_Kalender: TcxScheduler
-      Left = 13
-      Top = 13
-      Width = 1131
-      Height = 526
+      Left = 8
+      Top = 8
+      Width = 1141
+      Height = 536
       DateNavigator.RowCount = 4
       ViewDay.Active = True
       ViewDay.AlwaysShowEventTime = True
@@ -1238,8 +1238,8 @@ object frm_ZE: Tfrm_ZE
       TabOrder = 6
       OnGetEventModernStyleHintInfo = sched_KalenderGetEventModernStyleHintInfo
       Splitters = {
-        950000007E0000008406000083000000D603000001000000DB0300000D020000}
-      StoredClientBounds = {01000000010000006A0400000D020000}
+        950000007E0000008406000083000000E003000001000000E503000017020000}
+      StoredClientBounds = {01000000010000007404000017020000}
     end
     object dxLayoutControl2Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -1436,6 +1436,7 @@ object frm_ZE: Tfrm_ZE
     ImageOptions.LargeImages = imglst_32x32
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 240
     Top = 58

@@ -26,9 +26,9 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object grd_Staatsangehoerigkeit: TcxGrid
       Left = 12
-      Top = 82
+      Top = 77
       Width = 630
-      Height = 150
+      Height = 155
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -86,7 +86,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
       Left = 12
       Top = 12
       Width = 630
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Staatsangehoerigkeit
     end
@@ -125,7 +125,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
       Index = 0
@@ -148,6 +148,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 392
     Top = 120
