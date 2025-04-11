@@ -1,29 +1,29 @@
 object dm_PCM: Tdm_PCM
   OnCreate = DataModuleCreate
-  Height = 751
-  Width = 1241
+  Height = 1127
+  Width = 1862
+  PixelsPerInch = 144
   object con_PCM: TFDConnection
     Params.Strings = (
       'Database=pcm'
       'User_Name=root'
       'Password=pcm'
-      'Server=127.0.0.1'
+      'Server=pcmapps.ddns.net'
       'Port=3307'
       'DriverID=MySQL')
     ResourceOptions.AssignedValues = [rvAutoReconnect]
     ResourceOptions.AutoReconnect = True
-    Connected = True
     LoginPrompt = False
     BeforeConnect = con_PCMBeforeConnect
-    Left = 408
-    Top = 40
+    Left = 612
+    Top = 60
   end
   object imglst_24x24: TcxImageList
     SourceDPI = 96
     Height = 24
     Width = 24
     FormatVersion = 1
-    DesignInfo = 11534695
+    DesignInfo = 17302043
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -1277,7 +1277,7 @@ object dm_PCM: Tdm_PCM
     Height = 32
     Width = 32
     FormatVersion = 1
-    DesignInfo = 15204711
+    DesignInfo = 22807067
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -18644,8 +18644,8 @@ object dm_PCM: Tdm_PCM
   end
   object qry_Work: TFDQuery
     Connection = con_PCM
-    Left = 160
-    Top = 472
+    Left = 240
+    Top = 708
   end
   object qry_User: TFDQuery
     Connection = con_PCM
@@ -18653,33 +18653,32 @@ object dm_PCM: Tdm_PCM
       'SELECT COUNT(*) as Wert, Benutzer  '
       'FROM Benutzer '
       'GROUP BY ID')
-    Left = 56
-    Top = 24
+    Left = 84
+    Top = 36
   end
   object ds_User: TDataSource
     DataSet = qry_User
-    Left = 104
-    Top = 24
+    Left = 156
+    Top = 36
   end
   object qry_Rights: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'SELECT COUNT(*) as Wert, Bezeichnung  '
       'FROM rechte'
       'GROUP BY ID')
-    Left = 56
-    Top = 96
+    Left = 84
+    Top = 144
   end
   object ds_rights: TDataSource
     DataSet = qry_Rights
-    Left = 112
-    Top = 96
+    Left = 168
+    Top = 144
   end
   object imglst_16x16: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 8388968
+    DesignInfo = 12583452
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -22169,31 +22168,29 @@ object dm_PCM: Tdm_PCM
   end
   object ds_Kalender_Kalender: TDataSource
     DataSet = qry_Kalender_Kalender
-    Left = 115
-    Top = 184
+    Left = 173
+    Top = 276
   end
   object qry_Kalender_Benutzer: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       
         'Select ID, CONCAT(Nachname,'#39', '#39' ,Vorname) as Name From Benutzer ' +
         'Where ID > 1')
-    Left = 48
-    Top = 256
+    Left = 72
+    Top = 384
   end
   object ds_Kalender_Benutzer: TDataSource
     DataSet = qry_Kalender_Benutzer
-    Left = 120
-    Top = 256
+    Left = 180
+    Top = 384
   end
   object qry_Kalender_Kalender: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select * From time_Kalender  ')
-    Left = 51
-    Top = 184
+    Left = 77
+    Top = 276
     object qry_Kalender_KalenderID: TFDAutoIncField
       FieldName = 'ID'
       Origin = 'ID'
@@ -22292,28 +22289,28 @@ object dm_PCM: Tdm_PCM
   end
   object qry_Work1: TFDQuery
     Connection = con_PCM
-    Left = 48
-    Top = 392
+    Left = 72
+    Top = 588
   end
   object qry_work2: TFDQuery
     Connection = con_PCM
-    Left = 160
-    Top = 536
+    Left = 240
+    Top = 804
   end
   object qry_timer: TFDQuery
     Connection = con_PCM
-    Left = 48
-    Top = 536
+    Left = 72
+    Top = 804
   end
   object qry_booking: TFDQuery
     Connection = con_PCM
-    Left = 160
-    Top = 400
+    Left = 240
+    Top = 600
   end
   object qry_Calc: TFDQuery
     Connection = con_PCM
-    Left = 40
-    Top = 480
+    Left = 60
+    Top = 720
   end
   object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
     object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel

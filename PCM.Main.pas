@@ -85,7 +85,7 @@ uses
   VCLTee.TeeProcs,
   Winapi.Messages,
   Winapi.Windows,
-  SYSTEM.uitypes, dxLayoutContainer, dxLayoutControl, cxImageList;
+  SYSTEM.uitypes, dxLayoutContainer, dxLayoutControl, cxImageList, dxUIAClasses;
   {$EndRegion Uses}
 type
   {$Region Type}

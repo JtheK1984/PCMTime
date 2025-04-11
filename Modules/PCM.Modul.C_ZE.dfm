@@ -92,24 +92,30 @@ object frm_ZE: Tfrm_ZE
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
     Properties.Style = 11
-    ClientRectBottom = 550
-    ClientRectLeft = 2
-    ClientRectRight = 1155
-    ClientRectTop = 2
+    ExplicitWidth = 1151
+    ExplicitHeight = 535
+    ClientRectBottom = 551
+    ClientRectLeft = 1
+    ClientRectRight = 1156
+    ClientRectTop = 1
     object ts_Online: TcxTabSheet
       Caption = 'ts_Online'
       ImageIndex = 0
+      ExplicitWidth = 1149
+      ExplicitHeight = 533
       object dxLayoutControl1: TdxLayoutControl
         Left = 0
         Top = 0
-        Width = 1153
-        Height = 548
+        Width = 1155
+        Height = 550
         Align = alClient
         TabOrder = 0
         LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+        ExplicitWidth = 1149
+        ExplicitHeight = 533
         object btn_BookingWorkBegin: TcxButton
-          Left = 26
-          Top = 61
+          Left = 25
+          Top = 74
           Width = 440
           Height = 215
           Margins.Left = 50
@@ -364,8 +370,8 @@ object frm_ZE: Tfrm_ZE
           OnClick = btn_BookingWorkBeginClick
         end
         object btn_BookingWorkEnd: TcxButton
-          Left = 473
-          Top = 61
+          Left = 472
+          Top = 74
           Width = 440
           Height = 215
           Margins.Left = 25
@@ -587,8 +593,8 @@ object frm_ZE: Tfrm_ZE
           OnClick = btn_BookingWorkEndClick
         end
         object btn_BookingBreakEnd: TcxButton
-          Left = 473
-          Top = 283
+          Left = 472
+          Top = 296
           Width = 440
           Height = 215
           Margins.Left = 25
@@ -758,8 +764,8 @@ object frm_ZE: Tfrm_ZE
           OnClick = btn_BookingBreakEndClick
         end
         object btn_BookingBreakBegin: TcxButton
-          Left = 26
-          Top = 283
+          Left = 25
+          Top = 296
           Width = 440
           Height = 215
           Margins.Left = 25
@@ -930,8 +936,8 @@ object frm_ZE: Tfrm_ZE
         end
         object cmbbx_Bookingtype: TcxComboBox
           AlignWithMargins = True
-          Left = 103
-          Top = 33
+          Left = 102
+          Top = 46
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 0
@@ -943,7 +949,7 @@ object frm_ZE: Tfrm_ZE
           Style.TransparentBorder = False
           TabOrder = 0
           Text = 'HomeOffice'
-          Width = 1024
+          Width = 1028
         end
         object dxLayoutControl1Group_Root: TdxLayoutGroup
           AlignHorz = ahClient
@@ -1268,6 +1274,10 @@ object frm_ZE: Tfrm_ZE
     object ts_Kalender: TcxTabSheet
       Caption = 'ts_Kalender'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object sched_Kalender: TcxScheduler
         Left = 0
         Top = 0
@@ -1336,6 +1346,8 @@ object frm_ZE: Tfrm_ZE
         Width = 300
       end>
     PaintStyle = stpsUseLookAndFeel
+    ExplicitTop = 661
+    ExplicitWidth = 1151
   end
   object brmgr_Main: TdxBarManager
     AllowReset = False
@@ -1509,7 +1521,7 @@ object frm_ZE: Tfrm_ZE
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = False
+      Visible = True
       WholeRow = False
     end
     object tb_kalender: TdxBar
@@ -1543,7 +1555,7 @@ object frm_ZE: Tfrm_ZE
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = False
+      Visible = True
       WholeRow = False
     end
     object tb_Optionen: TdxBar
@@ -1576,7 +1588,7 @@ object frm_ZE: Tfrm_ZE
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = False
+      Visible = True
       WholeRow = False
     end
     object tb_Drucken: TdxBar
@@ -1601,7 +1613,7 @@ object frm_ZE: Tfrm_ZE
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = False
+      Visible = True
       WholeRow = False
     end
     object tb_DruckeGrid: TdxBar
@@ -1625,7 +1637,7 @@ object frm_ZE: Tfrm_ZE
       SizeGrip = False
       UseOwnFont = False
       UseRestSpace = True
-      Visible = False
+      Visible = True
       WholeRow = False
     end
     object tb_Monatswerte: TdxBar

@@ -2311,7 +2311,10 @@ object SplashScreen: TSplashScreen
         70381C0E87C3E1703C0238E1EE70381C0E87C3E1703C0238E1EE70381C0E87C3
         E1703C0238E1EE70381C0E87C3E1703C0238E1EE70381C0E87C3E1703C02FCEF
         12C994D5D0AFFDAD0000000049454E44AE426082}
-      ExplicitTop = -3
+      Stretch = True
+      ExplicitLeft = 2
+      ExplicitTop = -4
+      ExplicitWidth = 996
     end
     object lbl_ProgVersion: TcxLabel
       Left = 464
@@ -2326,6 +2329,7 @@ object SplashScreen: TSplashScreen
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
+      TabOrder = 0
       Transparent = True
     end
     object prgbr_Splash: TcxProgressBar
@@ -2358,6 +2362,7 @@ object SplashScreen: TSplashScreen
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 1
       Transparent = True
+      ExplicitTop = 462
       Width = 994
     end
     object ActivityIndicator: TdxActivityIndicator
@@ -2389,6 +2394,7 @@ object SplashScreen: TSplashScreen
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
+      TabOrder = 3
       Transparent = True
     end
   end

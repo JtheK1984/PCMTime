@@ -36,6 +36,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
+    ExplicitHeight = 748
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -216,6 +217,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
+    ExplicitWidth = 1074
+    ExplicitHeight = 748
     Height = 765
     Width = 1080
     object pc_main: TcxPageControl
@@ -238,6 +241,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       Properties.Style = 11
       OnPageChanging = pc_mainPageChanging
+      ExplicitWidth = 1068
+      ExplicitHeight = 742
       ClientRectBottom = 753
       ClientRectLeft = 2
       ClientRectRight = 1068
@@ -245,6 +250,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 79
+        ExplicitWidth = 1060
+        ExplicitHeight = 708
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
@@ -253,6 +260,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+          ExplicitWidth = 1060
+          ExplicitHeight = 708
           object dxLayoutControl1Group_Root: TdxLayoutGroup
             AlignHorz = ahClient
             AlignVert = avClient
