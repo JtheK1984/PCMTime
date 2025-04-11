@@ -3,8 +3,8 @@ object frm_Booking: Tfrm_Booking
   Top = 0
   BorderIcons = []
   Caption = 'PCM - Manager: Buchungs'#252'bersicht'
-  ClientHeight = 385
-  ClientWidth = 913
+  ClientHeight = 390
+  ClientWidth = 936
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,8 +18,8 @@ object frm_Booking: Tfrm_Booking
     AlignWithMargins = True
     Left = 0
     Top = 63
-    Width = 913
-    Height = 322
+    Width = 936
+    Height = 327
     Margins.Left = 0
     Margins.Top = 0
     Margins.Right = 0
@@ -34,9 +34,11 @@ object frm_Booking: Tfrm_Booking
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitWidth = 907
+    ExplicitHeight = 305
     object lucmbbx_Fehltag: TcxDBLookupComboBox
       AlignWithMargins = True
-      Left = 670
+      Left = 674
       Top = 46
       Margins.Left = 6
       Margins.Top = 0
@@ -60,7 +62,7 @@ object frm_Booking: Tfrm_Booking
       Width = 220
     end
     object tedt_Gehen: TcxDBTimeEdit
-      Left = 210
+      Left = 214
       Top = 123
       Margins.Left = 6
       Margins.Top = 0
@@ -77,7 +79,7 @@ object frm_Booking: Tfrm_Booking
       Width = 80
     end
     object tedt_Kommen: TcxDBTimeEdit
-      Left = 72
+      Left = 76
       Top = 123
       Margins.Left = 6
       Margins.Top = 0
@@ -94,7 +96,7 @@ object frm_Booking: Tfrm_Booking
     end
     object tedt_Pause1Beginn: TcxDBTimeEdit
       AlignWithMargins = True
-      Left = 370
+      Left = 382
       Top = 123
       Margins.Left = 6
       Margins.Top = 0
@@ -111,7 +113,7 @@ object frm_Booking: Tfrm_Booking
     end
     object tedt_Pause1Ende: TcxDBTimeEdit
       AlignWithMargins = True
-      Left = 510
+      Left = 522
       Top = 123
       Margins.Left = 6
       Margins.Top = 0
@@ -129,7 +131,7 @@ object frm_Booking: Tfrm_Booking
     end
     object tedt_Pause2Beginn: TcxDBTimeEdit
       AlignWithMargins = True
-      Left = 670
+      Left = 690
       Top = 123
       Margins.Left = 6
       Margins.Top = 0
@@ -146,7 +148,7 @@ object frm_Booking: Tfrm_Booking
     end
     object tedt_Pause2Ende: TcxDBTimeEdit
       AlignWithMargins = True
-      Left = 810
+      Left = 830
       Top = 123
       Margins.Left = 6
       Margins.Top = 0
@@ -164,7 +166,7 @@ object frm_Booking: Tfrm_Booking
     end
     object imgcmbbx_Arbeitsort: TcxDBImageComboBox
       AlignWithMargins = True
-      Left = 72
+      Left = 76
       Top = 198
       Margins.Left = 6
       Margins.Top = 0
@@ -192,7 +194,7 @@ object frm_Booking: Tfrm_Booking
       Width = 816
     end
     object edt_101Tag: TcxDBSpinEdit
-      Left = 210
+      Left = 214
       Top = 46
       AutoSize = False
       DataBinding.DataField = 'Tag'
@@ -206,7 +208,7 @@ object frm_Booking: Tfrm_Booking
       Width = 80
     end
     object edt_100Date: TcxDBDateEdit
-      Left = 72
+      Left = 76
       Top = 46
       DataBinding.DataField = 'Datum'
       DataBinding.DataSource = frm_ZE.ds_Buchungen
@@ -217,7 +219,7 @@ object frm_Booking: Tfrm_Booking
       Width = 80
     end
     object lucmbbx_Feiertag: TcxDBImageComboBox
-      Left = 372
+      Left = 376
       Top = 46
       AutoSize = False
       DataBinding.DataField = 'Feiertag'
@@ -244,7 +246,7 @@ object frm_Booking: Tfrm_Booking
       Width = 220
     end
     object edt_SollStd: TcxTextEdit
-      Left = 72
+      Left = 76
       Top = 273
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -258,7 +260,7 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_SollDez: TcxTextEdit
-      Left = 119
+      Left = 123
       Top = 273
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -272,7 +274,7 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_BruttoStd: TcxTextEdit
-      Left = 258
+      Left = 262
       Top = 273
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -286,7 +288,7 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_BruttoDez: TcxTextEdit
-      Left = 305
+      Left = 309
       Top = 273
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -300,7 +302,7 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_NettoStd: TcxTextEdit
-      Left = 625
+      Left = 629
       Top = 273
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -314,7 +316,7 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_NettoDez: TcxTextEdit
-      Left = 672
+      Left = 676
       Top = 273
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -328,7 +330,7 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_PauseDez: TcxTextEdit
-      Left = 489
+      Left = 493
       Top = 273
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -342,7 +344,7 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_PauseStd: TcxTextEdit
-      Left = 442
+      Left = 446
       Top = 273
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -356,7 +358,7 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_MAStd: TcxTextEdit
-      Left = 799
+      Left = 803
       Top = 273
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -370,7 +372,7 @@ object frm_Booking: Tfrm_Booking
       Width = 40
     end
     object edt_MADez: TcxTextEdit
-      Left = 846
+      Left = 850
       Top = 273
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -496,9 +498,9 @@ object frm_Booking: Tfrm_Booking
       Index = 1
     end
     object lagrp_200Arbeitszeit: TdxLayoutGroup
-      Parent = dxLayoutAutoCreatedGroup4
+      Parent = dxLayoutGroup5
       AlignHorz = ahLeft
-      AlignVert = avClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Arbeitszeit'
       SizeOptions.Width = 200
       ItemIndex = 1
@@ -506,23 +508,24 @@ object frm_Booking: Tfrm_Booking
       Index = 0
     end
     object lagrp_4Stunden: TdxLayoutGroup
-      Parent = dxLayoutAutoCreatedGroup1
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup4
       CaptionOptions.Text = 'Tageswerte'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       Index = 2
     end
     object lagrp_303Pause2: TdxLayoutGroup
-      Parent = dxLayoutAutoCreatedGroup4
+      Parent = dxLayoutGroup5
+      AlignHorz = ahLeft
+      AlignVert = avClient
       CaptionOptions.Text = 'Pause 2'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       Index = 2
     end
     object lagrp_201Pause1: TdxLayoutGroup
-      Parent = dxLayoutAutoCreatedGroup4
+      Parent = dxLayoutGroup5
+      AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'Pause 1'
       SizeOptions.Width = 257
@@ -531,11 +534,10 @@ object frm_Booking: Tfrm_Booking
     end
     object lagrp_1Buchung: TdxLayoutGroup
       Parent = lagrp_Main
-      AlignHorz = ahLeft
+      AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Buchungstag'
       SizeOptions.Width = 887
-      ItemIndex = 3
       LayoutDirection = ldHorizontal
       Index = 0
     end
@@ -576,24 +578,10 @@ object frm_Booking: Tfrm_Booking
       Index = 0
     end
     object dxLayoutGroup1: TdxLayoutGroup
-      Parent = dxLayoutAutoCreatedGroup1
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup4
       CaptionOptions.Text = 'Buchungsort'
       LayoutDirection = ldHorizontal
       Index = 1
-    end
-    object dxLayoutAutoCreatedGroup1: TdxLayoutAutoCreatedGroup
-      Parent = lagrp_Main
-      AlignHorz = ahLeft
-      AlignVert = avTop
-      Index = 1
-    end
-    object dxLayoutAutoCreatedGroup4: TdxLayoutAutoCreatedGroup
-      Parent = dxLayoutAutoCreatedGroup1
-      AlignVert = avClient
-      LayoutDirection = ldHorizontal
-      Index = 0
     end
     object dxLayoutItem1: TdxLayoutItem
       Parent = lagrp_4Stunden
@@ -646,12 +634,21 @@ object frm_Booking: Tfrm_Booking
       Index = 6
     end
     object dxLayoutGroup4: TdxLayoutGroup
+      Parent = lagrp_Main
       CaptionOptions.Text = 'New Group'
-      Index = -1
+      ItemIndex = 2
+      ShowBorder = False
+      Index = 1
     end
     object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      Index = -1
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
     end
     object dxLayoutItem5: TdxLayoutItem
       Parent = lagrp_4Stunden
@@ -727,7 +724,6 @@ object frm_Booking: Tfrm_Booking
       True)
     ImageOptions.LargeImages = frm_ZE.imglst_32x32
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 400
     Top = 200

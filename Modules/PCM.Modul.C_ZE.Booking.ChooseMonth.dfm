@@ -13,7 +13,7 @@ object frm_ChooseDate: Tfrm_ChooseDate
   Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 15
-  object dxLayoutControl1: TdxLayoutControl
+  object lactrl_Datechoose: TdxLayoutControl
     Left = 0
     Top = 0
     Width = 434
@@ -22,10 +22,6 @@ object frm_ChooseDate: Tfrm_ChooseDate
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 72
-    ExplicitTop = -64
-    ExplicitWidth = 300
-    ExplicitHeight = 250
     object btn_Cancel: TcxButton
       Left = 221
       Top = 59
@@ -185,7 +181,7 @@ object frm_ChooseDate: Tfrm_ChooseDate
       TabOrder = 1
       Width = 201
     end
-    object dxLayoutControl1Group_Root: TdxLayoutGroup
+    object lactrl_DatechooseGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
       Hidden = True
@@ -242,7 +238,7 @@ object frm_ChooseDate: Tfrm_ChooseDate
       Index = 1
     end
     object dxLayoutGroup5: TdxLayoutGroup
-      Parent = dxLayoutControl1Group_Root
+      Parent = lactrl_DatechooseGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'

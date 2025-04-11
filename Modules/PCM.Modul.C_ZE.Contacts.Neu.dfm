@@ -34,7 +34,8 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
     TabOrder = 1
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitHeight = 143
+    ExplicitWidth = 336
+    ExplicitHeight = 132
     object edt_Name: TcxTextEdit
       Left = 164
       Top = 50

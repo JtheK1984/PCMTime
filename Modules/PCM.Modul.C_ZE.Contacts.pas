@@ -57,7 +57,7 @@ uses
   dxLayoutControlAdapters, cxStyles, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxNavigator, dxDateRanges, dxScrollbarAnnotations, cxDBData,
   cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridCustomView, cxGrid, Winapi.shellapi;
+  cxGridCustomView, cxGrid, Winapi.shellapi, dxUIAClasses;
   {$EndRegion Uses}
 type
   {$Region type}
@@ -343,6 +343,7 @@ type
     btn_WebBusiness: TcxButton;
     btn_MapBusiness: TcxButton;
     btn_MailBusiness: TcxButton;
+    btn_Close: TdxBarLargeButton;
     procedure SetButtonsEnabledVisible(DataSet: TDataSet);
     procedure FormShow(Sender: TObject);
     procedure btn_kontaktsuchenClick(Sender: TObject);
@@ -367,6 +368,7 @@ type
     procedure btn_WebBusinessClick(Sender: TObject);
     procedure btn_MapBusinessClick(Sender: TObject);
     procedure btn_MailBusinessClick(Sender: TObject);
+    procedure btn_CloseClick(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -431,6 +433,11 @@ begin
   edt_KontaktSucheFunktion.Text:= '';
   btn_kontaktsuchen.Click;
 end;
+procedure Tfrm_Userze.btn_CloseClick(Sender: TObject);
+begin
+  close;
+end;
+
 procedure Tfrm_Userze.btn_FirstClick(Sender: TObject);
 begin
   btn_Save.Click;
@@ -666,6 +673,17 @@ begin
   qry_Contact_Staatsangehoerigkeit.Open;
   qry_Contact_Kontaktart.Open;
   qry_kontakte.Open;
+
+  if frm_Userze.HasParent then
+  begin
+    btn_Close.Visible:= ivnever;
+    lagrp_PersonalTab.ItemIndex:= 0;
+  end
+  else begin
+    btn_Close.Visible:= ivAlways;
+    if qry_kontakte.Locate('ID', dm_PCM.iIDBenutzerPCM, []) then
+      lagrp_PersonalTab.ItemIndex:= 1;
+  end;
 end;
 procedure Tfrm_Userze.grdDBTblView_SucheCellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;

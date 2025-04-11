@@ -148,7 +148,6 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 392
     Top = 120

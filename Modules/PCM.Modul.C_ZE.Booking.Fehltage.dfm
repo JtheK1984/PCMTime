@@ -13,8 +13,9 @@ object frm_Fehltage: Tfrm_Fehltage
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
-  object dxLayoutControl1: TdxLayoutControl
+  object lactrl_FT: TdxLayoutControl
     Left = 0
     Top = 0
     Width = 1600
@@ -32,9 +33,9 @@ object frm_Fehltage: Tfrm_Fehltage
       BarManager = brmgr_Config
     end
     object grd_Feiertage: TcxGrid
-      Left = 21
-      Top = 172
-      Width = 1558
+      Left = 25
+      Top = 200
+      Width = 1550
       Height = 651
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -80,18 +81,18 @@ object frm_Fehltage: Tfrm_Fehltage
         OptionsView.GroupByBox = False
         OptionsView.HeaderFilterButtonShowMode = fbmButton
         OptionsView.IndicatorWidth = 14
-        object grdDBTblView_FeiertageKuerzel: TcxGridDBColumn
+        object grdDBTblViewCol_FeiertageKuerzel: TcxGridDBColumn
           Caption = 'K'#252'rzel'
           DataBinding.FieldName = 'Kuerzel'
           DataBinding.IsNullValueType = True
           Width = 100
         end
-        object grdDBTblView_FeiertageBeschreibung: TcxGridDBColumn
+        object grdDBTblViewCol_FeiertageBeschreibung: TcxGridDBColumn
           DataBinding.FieldName = 'Beschreibung'
           DataBinding.IsNullValueType = True
           Width = 300
         end
-        object grdDBTblView_FeiertageTyp: TcxGridDBColumn
+        object grdDBTblViewCol_FeiertageTyp: TcxGridDBColumn
           Caption = 'Fehltagstyp'
           DataBinding.FieldName = 'Typ'
           DataBinding.IsNullValueType = True
@@ -106,10 +107,22 @@ object frm_Fehltage: Tfrm_Fehltage
             item
               Description = 'Krankheit'
               Value = 2
+            end
+            item
+              Description = 'Sonderurlaub'
+              Value = 3
+            end
+            item
+              Description = 'bezahlte Abwesenheit'
+              Value = 4
+            end
+            item
+              Description = 'unbezahlte Abwesenheit'
+              Value = 5
             end>
           Width = 300
         end
-        object grdDBTblView_FeiertageFaktor: TcxGridDBColumn
+        object grdDBTblViewCol_FeiertageFaktor: TcxGridDBColumn
           Caption = 'Gutschrift'
           DataBinding.FieldName = 'Faktor'
           DataBinding.IsNullValueType = True
@@ -131,7 +144,7 @@ object frm_Fehltage: Tfrm_Fehltage
             end>
           Width = 300
         end
-        object grdDBTblView_FeiertageBezahlt: TcxGridDBColumn
+        object grdDBTblViewCol_FeiertageBezahlt: TcxGridDBColumn
           Caption = 'Sollstunden'
           DataBinding.FieldName = 'Bezahlt'
           DataBinding.IsNullValueType = True
@@ -148,7 +161,7 @@ object frm_Fehltage: Tfrm_Fehltage
             end>
           Width = 300
         end
-        object grdDBTblView_FeiertageColor: TcxGridDBColumn
+        object grdDBTblViewCol_FeiertageColor: TcxGridDBColumn
           Caption = 'Termin'
           DataBinding.FieldName = 'Color'
           DataBinding.IsNullValueType = True
@@ -158,7 +171,7 @@ object frm_Fehltage: Tfrm_Fehltage
           Properties.NamingConvention = cxncHTML4
           Width = 70
         end
-        object grdDBTblView_FeiertageColorFont: TcxGridDBColumn
+        object grdDBTblViewCol_FeiertageColorFont: TcxGridDBColumn
           Caption = 'Schrift'
           DataBinding.FieldName = 'ColorFont'
           DataBinding.IsNullValueType = True
@@ -175,14 +188,14 @@ object frm_Fehltage: Tfrm_Fehltage
     end
     object edt_FTKuerzel: TcxDBTextEdit
       AlignWithMargins = True
-      Left = 106
+      Left = 110
       Top = 116
       DataBinding.DataField = 'Kuerzel'
       DataBinding.DataSource = ds_FT
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 691
+      Width = 687
     end
     object edt_FTDesc: TcxDBTextEdit
       AlignWithMargins = True
@@ -193,10 +206,10 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 690
+      Width = 686
     end
     object imgcmbbx_FTSoll: TcxDBImageComboBox
-      Left = 718
+      Left = 1139
       Top = 144
       DataBinding.DataField = 'Bezahlt'
       DataBinding.DataSource = ds_FT
@@ -213,10 +226,10 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 5
-      Width = 230
+      Width = 436
     end
     object imgcmbbx_FTGutschrift: TcxDBImageComboBox
-      Left = 406
+      Left = 625
       Top = 144
       DataBinding.DataField = 'Faktor'
       DataBinding.DataSource = ds_FT
@@ -238,10 +251,10 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
-      Width = 234
+      Width = 436
     end
     object imgcmbbx_FTTyp: TcxDBImageComboBox
-      Left = 106
+      Left = 110
       Top = 144
       DataBinding.DataField = 'Typ'
       DataBinding.DataSource = ds_FT
@@ -255,15 +268,27 @@ object frm_Fehltage: Tfrm_Fehltage
         item
           Description = 'Krankheit'
           Value = 2
+        end
+        item
+          Description = 'Sonderurlaub'
+          Value = 3
+        end
+        item
+          Description = 'bezahlte Abwesenheit'
+          Value = 4
+        end
+        item
+          Description = 'unbezahlte Abwesenheit'
+          Value = 5
         end>
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Width = 232
+      Width = 447
     end
     object colcmbbx_FTEvent: TcxDBColorComboBox
-      Left = 1035
-      Top = 144
+      Left = 110
+      Top = 172
       DataBinding.DataField = 'Color'
       DataBinding.DataSource = ds_FT
       Properties.AllowSelectColor = True
@@ -274,11 +299,11 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 6
-      Width = 231
+      Width = 700
     end
     object colcmbbx_FTFont: TcxDBColorComboBox
-      Left = 1348
-      Top = 144
+      Left = 892
+      Top = 172
       DataBinding.DataField = 'ColorFont'
       DataBinding.DataSource = ds_FT
       Properties.AllowSelectColor = True
@@ -288,17 +313,17 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 7
-      Width = 231
+      Width = 683
     end
-    object dxLayoutControl1Group_Root: TdxLayoutGroup
+    object lagrp_FTRoot: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
       Hidden = True
       ShowBorder = False
       Index = -1
     end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = dxLayoutGroup8
+    object laitm_FTToolbar: TdxLayoutItem
+      Parent = lagrp_FTMain
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'brdckCtrl_FT'
@@ -310,13 +335,13 @@ object frm_Fehltage: Tfrm_Fehltage
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup2: TdxLayoutGroup
-      Parent = dxLayoutGroup8
+    object lagrp_FTDetail: TdxLayoutGroup
+      Parent = lagrp_FTMain
       CaptionOptions.Text = 'Fehltage'
       Index = 1
     end
-    object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup9
+    object laitm_FTKuerzel: TdxLayoutItem
+      Parent = lagrp_FTEditRow1
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'K'#252'rzel:'
@@ -327,8 +352,8 @@ object frm_Fehltage: Tfrm_Fehltage
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem3: TdxLayoutItem
-      Parent = dxLayoutGroup9
+    object laitm_FTBeschreibung: TdxLayoutItem
+      Parent = lagrp_FTEditRow1
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Beschreibung:'
@@ -339,8 +364,8 @@ object frm_Fehltage: Tfrm_Fehltage
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem4: TdxLayoutItem
-      Parent = dxLayoutGroup10
+    object laitm_FTType: TdxLayoutItem
+      Parent = lagrp_FTEditRow2
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Fehltagstyp:'
@@ -350,8 +375,8 @@ object frm_Fehltage: Tfrm_Fehltage
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem5: TdxLayoutItem
-      Parent = dxLayoutGroup10
+    object laitm_FTGutschrift: TdxLayoutItem
+      Parent = lagrp_FTEditRow2
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Gutschrift:'
@@ -361,8 +386,8 @@ object frm_Fehltage: Tfrm_Fehltage
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem6: TdxLayoutItem
-      Parent = dxLayoutGroup10
+    object laitm_FTSoll: TdxLayoutItem
+      Parent = lagrp_FTEditRow2
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Sollstunden:'
@@ -372,8 +397,8 @@ object frm_Fehltage: Tfrm_Fehltage
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem7: TdxLayoutItem
-      Parent = dxLayoutGroup10
+    object laitm_FTColorAbsence: TdxLayoutItem
+      Parent = lagrp_FTEditRow3
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Farbe Fehltag:'
@@ -381,10 +406,10 @@ object frm_Fehltage: Tfrm_Fehltage
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 210
       ControlOptions.ShowBorder = False
-      Index = 3
+      Index = 0
     end
-    object dxLayoutItem8: TdxLayoutItem
-      Parent = dxLayoutGroup10
+    object laitm_FTColorFont: TdxLayoutItem
+      Parent = lagrp_FTEditRow3
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Farbe Schrift:'
@@ -392,10 +417,10 @@ object frm_Fehltage: Tfrm_Fehltage
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 210
       ControlOptions.ShowBorder = False
-      Index = 4
+      Index = 1
     end
-    object dxLayoutItem9: TdxLayoutItem
-      Parent = dxLayoutGroup1
+    object laitm_FTGrid: TdxLayoutItem
+      Parent = lagrp_FTEdit
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'grd_Feiertage'
@@ -404,10 +429,10 @@ object frm_Fehltage: Tfrm_Fehltage
       ControlOptions.OriginalHeight = 651
       ControlOptions.OriginalWidth = 1594
       ControlOptions.ShowBorder = False
-      Index = 2
+      Index = 3
     end
-    object dxLayoutGroup8: TdxLayoutGroup
-      Parent = dxLayoutControl1Group_Root
+    object lagrp_FTMain: TdxLayoutGroup
+      Parent = lagrp_FTRoot
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
@@ -415,15 +440,15 @@ object frm_Fehltage: Tfrm_Fehltage
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup1: TdxLayoutGroup
-      Parent = dxLayoutGroup2
+    object lagrp_FTEdit: TdxLayoutGroup
+      Parent = lagrp_FTDetail
       CaptionOptions.Text = 'New Group'
       ItemIndex = 2
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup9: TdxLayoutGroup
-      Parent = dxLayoutGroup1
+    object lagrp_FTEditRow1: TdxLayoutGroup
+      Parent = lagrp_FTEdit
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -432,8 +457,17 @@ object frm_Fehltage: Tfrm_Fehltage
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup10: TdxLayoutGroup
-      Parent = dxLayoutGroup1
+    object lagrp_FTEditRow3: TdxLayoutGroup
+      Parent = lagrp_FTEdit
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object lagrp_FTEditRow2: TdxLayoutGroup
+      Parent = lagrp_FTEdit
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -446,7 +480,7 @@ object frm_Fehltage: Tfrm_Fehltage
     Connection = dm_PCM.con_PCM
     SQL.Strings = (
       'SELECT *'
-      'FROM manager_Fehltag'
+      'FROM time_Fehltag'
       'Where ID > 1'
       '')
     Left = 224
@@ -470,11 +504,10 @@ object frm_Fehltage: Tfrm_Fehltage
       2)
     Categories.Visibles = (
       True)
-    ImageOptions.LargeImages = frm_ZE.imglst_32x32
+    ImageOptions.LargeImages = dm_PCM.imglst_32x32_1
     ImageOptions.LargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 400
     Top = 313

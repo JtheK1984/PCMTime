@@ -23,35 +23,33 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 24
-    ExplicitTop = -16
-    ExplicitWidth = 300
-    ExplicitHeight = 250
+    ExplicitWidth = 322
+    ExplicitHeight = 199
     object dEdt_Von: TcxDateEdit
-      Left = 46
-      Top = 138
+      Left = 48
+      Top = 135
       Properties.SaveTime = False
       Properties.ShowTime = False
       Properties.WeekNumbers = True
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 0
-      Width = 118
+      Width = 116
     end
     object dEdt_Bis: TcxDateEdit
       Left = 192
-      Top = 138
+      Top = 135
       Properties.SaveTime = False
       Properties.ShowTime = False
       Properties.WeekNumbers = True
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 117
+      Width = 115
     end
     object btn_Abort: TcxButton
       Left = 167
-      Top = 175
+      Top = 171
       Width = 151
       Height = 25
       Caption = 'Abbrechen'
@@ -62,7 +60,7 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
     end
     object btn_OK: TcxButton
       Left = 10
-      Top = 175
+      Top = 171
       Width = 151
       Height = 25
       Caption = 'Ok'

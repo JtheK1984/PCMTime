@@ -84,6 +84,16 @@ type
     dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
     dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel;
     dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel;
+    imglst_32x32_1: TcxImageList;
+    dxLayoutSkinLookAndFeel3: TdxLayoutSkinLookAndFeel;
+    qry_ChartGeburtstage: TFDQuery;
+    ds_ChartGeburtstage: TDataSource;
+    qry_FT: TFDQuery;
+    ds_FT: TDataSource;
+    qry_Abw: TFDQuery;
+    ds_Abw: TDataSource;
+    qry_Fehltag: TFDQuery;
+    ds_Fehltag: TDataSource;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

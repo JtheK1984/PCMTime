@@ -24,10 +24,6 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 96
-    ExplicitTop = 160
-    ExplicitWidth = 300
-    ExplicitHeight = 250
     object brdckCtrl_Fehltage: TdxBarDockControl
       Left = 12
       Top = 477
@@ -37,34 +33,34 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       BarManager = brmgr_Fehltage
     end
     object dedt_Von: TcxDateEdit
-      Left = 21
+      Left = 25
       Top = 581
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 421
+      Width = 413
     end
     object dedt_Bis: TcxDateEdit
-      Left = 21
+      Left = 25
       Top = 630
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Width = 421
+      Width = 413
     end
     object cmbbx_Fehltage: TcxComboBox
-      Left = 21
+      Left = 25
       Top = 679
       Properties.DropDownListStyle = lsEditFixedList
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
-      Width = 421
+      Width = 413
     end
     object btn_FTSave: TcxButton
-      Left = 21
+      Left = 25
       Top = 707
-      Width = 207
+      Width = 203
       Height = 25
       Caption = 'Speichern'
       OptionsImage.ImageIndex = 56
@@ -81,7 +77,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
     object btn_FTCancel: TcxButton
       Left = 235
       Top = 707
-      Width = 207
+      Width = 203
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
@@ -121,6 +117,8 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
         object grdDBTblView_BookingVon: TcxGridDBColumn
           DataBinding.FieldName = 'Von'
           DataBinding.IsNullValueType = True
+          SortIndex = 0
+          SortOrder = soAscending
         end
         object grdDBTblView_BookingBis: TcxGridDBColumn
           DataBinding.FieldName = 'Bis'
@@ -292,7 +290,6 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 200
     Top = 352
@@ -320,6 +317,10 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
         item
           Visible = True
           ItemName = 'btn_FTDelete'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton1'
         end
         item
           Visible = True
@@ -365,6 +366,15 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       LargeImageIndex = 23
       Width = 60
     end
+    object dxBarLargeButton1: TdxBarLargeButton
+      Caption = 'Alle Fehltage'
+      Category = 0
+      Hint = 'Alle Fehltage'
+      Visible = ivAlways
+      AutoGrayScale = False
+      LargeImageIndex = 6
+      Width = 80
+    end
   end
   object qry_FT: TFDQuery
     Connection = dm_PCM.con_PCM
@@ -377,5 +387,11 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
     DataSet = qry_FT
     Left = 264
     Top = 240
+  end
+  object cxGridPopupMenu1: TcxGridPopupMenu
+    Grid = grd_Booking
+    PopupMenus = <>
+    Left = 88
+    Top = 96
   end
 end

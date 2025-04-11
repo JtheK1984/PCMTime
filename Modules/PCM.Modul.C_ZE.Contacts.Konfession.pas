@@ -12,7 +12,7 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
-  dxLayoutContainer, dxLayoutControl;
+  dxLayoutContainer, dxLayoutControl, dxUIAClasses;
 
 type
   Tfrm_PCM_Konfession = class(TForm)

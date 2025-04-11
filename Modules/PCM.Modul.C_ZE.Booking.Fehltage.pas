@@ -56,7 +56,8 @@ uses
   Vcl.Forms,
   Vcl.Graphics,
   Winapi.Messages,
-  Winapi.Windows, dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControl;
+  Winapi.Windows, dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControl,
+  dxUIAClasses;
   {$EndRegion Uses}
 type
   {$Region type}
@@ -75,41 +76,43 @@ type
     edt_FTKuerzel: TcxDBTextEdit;
     grd_Feiertage: TcxGrid;
     grdDBTblView_Feiertage: TcxGridDBTableView;
-    grdDBTblView_FeiertageBeschreibung: TcxGridDBColumn;
-    grdDBTblView_FeiertageBezahlt: TcxGridDBColumn;
-    grdDBTblView_FeiertageColor: TcxGridDBColumn;
-    grdDBTblView_FeiertageColorFont: TcxGridDBColumn;
-    grdDBTblView_FeiertageFaktor: TcxGridDBColumn;
-    grdDBTblView_FeiertageKuerzel: TcxGridDBColumn;
-    grdDBTblView_FeiertageTyp: TcxGridDBColumn;
+    grdDBTblViewCol_FeiertageBeschreibung: TcxGridDBColumn;
+    grdDBTblViewCol_FeiertageBezahlt: TcxGridDBColumn;
+    grdDBTblViewCol_FeiertageColor: TcxGridDBColumn;
+    grdDBTblViewCol_FeiertageColorFont: TcxGridDBColumn;
+    grdDBTblViewCol_FeiertageFaktor: TcxGridDBColumn;
+    grdDBTblViewCol_FeiertageKuerzel: TcxGridDBColumn;
+    grdDBTblViewCol_FeiertageTyp: TcxGridDBColumn;
     grdlvl_Feiertage: TcxGridLevel;
     imgcmbbx_FTGutschrift: TcxDBImageComboBox;
     imgcmbbx_FTSoll: TcxDBImageComboBox;
     imgcmbbx_FTTyp: TcxDBImageComboBox;
     qry_FT1: TFDQuery;
     tb_Feiertage: TdxBar;
-    dxLayoutControl1Group_Root: TdxLayoutGroup;
-    dxLayoutControl1: TdxLayoutControl;
-    dxLayoutItem1: TdxLayoutItem;
-    dxLayoutGroup2: TdxLayoutGroup;
-    dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
-    dxLayoutItem4: TdxLayoutItem;
-    dxLayoutItem5: TdxLayoutItem;
-    dxLayoutItem6: TdxLayoutItem;
-    dxLayoutItem7: TdxLayoutItem;
-    dxLayoutItem8: TdxLayoutItem;
-    dxLayoutItem9: TdxLayoutItem;
-    dxLayoutGroup8: TdxLayoutGroup;
-    dxLayoutGroup1: TdxLayoutGroup;
-    dxLayoutGroup9: TdxLayoutGroup;
-    dxLayoutGroup10: TdxLayoutGroup;
+    lagrp_FTRoot: TdxLayoutGroup;
+    lactrl_FT: TdxLayoutControl;
+    laitm_FTToolbar: TdxLayoutItem;
+    lagrp_FTDetail: TdxLayoutGroup;
+    laitm_FTKuerzel: TdxLayoutItem;
+    laitm_FTBeschreibung: TdxLayoutItem;
+    laitm_FTType: TdxLayoutItem;
+    laitm_FTGutschrift: TdxLayoutItem;
+    laitm_FTSoll: TdxLayoutItem;
+    laitm_FTColorAbsence: TdxLayoutItem;
+    laitm_FTColorFont: TdxLayoutItem;
+    laitm_FTGrid: TdxLayoutItem;
+    lagrp_FTMain: TdxLayoutGroup;
+    lagrp_FTEdit: TdxLayoutGroup;
+    lagrp_FTEditRow1: TdxLayoutGroup;
+    lagrp_FTEditRow3: TdxLayoutGroup;
+    lagrp_FTEditRow2: TdxLayoutGroup;
     procedure btn_FTCancelClick(Sender: TObject);
     procedure btn_FTCloseClick(Sender: TObject);
     procedure btn_FTDeleteClick(Sender: TObject);
     procedure btn_FTNewClick(Sender: TObject);
     procedure btn_FTSaveClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -180,5 +183,14 @@ procedure Tfrm_Fehltage.FormCreate(Sender: TObject);
 begin
   qry_FT1.Open;
 end;
+procedure Tfrm_Fehltage.FormShow(Sender: TObject);
+begin
+  if frm_Fehltage.HasParent then
+    btn_FTClose.Visible:= ivnever
+  else
+    btn_FTClose.Visible:= ivAlways;
+
+end;
+
 {$EndRegion FormFunktionen}
 end.

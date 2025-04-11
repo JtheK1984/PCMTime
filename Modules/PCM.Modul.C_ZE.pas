@@ -214,18 +214,6 @@ type
     ppm_Reports: TdxBarPopupMenu;
     ppmbtn_ReportMonth: TdxBarButton;
     ppmbtn_ReportYear: TdxBarButton;
-    dxLayoutControl1Group_Root: TdxLayoutGroup;
-    dxLayoutControl1: TdxLayoutControl;
-    dxLayoutGroup1: TdxLayoutGroup;
-    dxLayoutItem1: TdxLayoutItem;
-    dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
-    dxLayoutItem4: TdxLayoutItem;
-    dxLayoutItem5: TdxLayoutItem;
-    pc_ze: TcxPageControl;
-    ts_Online: TcxTabSheet;
-    ts_Grid: TcxTabSheet;
-    ts_Kalender: TcxTabSheet;
     stbr_ZE: TdxStatusBar;
     sched_Kalender: TcxScheduler;
     grd_Booking: TcxGrid;
@@ -251,9 +239,24 @@ type
     grdDBTblViewCol_BookingFeiertag: TcxGridDBColumn;
     grdDBTblViewCol_BookingFehltag: TcxGridDBColumn;
     grdLvl_Booking: TcxGridLevel;
-    dxLayoutGroup2: TdxLayoutGroup;
-    dxLayoutGroup3: TdxLayoutGroup;
-    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutControl2Group_Root: TdxLayoutGroup;
+    dxLayoutControl2: TdxLayoutControl;
+    pc_Ze: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutGroup10: TdxLayoutGroup;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutGroup12: TdxLayoutGroup;
+    dxLayoutGroup13: TdxLayoutGroup;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutItem10: TdxLayoutItem;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btn_ViewCalClick(Sender: TObject);
@@ -355,7 +358,7 @@ begin
   tb_Drucken.Visible:= false;
   tb_DruckeGrid.Visible:= true;
   tb_fehltage.Visible:= true;
-  pc_Ze.ActivePage:= ts_Online;
+  pc_Ze.ItemIndex:= 0;
 end;
 procedure Tfrm_ZE.btn_ViewGridClick(Sender: TObject);
 begin
@@ -368,7 +371,7 @@ begin
   tb_Drucken.Visible:= false;
   tb_DruckeGrid.Visible:= true;
   tb_fehltage.Visible:= false;
-  pc_Ze.ActivePage:= ts_Grid;
+  pc_Ze.ItemIndex:= 1;
 end;
 procedure Tfrm_ZE.btn_ViewCalClick(Sender: TObject);
 begin
@@ -382,7 +385,7 @@ begin
   tb_Drucken.Visible:= true;
   tb_DruckeGrid.Visible:= false;
   tb_fehltage.Visible:= false;
-  pc_Ze.ActivePage:= ts_Kalender;
+  pc_Ze.ItemIndex:= 2;
 end;
 // ZE - Filter Monat
 procedure Tfrm_ZE.btn_FilterMonthYearClick(Sender: TObject);
@@ -1183,7 +1186,7 @@ begin
 //  ribTab_4Print.Visible:= false;
   tb_Drucken.Visible:= false;
   tb_fehltage.Visible:= true;
-  pc_Ze.ActivePage:= ts_Online;
+  pc_Ze.ItemIndex:= 0;
   iView:= 1;
   schedDBStrg_Kalender.Reminders.Active:= false;
   defaultLabelColor:= 13083265;
@@ -1223,7 +1226,11 @@ begin
   qry_Buchungen.ParamByName('Von').AsDate:= StrToDate(dedt_Von.EditValue);
   qry_Buchungen.ParamByName('Bis').AsDate:= StrToDate(dedt_Bis.EditValue);
   qry_Buchungen.open;
-
+  case dm_PCM.iModulTab of
+  1: btn_OnlineClick(Self);
+  2: btn_ViewGridClick(Self);
+  3: btn_ViewCalClick(Self);
+  end;
 end;
 {$EndRegion FormFunktionen}
 end.
