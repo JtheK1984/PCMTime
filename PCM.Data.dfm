@@ -8,7 +8,7 @@ object dm_PCM: Tdm_PCM
       'Database=pcm'
       'User_Name=root'
       'Password=pcm'
-      'Server=pcmapps.ddns.net'
+      'Server=127.0.0.1'
       'Port=3307'
       'DriverID=MySQL')
     ResourceOptions.AssignedValues = [rvAutoReconnect]
@@ -22335,7 +22335,7 @@ object dm_PCM: Tdm_PCM
     Height = 32
     Width = 32
     FormatVersion = 1
-    DesignInfo = 18350590
+    DesignInfo = 27525885
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -24490,50 +24490,48 @@ object dm_PCM: Tdm_PCM
     Connection = con_PCM
     SQL.Strings = (
       '')
-    Left = 864
-    Top = 16
+    Left = 1296
+    Top = 24
   end
   object ds_ChartGeburtstage: TDataSource
     DataSet = qry_ChartGeburtstage
-    Left = 864
-    Top = 72
+    Left = 1296
+    Top = 108
   end
   object qry_FT: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'SELECT Datum, Bezeichnung From time_feiertage ')
-    Left = 752
-    Top = 16
+    Left = 1128
+    Top = 24
   end
   object ds_FT: TDataSource
     DataSet = qry_FT
-    Left = 752
-    Top = 72
+    Left = 1128
+    Top = 108
   end
   object qry_Abw: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       '')
-    Left = 712
-    Top = 160
+    Left = 1068
+    Top = 240
   end
   object ds_Abw: TDataSource
     DataSet = qry_Abw
-    Left = 712
-    Top = 216
+    Left = 1068
+    Top = 324
   end
   object qry_Fehltag: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select Kuerzel,Beschreibung,Von,Bis from time_fehltage')
-    Left = 752
-    Top = 160
+    Left = 1128
+    Top = 240
   end
   object ds_Fehltag: TDataSource
     DataSet = qry_Fehltag
-    Left = 760
-    Top = 224
+    Left = 1140
+    Top = 336
   end
 end

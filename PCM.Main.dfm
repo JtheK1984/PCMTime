@@ -36,12 +36,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-<<<<<<< HEAD
-    ExplicitHeight = 748
-=======
     ExplicitTop = 30
     ExplicitHeight = 770
->>>>>>> f2863100a604838aa9c6259360fca759f8dbd22d
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -245,13 +241,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-<<<<<<< HEAD
-    ExplicitWidth = 1074
-    ExplicitHeight = 748
-=======
     ExplicitTop = 30
     ExplicitHeight = 770
->>>>>>> f2863100a604838aa9c6259360fca759f8dbd22d
     Height = 765
     Width = 1080
     object pc_main: TcxPageControl
@@ -274,15 +265,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       Properties.Style = 11
       OnPageChanging = pc_mainPageChanging
-<<<<<<< HEAD
-      ExplicitWidth = 1068
-      ExplicitHeight = 742
-=======
       ExplicitLeft = 2
       ExplicitTop = 2
       ExplicitWidth = 1076
       ExplicitHeight = 766
->>>>>>> f2863100a604838aa9c6259360fca759f8dbd22d
       ClientRectBottom = 753
       ClientRectLeft = 2
       ClientRectRight = 1068
@@ -290,14 +276,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 79
-<<<<<<< HEAD
-        ExplicitWidth = 1060
-        ExplicitHeight = 708
-=======
         ExplicitTop = 23
         ExplicitWidth = 1072
         ExplicitHeight = 741
->>>>>>> f2863100a604838aa9c6259360fca759f8dbd22d
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
@@ -306,10 +287,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-<<<<<<< HEAD
-          ExplicitWidth = 1060
-          ExplicitHeight = 708
-=======
           ExplicitWidth = 1072
           ExplicitHeight = 741
           object chartctrl_Birthday: TdxChartControl
@@ -449,7 +426,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
               GridView = cxGrid2DBTableView1
             end
           end
->>>>>>> f2863100a604838aa9c6259360fca759f8dbd22d
           object dxLayoutControl1Group_Root: TdxLayoutGroup
             AlignHorz = ahClient
             AlignVert = avClient
