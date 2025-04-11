@@ -26,9 +26,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
   TextHeight = 13
   object navbr_main: TdxNavBar
     Left = 0
-    Top = 35
+    Top = 30
     Width = 200
-    Height = 765
+    Height = 770
     Align = alLeft
     ActiveGroupIndex = 0
     TabOrder = 0
@@ -36,8 +36,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-    ExplicitTop = 30
-    ExplicitHeight = 770
+    ExplicitHeight = 753
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -236,20 +235,20 @@ object frm_PCM_Main: Tfrm_PCM_Main
   end
   object grpbx_Design: TcxGroupBox
     Left = 200
-    Top = 35
+    Top = 30
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitTop = 30
-    ExplicitHeight = 770
-    Height = 765
+    ExplicitWidth = 1074
+    ExplicitHeight = 753
+    Height = 770
     Width = 1080
     object pc_main: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 1074
-      Height = 759
+      Left = 2
+      Top = 2
+      Width = 1076
+      Height = 766
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -265,30 +264,27 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       Properties.Style = 11
       OnPageChanging = pc_mainPageChanging
-      ExplicitLeft = 2
-      ExplicitTop = 2
-      ExplicitWidth = 1076
-      ExplicitHeight = 766
-      ClientRectBottom = 753
+      ExplicitWidth = 1070
+      ExplicitHeight = 749
+      ClientRectBottom = 764
       ClientRectLeft = 2
-      ClientRectRight = 1068
-      ClientRectTop = 28
+      ClientRectRight = 1074
+      ClientRectTop = 23
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 79
-        ExplicitTop = 23
-        ExplicitWidth = 1072
-        ExplicitHeight = 741
+        ExplicitWidth = 1066
+        ExplicitHeight = 724
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
-          Width = 1066
-          Height = 725
+          Width = 1072
+          Height = 741
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-          ExplicitWidth = 1072
-          ExplicitHeight = 741
+          ExplicitWidth = 1066
+          ExplicitHeight = 724
           object chartctrl_Birthday: TdxChartControl
             Left = 10000
             Top = 10000
@@ -342,10 +338,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
               OptionsView.IndicatorWidth = 16
               object cxGrid1DBTableView1Datum: TcxGridDBColumn
                 DataBinding.FieldName = 'Datum'
+                DataBinding.IsNullValueType = True
                 Width = 100
               end
               object cxGrid1DBTableView1Bezeichnung: TcxGridDBColumn
                 DataBinding.FieldName = 'Bezeichnung'
+                DataBinding.IsNullValueType = True
                 Width = 500
               end
             end
@@ -407,18 +405,22 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object cxGrid2DBTableView1Kuerzel: TcxGridDBColumn
                 Caption = 'K'#252'rzel'
                 DataBinding.FieldName = 'Kuerzel'
+                DataBinding.IsNullValueType = True
                 Width = 60
               end
               object cxGrid2DBTableView1Beschreibung: TcxGridDBColumn
                 DataBinding.FieldName = 'Beschreibung'
+                DataBinding.IsNullValueType = True
                 Width = 200
               end
               object cxGrid2DBTableView1Von: TcxGridDBColumn
                 DataBinding.FieldName = 'Von'
+                DataBinding.IsNullValueType = True
                 Width = 100
               end
               object cxGrid2DBTableView1Bis: TcxGridDBColumn
                 DataBinding.FieldName = 'Bis'
+                DataBinding.IsNullValueType = True
                 Width = 100
               end
             end
@@ -1106,12 +1108,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Top = 104
   end
   object lafCtrl_Main: TcxLookAndFeelController
-    Kind = lfFlat
-    NativeStyle = False
-    ScrollbarMode = sbmClassic
-    ScrollMode = scmClassic
-    SkinName = 'DevExpressDarkStyle'
-    RenderMode = rmGDIPlus
     Left = 88
     Top = 104
   end
@@ -4886,6 +4882,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     MenusShowRecentItemsFirst = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 472
     Top = 192
@@ -4893,7 +4890,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     DockControlHeights = (
       0
       0
-      35
+      30
       0)
     object tb_main: TdxBar
       AllowClose = False

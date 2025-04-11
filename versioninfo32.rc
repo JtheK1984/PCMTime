@@ -1,7 +1,7 @@
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 6
-#define VERSION_BUILD 1
-#define VERSION_REVISION 0
+#define VERSION_BUILD 0
+#define VERSION_REVISION 2
 
 #define STRINGIFY(x) #x
 #define VERSION_STRING(a,b,c,d) STRINGIFY(a) "." STRINGIFY(b) "." STRINGIFY(c) "." STRINGIFY(d)
@@ -21,14 +21,14 @@ BEGIN
   BEGIN
     BLOCK "040704B0"
     BEGIN
-      VALUE "FileDescription", "Sicherung der Datenbank\0"
+      VALUE "FileDescription", "Zeiterfassung\0"
       VALUE "FileVersion", VERSION_STRING_FULL "\0"
-      VALUE "InternalName", "PCMBackup.exe\0"
+      VALUE "InternalName", "PCMTime.exe\0"
       VALUE "LegalCopyright", "PCM (Jens Henske)\0"
-      VALUE "ProductName", "PCMBackup 32-Bit\0"
+      VALUE "ProductName", "PCMTime 32-Bit\0"
       VALUE "ProductVersion",VERSION_STRING_SMALL "\0"
       VALUE "CompanyName", "PCM\0"
-      VALUE "OriginalFilename", "PCMBackup.exe (32-Bit)\0"
+      VALUE "OriginalFilename", "PCMTime.exe (32-Bit)\0"
       VALUE "Comments", "\0"
     END
   END
