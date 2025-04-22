@@ -10,5 +10,5 @@ copy /y /v "PCMTime.pdf" "e:\Inno\Setupfiles\Programme\PCMTime"
 copy /y /v "PCMTime.htm" "e:\Inno\Setupfiles\Programme\PCMTime"
 
 echo "Demolizenz erstellen"
-call "E:\Inno\Setupfiles\Programme\PCMLizenzgenerator\PCMLizenzgenerator.exe" /PCM-Time /1.6 /E:\Inno\Setupfiles\Programme\PCMTime
+call "E:\Inno\Setupfiles\Programme\PCMLizenzgenerator\PCMLizenzgenerator.exe" /PCM-Time /1.0 /E:\Inno\Setupfiles\Programme\PCMTime
 pause

@@ -2,7 +2,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
   Left = 0
   Top = 0
   AlphaBlend = True
-  BorderStyle = bsSingle
   Caption = 's'
   ClientHeight = 800
   ClientWidth = 1280
@@ -266,25 +265,24 @@ object frm_PCM_Main: Tfrm_PCM_Main
       OnPageChanging = pc_mainPageChanging
       ExplicitWidth = 1070
       ExplicitHeight = 749
-      ClientRectBottom = 764
-      ClientRectLeft = 2
-      ClientRectRight = 1074
-      ClientRectTop = 23
+      ClientRectBottom = 766
+      ClientRectRight = 1076
+      ClientRectTop = 21
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 79
-        ExplicitWidth = 1066
-        ExplicitHeight = 724
+        ExplicitWidth = 1070
+        ExplicitHeight = 728
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
-          Width = 1072
-          Height = 741
+          Width = 1076
+          Height = 745
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-          ExplicitWidth = 1066
-          ExplicitHeight = 724
+          ExplicitWidth = 1070
+          ExplicitHeight = 728
           object chartctrl_Birthday: TdxChartControl
             Left = 10000
             Top = 10000
@@ -1108,6 +1106,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Top = 104
   end
   object lafCtrl_Main: TcxLookAndFeelController
+    NativeStyle = True
     Left = 88
     Top = 104
   end
