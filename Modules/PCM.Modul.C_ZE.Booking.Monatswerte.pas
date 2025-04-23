@@ -7,6 +7,7 @@ uses
   cxButtons,
   cxClasses,
   cxContainer,
+  cxGridExportLink,
   cxControls,
   cxCustomData,
   cxData,
@@ -68,7 +69,8 @@ uses
   Vcl.StdCtrls,
   Winapi.Messages,
   Winapi.Windows, cxCurrencyEdit, dxUIAClasses, dxLayoutContainer,
-  dxLayoutControl, dxLayoutcxEditAdapters, dxLayoutControlAdapters;
+  dxLayoutControl, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
+  cxGridCustomPopupMenu, cxGridPopupMenu;
   {$EndRegion uses}
 type
   {$Region Type}
@@ -310,6 +312,10 @@ type
     dxLayoutItem51: TdxLayoutItem;
     lbl_KikTag: TcxLabel;
     lbl_KikDez: TcxLabel;
+    pm_Buchungen: TcxGridPopupMenu;
+    pmm_Buchungen: TdxBarPopupMenu;
+    dxBarLargeButton4: TdxBarLargeButton;
+    sdlg_Buchungen: TSaveDialog;
     procedure AuswertungsJahrPropertiesChange(Sender: TObject);
     procedure SetMonatswerte(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -322,6 +328,7 @@ type
     procedure grd_TagDBTableView1MehrarbeitCustomDrawCell(
       Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
       AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure dxBarLargeButton4Click(Sender: TObject);
   private
     { Private-Deklarationen }
     function GetMonthFromButton: integer;
@@ -345,6 +352,7 @@ uses
   PCMTime.Calculate,
   PCM.Reports,
   PCM.Data,
+  PCM.Strings,
   PCM.Functions.Synch.Wait,
   PCM.Modul.C_ZE, PCM.Main;
   {$EndRegion Type}
@@ -513,19 +521,19 @@ begin
   lbl_FT.Caption:= FormatFloat('0.0', GetFeiertage(EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
 
 
-  dm_PCM.qry_Work.SQL.Text:=  'SELECT Mehrarbeit,cast(SEC_TO_TIME(Mehrarbeit * 60) AS char) as MehrarbeitT, Mehrarbeit / 60 as MehrarbeitD FROM time_Monatswerte WHERE Monat = :Monat AND Jahr = :Jahr';
+  dm_PCM.qry_Work.SQL.Text:=  'SELECT aktuelleMehrarbeit,cast(SEC_TO_TIME(aktuelleMehrarbeit * 60) AS char) as MehrarbeitT, aktuelleMehrarbeit / 60 as MehrarbeitD FROM time_Monatswerte WHERE Monat = :Monat AND Jahr = :Jahr';
   dm_PCM.qry_Work.ParamByName('Monat').AsInteger:= iVMonat;
   dm_PCM.qry_Work.ParamByName('Jahr').AsInteger:= iVJahr;
   dm_PCM.qry_Work.open;
-  iGLZVMonat:= dm_PCM.qry_Work.FieldByName('Mehrarbeit').AsInteger;
+  iGLZVMonat:= dm_PCM.qry_Work.FieldByName('aktuelleMehrarbeit').AsInteger;
   lbl_D6.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('MehrarbeitD').AsFloat);
   if iGLZVMonat < 0 then
   begin
-    lbl_T6.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('Mehrarbeit').asInteger * -1) + '-';
+    lbl_T6.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('aktuelleMehrarbeit').asInteger * -1) + '-';
     lbl_D6.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('MehrarbeitD').AsFloat * -1) + '-';
   end
   else begin
-    lbl_T6.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('Mehrarbeit').asInteger);
+    lbl_T6.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('aktuelleMehrarbeit').asInteger);
     lbl_D6.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('MehrarbeitD').AsFloat);
   end;
   dm_PCM.qry_Work.Close;
@@ -739,6 +747,15 @@ begin
   GetData(GetMonthFromButton,AuswertungsJahr.value);
   CloseWaitForm;
 end;
+procedure Tfrm_monatswerte.dxBarLargeButton4Click(Sender: TObject);
+begin
+  if sdlg_Buchungen.Execute then
+  begin
+    ExportGridToExcel(sdlg_Buchungen.FileName, grd_tag);
+    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Buchungen.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+  end;
+end;
+
 {$EndRegion Buttons}
 ////////////////////////////////////////////////////////////////////////////////
 // Formfunktionen                                                             //

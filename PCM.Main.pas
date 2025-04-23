@@ -517,19 +517,19 @@ procedure Tfrm_PCM_Main.LoadData;
     lbl_FT.Caption:= FormatFloat('0.0', GetFeiertage(EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
     lbl_OffHomeOffGes.Caption:= '[B]' + IntToStr(GetBuchungsart(0, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))+GetBuchungsart(1, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))) + '[/B]';
 
-    dm_PCM.qry_Work.SQL.Text:=  'SELECT Mehrarbeit,cast(SEC_TO_TIME(Mehrarbeit * 60) AS char) as MehrarbeitT, Mehrarbeit / 60 as MehrarbeitD FROM time_Monatswerte WHERE Monat = :Monat AND Jahr = :Jahr';
+    dm_PCM.qry_Work.SQL.Text:=  'SELECT aktuelleMehrarbeit,cast(SEC_TO_TIME(aktuelleMehrarbeit * 60) AS char) as MehrarbeitT, aktuelleMehrarbeit / 60 as MehrarbeitD FROM time_Monatswerte WHERE Monat = :Monat AND Jahr = :Jahr';
     dm_PCM.qry_Work.ParamByName('Monat').AsInteger:= iVMonat;
     dm_PCM.qry_Work.ParamByName('Jahr').AsInteger:= iVJahr;
     dm_PCM.qry_Work.open;
-    iGLZVMonat:= dm_PCM.qry_Work.FieldByName('Mehrarbeit').AsInteger;
+    iGLZVMonat:= dm_PCM.qry_Work.FieldByName('aktuelleMehrarbeit').AsInteger;
     lbl_D6.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('MehrarbeitD').AsFloat);
     if iGLZVMonat < 0 then
     begin
-      lbl_T6.Caption:= '-' + GetTimeValue(dm_PCM.qry_Work.FieldByName('Mehrarbeit').asInteger * -1);
+      lbl_T6.Caption:= '-' + GetTimeValue(dm_PCM.qry_Work.FieldByName('aktuelleMehrarbeit').asInteger * -1);
       lbl_D6.Caption:= '-' + FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('MehrarbeitD').AsFloat * -1);
     end
     else begin
-      lbl_T6.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('Mehrarbeit').asInteger);
+      lbl_T6.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('aktuelleMehrarbeit').asInteger);
       lbl_D6.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('MehrarbeitD').AsFloat);
     end;
     dm_PCM.qry_Work.Close;

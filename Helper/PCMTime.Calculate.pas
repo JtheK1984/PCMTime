@@ -11,6 +11,7 @@ function GetFehltagSumKik(AFeiertag, ATyp, ABezahlt, ASoll: integer;AVon,ABis:TD
 function GetFehltagSum(AFeiertag, ATyp, ABezahlt: integer;AVon,ABis:TDate) : double;
 function GetFehltagTage(AID_Fehltage: integer) : double;
 function GetFeiertage(AVon,ABis: TDate): double;
+function GetMehrarbeitVorMonat(AJahr,AMonat: integer): integer;
 function GetMonthName(AMonat: integer) : String;
 function GetPersonalSollStunden: TTime;
 function GetResturlaub(AJahr,AMonat: integer) : double;
