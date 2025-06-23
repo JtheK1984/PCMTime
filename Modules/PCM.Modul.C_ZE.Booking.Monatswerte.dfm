@@ -2771,7 +2771,7 @@ object frm_monatswerte: Tfrm_monatswerte
   object imglst_16x16: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 6291904
+    DesignInfo = 22020816
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'

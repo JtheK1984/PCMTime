@@ -977,43 +977,40 @@ begin
   BerechneTage(iTag,iMonat,iJahr);
   qry_Buchungen.Refresh;
 end;
-procedure Tfrm_ZE.grdDBTblViewCol_BookingMehrarbeitCustomDrawCell(
-  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
-  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+procedure Tfrm_ZE.grdDBTblViewCol_BookingMehrarbeitCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+var
+  Tag: string;
+  Feiertag, Sollstunden, Arbeitszeit: Integer;
+  Mehrarbeit: double;
 begin
   try
-    dm_PCM.qry_work.sql.text:= 'SELECT Tag, Round(Mehrarbeiti / 60,2) AS Mehrarbeit,Round(Sollstundeni / 60,2) AS Sollstunden,' +
-                               'Round(Arbeitszeiti / 60,2) AS Arbeitszeit,'+
-                               'Feiertag,IFNULL(ID_Fehltage,0) as ID_Fehltage From time_buchungen WHERE ID = :ID';
-    dm_PCM.qry_work.parambyname('ID').asInteger:= AViewInfo.GridRecord.Values[0];
-    dm_PCM.qry_work.open;
-
-    if (dm_PCM.qry_work.FieldByName('Tag').AsString = 'Sa.') or (dm_PCM.qry_work.FieldByName('Tag').AsString ='So.') then
+    Tag := VarToStr(AViewInfo.GridRecord.Values[1]);
+    Sollstunden := VarAsType(AViewInfo.GridRecord.Values[10], varInteger);
+    Arbeitszeit := VarAsType(AViewInfo.GridRecord.Values[12], varInteger);
+    Feiertag := VarAsType(AViewInfo.GridRecord.Values[18], varInteger);
+    Mehrarbeit := VarAsType(AViewInfo.GridRecord.Values[16], varDouble);
+    if (Tag = 'Sa.') or (Tag = 'So.') then
     begin
-      ACanvas.Font.Color :=clActiveBorder;
+      ACanvas.Font.Color := clActiveBorder;
     end;
-
-    if dm_PCM.qry_work.FieldByName('Mehrarbeit').asFloat > 0 then
+    if Mehrarbeit > 0 then
     begin
       ACanvas.Font.Color :=clWebLightGreen;
       ACanvas.Font.Style:= [fsbold];
     end
     else begin
-      if dm_PCM.qry_work.FieldByName('Mehrarbeit').asFloat < 0 then
+      if Mehrarbeit < 0 then
       begin
         ACanvas.Font.Color:= clWebLightCoral;
         ACanvas.Font.Style:= [fsbold];
       end
       else begin
-        if ((dm_PCM.qry_work.FieldByName('Feiertag').AsInteger > 0) and (dm_PCM.qry_work.FieldByName('Sollstunden').AsInteger > 0 )) or
-         ((dm_PCM.qry_work.FieldByName('Arbeitszeit').AsInteger > 0) and (dm_PCM.qry_work.FieldByName('Sollstunden').AsInteger > 0 )) or
-         ((dm_PCM.qry_work.FieldByName('Arbeitszeit').AsInteger > 0) and (dm_PCM.qry_work.FieldByName('Sollstunden').AsInteger > 0 )) then
+        if ((Feiertag > 0) and (Sollstunden > 0)) or ((Arbeitszeit > 0) and (Sollstunden > 0)) then
         begin
-          ACanvas.Font.Style:= [fsbold];
+          ACanvas.Font.Style := [fsBold];
         end;
       end;
     end;
-    dm_PCM.qry_work.Close;
   except
   end;
 end;
@@ -1035,31 +1032,27 @@ begin
   end;
 end;
 end;
-procedure Tfrm_ZE.grdDBTblView_BookingColumn2CustomDrawCell(
-  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
-  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+procedure Tfrm_ZE.grdDBTblView_BookingColumn2CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+var
+  Tag: string;
+  Feiertag, Sollstunden, Arbeitszeit: Integer;
 begin
   try
-    dm_PCM.qry_work.sql.text:= 'SELECT Tag, Round(Sollstundeni / 60,2) AS Sollstunden,' +
-                               'Round(Arbeitszeiti / 60,2) AS Arbeitszeit,'+
-                               'Feiertag,IFNULL(ID_Fehltage,0) as ID_Fehltage From time_buchungen WHERE ID = :ID';
-    dm_PCM.qry_work.parambyname('ID').asInteger:= AViewInfo.GridRecord.Values[0];
-    dm_PCM.qry_work.open;
-    if (dm_PCM.qry_work.FieldByName('Tag').AsString = 'Sa.') or (dm_PCM.qry_work.FieldByName('Tag').AsString ='So.') then
+    Tag := VarToStr(AViewInfo.GridRecord.Values[1]);
+    Sollstunden := VarAsType(AViewInfo.GridRecord.Values[10], varInteger);
+    Arbeitszeit := VarAsType(AViewInfo.GridRecord.Values[12], varInteger);
+    Feiertag := VarAsType(AViewInfo.GridRecord.Values[18], varInteger);
+    if (Tag = 'Sa.') or (Tag = 'So.') then
     begin
-      ACanvas.Font.Color :=clActiveBorder;
+      ACanvas.Font.Color := clActiveBorder;
     end;
-    if ((dm_PCM.qry_work.FieldByName('Feiertag').AsInteger > 0) and (dm_PCM.qry_work.FieldByName('Sollstunden').AsInteger > 0 )) or
-       ((dm_PCM.qry_work.FieldByName('Arbeitszeit').AsInteger > 0) and (dm_PCM.qry_work.FieldByName('Sollstunden').AsInteger > 0 )) or
-       ((dm_PCM.qry_work.FieldByName('Arbeitszeit').AsInteger > 0) and (dm_PCM.qry_work.FieldByName('Sollstunden').AsInteger > 0 )) then
+    if ((Feiertag > 0) and (Sollstunden > 0)) or ((Arbeitszeit > 0) and (Sollstunden > 0)) then
     begin
-      ACanvas.Font.Style:= [fsbold];
+      ACanvas.Font.Style := [fsBold];
     end;
-    dm_PCM.qry_work.Close;
   except
   end;
 end;
-
 procedure Tfrm_ZE.sched_KalenderCustomDrawEvent(Sender: TObject; ACanvas: TcxCanvas; AViewInfo: TcxSchedulerEventCellViewInfo; var ADone: Boolean);
 begin
   dm_PCM.qry_work.Close;

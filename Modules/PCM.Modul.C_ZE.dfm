@@ -957,12 +957,11 @@ object frm_ZE: Tfrm_ZE
       Width = 1028
     end
     object grd_Booking: TcxGrid
-      Left = 10000
-      Top = 10000
-      Width = 1131
-      Height = 526
+      Left = 12
+      Top = 12
+      Width = 1133
+      Height = 528
       TabOrder = 5
-      Visible = False
       object grdDBTblView_Booking: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         ScrollbarAnnotations.CustomAnnotations = <>
@@ -1194,10 +1193,10 @@ object frm_ZE: Tfrm_ZE
       end
     end
     object sched_Kalender: TcxScheduler
-      Left = 8
-      Top = 8
-      Width = 1141
-      Height = 536
+      Left = 10000
+      Top = 10000
+      Width = 1133
+      Height = 528
       DateNavigator.RowCount = 4
       ViewDay.Active = True
       ViewDay.AlwaysShowEventTime = True
@@ -1236,10 +1235,11 @@ object frm_ZE: Tfrm_ZE
       ShowHint = True
       Storage = schedDBStrg_Kalender
       TabOrder = 6
+      Visible = False
       OnGetEventModernStyleHintInfo = sched_KalenderGetEventModernStyleHintInfo
       Splitters = {
-        950000007E0000008406000083000000E003000001000000E503000017020000}
-      StoredClientBounds = {01000000010000007404000017020000}
+        950000007E0000008406000083000000D803000001000000DD0300000F020000}
+      StoredClientBounds = {01000000010000006C0400000F020000}
     end
     object dxLayoutControl2Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -1255,7 +1255,7 @@ object frm_ZE: Tfrm_ZE
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel2
-      ItemIndex = 2
+      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
       TabbedOptions.HideTabs = True

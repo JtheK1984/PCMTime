@@ -108,7 +108,6 @@ begin
   qry_FT.UnPrepare;
   qry_FT.free;
 end;
-
 function GetFehltagSum(AFeiertag, ATyp, ABezahlt: integer;AVon,ABis:TDate) : double;
 var
   qry_FT: TFDQuery;
@@ -382,7 +381,12 @@ begin
     begin
       iSollstunden:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
       if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
+      begin
         iFehltag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        if dm_pcm.qry_Calc.FieldByName('SollAbziehen').AsInteger = 1 then
+          iFehltag:= 0;
+
+      end;
 
       if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 0) and  (dm_pcm.qry_Calc.FieldByName('SollAbziehen').AsInteger = 1))  then
         iSollstunden:= 0;
