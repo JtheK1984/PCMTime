@@ -110,6 +110,7 @@ type
     procedure btn_FTNEwClick(Sender: TObject);
     procedure btn_FTSaveClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure dedt_VonPropertiesChange(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -163,6 +164,7 @@ begin
   end;
 end;
 procedure Tfrm_Fehltageeintragen.btn_FTNEwClick(Sender: TObject);
+var i: integer;
 begin
   dxLayoutGroup3.visible:= true;
   if qry_Ft.State in [dsInsert, dsedit] then
@@ -250,8 +252,9 @@ begin
         qry_Fehltage.open;
         iID_Fehltage:= qry_Fehltage.FieldByName('ID').AsInteger;
         qry_Fehltage.Close;
+
         qry_Fehltage.UnPrepare;
-        qry_Fehltage.SQL.Text:= 'Update time_buchungen Set Fehltag = :Fehltag, ID_Fehltage = :ID Where Sollstunden <> :Soll and Feiertag <> 1 and Datum >= :Von and Datum <= :Bis';
+        qry_Fehltage.SQL.Text:= 'Update time_buchungen Set Fehltag = :Fehltag, ID_Fehltage = :ID, SollstundenI = Round(TIME_TO_SEC(Sollstunden) / 60) Where Sollstunden <> :Soll and Feiertag <> 1 and Datum >= :Von and Datum <= :Bis';
         qry_Fehltage.ParamByName('Soll').AsTime:= StrToTime('00:00:00');
         qry_Fehltage.ParamByName('Fehltag').AsString:= sFehltag;
         qry_Fehltage.ParamByName('ID').asInteger:= iID_Fehltage;
@@ -274,6 +277,11 @@ begin
     end;
   end;
 end;
+procedure Tfrm_Fehltageeintragen.dedt_VonPropertiesChange(Sender: TObject);
+begin
+  dedt_Bis.EditText:=dedt_Von.EditText;
+end;
+
 {$EndRegion Butons}
 ////////////////////////////////////////////////////////////////////////////////
 // Formfunktionen                                                             //

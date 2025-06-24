@@ -5,7 +5,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
   BorderStyle = bsDialog
   Caption = 'PCM - Zeiterfassung: Fehltage eintragen'
   ClientHeight = 545
-  ClientWidth = 480
+  ClientWidth = 529
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,49 +18,53 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
   object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Width = 480
+    Width = 529
     Height = 545
     Align = alClient
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitHeight = 100
     object brdckCtrl_Fehltage: TdxBarDockControl
       Left = 12
-      Top = 477
-      Width = 439
+      Top = 12
+      Width = 505
       Height = 58
       Align = dalNone
       BarManager = brmgr_Fehltage
     end
     object dedt_Von: TcxDateEdit
       Left = 22
-      Top = 580
+      Top = 366
+      Properties.OnChange = dedt_VonPropertiesChange
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 419
+      Width = 485
     end
     object dedt_Bis: TcxDateEdit
       Left = 22
-      Top = 629
+      Top = 417
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Width = 419
+      Width = 485
     end
     object cmbbx_Fehltage: TcxComboBox
       Left = 22
-      Top = 678
+      Top = 468
+      AutoSize = False
       Properties.DropDownListStyle = lsEditFixedList
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
-      Width = 419
+      Height = 23
+      Width = 485
     end
     object btn_FTSave: TcxButton
       Left = 22
-      Top = 706
-      Width = 206
+      Top = 498
+      Width = 239
       Height = 25
       Caption = 'Speichern'
       OptionsImage.ImageIndex = 56
@@ -75,9 +79,9 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       OnClick = btn_FTSaveClick
     end
     object btn_FTCancel: TcxButton
-      Left = 235
-      Top = 706
-      Width = 206
+      Left = 268
+      Top = 498
+      Width = 239
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
@@ -93,10 +97,10 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
     end
     object grd_Booking: TcxGrid
       Left = 12
-      Top = 12
-      Width = 439
-      Height = 458
-      TabOrder = 0
+      Top = 77
+      Width = 505
+      Height = 244
+      TabOrder = 1
       object grdDBTblView_Booking: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         ScrollbarAnnotations.CustomAnnotations = <>
@@ -154,19 +158,17 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
     object dxLayoutItem1: TdxLayoutItem
       Parent = dxLayoutGroup8
       AlignHorz = ahClient
-      AlignVert = avTop
+      AlignVert = avClient
       CaptionOptions.Text = 'grd_Booking'
       CaptionOptions.Visible = False
       Control = grd_Booking
-      ControlOptions.OriginalHeight = 458
+      ControlOptions.OriginalHeight = 100
       ControlOptions.OriginalWidth = 480
       ControlOptions.ShowBorder = False
-      Index = 0
+      Index = 1
     end
     object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup9
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup8
       CaptionOptions.Text = 'brdckCtrl_Fehltage'
       CaptionOptions.Visible = False
       Control = brdckCtrl_Fehltage
@@ -181,8 +183,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       AlignHorz = ahClient
       AlignVert = avTop
       Visible = False
-      ItemIndex = 3
-      Index = 1
+      Index = 0
     end
     object dxLayoutItem3: TdxLayoutItem
       Parent = dxLayoutGroup3
@@ -191,7 +192,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       CaptionOptions.Text = 'Zeitraum Von:'
       CaptionOptions.Layout = clTop
       Control = dedt_Von
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 468
       ControlOptions.ShowBorder = False
       Index = 0
@@ -203,7 +204,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       CaptionOptions.Text = 'Zeitraum Bis:'
       CaptionOptions.Layout = clTop
       Control = dedt_Bis
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 468
       ControlOptions.ShowBorder = False
       Index = 1
@@ -215,7 +216,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       CaptionOptions.Text = 'Fehltag:'
       CaptionOptions.Layout = clTop
       Control = cmbbx_Fehltage
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 468
       ControlOptions.ShowBorder = False
       Index = 2
@@ -258,9 +259,8 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       ShowBorder = False
-      Index = 1
+      Index = 2
     end
     object dxLayoutGroup10: TdxLayoutGroup
       Parent = dxLayoutGroup3

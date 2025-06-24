@@ -3,7 +3,7 @@ object frm_monatswerte: Tfrm_monatswerte
   Top = 0
   Caption = 'PCM - Zeiterfassung: Monatswerte'
   ClientHeight = 900
-  ClientWidth = 1650
+  ClientWidth = 1692
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,7 +16,7 @@ object frm_monatswerte: Tfrm_monatswerte
   object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Width = 1650
+    Width = 1692
     Height = 900
     Align = alClient
     TabOrder = 0
@@ -30,7 +30,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 25
+      TabOrder = 26
       Transparent = True
       Height = 19
       Width = 56
@@ -44,7 +44,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 19
+      TabOrder = 20
       Transparent = True
       Height = 19
       Width = 56
@@ -58,7 +58,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 21
+      TabOrder = 22
       Transparent = True
       Height = 19
       Width = 56
@@ -72,7 +72,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 23
+      TabOrder = 24
       Transparent = True
       Height = 19
       Width = 56
@@ -93,7 +93,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 27
+      TabOrder = 28
       Transparent = True
       Height = 19
       Width = 56
@@ -107,7 +107,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 28
+      TabOrder = 29
       Transparent = True
       Height = 19
       Width = 56
@@ -121,7 +121,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 30
+      TabOrder = 31
       Transparent = True
       Height = 19
       Width = 56
@@ -135,7 +135,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 29
+      TabOrder = 30
       Transparent = True
       Height = 19
       Width = 56
@@ -149,7 +149,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 31
+      TabOrder = 32
       Transparent = True
       Height = 19
       Width = 56
@@ -170,7 +170,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 33
+      TabOrder = 34
       Transparent = True
       Height = 19
       Width = 56
@@ -184,7 +184,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 36
+      TabOrder = 37
       Transparent = True
       Height = 19
       Width = 56
@@ -198,7 +198,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 37
+      TabOrder = 38
       Transparent = True
       Height = 19
       Width = 56
@@ -212,7 +212,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 34
+      TabOrder = 35
       Transparent = True
       Height = 19
       Width = 56
@@ -226,7 +226,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 35
+      TabOrder = 36
       Transparent = True
       Height = 19
       Width = 56
@@ -240,7 +240,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 40
+      TabOrder = 41
       Transparent = True
       Height = 19
       Width = 56
@@ -254,7 +254,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 42
+      TabOrder = 43
       Transparent = True
       Height = 19
       Width = 56
@@ -268,7 +268,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 43
+      TabOrder = 44
       Transparent = True
       Height = 19
       Width = 56
@@ -282,7 +282,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 41
+      TabOrder = 42
       Transparent = True
       Height = 19
       Width = 56
@@ -296,7 +296,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 44
+      TabOrder = 45
       Transparent = True
       Height = 19
       Width = 56
@@ -310,7 +310,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 46
+      TabOrder = 47
       Transparent = True
       Height = 19
       Width = 56
@@ -324,7 +324,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 45
+      TabOrder = 46
       Transparent = True
       Height = 19
       Width = 56
@@ -345,7 +345,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 48
+      TabOrder = 49
       Transparent = True
       Height = 19
       Width = 56
@@ -359,7 +359,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 47
+      TabOrder = 48
       Transparent = True
       Height = 19
       Width = 56
@@ -380,7 +380,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 49
+      TabOrder = 50
       Transparent = True
       Height = 19
       Width = 56
@@ -401,7 +401,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 32
+      TabOrder = 33
       Transparent = True
       Height = 19
       Width = 56
@@ -429,7 +429,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 53
     end
     object lbl_RulVJ: TcxLabel
-      Left = 685
+      Left = 705
       Top = 47
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -450,7 +450,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_genULGes: TcxLabel
-      Left = 685
+      Left = 705
       Top = 66
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -471,7 +471,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_geplULGes: TcxLabel
-      Left = 848
+      Left = 868
       Top = 47
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -492,7 +492,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_VerfUL: TcxLabel
-      Left = 848
+      Left = 868
       Top = 66
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -513,7 +513,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_bezKr: TcxLabel
-      Left = 1134
+      Left = 1174
       Top = 47
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -534,7 +534,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_unbKr: TcxLabel
-      Left = 1134
+      Left = 1174
       Top = 66
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -555,7 +555,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_HomeOffGes: TcxLabel
-      Left = 1277
+      Left = 1317
       Top = 66
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -576,7 +576,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_OfficeGes: TcxLabel
-      Left = 1277
+      Left = 1317
       Top = 47
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -597,7 +597,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_FT: TcxLabel
-      Left = 991
+      Left = 1031
       Top = 66
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -618,7 +618,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object lbl_unbUL: TcxLabel
-      Left = 991
+      Left = 1031
       Top = 47
       AutoSize = False
       BiDiMode = bdRightToLeft
@@ -639,29 +639,29 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 27
     end
     object cxButton1: TcxButton
-      Left = 1310
+      Left = 1474
       Top = 12
       Width = 100
-      Height = 61
+      Height = 84
       Caption = 'Berechne Monat'
       OptionsImage.ImageIndex = 12
       OptionsImage.Images = frm_PCM_Main.imglst_32x32
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 12
+      TabOrder = 13
       OnClick = cxButton1Click
     end
     object cxButton2: TcxButton
-      Left = 1417
+      Left = 1581
       Top = 12
       Width = 99
-      Height = 61
+      Height = 84
       Caption = 'Auswertungen'
       DropDownMenu = dxBarPopupMenu1
       Kind = cxbkDropDown
       OptionsImage.ImageIndex = 15
       OptionsImage.Images = frm_PCM_Main.imglst_32x32
       OptionsImage.Layout = blGlyphTop
-      TabOrder = 13
+      TabOrder = 14
     end
     object lbl_T2: TcxLabel
       Left = 210
@@ -672,7 +672,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 16
+      TabOrder = 17
       Transparent = True
       Height = 19
       Width = 56
@@ -686,7 +686,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 24
+      TabOrder = 25
       Transparent = True
       Height = 19
       Width = 56
@@ -707,7 +707,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 26
+      TabOrder = 27
       Transparent = True
       Height = 19
       Width = 56
@@ -721,7 +721,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 14
+      TabOrder = 15
       Transparent = True
       Height = 19
       Width = 56
@@ -735,7 +735,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 18
+      TabOrder = 19
       Transparent = True
       Height = 19
       Width = 56
@@ -749,7 +749,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 17
+      TabOrder = 18
       Transparent = True
       Height = 19
       Width = 56
@@ -763,7 +763,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 15
+      TabOrder = 16
       Transparent = True
       Height = 19
       Width = 56
@@ -777,7 +777,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 20
+      TabOrder = 21
       Transparent = True
       Height = 19
       Width = 56
@@ -791,7 +791,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 22
+      TabOrder = 23
       Transparent = True
       Height = 19
       Width = 56
@@ -799,10 +799,10 @@ object frm_monatswerte: Tfrm_monatswerte
     object grd_Tag: TcxGrid
       Left = 359
       Top = 120
-      Width = 1269
+      Width = 1311
       Height = 758
       BorderStyle = cxcbsNone
-      TabOrder = 50
+      TabOrder = 51
       LookAndFeel.NativeStyle = False
       object grd_TagDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -1114,7 +1114,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 38
+      TabOrder = 39
       Transparent = True
       Height = 19
       Width = 56
@@ -1128,10 +1128,22 @@ object frm_monatswerte: Tfrm_monatswerte
       ParentBiDiMode = False
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 39
+      TabOrder = 40
       Transparent = True
       Height = 19
       Width = 56
+    end
+    object cxButton3: TcxButton
+      Left = 1368
+      Top = 12
+      Width = 99
+      Height = 84
+      Caption = 'Fehltag eintragen'
+      OptionsImage.ImageIndex = 17
+      OptionsImage.Images = frm_PCM_Main.imglst_32x32
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 12
+      OnClick = cxButton3Click
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -1145,7 +1157,6 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -1154,7 +1165,6 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Abwesenheitswerte'
-      ItemIndex = 2
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -1169,7 +1179,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Offsets.Left = -4
       Offsets.Right = -4
       SizeOptions.Width = 180
-      ItemIndex = 3
+      ItemIndex = 2
       Index = 0
     end
     object dxLayoutLabeledItem1: TdxLayoutLabeledItem
@@ -1211,6 +1221,7 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel2
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 2
@@ -1228,19 +1239,20 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_nachname: TdxLayoutLabeledItem
       Parent = laitm_MAVorname
-      AlignVert = avClient
+      AlignHorz = ahClient
       CaptionOptions.Text = 'Label'
       Index = 1
     end
     object lagrp_MW: TdxLayoutGroup
       Parent = dxLayoutGroup2
       AlignHorz = ahLeft
-      AlignVert = avTop
+      AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       CaptionOptions.Visible = False
       LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel2
       Offsets.Left = -4
       Offsets.Right = -4
+      ItemIndex = 2
       Index = 1
     end
     object grpbx_MonatInfo: TdxLayoutLabeledItem
@@ -1269,7 +1281,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lagrp_Values: TdxLayoutGroup
       Parent = dxLayoutGroup2
-      AlignHorz = ahLeft
+      AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       CaptionOptions.Visible = False
@@ -1324,6 +1336,7 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -1369,7 +1382,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Parent = dxLayoutGroup9
       AlignHorz = ahLeft
       CaptionOptions.Text = '[B]Resturlaub Vorjahr:[/B]'
-      CaptionOptions.Width = 120
+      CaptionOptions.Width = 140
       Index = 0
     end
     object dxLayoutLabeledItem6: TdxLayoutLabeledItem
@@ -1397,7 +1410,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Parent = dxLayoutGroup5
       Offsets.Left = 16
       CaptionOptions.Text = '[B]Urlaub unbezahlt:[/B]'
-      CaptionOptions.Width = 100
+      CaptionOptions.Width = 120
       Index = 0
     end
     object dxLayoutGroup13: TdxLayoutGroup
@@ -1412,7 +1425,7 @@ object frm_monatswerte: Tfrm_monatswerte
     object dxLayoutLabeledItem10: TdxLayoutLabeledItem
       Parent = dxLayoutGroup38
       CaptionOptions.Text = '[B]genommener Urlaub:[/B]'
-      CaptionOptions.Width = 120
+      CaptionOptions.Width = 140
       Index = 0
     end
     object dxLayoutItem8: TdxLayoutItem
@@ -1446,7 +1459,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Parent = dxLayoutGroup12
       Offsets.Left = 16
       CaptionOptions.Text = '[B]Feiertage:[/B]'
-      CaptionOptions.Width = 100
+      CaptionOptions.Width = 120
       Index = 0
     end
     object dxLayoutLabeledItem13: TdxLayoutLabeledItem
@@ -1505,25 +1518,27 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object dxLayoutItem13: TdxLayoutItem
       Parent = dxLayoutGroup14
+      AlignHorz = ahRight
+      AlignVert = avClient
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = cxButton2
       ControlOptions.OriginalHeight = 61
       ControlOptions.OriginalWidth = 99
       ControlOptions.ShowBorder = False
-      Index = 1
+      Index = 2
     end
     object dxLayoutItem14: TdxLayoutItem
       Parent = dxLayoutGroup14
-      AlignHorz = ahClient
-      AlignVert = avTop
+      AlignHorz = ahRight
+      AlignVert = avClient
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = cxButton1
       ControlOptions.OriginalHeight = 61
       ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
-      Index = 0
+      Index = 1
     end
     object dxLayoutGroup15: TdxLayoutGroup
       Parent = dxLayoutGroup1
@@ -2308,7 +2323,6 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 4
@@ -2427,6 +2441,18 @@ object frm_monatswerte: Tfrm_monatswerte
       ControlOptions.OriginalWidth = 56
       ControlOptions.ShowBorder = False
       Index = 1
+    end
+    object dxLayoutItem52: TdxLayoutItem
+      Parent = dxLayoutGroup14
+      AlignHorz = ahRight
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = cxButton3
+      ControlOptions.OriginalHeight = 84
+      ControlOptions.OriginalWidth = 99
+      ControlOptions.ShowBorder = False
+      Index = 0
     end
   end
   object brmgr_MW: TdxBarManager

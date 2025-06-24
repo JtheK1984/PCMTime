@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, Vcl.ExtCtrls,
+  cxLookAndFeelPainters, Vcl.ExtCtrls, FireDAC.Stan.Param,
   dxGDIPlusClasses, dxActivityIndicator, cxContainer, cxEdit, cxProgressBar,
   cxImage, cxLabel, cxGroupBox, cxClasses, inifiles, dxUIAClasses;
 
@@ -65,7 +65,6 @@ var
   ffiVerValue: PVSFixedFileInfo;
   dwdDummy: DWord;
   Result: String;
-  itest: integer;
 begin
   dwVerInfoSize := GetFileVersionInfoSize(PChar(ParamStr(0)), dwdDummy);
   if dwVerInfoSize = 0 then
@@ -250,7 +249,7 @@ begin
   frm_pcm_Main.Caption:= PCM_Programmname;
   frm_pcm_Main.trayIC_Main.PopupMenu:= frm_pcm_Main.ppm_main;
   if dm_PCM.bDemo then
-    frm_pcm_main.Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
+    frm_pcm_main.Caption:=PCM_Programmname + rs_Function_Lizenz_LizenzGueltig + DateTostr(dm_PCM.dtGueltig);
   Application.ProcessMessages;
   prgbr_Splash.Properties.Text:= 'Menüs registrieren...';
   Timer6.Enabled:= true;

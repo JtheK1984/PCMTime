@@ -316,6 +316,8 @@ type
     pmm_Buchungen: TdxBarPopupMenu;
     dxBarLargeButton4: TdxBarLargeButton;
     sdlg_Buchungen: TSaveDialog;
+    dxLayoutItem52: TdxLayoutItem;
+    cxButton3: TcxButton;
     procedure AuswertungsJahrPropertiesChange(Sender: TObject);
     procedure SetMonatswerte(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -325,6 +327,7 @@ type
     procedure grd_TagDBTableView1TagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure grd_TagDBTableView1MehrarbeitCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure dxBarLargeButton4Click(Sender: TObject);
+    procedure cxButton3Click(Sender: TObject);
   private
     { Private-Deklarationen }
     function GetMonthFromButton: integer;
@@ -350,7 +353,7 @@ uses
   PCM.Data,
   PCM.Strings,
   PCM.Functions.Synch.Wait,
-  PCM.Modul.C_ZE, PCM.Main;
+  PCM.Modul.C_ZE, PCM.Main, PCM.Modul.C_ZE.Booking.Fehltage.Edit;
   {$EndRegion Type}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -389,6 +392,7 @@ var
   Tag: string;
   Feiertag, Sollstunden, Arbeitszeit: Integer;
   Mehrarbeit: double;
+  Fehltag: String;
 begin
   try
     Tag := VarToStr(AViewInfo.GridRecord.Values[1]);
@@ -396,6 +400,7 @@ begin
     Arbeitszeit := VarAsType(AViewInfo.GridRecord.Values[6], varInteger);
     Feiertag := VarAsType(AViewInfo.GridRecord.Values[14], varInteger);
     Mehrarbeit := VarAsType(AViewInfo.GridRecord.Values[12], varDouble);
+    Fehltag := VarAsType(AViewInfo.GridRecord.Values[13], varString);
     if (Tag = 'Sa.') or (Tag = 'So.') then
     begin
       ACanvas.Font.Color := clActiveBorder;
@@ -412,7 +417,7 @@ begin
         ACanvas.Font.Style:= [fsbold];
       end
       else begin
-        if ((Feiertag > 0) and (Sollstunden > 0)) or ((Arbeitszeit > 0) and (Sollstunden > 0)) then
+        if ((Feiertag > 0) and (Sollstunden > 0)) or ((Arbeitszeit > 0) and (Sollstunden > 0)) or ((Fehltag <> '') and (Sollstunden > 0))  then
         begin
           ACanvas.Font.Style := [fsBold];
         end;
@@ -425,17 +430,19 @@ procedure Tfrm_monatswerte.grd_TagDBTableView1TagCustomDrawCell(Sender: TcxCusto
 var
   Tag: string;
   Feiertag, Sollstunden, Arbeitszeit: Integer;
+  Fehltag: string;
 begin
   try
     Tag := VarToStr(AViewInfo.GridRecord.Values[1]);
     Sollstunden := VarAsType(AViewInfo.GridRecord.Values[4], varInteger);
     Arbeitszeit := VarAsType(AViewInfo.GridRecord.Values[6], varInteger);
     Feiertag := VarAsType(AViewInfo.GridRecord.Values[14], varInteger);
+    Fehltag := VarAsType(AViewInfo.GridRecord.Values[13], varString);
     if (Tag = 'Sa.') or (Tag = 'So.') then
     begin
       ACanvas.Font.Color := clActiveBorder;
     end;
-    if ((Feiertag > 0) and (Sollstunden > 0)) or ((Arbeitszeit > 0) and (Sollstunden > 0)) then
+    if ((Feiertag > 0) and (Sollstunden > 0)) or ((Arbeitszeit > 0) and (Sollstunden > 0)) or ((Fehltag <> '') and (Sollstunden > 0)) then
     begin
      ACanvas.Font.Style := [fsBold];
     end;
@@ -735,6 +742,13 @@ begin
   GetData(GetMonthFromButton,AuswertungsJahr.value);
   CloseWaitForm;
 end;
+procedure Tfrm_monatswerte.cxButton3Click(Sender: TObject);
+begin
+  Application.CreateForm(Tfrm_Fehltageeintragen,frm_Fehltageeintragen);
+  frm_Fehltageeintragen.ShowModal;
+  GetData(GetMonthFromButton,AuswertungsJahr.value);
+end;
+
 procedure Tfrm_monatswerte.dxBarLargeButton4Click(Sender: TObject);
 begin
   if sdlg_Buchungen.Execute then

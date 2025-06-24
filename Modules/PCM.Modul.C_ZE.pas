@@ -370,7 +370,7 @@ begin
   ribTab_4Print.Visible:= true;
   tb_Drucken.Visible:= false;
   tb_DruckeGrid.Visible:= true;
-  tb_fehltage.Visible:= false;
+  tb_fehltage.Visible:= true;
   pc_Ze.ItemIndex:= 1;
 end;
 procedure Tfrm_ZE.btn_ViewCalClick(Sender: TObject);
@@ -982,6 +982,7 @@ var
   Tag: string;
   Feiertag, Sollstunden, Arbeitszeit: Integer;
   Mehrarbeit: double;
+  Fehltag: string;
 begin
   try
     Tag := VarToStr(AViewInfo.GridRecord.Values[1]);
@@ -989,6 +990,7 @@ begin
     Arbeitszeit := VarAsType(AViewInfo.GridRecord.Values[12], varInteger);
     Feiertag := VarAsType(AViewInfo.GridRecord.Values[18], varInteger);
     Mehrarbeit := VarAsType(AViewInfo.GridRecord.Values[16], varDouble);
+    Fehltag := VarAsType(AViewInfo.GridRecord.Values[19], varString);
     if (Tag = 'Sa.') or (Tag = 'So.') then
     begin
       ACanvas.Font.Color := clActiveBorder;
@@ -1005,7 +1007,7 @@ begin
         ACanvas.Font.Style:= [fsbold];
       end
       else begin
-        if ((Feiertag > 0) and (Sollstunden > 0)) or ((Arbeitszeit > 0) and (Sollstunden > 0)) then
+        if ((Feiertag > 0) and (Sollstunden > 0)) or ((Arbeitszeit > 0) and (Sollstunden > 0)) or ((Fehltag <> '') and (Sollstunden > 0))  then
         begin
           ACanvas.Font.Style := [fsBold];
         end;
@@ -1036,17 +1038,19 @@ procedure Tfrm_ZE.grdDBTblView_BookingColumn2CustomDrawCell(Sender: TcxCustomGri
 var
   Tag: string;
   Feiertag, Sollstunden, Arbeitszeit: Integer;
+  Fehltag: string;
 begin
   try
     Tag := VarToStr(AViewInfo.GridRecord.Values[1]);
     Sollstunden := VarAsType(AViewInfo.GridRecord.Values[10], varInteger);
     Arbeitszeit := VarAsType(AViewInfo.GridRecord.Values[12], varInteger);
     Feiertag := VarAsType(AViewInfo.GridRecord.Values[18], varInteger);
+    Fehltag := VarAsType(AViewInfo.GridRecord.Values[19], varString);
     if (Tag = 'Sa.') or (Tag = 'So.') then
     begin
       ACanvas.Font.Color := clActiveBorder;
     end;
-    if ((Feiertag > 0) and (Sollstunden > 0)) or ((Arbeitszeit > 0) and (Sollstunden > 0)) then
+    if ((Feiertag > 0) and (Sollstunden > 0)) or ((Arbeitszeit > 0) and (Sollstunden > 0)) or ((Fehltag <> '') and (Sollstunden > 0)) then
     begin
       ACanvas.Font.Style := [fsBold];
     end;

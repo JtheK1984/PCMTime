@@ -35,7 +35,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-    ExplicitHeight = 753
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -239,8 +238,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitWidth = 1074
-    ExplicitHeight = 753
     Height = 770
     Width = 1080
     object pc_main: TcxPageControl
@@ -263,16 +260,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       Properties.Style = 11
       OnPageChanging = pc_mainPageChanging
-      ExplicitWidth = 1070
-      ExplicitHeight = 749
       ClientRectBottom = 766
       ClientRectRight = 1076
       ClientRectTop = 21
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 79
-        ExplicitWidth = 1070
-        ExplicitHeight = 728
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
@@ -281,8 +274,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-          ExplicitWidth = 1070
-          ExplicitHeight = 728
           object chartctrl_Birthday: TdxChartControl
             Left = 10000
             Top = 10000
@@ -448,13 +439,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'Aktuelle Werte'
-            ItemIndex = 3
             Index = 0
           end
           object dxLayoutGroup4: TdxLayoutGroup
             Parent = dxLayoutGroup1
             CaptionOptions.Text = 'Fehltage'
-            ItemIndex = 1
             Index = 1
           end
           object dxLayoutGroup5: TdxLayoutGroup
@@ -502,7 +491,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             CaptionOptions.Text = 
               '[B]Stundenwerte                                                 ' +
               '                    hh:mm         Dezimal[/B]'
-            ItemIndex = 2
             LayoutDirection = ldHorizontal
             Index = 0
           end
@@ -516,7 +504,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             CaptionOptions.Text = 
               '[B]An/Abwesenheitswerte                                         ' +
               '              Tage           hh:mm[/B]'
-            ItemIndex = 2
             LayoutDirection = ldHorizontal
             Index = 1
           end
@@ -970,14 +957,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
             CaptionOptions.Text = 
               '[B]An/Abwesenheitswerte                                         ' +
               '              Tage[/B]'
-            ItemIndex = 1
             LayoutDirection = ldHorizontal
             Index = 0
           end
           object dxLayoutGroup21: TdxLayoutGroup
             Parent = dxLayoutGroup19
             CaptionOptions.Text = 'New Group'
-            ItemIndex = 2
             ShowBorder = False
             Index = 1
           end

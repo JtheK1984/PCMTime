@@ -138,7 +138,7 @@ var
 begin
   qry_FT:= TFDQuery.Create(nil);
   qry_FT.Connection:= dm_PCM.con_PCM;
-  qry_FT.SQL.Text:=  'Select TIMESTAMPDIFF(SECOND,''1970-01-01 00:00:00'',ADDTIME(CONVERT(''1970-01-01'', DATETIME), zeb.Sollstunden)) / 60 / 480 / zeft.Faktor as Anzahl ' +
+  qry_FT.SQL.Text:=  'Select Sum(TIMESTAMPDIFF(SECOND,''1970-01-01 00:00:00'',ADDTIME(CONVERT(''1970-01-01'', DATETIME), zeb.Sollstunden)) / 60 / 480 / zeft.Faktor) as Anzahl ' +
                      'FROM time_buchungen zeb ' +
                      'LEFT OUTER JOIN time_user zeu ON ID_Zeiterfasser = :ID ' +
                      'LEFT OUTER JOIN time_Fehltag zeft ON zeft.Kuerzel = zeb.Fehltag ' +
@@ -406,9 +406,10 @@ begin
     else begin
       if dm_pcm.qry_Calc.FieldByName('Datum').asDateTime = Date then
       begin
-        iSollstunden:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        // Bezahlte Abwesenheit ganzer Tag
         if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
           iFehltag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        // Bezahlte Abwesenheit halber Tag
         if  ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 2)) then
           iFehltag:= Round(MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
         if (dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger = 2) then
@@ -418,6 +419,26 @@ begin
         if (iFeiertag = iFehltag) and (iFeiertag = 480) then
           iFehltag := 0;
       end;
+      if (dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger > 0 ) or ((dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger > 0 ) and (dm_pcm.qry_Calc.FieldByName('Sollstunden').AsDateTime <> StrToTime('00:00:00'))) then
+      begin
+        iSollstunden:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        // Bezahlte Abwesenheit ganzer Tag
+        if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
+          iFehltag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        // Bezahlte Abwesenheit halber Tag
+        if  ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 2)) then
+          iFehltag:= Round(MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
+        if (dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger = 2) then
+          iFeiertag:= Round(MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
+        if (dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger = 1) then
+          iFeiertag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
+        if (iFeiertag = iFehltag) and (iFeiertag = 480) then
+          iFehltag := 0;
+      end;
+
+
+
+
       // Arbeitszeit
       if (dm_pcm.qry_Calc.FieldByName('Kommen').asDateTime <> StrToTime('00:00:00')) and (dm_pcm.qry_Calc.FieldByName('Gehen').asDateTime = StrToTime('00:00:00')) then
       begin
