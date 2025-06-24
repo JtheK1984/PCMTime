@@ -406,6 +406,7 @@ begin
     else begin
       if dm_pcm.qry_Calc.FieldByName('Datum').asDateTime = Date then
       begin
+        iSollstunden:= MinutesBetween(dm_PCM.qry_Calc.FieldByName('Sollstunden').AsDateTime,StrToTime('00:00'));
         // Bezahlte Abwesenheit ganzer Tag
         if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
           iFehltag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
