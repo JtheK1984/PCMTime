@@ -3,7 +3,7 @@ object frm_monatswerte: Tfrm_monatswerte
   Top = 0
   Caption = 'PCM - Zeiterfassung: Monatswerte'
   ClientHeight = 900
-  ClientWidth = 1692
+  ClientWidth = 1380
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,14 +16,15 @@ object frm_monatswerte: Tfrm_monatswerte
   object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Width = 1692
+    Width = 1380
     Height = 900
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitWidth = 1692
     object lbl_D6: TcxLabel
       Left = 273
-      Top = 267
+      Top = 297
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -37,7 +38,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_D3: TcxLabel
       Left = 273
-      Top = 189
+      Top = 219
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -51,7 +52,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_D4: TcxLabel
       Left = 273
-      Top = 215
+      Top = 245
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -65,7 +66,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_D5: TcxLabel
       Left = 273
-      Top = 241
+      Top = 271
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -79,7 +80,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_D7: TcxLabel
       Left = 273
-      Top = 293
+      Top = 323
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -100,7 +101,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_TG1: TcxLabel
       Left = 210
-      Top = 346
+      Top = 376
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,0'
@@ -114,7 +115,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_TG2: TcxLabel
       Left = 210
-      Top = 372
+      Top = 402
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '2'
@@ -128,7 +129,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_TG1Dez: TcxLabel
       Left = 273
-      Top = 346
+      Top = 376
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -142,7 +143,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_TG2Dez: TcxLabel
       Left = 273
-      Top = 372
+      Top = 402
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -156,7 +157,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_TG3Dez: TcxLabel
       Left = 273
-      Top = 398
+      Top = 428
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -177,7 +178,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_FTM: TcxLabel
       Left = 210
-      Top = 450
+      Top = 480
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,0'
@@ -191,7 +192,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_FTMDez: TcxLabel
       Left = 273
-      Top = 450
+      Top = 480
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -205,7 +206,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_ULunb: TcxLabel
       Left = 210
-      Top = 424
+      Top = 454
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,0'
@@ -219,7 +220,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_ULunbDez: TcxLabel
       Left = 273
-      Top = 424
+      Top = 454
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -233,7 +234,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_kr: TcxLabel
       Left = 210
-      Top = 502
+      Top = 532
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '5'
@@ -247,7 +248,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_krunb: TcxLabel
       Left = 210
-      Top = 528
+      Top = 558
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '5'
@@ -261,7 +262,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_krunbdez: TcxLabel
       Left = 273
-      Top = 528
+      Top = 558
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -275,7 +276,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_krDez: TcxLabel
       Left = 273
-      Top = 502
+      Top = 532
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -289,7 +290,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_Buero: TcxLabel
       Left = 210
-      Top = 554
+      Top = 584
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '5'
@@ -303,7 +304,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_HO: TcxLabel
       Left = 210
-      Top = 580
+      Top = 610
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '5'
@@ -317,7 +318,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_BueroDez: TcxLabel
       Left = 273
-      Top = 554
+      Top = 584
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -331,7 +332,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_BHOGes: TcxLabel
       Left = 210
-      Top = 606
+      Top = 636
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '5'
@@ -352,7 +353,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_HODez: TcxLabel
       Left = 273
-      Top = 580
+      Top = 610
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -366,7 +367,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_BHOGesDez: TcxLabel
       Left = 273
-      Top = 606
+      Top = 636
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -387,7 +388,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_TG3: TcxLabel
       Left = 210
-      Top = 398
+      Top = 428
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '5'
@@ -465,12 +466,159 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 5
       Transparent = True
       Height = 19
       Width = 27
     end
     object lbl_geplULGes: TcxLabel
+      Left = 705
+      Top = 85
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 8
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_VerfUL: TcxLabel
+      Left = 705
+      Top = 104
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 10
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_bezKr: TcxLabel
+      Left = 868
+      Top = 66
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 6
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_unbKr: TcxLabel
+      Left = 868
+      Top = 85
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 9
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_HomeOffGes: TcxLabel
+      Left = 1011
+      Top = 66
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_OfficeGes: TcxLabel
+      Left = 1011
+      Top = 47
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 4
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_FT: TcxLabel
+      Left = 868
+      Top = 104
+      AutoSize = False
+      BiDiMode = bdRightToLeft
+      Caption = '1'
+      ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 11
+      Transparent = True
+      Height = 19
+      Width = 27
+    end
+    object lbl_unbUL: TcxLabel
       Left = 868
       Top = 47
       AutoSize = False
@@ -491,158 +639,11 @@ object frm_monatswerte: Tfrm_monatswerte
       Height = 19
       Width = 27
     end
-    object lbl_VerfUL: TcxLabel
-      Left = 868
-      Top = 66
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '1'
-      ParentBiDiMode = False
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 8
-      Transparent = True
-      Height = 19
-      Width = 27
-    end
-    object lbl_bezKr: TcxLabel
-      Left = 1174
-      Top = 47
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '1'
-      ParentBiDiMode = False
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 5
-      Transparent = True
-      Height = 19
-      Width = 27
-    end
-    object lbl_unbKr: TcxLabel
-      Left = 1174
-      Top = 66
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '1'
-      ParentBiDiMode = False
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 10
-      Transparent = True
-      Height = 19
-      Width = 27
-    end
-    object lbl_HomeOffGes: TcxLabel
-      Left = 1317
-      Top = 66
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '1'
-      ParentBiDiMode = False
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 11
-      Transparent = True
-      Height = 19
-      Width = 27
-    end
-    object lbl_OfficeGes: TcxLabel
-      Left = 1317
-      Top = 47
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '1'
-      ParentBiDiMode = False
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 6
-      Transparent = True
-      Height = 19
-      Width = 27
-    end
-    object lbl_FT: TcxLabel
-      Left = 1031
-      Top = 66
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '1'
-      ParentBiDiMode = False
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 9
-      Transparent = True
-      Height = 19
-      Width = 27
-    end
-    object lbl_unbUL: TcxLabel
-      Left = 1031
-      Top = 47
-      AutoSize = False
-      BiDiMode = bdRightToLeft
-      Caption = '1'
-      ParentBiDiMode = False
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 4
-      Transparent = True
-      Height = 19
-      Width = 27
-    end
     object cxButton1: TcxButton
-      Left = 1474
+      Left = 1162
       Top = 12
       Width = 100
-      Height = 84
+      Height = 114
       Caption = 'Berechne Monat'
       OptionsImage.ImageIndex = 12
       OptionsImage.Images = frm_PCM_Main.imglst_32x32
@@ -651,10 +652,10 @@ object frm_monatswerte: Tfrm_monatswerte
       OnClick = cxButton1Click
     end
     object cxButton2: TcxButton
-      Left = 1581
+      Left = 1269
       Top = 12
       Width = 99
-      Height = 84
+      Height = 114
       Caption = 'Auswertungen'
       DropDownMenu = dxBarPopupMenu1
       Kind = cxbkDropDown
@@ -665,7 +666,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_T2: TcxLabel
       Left = 210
-      Top = 163
+      Top = 193
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -679,7 +680,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_T6: TcxLabel
       Left = 210
-      Top = 267
+      Top = 297
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -693,7 +694,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_T7: TcxLabel
       Left = 210
-      Top = 293
+      Top = 323
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -714,7 +715,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_T1: TcxLabel
       Left = 210
-      Top = 137
+      Top = 167
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -728,7 +729,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_T3: TcxLabel
       Left = 210
-      Top = 189
+      Top = 219
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -742,7 +743,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_D2: TcxLabel
       Left = 273
-      Top = 163
+      Top = 193
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -756,7 +757,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_D1: TcxLabel
       Left = 273
-      Top = 137
+      Top = 167
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,00'
@@ -770,7 +771,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_T4: TcxLabel
       Left = 210
-      Top = 215
+      Top = 245
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -784,7 +785,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_T5: TcxLabel
       Left = 210
-      Top = 241
+      Top = 271
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -798,9 +799,9 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object grd_Tag: TcxGrid
       Left = 359
-      Top = 120
-      Width = 1311
-      Height = 758
+      Top = 150
+      Width = 999
+      Height = 728
       BorderStyle = cxcbsNone
       TabOrder = 51
       LookAndFeel.NativeStyle = False
@@ -1107,7 +1108,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_KikTag: TcxLabel
       Left = 210
-      Top = 476
+      Top = 506
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '0,0'
@@ -1121,7 +1122,7 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object lbl_KikDez: TcxLabel
       Left = 273
-      Top = 476
+      Top = 506
       AutoSize = False
       BiDiMode = bdRightToLeft
       Caption = '00:00'
@@ -1134,10 +1135,10 @@ object frm_monatswerte: Tfrm_monatswerte
       Width = 56
     end
     object cxButton3: TcxButton
-      Left = 1368
+      Left = 1056
       Top = 12
       Width = 99
-      Height = 84
+      Height = 114
       Caption = 'Fehltag eintragen'
       OptionsImage.ImageIndex = 17
       OptionsImage.Images = frm_PCM_Main.imglst_32x32
@@ -1165,6 +1166,7 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Abwesenheitswerte'
+      ItemIndex = 2
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -1336,7 +1338,6 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -1387,13 +1388,14 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object dxLayoutLabeledItem6: TdxLayoutLabeledItem
       Parent = dxLayoutGroup4
-      Offsets.Left = 16
       CaptionOptions.Text = '[B]geplanter  Urlaub:[/B]'
-      CaptionOptions.Width = 120
+      CaptionOptions.Width = 140
       Index = 0
     end
     object dxLayoutLabeledItem7: TdxLayoutLabeledItem
       Parent = dxLayoutGroup7
+      AlignHorz = ahLeft
+      AlignVert = avTop
       Offsets.Left = 16
       CaptionOptions.Text = '[B]B'#252'rotage:[/B]'
       CaptionOptions.Width = 100
@@ -1403,7 +1405,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Parent = dxLayoutGroup8
       Offsets.Left = 16
       CaptionOptions.Text = '[B]Krank bezahlt:[/B]'
-      CaptionOptions.Width = 100
+      CaptionOptions.Width = 120
       Index = 0
     end
     object dxLayoutLabeledItem9: TdxLayoutLabeledItem
@@ -1440,9 +1442,8 @@ object frm_monatswerte: Tfrm_monatswerte
     end
     object dxLayoutLabeledItem11: TdxLayoutLabeledItem
       Parent = dxLayoutGroup35
-      Offsets.Left = 16
       CaptionOptions.Text = '[B]verf'#252'gbarer Urlaub:[/B]'
-      CaptionOptions.Width = 120
+      CaptionOptions.Width = 140
       Index = 0
     end
     object dxLayoutItem9: TdxLayoutItem
@@ -1466,7 +1467,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Parent = dxLayoutGroup11
       Offsets.Left = 16
       CaptionOptions.Text = '[B]Krank unbezahlt:[/B]'
-      CaptionOptions.Width = 100
+      CaptionOptions.Width = 120
       Index = 0
     end
     object dxLayoutLabeledItem14: TdxLayoutLabeledItem
@@ -2299,14 +2300,13 @@ object frm_monatswerte: Tfrm_monatswerte
       Index = 2
     end
     object dxLayoutGroup4: TdxLayoutGroup
-      Parent = dxLayoutGroup3
+      Parent = dxLayoutGroup41
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 1
+      Index = 0
     end
     object dxLayoutGroup5: TdxLayoutGroup
       Parent = dxLayoutGroup3
@@ -2316,7 +2316,7 @@ object frm_monatswerte: Tfrm_monatswerte
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 2
+      Index = 1
     end
     object dxLayoutGroup7: TdxLayoutGroup
       Parent = dxLayoutGroup3
@@ -2325,17 +2325,16 @@ object frm_monatswerte: Tfrm_monatswerte
       CaptionOptions.Text = 'New Group'
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 4
+      Index = 2
     end
     object dxLayoutGroup8: TdxLayoutGroup
-      Parent = dxLayoutGroup3
+      Parent = dxLayoutGroup13
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 3
+      Index = 1
     end
     object dxLayoutGroup9: TdxLayoutGroup
       Parent = dxLayoutGroup3
@@ -2354,30 +2353,10 @@ object frm_monatswerte: Tfrm_monatswerte
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 4
-    end
-    object dxLayoutGroup11: TdxLayoutGroup
-      Parent = dxLayoutGroup13
-      AlignHorz = ahLeft
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 3
-    end
-    object dxLayoutGroup12: TdxLayoutGroup
-      Parent = dxLayoutGroup13
-      AlignHorz = ahLeft
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
       Index = 2
     end
-    object dxLayoutGroup35: TdxLayoutGroup
-      Parent = dxLayoutGroup13
+    object dxLayoutGroup11: TdxLayoutGroup
+      Parent = dxLayoutGroup41
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -2385,6 +2364,22 @@ object frm_monatswerte: Tfrm_monatswerte
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
+    end
+    object dxLayoutGroup12: TdxLayoutGroup
+      Parent = dxLayoutGroup42
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup35: TdxLayoutGroup
+      Parent = dxLayoutGroup42
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
     end
     object dxLayoutGroup38: TdxLayoutGroup
       Parent = dxLayoutGroup13
@@ -2400,6 +2395,7 @@ object frm_monatswerte: Tfrm_monatswerte
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 2
     end
@@ -2453,6 +2449,24 @@ object frm_monatswerte: Tfrm_monatswerte
       ControlOptions.OriginalWidth = 99
       ControlOptions.ShowBorder = False
       Index = 0
+    end
+    object dxLayoutGroup41: TdxLayoutGroup
+      Parent = dxLayoutGroup39
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup42: TdxLayoutGroup
+      Parent = dxLayoutGroup39
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
     end
   end
   object brmgr_MW: TdxBarManager

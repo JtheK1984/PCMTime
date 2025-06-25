@@ -318,6 +318,8 @@ type
     sdlg_Buchungen: TSaveDialog;
     dxLayoutItem52: TdxLayoutItem;
     cxButton3: TcxButton;
+    dxLayoutGroup41: TdxLayoutGroup;
+    dxLayoutGroup42: TdxLayoutGroup;
     procedure AuswertungsJahrPropertiesChange(Sender: TObject);
     procedure SetMonatswerte(Sender: TObject);
     procedure FormShow(Sender: TObject);
