@@ -128,6 +128,7 @@ uses
   {$Region Uses}
   PCMTime.Calculate,
   PCM.Data,
+  PCM.Strings,
   PCM.Modul.C_ZE;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
@@ -195,7 +196,7 @@ procedure Tfrm_Booking.btn_DataCloseClick(Sender: TObject);
 begin
   if frm_ZE.qry_Buchungen.State in [dsInsert, dsEdit] then
   begin
-    if MessageDlg('Datensatz wurde noch nicht gespeichert. Wollen sie die Buchungsmaske verlassen?', mtWarning, [mbYes,mbNo], 0) = mrno then
+    if MessageDlg(rs_PCMTime_MSGDataNotSaved, mtWarning, [mbYes,mbNo], 0) = mrno then
       Exit;
   end;
   Close;

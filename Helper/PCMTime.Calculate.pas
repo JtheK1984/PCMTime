@@ -44,7 +44,7 @@ uses
   FireDAC.Stan.Param,
   PCM.Data,
   PCM.Functions.Synch.Wait,
-//  PCM.Modul.C_ZE,
+  PCM.Strings,
   PCM.Main,
   System.Classes,
   System.DateUtils,
@@ -344,7 +344,7 @@ begin
                                'LEFT OUTER  JOIN time_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
                                'WHERE ze_B.Datum = :Datum order by ze_B.Datum';
     dm_pcm.qry_Calc.ParamByName('Datum').AsDate:= EncodeDate(AJahr,AMonat,ATag);
-    WaitFormSetText('Berechne Tag: ' + IntToStr(ATag) + '. ' + GetMonthName(AMonat) + ', Jahr:' + IntToStr(AJahr));
+    WaitFormSetText(rs_Function_Helper_BerechneTag + IntToStr(ATag) + '. ' + GetMonthName(AMonat) + rs_Function_Helper_BerechneYearEnd + IntToStr(AJahr));
   end
   else begin
     if AMonat > 0 then
@@ -354,7 +354,7 @@ begin
                                  'WHERE MONTH(ze_B.Datum) = :monat and YEAR(ze_B.Datum) = :jahr and abgeschlossen is null order by ze_B.Datum';
       dm_pcm.qry_Calc.ParamByName('monat').AsInteger:= AMonat;
       dm_pcm.qry_Calc.ParamByName('jahr').AsInteger:= AJahr;
-      WaitFormSetText('Berechne Monat: ' + GetMonthName(AMonat) + ', Jahr:' + IntToStr(AJahr));
+      WaitFormSetText(rs_Function_Helper_BerechneMonat + GetMonthName(AMonat) + rs_Function_Helper_BerechneYearEnd + IntToStr(AJahr));
     end
     else begin
       dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM time_buchungen ze_B ' +
@@ -362,7 +362,7 @@ begin
                                  'WHERE ze_B.Datum >= :Von and ze_B.Datum <= :Bis and abgeschlossen is null order by ze_B.Datum';
       dm_pcm.qry_Calc.ParamByName('Von').AsDate:= EncodeDate(AJahr,1,1);
       dm_pcm.qry_Calc.ParamByName('Bis').AsDate:= EncodeDate(AJahr,12,31);
-      WaitFormSetText('Berechne Jahr: '  + IntToStr(AJahr));
+      WaitFormSetText(rs_Function_Helper_BerechneJahr  + IntToStr(AJahr));
     end;
 
   end;
@@ -376,7 +376,7 @@ begin
     iFehltag:= 0;
     iFeiertag:= 0;
     iSollstunden:= 0;
-    WaitFormSetText('Berechne ' + dm_pcm.qry_Calc.FieldByName('Datum').AsString);
+    WaitFormSetText(rs_Function_Helper_Berechne + dm_pcm.qry_Calc.FieldByName('Datum').AsString);
     if dm_pcm.qry_Calc.FieldByName('Datum').asDateTime < Date then
     begin
       iSollstunden:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
@@ -684,12 +684,12 @@ begin
   qry_Month.Prepare;
   qry_Month.open;
   iMonthCount:= qry_Month.RecordCount;
-  ShowWaitForm(TForm(frm_PCM_Main), PWideChar('Berechne Monate'),iMonthCount ,417, 65);
+  ShowWaitForm(TForm(frm_PCM_Main), PWideChar(rs_Function_Helper_BerechneMonate1),iMonthCount ,417, 65);
   for var i := 1 to qry_Month.RecordCount do
   begin
     iBMonat:= qry_Month.FieldByName('Monat').AsInteger;
     iBJahr:= qry_Month.FieldByName('jahr').AsInteger;
-    WaitFormSetText('Berechne Monate für Monat: ' + GetMonthName(iBMonat) + ', Jahr:' + IntToStr(iBJahr));
+    WaitFormSetText(rs_Function_Helper_BerechneMonatfuerMonat + GetMonthName(iBMonat) + rs_Function_Helper_BerechneYearEnd + IntToStr(iBJahr));
     WaitFormSetNewCount(iMonthCount);
     WaitFormPosition(i+1);
     var iVMonat := iBMonat -1;

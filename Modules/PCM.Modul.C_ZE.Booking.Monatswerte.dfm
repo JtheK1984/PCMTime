@@ -1,7 +1,7 @@
 object frm_monatswerte: Tfrm_monatswerte
   Left = 0
   Top = 0
-  Caption = 'PCM - Zeiterfassung: Monatswerte'
+  Caption = 'PCM - Time: Monatswerte'
   ClientHeight = 900
   ClientWidth = 1380
   Color = clBtnFace
@@ -21,7 +21,6 @@ object frm_monatswerte: Tfrm_monatswerte
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 1692
     object lbl_D6: TcxLabel
       Left = 273
       Top = 297

@@ -459,7 +459,7 @@ begin
   dm_PCM.qry_Work.Close;
   if iAnzahl = 0  then
   begin
-    MessageDlg('Bitte erst Feiertage für das Jahr ' + IntToStr(iJahr) + ' eintragen ',mtwarning,[mbok],0);
+    MessageDlg(rs_PCMTime_FeiertagforYear + IntToStr(iJahr) + rs_PCMTime_FeiertagforYear1, mtwarning,[mbok],0);
     exit;
   end;
   tSollstunden:= GetPersonalSollStunden;
@@ -469,7 +469,7 @@ begin
     wTag:= DaysInAYear(iJahr)
   else
     DecodeDate(EndOfAMonth(iJahr,iMonat),wJahr,wMonat,wTag);
-  ShowWaitForm(TForm(Self), PWideChar('Daten werden erstellt'),wTag ,417, 65);
+  ShowWaitForm(TForm(Self), PWideChar(rs_Function_Helper_Datenwerdenerstellt),wTag ,417, 65);
   dm_PCM.qry_Work.Prepare;
   for var i := 0 to wTag -1 do
   begin
@@ -791,7 +791,7 @@ procedure Tfrm_ZE.ppmbtn_CalcDayClick(Sender: TObject);
 var
   wJahr,wMonat,wTag: word;
 begin
-  ShowWaitForm(TForm(frm_ZE), PWideChar('Berechne Tag'),1 ,417, 65);
+  ShowWaitForm(TForm(frm_ZE), PWideChar(rs_Function_Helper_BerechneTag1),1 ,417, 65);
   DecodeDate(Date,wJahr,wMonat,wTag);
   BerechneTage(wTag,wMonat,wJahr);
   BerechneMonat(wMonat,wJahr);
@@ -802,7 +802,7 @@ procedure Tfrm_ZE.ppmbtn_CalcMonthClick(Sender: TObject);
 var
   wJahr,wMonat,wTag: word;
 begin
-  ShowWaitForm(TForm(frm_ZE), PWideChar('Berechne Monat'),1 ,417, 65);
+  ShowWaitForm(TForm(frm_ZE), PWideChar(rs_Function_Helper_BerechneMonat1),1 ,417, 65);
   DecodeDate(Date,wJahr,wMonat,wTag);
   BerechneTage(0,wMonat,wJahr);
   BerechneMonat(wMonat,wJahr);
@@ -813,7 +813,7 @@ procedure Tfrm_ZE.ppmbtn_CalcYearClick(Sender: TObject);
 var
   wJahr,wMonat,wTag: word;
 begin
-  ShowWaitForm(TForm(frm_ZE), PWideChar('Berechne Jahr'),1 ,417, 65);
+  ShowWaitForm(TForm(frm_ZE), PWideChar(rs_Function_Helper_BerechneJahr1),1 ,417, 65);
   DecodeDate(Date,wJahr,wMonat,wTag);
   BerechneTage(0,0,wJahr);
   BerechneMonat(1,wJahr);
@@ -848,7 +848,7 @@ begin
   dm_PCM.qry_Work.ParamByName('BA').asInteger:= cmbbx_Bookingtype.ItemIndex;
   dm_PCM.qry_Work.ParamByName('Datum').AsDate:= dDate;
   dm_PCM.qry_Work.ExecSQL;
-  sText:= 'Letzte Buchung: Kommen am ' + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
+  sText:= rs_PCMTime_LastBookingKommen + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
   dm_PCM.qry_Work.SQL.Text:= 'Update time_message Set Text = :Text';
   dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
   dm_PCM.qry_Work.ExecSQL;
@@ -881,7 +881,7 @@ begin
     dm_PCM.qry_Work.ParamByName('Pause1Beginn').AsTime:= tTimes;
     dm_PCM.qry_Work.ParamByName('Datum').AsDate:= dDate;
     dm_PCM.qry_Work.ExecSQL;
-    sText:= 'Letzte Buchung: 1. Pause Beginn am ' + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
+    sText:= rs_PCMTime_LastBooking1PauseBeginn + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
     dm_PCM.qry_Work.SQL.Text:= 'Update time_message Set Text = :Text';
     dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
     dm_PCM.qry_Work.ExecSQL;
@@ -894,7 +894,7 @@ begin
       dm_PCM.qry_Work.ParamByName('Pause2Beginn').AsTime:= tTimes;
       dm_PCM.qry_Work.ParamByName('Datum').AsDate:= dDate;
       dm_PCM.qry_Work.ExecSQL;
-      sText:= 'Letzte Buchung: 2. Pause Beginn am ' + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
+      sText:= rs_PCMTime_LastBooking2PauseBeginn + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
       dm_PCM.qry_Work.SQL.Text:= 'Update time_message Set Text = :Text';
       dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
       dm_PCM.qry_Work.ExecSQL;
@@ -929,7 +929,7 @@ begin
     dm_PCM.qry_Work.ParamByName('Pause1ende').AsTime:= tTimes;
     dm_PCM.qry_Work.ParamByName('Datum').AsDate:= dDate;
     dm_PCM.qry_Work.ExecSQL;
-    sText:= 'Letzte Buchung: 1. Pause Ende am ' + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
+    sText:= rs_PCMTime_LastBooking1PauseEnd + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
     dm_PCM.qry_Work.SQL.Text:= 'Update time_message Set Text = :Text';
     dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
     dm_PCM.qry_Work.ExecSQL;
@@ -942,7 +942,7 @@ begin
       dm_PCM.qry_Work.ParamByName('Pause2ende').AsTime:= tTimes;
       dm_PCM.qry_Work.ParamByName('Datum').AsDate:= dDate;
       dm_PCM.qry_Work.ExecSQL;
-      sText:= 'Letzte Buchung: 2. Pause Ende am ' + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
+      sText:= rs_PCMTime_LastBooking2PauseEnd + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
       dm_PCM.qry_Work.SQL.Text:= 'Update time_message Set Text = :Text';
       dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
       dm_PCM.qry_Work.ExecSQL;
@@ -969,7 +969,7 @@ begin
   dm_PCM.qry_Work.ParamByName('Gehen').AsTime:= tTimes;
   dm_PCM.qry_Work.ParamByName('Datum').AsDate:= dDate;
   dm_PCM.qry_Work.ExecSQL;
-  sText:= 'Letzte Buchung: Gehen am ' + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
+  sText:= rs_PCMTime_LastBookingGehen + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
   dm_PCM.qry_Work.SQL.Text:= 'Update time_message Set Text = :Text';
   dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
   dm_PCM.qry_Work.ExecSQL;
@@ -1088,7 +1088,7 @@ var
   tPause2ende: TTime;
 begin
   dm_PCm.qry_Timer.ResourceOptions.SilentMode:=True;
-  stbr_ZE.Panels[0].Text:= 'Aktuelles Datum / Uhrzeit: ' + FormatDateTime('dd.MM.yyyy hh:mm:ss',Now);
+  stbr_ZE.Panels[0].Text:= rs_PCMTime_CurrentDatetime + FormatDateTime('dd.MM.yyyy hh:mm:ss',Now);
   dm_PCm.qry_Timer.SQL.Text:= 'Select Kommen, Gehen, Pause1Beginn,Pause1ende,Pause2Beginn,Pause2ende From time_buchungen Where Datum = :Datum';
   dm_PCm.qry_Timer.ParamByName('Datum').AsDate:= Date;
   dm_PCm.qry_Timer.open;

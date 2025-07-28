@@ -810,25 +810,17 @@ end;
 {$Region Navbarfunktionen}
 procedure Tfrm_PCM_Main.iSpracheClick(Sender: TObject);
 var
-  iniFile: TIniFile;
+  ifINI: TIniFile;
 begin
   Application.CreateForm(Tfrm_PCM_Language,frm_PCM_Language);
   frm_PCM_Language.Position:= poScreenCenter;
-  frm_PCM_Language.ClientHeight:= 135;
   frm_PCM_Language.ShowModal;
-  TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
-  TNtTranslator.TranslateForms;
-  iniFile := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
+  ifINI := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
   try
-    iniFile.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
+    ifINI.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
   finally
-    iniFile.Free;
+    ifINI.Free;
   end;
-  Caption:= PCM_Programmname;
-  trayic_Main.popupmenu:= ppm_Main;
-  LoadData;
-  btn_RefreshRightsClick(Self);
-  lafCtrl_Main.SkinName:= dm_PCM.sDesign;
 end;
 procedure Tfrm_PCM_Main.NavBarClick(Sender: TObject);
 var
@@ -887,7 +879,7 @@ begin
           end;
         2:
           begin
-            sModulCaption := 'i'  + 'Mitarbeiter';
+            sModulCaption := 'i'  + rs_PCMTime_Mitarbeiter;
             dm_PCM.iModulTab:= 1;
           end;
         3:
@@ -907,20 +899,20 @@ begin
           end;
         6:
 					begin
-            sModul:= 'i'  + 'Zeiterfassung';
-            sModulCaption := 'i'  + 'Zeiterfassung';
+            sModul:= 'i'  + rs_PCMTime_Zeiterfassung;
+            sModulCaption := 'i'  + rs_PCMTime_Zeiterfassung;
             dm_PCM.iModulTab:= 2;
           end;
         7:
 					begin
-            sModul:= 'i'  + 'Zeiterfassung';
-            sModulCaption := 'i'  + 'Zeiterfassung';
+            sModul:= 'i'  + rs_PCMTime_Zeiterfassung;
+            sModulCaption := 'i'  + rs_PCMTime_Zeiterfassung;
             dm_PCM.iModulTab:= 1;
           end;
         8:
 					begin
-            sModul:= 'i'  + 'Zeiterfassung';
-            sModulCaption := 'i'  + 'Zeiterfassung';
+            sModul:= 'i'  + rs_PCMTime_Zeiterfassung;
+            sModulCaption := 'i'  + rs_PCMTime_Zeiterfassung;
             dm_PCM.iModulTab:= 3;
           end;
         end;
@@ -942,7 +934,7 @@ begin
         begin
           Screen.Cursor := crHourglass;
           try
-            ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), 1,417, 65);
+            ShowWaitForm(TForm(Self), PWideChar(rs_General_Formload), 1,417, 65);
             Application.ProcessMessages;
             WaitFormStep;
             TForm(Module.Instance^) := Module.FormClass.Create(Nil);
@@ -1071,10 +1063,6 @@ procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
 var
   iJahr,iMonat,iTag: Word;
 begin
-  {$ifdef WIn32}
-  iSprache.Visible:= false;
-  ppmbtn_Sprache.Visible:= false;
-  {$endif}
   lafCtrl_Main.NativeStyle:= false;
   trayIC_Main.Hint:= PCM_Programmname;
   dm_PCM.iDBType:= 0;

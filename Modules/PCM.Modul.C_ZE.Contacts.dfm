@@ -2,7 +2,7 @@ object frm_Userze: Tfrm_Userze
   Left = 0
   Top = 0
   BorderIcons = []
-  Caption = 'PCM - Zeiterfassung: Zeiterfasser'
+  Caption = 'PCM - Time: Mitarbeiter'
   ClientHeight = 900
   ClientWidth = 1600
   Color = clBtnFace
@@ -219,7 +219,7 @@ object frm_Userze: Tfrm_Userze
       Width = 1021
     end
     object cmbbx_KontaktSucheArt: TcxComboBox
-      Left = 97
+      Left = 101
       Top = 115
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -235,7 +235,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheAbteilung: TcxTextEdit
-      Left = 805
+      Left = 809
       Top = 89
       AutoSize = False
       ParentFont = False
@@ -253,7 +253,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheFirma: TcxTextEdit
-      Left = 805
+      Left = 809
       Top = 63
       AutoSize = False
       ParentFont = False
@@ -271,7 +271,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheFunktion: TcxTextEdit
-      Left = 805
+      Left = 809
       Top = 115
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -287,7 +287,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheNachname: TcxTextEdit
-      Left = 97
+      Left = 101
       Top = 63
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -312,8 +312,8 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheOrt: TcxTextEdit
-      Left = 455
-      Top = 115
+      Left = 459
+      Top = 117
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -328,7 +328,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSuchePLZ: TcxTextEdit
-      Left = 455
+      Left = 459
       Top = 89
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -344,7 +344,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheStrasse: TcxTextEdit
-      Left = 455
+      Left = 459
       Top = 63
       AutoSize = False
       ParentFont = False
@@ -362,7 +362,7 @@ object frm_Userze: Tfrm_Userze
       Width = 234
     end
     object edt_KontaktSucheVorname: TcxTextEdit
-      Left = 97
+      Left = 101
       Top = 89
       AutoSize = False
       ParentFont = False
@@ -1013,10 +1013,10 @@ object frm_Userze: Tfrm_Userze
       OnClick = btn_Mail2PrivateClick
     end
     object grd_Suche: TcxGrid
-      Left = 20
-      Top = 185
-      Width = 1560
-      Height = 637
+      Left = 24
+      Top = 189
+      Width = 1552
+      Height = 629
       BevelInner = bvNone
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -1317,8 +1317,8 @@ object frm_Userze: Tfrm_Userze
       end
     end
     object btn_ClearFilter: TcxButton
-      Left = 164
-      Top = 151
+      Left = 168
+      Top = 155
       Width = 137
       Height = 27
       Caption = 'Filter l'#246'schen'
@@ -1334,8 +1334,8 @@ object frm_Userze: Tfrm_Userze
       OnClick = btn_ClearFilterClick
     end
     object btn_kontaktsuchen: TcxButton
-      Left = 20
-      Top = 151
+      Left = 24
+      Top = 155
       Width = 137
       Height = 27
       Caption = 'Mitarbeiter suchen'
@@ -1578,7 +1578,7 @@ object frm_Userze: Tfrm_Userze
       CaptionOptions.Text = 'Anrede:'
       CaptionOptions.Width = 75
       Control = cmbbx_Anrede
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1590,7 +1590,7 @@ object frm_Userze: Tfrm_Userze
       CaptionOptions.Text = 'Vorname:'
       CaptionOptions.Width = 75
       Control = edt_KontaktName
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1602,7 +1602,7 @@ object frm_Userze: Tfrm_Userze
       CaptionOptions.Text = 'Geburtsname:'
       CaptionOptions.Width = 75
       Control = edt_KontaktGeburtsname
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 3
@@ -1614,7 +1614,7 @@ object frm_Userze: Tfrm_Userze
       CaptionOptions.Text = 'Nachname:'
       CaptionOptions.Width = 75
       Control = edt_KontaktNachname
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 2
@@ -1625,7 +1625,7 @@ object frm_Userze: Tfrm_Userze
       AlignVert = avTop
       CaptionOptions.Text = 'Geburtsland:'
       Control = edt_Geburtsland
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 4
@@ -1636,7 +1636,7 @@ object frm_Userze: Tfrm_Userze
       AlignVert = avTop
       CaptionOptions.Text = 'Handy:'
       Control = edt_KontaktHandy
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 10
@@ -1647,7 +1647,7 @@ object frm_Userze: Tfrm_Userze
       AlignVert = avTop
       CaptionOptions.Text = 'Telefon 2:'
       Control = edt_KontaktTelefon2
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 9
@@ -1658,7 +1658,7 @@ object frm_Userze: Tfrm_Userze
       AlignVert = avTop
       CaptionOptions.Text = 'Telefon 1:'
       Control = edt_KontaktTelefon1
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 8
@@ -1704,7 +1704,7 @@ object frm_Userze: Tfrm_Userze
       AlignVert = avTop
       CaptionOptions.Text = 'Zusatz:'
       Control = edt_KontaktZusatz
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 5
@@ -1715,7 +1715,7 @@ object frm_Userze: Tfrm_Userze
       AlignVert = avTop
       CaptionOptions.Text = 'Stra'#223'e:'
       Control = edt_KontaktStrasse
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 6
@@ -1752,7 +1752,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahLeft
       CaptionOptions.Text = 'Internet:'
       Control = edt_KontaktInternet
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1784,7 +1784,7 @@ object frm_Userze: Tfrm_Userze
       Offsets.Left = 16
       CaptionOptions.Text = 'Geburtsdatum:'
       Control = dtEdt_KontaktZusatzGeburtsdatum
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 360
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1795,7 +1795,7 @@ object frm_Userze: Tfrm_Userze
       Offsets.Left = 16
       CaptionOptions.Text = 'Familienstand:'
       Control = lucmbbx_KontaktZusatzFamilienstand
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 360
       ControlOptions.ShowBorder = False
       Index = 2
@@ -1828,7 +1828,7 @@ object frm_Userze: Tfrm_Userze
       Offsets.Left = 16
       CaptionOptions.Text = 'Staatsangh'#246'rigkeit:'
       Control = lucmbbx_Staatsanghoerigkeit
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 360
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1987,7 +1987,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Funktion:'
       Control = edt_KontaktGeschaeftlichFunktion
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 4
@@ -2034,7 +2034,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Abteilung:'
       Control = edt_KontaktGeschaeftlichAbteilung
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 3
@@ -2044,7 +2044,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'E-Mail:'
       Control = edt_KontaktGeschaeftlichEMail
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2054,7 +2054,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Firma:'
       Control = edt_KontaktGeschaeftlichFirma
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2064,7 +2064,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Internet:'
       Control = edt_KontaktGeschaeftlichInternet
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2084,7 +2084,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahLeft
       CaptionOptions.Text = 'Plz - Ort:'
       Control = edt_KontaktGeschaeftlichPLZ
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 69
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2094,7 +2094,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Telefon Durchwahl:'
       Control = edt_KontaktGeschaeftlichTelefonDurchwahl
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 6
@@ -2104,7 +2104,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Telefon Zentrale:'
       Control = edt_KontaktGeschaeftlichTelefonZentrale
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 5
@@ -2114,7 +2114,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Kalender Pause:'
       Control = colcmbbx_KalFarbePause
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 4
@@ -2125,7 +2125,7 @@ object frm_Userze: Tfrm_Userze
       AlignVert = avTop
       CaptionOptions.Text = 'Kalender Arbeitszeit:'
       Control = colcmbbx_KalFarbeArbeit
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 2
@@ -2135,7 +2135,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Schrift Pause:'
       Control = colcmbbx_SchriftFarbePause
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 3
@@ -2145,7 +2145,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Schrift Arbeitszeit:'
       Control = colcmbbx_SchriftFarbeArbeit
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2165,7 +2165,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Benutzer:'
       Control = lucmbbx_Benutzer
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 5
@@ -2185,7 +2185,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Resturlaub zum Jahr:'
       Control = medt_ResturlaubzumJahr
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 9
@@ -2195,7 +2195,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Personalnummer:'
       Control = medt_Personalnummer
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 10
@@ -2205,7 +2205,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Urlaubsanspruch:'
       Control = sedt_Urlaubanspruch
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 6
@@ -2215,7 +2215,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Sollstunden:'
       Control = tedt_Sollstunden
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2224,7 +2224,7 @@ object frm_Userze: Tfrm_Userze
       Parent = lagrp_SucheMitarbeiter
       CaptionOptions.Text = 'Kontaktart:'
       Control = cmbbx_KontaktSucheArt
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 234
       ControlOptions.ShowBorder = False
       Index = 2
@@ -2254,7 +2254,7 @@ object frm_Userze: Tfrm_Userze
       Offsets.Left = 48
       CaptionOptions.Text = 'Funktion:'
       Control = edt_KontaktSucheFunktion
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 234
       ControlOptions.ShowBorder = False
       Index = 2
@@ -2275,7 +2275,7 @@ object frm_Userze: Tfrm_Userze
       Offsets.Left = 48
       CaptionOptions.Text = 'Ort:'
       Control = edt_KontaktSucheOrt
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 234
       ControlOptions.ShowBorder = False
       Index = 2
@@ -2285,7 +2285,7 @@ object frm_Userze: Tfrm_Userze
       Offsets.Left = 48
       CaptionOptions.Text = 'Postleitzahl:'
       Control = edt_KontaktSuchePLZ
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 234
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2333,7 +2333,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Facebook:'
       Control = edt_KontakteSonstigesFacebook
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2343,7 +2343,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Skype:'
       Control = edt_KontakteSonstigesSkype
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2353,7 +2353,7 @@ object frm_Userze: Tfrm_Userze
       AlignHorz = ahClient
       CaptionOptions.Text = 'Teams:'
       Control = edt_KontakteSonstigesTeams
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
       Index = 2

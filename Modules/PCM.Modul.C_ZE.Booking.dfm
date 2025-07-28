@@ -2,7 +2,7 @@ object frm_Booking: Tfrm_Booking
   Left = 0
   Top = 0
   BorderIcons = []
-  Caption = 'PCM - Manager: Buchungs'#252'bersicht'
+  Caption = 'PCM - Time: Buchungs'#252'bersicht'
   ClientHeight = 416
   ClientWidth = 938
   Color = clBtnFace
@@ -34,8 +34,8 @@ object frm_Booking: Tfrm_Booking
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 930
-    ExplicitHeight = 315
+    ExplicitWidth = 932
+    ExplicitHeight = 341
     object lucmbbx_Fehltag: TcxDBLookupComboBox
       AlignWithMargins = True
       Left = 671

@@ -3,7 +3,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
   Top = 0
   BorderIcons = []
   BorderStyle = bsDialog
-  Caption = 'PCM - Zeiterfassung: Fehltage eintragen'
+  Caption = 'PCM - Time: Fehltage eintragen'
   ClientHeight = 545
   ClientWidth = 529
   Color = clBtnFace
@@ -24,7 +24,6 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitHeight = 100
     object brdckCtrl_Fehltage: TdxBarDockControl
       Left = 12
       Top = 12

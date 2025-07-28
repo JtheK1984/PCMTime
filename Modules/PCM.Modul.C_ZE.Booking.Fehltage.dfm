@@ -2,7 +2,7 @@ object frm_Fehltage: Tfrm_Fehltage
   Left = 0
   Top = 0
   BorderIcons = []
-  Caption = 'PCM - Zeiterfassung: Fehltage'
+  Caption = 'PCM - Time: Fehltage'
   ClientHeight = 900
   ClientWidth = 1600
   Color = clBtnFace
@@ -34,7 +34,7 @@ object frm_Fehltage: Tfrm_Fehltage
     end
     object grd_Feiertage: TcxGrid
       Left = 22
-      Top = 178
+      Top = 184
       Width = 1556
       Height = 651
       BorderStyle = cxcbsNone
@@ -203,7 +203,7 @@ object frm_Fehltage: Tfrm_Fehltage
     end
     object imgcmbbx_FTSoll: TcxDBImageComboBox
       Left = 937
-      Top = 122
+      Top = 124
       DataBinding.DataField = 'Bezahlt'
       DataBinding.DataSource = ds_FT
       Properties.Items = <
@@ -223,7 +223,7 @@ object frm_Fehltage: Tfrm_Fehltage
     end
     object imgcmbbx_FTGutschrift: TcxDBImageComboBox
       Left = 520
-      Top = 122
+      Top = 124
       DataBinding.DataField = 'Faktor'
       DataBinding.DataSource = ds_FT
       Properties.Alignment.Horz = taLeftJustify
@@ -248,7 +248,7 @@ object frm_Fehltage: Tfrm_Fehltage
     end
     object imgcmbbx_FTTyp: TcxDBImageComboBox
       Left = 107
-      Top = 122
+      Top = 124
       DataBinding.DataField = 'Typ'
       DataBinding.DataSource = ds_FT
       Properties.Alignment.Horz = taLeftJustify
@@ -281,7 +281,7 @@ object frm_Fehltage: Tfrm_Fehltage
     end
     object colcmbbx_FTEvent: TcxDBColorComboBox
       Left = 107
-      Top = 150
+      Top = 154
       DataBinding.DataField = 'Color'
       DataBinding.DataSource = ds_FT
       Properties.AllowSelectColor = True
@@ -296,7 +296,7 @@ object frm_Fehltage: Tfrm_Fehltage
     end
     object colcmbbx_FTFont: TcxDBColorComboBox
       Left = 892
-      Top = 150
+      Top = 154
       DataBinding.DataField = 'ColorFont'
       DataBinding.DataSource = ds_FT
       Properties.AllowSelectColor = True
@@ -310,7 +310,7 @@ object frm_Fehltage: Tfrm_Fehltage
     end
     object imgcmbbx_FTSollAbzug: TcxDBImageComboBox
       Left = 1378
-      Top = 122
+      Top = 124
       DataBinding.DataField = 'SollAbziehen'
       DataBinding.DataSource = ds_FT
       Properties.Items = <
@@ -360,7 +360,7 @@ object frm_Fehltage: Tfrm_Fehltage
       CaptionOptions.Text = 'K'#252'rzel:'
       CaptionOptions.Width = 80
       Control = edt_FTKuerzel
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 1582
       ControlOptions.ShowBorder = False
       Index = 0
@@ -372,7 +372,7 @@ object frm_Fehltage: Tfrm_Fehltage
       CaptionOptions.Text = 'Beschreibung:'
       CaptionOptions.Width = 80
       Control = edt_FTDesc
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 1582
       ControlOptions.ShowBorder = False
       Index = 1
@@ -383,7 +383,7 @@ object frm_Fehltage: Tfrm_Fehltage
       AlignVert = avTop
       CaptionOptions.Text = 'Fehltagstyp:'
       Control = imgcmbbx_FTTyp
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 210
       ControlOptions.ShowBorder = False
       Index = 0
@@ -394,7 +394,7 @@ object frm_Fehltage: Tfrm_Fehltage
       AlignVert = avTop
       CaptionOptions.Text = 'Gutschrift:'
       Control = imgcmbbx_FTGutschrift
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 214
       ControlOptions.ShowBorder = False
       Index = 1
@@ -405,7 +405,7 @@ object frm_Fehltage: Tfrm_Fehltage
       AlignVert = avTop
       CaptionOptions.Text = 'Sollstunden:'
       Control = imgcmbbx_FTSoll
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 210
       ControlOptions.ShowBorder = False
       Index = 2
@@ -416,7 +416,7 @@ object frm_Fehltage: Tfrm_Fehltage
       AlignVert = avTop
       CaptionOptions.Text = 'Farbe Fehltag:'
       Control = colcmbbx_FTEvent
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 210
       ControlOptions.ShowBorder = False
       Index = 0
@@ -427,7 +427,7 @@ object frm_Fehltage: Tfrm_Fehltage
       AlignVert = avTop
       CaptionOptions.Text = 'Farbe Schrift:'
       Control = colcmbbx_FTFont
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 210
       ControlOptions.ShowBorder = False
       Index = 1
@@ -497,7 +497,7 @@ object frm_Fehltage: Tfrm_Fehltage
       Parent = lagrp_FTEditRow2
       CaptionOptions.Text = 'Sollzeit abziehen:'
       Control = imgcmbbx_FTSollAbzug
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 200
       ControlOptions.ShowBorder = False
       Index = 3

@@ -128,7 +128,8 @@ implementation
 uses
   {$Region Uses}
   PCMTime.Calculate,
-  PCM.Data;
+  PCM.Data,
+  PCM.Strings;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Buttons                                                                    //
@@ -180,14 +181,14 @@ procedure Tfrm_Fehltageeintragen.btn_FTSaveClick(Sender: TObject);
     begin
       if YearOf(ABis) <> YearOf(AVon) then
       begin
-        MessageDlg('Fehltage können nicht jahresübergreifend eingetragen werden!',mtWarning,[mbOk],0);
+        MessageDlg(rs_PCMTime_Overyear,mtWarning,[mbOk],0);
       end
       else begin
         Result:= True;
       end;
     end
     else begin
-      MessageDlg('Zeitraum-Von kann ich größer als Zeitraum-Bis sein!',mtWarning,[mbOk],0);
+      MessageDlg(rs_PCMTime_Zeitraumgroesser,mtWarning,[mbOk],0);
     end;
   end;
   function CheckFehltage(AVon,ABis: TDate): boolean;
@@ -204,7 +205,7 @@ procedure Tfrm_Fehltageeintragen.btn_FTSaveClick(Sender: TObject);
     qry_FehltageCHk.open;
     if qry_FehltageCHk.FieldByName('Anzahl').AsInteger > 0  then
     begin
-      MessageDlg('Im ausgewählten Zeitraum gibt es schon eingetragene Fehltage!',mtWarning,[mbOk],0);
+      MessageDlg(rs_PCMTime_Fehltagexists,mtWarning,[mbOk],0);
     end
     else begin
       Result:= true;
@@ -222,7 +223,7 @@ var
 begin
   if cmbbx_Fehltage.ItemIndex < 0 then
   begin
-    MessageDlg('Es wurde kein Fehltag ausgewählt!',mtWarning,[mbOk],0);
+    MessageDlg(rs_PCMTime_FehltaNone,mtWarning,[mbOk],0);
     exit;
   end;
   if CheckDateValid(dedt_Von.Date,dedt_Bis.Date) then

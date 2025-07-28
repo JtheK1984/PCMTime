@@ -480,7 +480,7 @@ begin
   DecodeDate(Date,iJahr,iMonat,iTag);
   // Urlaubsanspruch
   iULANsp:= GetULAnspruch;
-  grpbx_Stat.Caption:= '[B]Statistik: Urlaubsanspruch für Jahr ' + IntToStr(AJahr) + ' ' + FormatFloat('0.0', iULANsp) + ' Tage[/B]';
+  grpbx_Stat.Caption:= '[B]'+ rs_PCMTime_StatistikUL + IntToStr(AJahr) + ' ' + FormatFloat('0.0', iULANsp) + rs_PCMTime_StatistikULDays +'[/B]';
   // Urlaub Vorjahr
   iULVJ:= GetULVorJahr(AJahr -1,12);
   lbl_RulVJ.Caption:= FormatFloat('0.0', iULVJ);
@@ -722,7 +722,7 @@ end;
 procedure Tfrm_monatswerte.AuswertungsJahrPropertiesChange(Sender: TObject);
 begin
   SetMonth(1);
-  grpbx_MonatInfo.Caption:= '[B]Auswertung von ' + DateToStr(StartOfAMonth(AuswertungsJahr.value,1))
+  grpbx_MonatInfo.Caption:= '[B]' + rs_PCMTime_Auswertung + DateToStr(StartOfAMonth(AuswertungsJahr.value,1))
                           + ' bis ' + DateToStr(EndOfAMonth(AuswertungsJahr.value,1))+'[/B]';
   GetData(1,AuswertungsJahr.value);
 end;
@@ -732,13 +732,13 @@ var
 begin
   iMonat := (Sender as TComponent).Tag;
   SetMonth(iMonat);
-  grpbx_MonatInfo.Caption:= '[B]Auswertung von ' + DateToStr(StartOfAMonth(AuswertungsJahr.value,iMonat))
+  grpbx_MonatInfo.Caption:= '[B]' + rs_PCMTime_Auswertung + DateToStr(StartOfAMonth(AuswertungsJahr.value,iMonat))
                       + ' bis ' + DateToStr(EndOfAMonth(AuswertungsJahr.value,iMonat))+'[/B]';
   GetData(iMonat,AuswertungsJahr.value);
 end;
 procedure Tfrm_monatswerte.cxButton1Click(Sender: TObject);
 begin
-  ShowWaitForm(TForm(frm_monatswerte), PWideChar('Berechne Monat'),1 ,417, 65);
+  ShowWaitForm(TForm(frm_monatswerte), PWideChar(rs_Function_Helper_BerechneMonat1),1 ,417, 65);
   BerechneTage(0,GetMonthFromButton,StrToint(AuswertungsJahr.EditingValue));
   BerechneMonat(GetMonthFromButton,StrToint(AuswertungsJahr.EditingValue));
   GetData(GetMonthFromButton,AuswertungsJahr.value);
@@ -770,7 +770,7 @@ begin
   dm_PCM.qry_Kalender_Kalender.Open;
   AuswertungsJahr.value:= frm_PCM_Main.iAuswertungJahr;
   SetMonth(frm_PCM_Main.iAuswertungMonat);
-  grpbx_MonatInfo.Caption:= '[B]Auswertung von ' + DateToStr(StartOfAMonth(frm_PCM_Main.iAuswertungJahr,frm_PCM_Main.iAuswertungMonat))
+  grpbx_MonatInfo.Caption:= '[B]' + rs_PCMTime_Auswertung + DateToStr(StartOfAMonth(frm_PCM_Main.iAuswertungJahr,frm_PCM_Main.iAuswertungMonat))
                       + ' bis ' + DateToStr(EndOfAMonth(frm_PCM_Main.iAuswertungJahr,frm_PCM_Main.iAuswertungMonat))+'[/B]';
   dm_PCM.qry_Work.SQL.Text:= 'Select vorName, Nachname from time_user where ID_Zeiterfasser = :ID_Benutzer';
   dm_PCM.qry_Work.ParamByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;

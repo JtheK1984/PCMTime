@@ -1,7 +1,7 @@
 object frm_Feiertage: Tfrm_Feiertage
   Left = 0
   Top = 0
-  Caption = 'PCM - Zeiterfassung: Feiertage'
+  Caption = 'PCM - Time: Feiertage'
   ClientHeight = 900
   ClientWidth = 1600
   Color = clBtnFace

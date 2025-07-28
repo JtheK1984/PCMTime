@@ -46,26 +46,23 @@ uses
 
 var
   ifini: TIniFile;
-  sStyle: String;
   slocale: String;
 
 begin
   Checkinis;
   ifini:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
-  sStyle:=ifini.ReadString('PCMZeiterfassung','Style','Windows');
   slocale:=ifini.ReadString('PCMZeiterfassung','Language','de');
   ifini.Free;
   GlobalWebView2Loader                := TWVLoader.Create(nil);
   GlobalWebView2Loader.UserDataFolder := GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\CustomCache';
   GlobalWebView2Loader.StartWebView2;
   Application.Initialize;
-  TStyleManager.TrySetStyle(sStyle);
   {$IFDEF WIN64}
   Application.Title:= 'PCM - PCMZeiterfassung 64-Bit';
-  TNtTranslator.SetNew(slocale,[],'de');
   {$else}
   Application.Title:= 'PCM - PCMZeiterfassung 32-Bit';
   {$ENDIF}
+  TNtTranslator.SetNew(slocale,[],'de');									
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdm_PCM,dm_PCM);
   Application.CreateForm(Tfrm_PCM_Main,frm_PCM_Main);
