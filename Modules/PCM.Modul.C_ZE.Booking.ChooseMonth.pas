@@ -67,9 +67,9 @@ implementation
 
 uses
   {$Region Uses}
-  PCM.Data,
+  PCM.Data, PCM.Helper,
   PCM.Modul.C_ZE,
-  PCM.Strings;
+  PCM.Time.Strings;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -105,14 +105,14 @@ procedure Tfrm_ChooseDate.btn_OkClick(Sender: TObject);
 begin
   if cbx_Month.ItemIndex = -1 then
   begin
-    MessageDlg(rs_PCMManager_Monatwaehlen, mtWarning, [mbOk], 0);
+    SetMessageDialog(2,rs_PCMManager_Monatwaehlen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
 
   if cbx_Year.ItemIndex = -1 then
   begin
-   MessageDlg(rs_PCMManager_Jahrwaehlen, mtWarning, [mbOk], 0);
-   exit;
+    SetMessageDialog(2,rs_PCMManager_Jahrwaehlen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+    exit;
   end;
   Modalresult:= mrOk;
 end;

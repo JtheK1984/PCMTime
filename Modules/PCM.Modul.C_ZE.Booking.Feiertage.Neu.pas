@@ -139,9 +139,9 @@ implementation
 
 uses
   {$Region Uses}
-  PCM.Data,
+  PCM.Data,PCM.Helper,
   PCM.Modul.C_ZE.Booking.Feiertage.Neu.Berechnen,
-  PCM.Strings;
+  PCM.Time.Strings;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -178,7 +178,7 @@ var
   Jahr, Monat, Tag: Word;
 begin
   if cmbbx_Bundesland.ItemIndex = -1 then
-    MessageDlg(rs_PCMManager_Bundeslandwaehlen, mtWarning, [mbOk], 0)
+    SetMessageDialog(2,rs_PCMManager_Bundeslandwaehlen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone])
   else
   begin
     // Jahr holen

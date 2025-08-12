@@ -118,7 +118,7 @@ uses
   PCM.Functions.Synch.Wait,
   PCM.Modul.C_ZE.Booking.Feiertage.Aktualisieren,
   PCM.Modul.C_ZE.Booking.Feiertage.Neu,
-  PCM.strings;
+  PCM.Time.strings;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Buttons                                                                    //

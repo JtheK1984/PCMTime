@@ -158,7 +158,6 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 2
       ShowBorder = False
       Index = 0
     end
@@ -167,7 +166,6 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 2

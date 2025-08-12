@@ -351,9 +351,9 @@ implementation
 uses
   {$Region Type}
   PCMTime.Calculate,
-  PCM.Reports,
+  PCM.Reports,Pcm.Helper,
   PCM.Data,
-  PCM.Strings,
+  PCM.Time.Strings,
   PCM.Functions.Synch.Wait,
   PCM.Modul.C_ZE, PCM.Main, PCM.Modul.C_ZE.Booking.Fehltage.Edit;
   {$EndRegion Type}
@@ -756,7 +756,7 @@ begin
   if sdlg_Buchungen.Execute then
   begin
     ExportGridToExcel(sdlg_Buchungen.FileName, grd_tag);
-    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Buchungen.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+    SetMessageDialog(1,rs_PCMManager_GridExport1 + sdlg_Buchungen.FileName +  rs_PCMManager_GridExport2,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 

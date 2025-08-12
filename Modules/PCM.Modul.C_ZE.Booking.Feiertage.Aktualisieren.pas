@@ -74,7 +74,8 @@ implementation
 uses
   {$Region Uses}
   PCM.Data,
-  PCM.Strings;
+  PCm.Helper,
+  PCM.Time.Strings;
  {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -105,11 +106,11 @@ end;
 procedure Tfrm_FeiertageAktualisieren.btn_OKClick(Sender: TObject);
 begin
   if (dedt_Von.EditValue = Null) or (dEdt_Bis.EditValue = Null) then
-    MessageDlg(rs_PCMManager_DatumUngueltig + rs_PCMManager_DatumVonBis,mtWarning, [mbOk],0)
+    SetMessageDialog(2,rs_PCMManager_DatumUngueltig + rs_PCMManager_DatumVonBis,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone])
   else if dedt_Von.Date < dEdt_Bis.Date then
     ModalResult := mrOk
   else
-    MessageDlg(rs_PCMManager_DatumUngueltig + rs_PCMManager_DatumBisVon,mtWarning, [mbOk],0);
+    SetMessageDialog(2,rs_PCMManager_DatumUngueltig + rs_PCMManager_DatumBisVon,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
 end;
 {$EndRegion Formfunctions}
 end.

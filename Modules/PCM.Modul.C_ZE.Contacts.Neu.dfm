@@ -611,7 +611,7 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       AlignVert = avTop
       CaptionOptions.Text = 'Anrede:'
       Control = cmbbx_Anrede
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 155
       ControlOptions.ShowBorder = False
       Index = 0
@@ -622,7 +622,7 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       AlignVert = avTop
       CaptionOptions.Text = 'Vorname:'
       Control = edt_Name
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 155
       ControlOptions.ShowBorder = False
       Index = 1
@@ -633,7 +633,7 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       AlignVert = avTop
       CaptionOptions.Text = 'Nachname:'
       Control = cxTextEdit1
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 155
       ControlOptions.ShowBorder = False
       Index = 2

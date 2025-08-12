@@ -56,7 +56,7 @@ implementation
 {$R *.dfm}
 
 uses PCM.Modul.C_ZE.Contacts,
-     PCM.Data,PCM.Strings;
+     PCM.Data,PCM.Time.Strings;
 
 
 {$Region Buttons}

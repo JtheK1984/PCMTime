@@ -128,7 +128,8 @@ uses
   {$Region Uses}
   PCMTime.Calculate,
   PCM.Data,
-  PCM.Strings,
+  PCm.Helper,
+  PCM.Time.Strings,
   PCM.Modul.C_ZE;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
@@ -196,7 +197,7 @@ procedure Tfrm_Booking.btn_DataCloseClick(Sender: TObject);
 begin
   if frm_ZE.qry_Buchungen.State in [dsInsert, dsEdit] then
   begin
-    if MessageDlg(rs_PCMTime_MSGDataNotSaved, mtWarning, [mbYes,mbNo], 0) = mrno then
+    if SetMessageDialog(2,rs_PCMTime_MSGDataNotSaved,[rs_general_BTN_yes,rs_general_BTN_no,''],[mryes,mrNo,mrNone]) = mrno then
       Exit;
   end;
   Close;

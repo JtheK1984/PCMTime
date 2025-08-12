@@ -261,7 +261,6 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 2
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -271,7 +270,6 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 4
       ShowBorder = False
       Index = 0
     end

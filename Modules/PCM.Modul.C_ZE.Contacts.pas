@@ -390,7 +390,7 @@ uses
   PCM.Modul.C_ZE,
   PCM.Modul.C_ZE.Contacts.Neu,
   PCM.Modul.C_ZE.Contacts.Staatsangehoerigkeit,
-  PCM.Strings, PCM.Modul.C_ZE.Contacts.Konfession;
+  PCM.Time.Strings, PCM.Modul.C_ZE.Contacts.Konfession;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Buttons                                                                    //

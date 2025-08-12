@@ -344,7 +344,7 @@ uses
   PCM.Functions.Synch.Wait,
   PCM.Handbuch,
   PCM.Modul.C_ZE,
-  PCM.Strings,
+  PCM.Time.Strings,
   PCM.SQL,
   PCM.splash,
   PCMTime.Calculate,

@@ -329,6 +329,7 @@ uses
   PCM.Browser.FullScreen,
   PCMTime.Calculate,
   PCM.Data,
+  PCM.Helper,
   PCM.Functions.Synch.Wait,
   PCM.Main,
   PCM.Modul.C_ZE.Booking.Filter.Date,
@@ -340,7 +341,7 @@ uses
   PCM.Modul.C_ZE.Booking.Monatswerte,
   PCM.Reports,
   PCM.SQL,
-  PCM.Strings,
+  PCM.Time.Strings,
   PCM.Modul.C_ZE.Contacts;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
@@ -459,7 +460,7 @@ begin
   dm_PCM.qry_Work.Close;
   if iAnzahl = 0  then
   begin
-    MessageDlg(rs_PCMTime_FeiertagforYear + IntToStr(iJahr) + rs_PCMTime_FeiertagforYear1, mtwarning,[mbok],0);
+    SetMessageDialog(2,rs_PCMTime_FeiertagforYear + IntToStr(iJahr) + rs_PCMTime_FeiertagforYear1,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
   tSollstunden:= GetPersonalSollStunden;

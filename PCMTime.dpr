@@ -30,7 +30,8 @@ uses
   PCM.Modul.C_ZE.Contacts in 'Modules\PCM.Modul.C_ZE.Contacts.pas' {frm_Userze},
   PCM.Modul.C_ZE.Contacts.Konfession in 'Modules\PCM.Modul.C_ZE.Contacts.Konfession.pas' {frm_PCM_Konfession},
   PCM.Modul.C_ZE.Contacts.Staatsangehoerigkeit in 'Modules\PCM.Modul.C_ZE.Contacts.Staatsangehoerigkeit.pas' {frm_PCM_Staatsangehoerigkeit},
-  PCMTime.dxSettings in 'PCMTime.dxSettings.pas';
+  PCMTime.dxSettings in 'PCMTime.dxSettings.pas',
+  PCM.Time.Strings in 'Modules\PCM.Time.Strings.pas';
 
 {$R *.res}
 
@@ -64,7 +65,7 @@ begin
   {$ENDIF}
   TNtTranslator.SetNew(slocale,[],'de');									
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(Tdm_PCM,dm_PCM);
-  Application.CreateForm(Tfrm_PCM_Main,frm_PCM_Main);
+  Application.CreateForm(Tdm_PCM, dm_PCM);
+  Application.CreateForm(Tfrm_PCM_Main, frm_PCM_Main);
   Application.Run;
 end.

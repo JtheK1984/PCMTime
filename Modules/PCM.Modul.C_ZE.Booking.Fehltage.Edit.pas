@@ -128,8 +128,8 @@ implementation
 uses
   {$Region Uses}
   PCMTime.Calculate,
-  PCM.Data,
-  PCM.Strings;
+  PCM.Data,PCm.Helper,
+  PCM.Time.Strings;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Buttons                                                                    //
@@ -181,14 +181,14 @@ procedure Tfrm_Fehltageeintragen.btn_FTSaveClick(Sender: TObject);
     begin
       if YearOf(ABis) <> YearOf(AVon) then
       begin
-        MessageDlg(rs_PCMTime_Overyear,mtWarning,[mbOk],0);
+        SetMessageDialog(2,rs_PCMTime_Overyear,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       end
       else begin
         Result:= True;
       end;
     end
     else begin
-      MessageDlg(rs_PCMTime_Zeitraumgroesser,mtWarning,[mbOk],0);
+      SetMessageDialog(2,rs_PCMTime_Zeitraumgroesser,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     end;
   end;
   function CheckFehltage(AVon,ABis: TDate): boolean;
@@ -205,7 +205,7 @@ procedure Tfrm_Fehltageeintragen.btn_FTSaveClick(Sender: TObject);
     qry_FehltageCHk.open;
     if qry_FehltageCHk.FieldByName('Anzahl').AsInteger > 0  then
     begin
-      MessageDlg(rs_PCMTime_Fehltagexists,mtWarning,[mbOk],0);
+      SetMessageDialog(2,rs_PCMTime_FehltaNone,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     end
     else begin
       Result:= true;
@@ -223,7 +223,7 @@ var
 begin
   if cmbbx_Fehltage.ItemIndex < 0 then
   begin
-    MessageDlg(rs_PCMTime_FehltaNone,mtWarning,[mbOk],0);
+    SetMessageDialog(2,rs_PCMTime_FehltaNone,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
   if CheckDateValid(dedt_Von.Date,dedt_Bis.Date) then

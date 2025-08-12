@@ -109,8 +109,6 @@ object frm_ZE: Tfrm_ZE
     Align = alClient
     TabOrder = 2
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 1151
-    ExplicitHeight = 535
     object btn_BookingWorkBegin: TcxButton
       Left = 10000
       Top = 10000

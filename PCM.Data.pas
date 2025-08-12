@@ -138,6 +138,7 @@ const
   PCM_Logname =  'PCMTime';
   PCM_Connectionname =  'time';
   PCM_Alias =  'time';
+  PCM_Lizenz = true;
   {$EndRegion const}
 resourcestring
   {$Region RessourceString}
