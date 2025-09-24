@@ -170,7 +170,6 @@ type
     dxLayoutGroup2: TdxLayoutGroup;
     dxLayoutGroup4: TdxLayoutGroup;
     dxLayoutGroup5: TdxLayoutGroup;
-    imglst_32x32: TcxImageList;
     iFehltage: TdxNavBarItem;
     iBuchungen: TdxNavBarItem;
     dxLayoutItem1: TdxLayoutItem;
@@ -281,6 +280,9 @@ type
     cxGrid2DBTableView1Beschreibung: TcxGridDBColumn;
     cxGrid2DBTableView1Von: TcxGridDBColumn;
     cxGrid2DBTableView1Bis: TcxGridDBColumn;
+    iFirma: TdxNavBarItem;
+    iAbteilungen: TdxNavBarItem;
+    iZeitplan: TdxNavBarItem;
     procedure btn_CloseModulClick(Sender: TObject);
     procedure btn_ModulleisteClick(Sender: TObject);
     procedure btn_RefreshRightsClick(Sender: TObject);
@@ -306,6 +308,7 @@ type
     procedure ppmbtn_InfoClick(Sender: TObject);
     procedure ppmbtn_SpracheClick(Sender: TObject);
     procedure ppmbtn_SysteminfoClick(Sender: TObject);
+    procedure iReportsClick(Sender: TObject);
   private
     { Private-Deklarationen }
 
@@ -327,9 +330,7 @@ var
   frm_PCM_Main: Tfrm_PCM_Main;
   {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
 uses
   {$Region Uses}
   PCM.Benutzerverwaltung,
@@ -343,14 +344,20 @@ uses
   PCM.Functions.Login,
   PCM.Functions.Synch.Wait,
   PCM.Handbuch,
-  PCM.Modul.C_ZE,
+  PCMTime.Modul.C_Company,
+  PCMTime.Modul.D_Department,
+  PCMTime.Modul.E_User,
+  PCMTime.Modul.F_Fehltage,
+  PCMTime.Modul.G_Feiertage,
+  PCMTIme.Modul.H_Zeitpläne,
+  PCMTime.Modul.I_Fehltage.Edit,
+  PCMTime.Modul.J_Zeiterfassung,
+  PCMTime.Modul.K_Monatswerte,
+  PCMTime.Modul.L_Reporting,
   PCM.Time.Strings,
   PCM.SQL,
   PCM.splash,
-  PCMTime.Calculate,
-  PCM.Modul.C_ZE.Contacts, PCM.Modul.C_ZE.Booking.Fehltage,
-  PCM.Modul.C_ZE.Booking.Feiertage, PCM.Modul.C_ZE.Booking.Monatswerte,
-  PCM.Modul.C_ZE.Booking.Fehltage.Edit;
+  PCMTime.Calculate;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -384,14 +391,28 @@ procedure Tfrm_PCM_Main.CloseModules;
 var
   iPage: Integer;
 begin
-  for iPage := pc_Main.PageCount - 1 downto 1 do
+  if dm_pcm.iIDZEPCM > 0 then
   begin
-    try
-      TForm(pc_Main.Pages[iPage].Controls[0]).Close;
-      TForm(pc_Main.Pages[iPage].Controls[0]).Free;
-    except
+    for iPage := pc_Main.PageCount - 1 downto 1 do
+    begin
+      try
+        TForm(pc_Main.Pages[iPage].Controls[0]).Close;
+        TForm(pc_Main.Pages[iPage].Controls[0]).Free;
+      except
+      end;
+      pc_Main.Pages[iPage].Free;
     end;
-    pc_Main.Pages[iPage].Free;
+  end
+  else begin
+    for iPage := pc_Main.PageCount - 1 downto 0 do
+    begin
+      try
+        TForm(pc_Main.Pages[iPage].Controls[0]).Close;
+        TForm(pc_Main.Pages[iPage].Controls[0]).Free;
+      except
+      end;
+      pc_Main.Pages[iPage].Free;
+    end;
   end;
 end;
 procedure Tfrm_PCM_Main.pc_mainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
@@ -403,22 +424,44 @@ var
   Item: TdxNavBarItem;
   Module: TModule;
 begin
-  btn_RefreshRights.Enabled := False;
-  try
-    if pc_Main.PageCount > 0 then
-    begin
-      Module := TModule(Modules.FindItemID(pc_Main.ActivePage.Tag));
-      if Module.Typ = mtForm then
+  if dm_pcm.iIDZEPCM > 0 then
+  begin
+    btn_RefreshRights.Enabled := False;
+    try
+      if (pc_Main.PageCount > 1) and (pc_Main.ActivePage <> ts_Dashboard) then
       begin
-        Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(Module.ModuleName).index];
-        TForm(pc_Main.ActivePage.Controls[0]).Close;
-        TForm(pc_Main.ActivePage.Controls[0]).Free;
-        pc_Main.ActivePage.Free;
-        NavBarClick(Item);
+        Module := TModule(Modules.FindItemID(pc_Main.ActivePage.Tag));
+        if Module.Typ = mtForm then
+        begin
+          Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(Module.ModuleName).index];
+          TForm(pc_Main.ActivePage.Controls[0]).Close;
+          TForm(pc_Main.ActivePage.Controls[0]).Free;
+          pc_Main.ActivePage.Free;
+          NavBarClick(Item);
+        end;
       end;
+    finally
+      btn_RefreshRights.Enabled := True;
     end;
-  finally
-    btn_RefreshRights.Enabled := True;
+  end
+  else begin
+    btn_RefreshRights.Enabled := False;
+    try
+      if (pc_Main.PageCount > 0)  then
+      begin
+        Module := TModule(Modules.FindItemID(pc_Main.ActivePage.Tag));
+        if Module.Typ = mtForm then
+        begin
+          Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(Module.ModuleName).index];
+          TForm(pc_Main.ActivePage.Controls[0]).Close;
+          TForm(pc_Main.ActivePage.Controls[0]).Free;
+          pc_Main.ActivePage.Free;
+          NavBarClick(Item);
+        end;
+      end;
+    finally
+      btn_RefreshRights.Enabled := True;
+    end;
   end;
 end;
 procedure Tfrm_PCM_Main.btnCloseAllGroupsClick(Sender: TObject);
@@ -432,12 +475,25 @@ begin
 end;
 procedure Tfrm_PCM_Main.btn_CloseModulClick(Sender: TObject);
 begin
-  if pc_Main.PageCount > 1 then
+  if dm_pcm.iIDZEPCM > 0 then
   begin
-    if pc_Main.PageCount = 2 then
-      brstc_OpenModule.Caption := 'Dashboard';
-    if pc_Main.ActivePage <> ts_Dashboard  then
+    if pc_Main.PageCount > 1 then
     begin
+      if pc_Main.PageCount = 2 then
+        brstc_OpenModule.Caption := 'Dashboard';
+      if pc_Main.ActivePage <> ts_Dashboard  then
+      begin
+        TForm(pc_Main.ActivePage.Controls[0]).Close;
+        TForm(pc_Main.ActivePage.Controls[0]).Free;
+        pc_Main.ActivePage.Free;
+      end;
+    end;
+  end
+  else begin
+    if pc_Main.PageCount > 0 then
+    begin
+      if pc_Main.PageCount = 1 then
+      brstc_OpenModule.Caption := rs_Backup_CAP_ChooseModul;
       TForm(pc_Main.ActivePage.Controls[0]).Close;
       TForm(pc_Main.ActivePage.Controls[0]).Free;
       pc_Main.ActivePage.Free;
@@ -472,21 +528,21 @@ procedure Tfrm_PCM_Main.LoadData;
 
     DecodeDate(Date,iJahr,iMonat,iTag);
     // Urlaubsanspruch
-    iULANsp:= GetULAnspruch;
+    iULANsp:= GetULAnspruch(dm_pcm.iIDZEPCM);
     // Urlaub Vorjahr
-    iULVJ:= GetULVorJahr(AJahr -1,12);
+    iULVJ:= GetULVorJahr(dm_pcm.iIDZEPCM,AJahr -1,12);
     lbl_RulVJ.Caption:= FormatFloat('0.0', iULVJ);
     // Urlaub geplan genommen
     if AJahr <  iJAhr then
     begin
       iULgepl:= 0;
-      iULgen:=  GetFehltagSum(1, 1, 1,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31));
+      iULgen:=  GetFehltagSum(1, 1, 1,dm_pcm.iIDZEPCM,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31));
       lbl_genULGes.Caption:= FormatFloat('0.0', iULgen);
 //      lbl_geplULGes.Caption:= FormatFloat('0.0', iULgepl);;
     end;
     if AJahr =  iJAhr then
     begin
-      iULgen:=  GetFehltagSum(1, 1, 1,EncodeDate(AJahr,1,1),EncodeDate(AJahr,iMonat,iTag));
+      iULgen:=  GetFehltagSum(1, 1, 1,dm_pcm.iIDZEPCM,EncodeDate(AJahr,1,1),EncodeDate(AJahr,iMonat,iTag));
       lbl_genULGes.Caption:= FormatFloat('0.0', iULgen);
 //      iULgepl:= GetFehltagSum(1, 1, 1,EncodeDate(AJahr,iMonat,iTag),EncodeDate(AJahr,12,31));
 //      lbl_geplULGes.Caption:= FormatFloat('0.0', iULgepl);
@@ -502,13 +558,13 @@ procedure Tfrm_PCM_Main.LoadData;
 //      lbl_VerfUL.Caption:= FormatFloat('0.0',( iULVJ + iULANsp - iULgepl - iULgen) *-1) + '-'
 //    else
 //      lbl_VerfUL.Caption:= FormatFloat('0.0', iULVJ + iULANsp - iULgepl - iULgen);
-    lbl_bezKr.Caption:= FormatFloat('0.0',GetFehltagSum(1, 2, 1,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
+    lbl_bezKr.Caption:= FormatFloat('0.0',GetFehltagSum(1, 2, 1,dm_pcm.iIDZEPCM,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
 //    lbl_unbKr.Caption:= FormatFloat('0.0',GetFehltagSum(1, 2, 2,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
 //    lbl_unbUL.Caption:= FormatFloat('0.0',  GetFehltagSum(1, 1, 0,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
-    lbl_OfficeGes.Caption:= IntToStr(GetBuchungsart(0, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
-    lbl_HomeOffGes.Caption:= IntToStr(GetBuchungsart(1, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
-    lbl_FT.Caption:= FormatFloat('0.0', GetFeiertage(EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
-    lbl_OffHomeOffGes.Caption:= '[B]' + IntToStr(GetBuchungsart(0, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))+GetBuchungsart(1, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))) + '[/B]';
+    lbl_OfficeGes.Caption:= IntToStr(GetBuchungsart(0,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
+    lbl_HomeOffGes.Caption:= IntToStr(GetBuchungsart(1,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
+    lbl_FT.Caption:= FormatFloat('0.0', GetFeiertage(dm_pcm.iIDZEPCM,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
+    lbl_OffHomeOffGes.Caption:= '[B]' + IntToStr(GetBuchungsart(0,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))+GetBuchungsart(1,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))) + '[/B]';
 
     dm_PCM.qry_Work.SQL.Text:=  'SELECT aktuelleMehrarbeit,cast(SEC_TO_TIME(aktuelleMehrarbeit * 60) AS char) as MehrarbeitT, aktuelleMehrarbeit / 60 as MehrarbeitD FROM time_Monatswerte WHERE Monat = :Monat AND Jahr = :Jahr';
     dm_PCM.qry_Work.ParamByName('Monat').AsInteger:= iVMonat;
@@ -553,11 +609,11 @@ procedure Tfrm_PCM_Main.LoadData;
     if dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat < 0 then
     begin
        lbl_TG3.Caption:=  '-' + FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat * -1);
-       lbl_TG3Dez.Caption:= '-' + GetTimeValue(dm_PCM.qry_Work.FieldByName('Resturlaub').asInteger * -1  * 480);
+       lbl_TG3Dez.Caption:= '-' + GetTimeValue(Round(dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat * -1  * 480));
     end
     else begin
       lbl_TG3.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat);
-      lbl_TG3Dez.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('Resturlaub').asInteger * 480);
+      lbl_TG3Dez.Caption:= GetTimeValue(Round(dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat * 480));
     end;
     if iGLZ < 0 then
     begin
@@ -570,22 +626,22 @@ procedure Tfrm_PCM_Main.LoadData;
     end;
 
     dm_PCM.qry_Work.open;
-    var ift:= GetFeiertage(StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
+    var ift:= GetFeiertage(dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
     lbl_FTM.caption:= FormatFloat('0.00',ift);
     lbl_FTMDEz.caption:= GetTimeValue(Round(ift * 480 ));
-    var iunbUL:= GetFehltagSum(1, 1, 0, StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
+    var iunbUL:= GetFehltagSum(1, 1, 0, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
     lbl_ULunb.caption:= FormatFloat('0.00',iunbUL);
     lbl_ULunbDez.caption:= GetTimeValue(Round(iunbUL * 480 ));
-    var ikr:=  GetFehltagSum(1, 2, 1, StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
+    var ikr:=  GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
     lbl_kr.caption:= FormatFloat('0.00',ikr);
     lbl_krDez.caption:= GetTimeValue(Round(ikr * 480 ));
-    var ikrunb:=  GetFehltagSum(1, 2, 0, StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
+    var ikrunb:=  GetFehltagSum(1, 2, 0, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
     lbl_krunb.caption:= FormatFloat('0.00',ikrunb);
     lbl_krunbDez.caption:= GetTimeValue(Round(ikrunb * 480 ));
-    var iBuero:=  GetBuchungsart(0, StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
+    var iBuero:=  GetBuchungsart(0,dm_pcm.iIDZEPCM, StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
     lbl_Buero.caption:= FormatFloat('0.00',iBuero);
     lbl_BueroDez.caption:= GetTimeValue(Round(iBuero * 480 ));
-    var iHO:=  GetBuchungsart(1, StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
+    var iHO:=  GetBuchungsart(1,dm_pcm.iIDZEPCM, StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat));
     lbl_HO.caption:= FormatFloat('0.00',iHO);
     lbl_HODez.caption:= GetTimeValue(Round(iHO * 480 ));
     lbl_BHOGes.Caption:= '[B]' + FormatFloat('0.00',iHO + iBuero) + '[/B]';
@@ -624,8 +680,8 @@ procedure Tfrm_PCM_Main.LoadData;
 
     if AJahr * 100 + Amonat <  iJahr * 100 + iMonat then
     begin
-      lbl_TG1.Caption:= FormatFloat('0.0', GetFehltagSum(1, 1, 1, EncodeDate(AJahr,AMonat,1),EndOfAMonth(AJahr,AMonat)));
-      lbl_TG1Dez.Caption:= GetTimeValue(Round(GetFehltagSum(1, 1, 1, EncodeDate(AJahr,AMonat,1),EndOfAMonth(AJahr,AMonat)) * 480));
+      lbl_TG1.Caption:= FormatFloat('0.0', GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,EncodeDate(AJahr,AMonat,1),EndOfAMonth(AJahr,AMonat)));
+      lbl_TG1Dez.Caption:= GetTimeValue(Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,EncodeDate(AJahr,AMonat,1),EndOfAMonth(AJahr,AMonat)) * 480));
       lbl_TG2.Caption:= '0,0';
       lbl_TG2Dez.Caption:= '00:00';
     end;
@@ -633,11 +689,11 @@ procedure Tfrm_PCM_Main.LoadData;
 
     if AJahr * 100 + Amonat =  iJahr * 100 + iMonat then
     begin
-      lbl_TG1.Caption:= FormatFloat('0.0', GetFehltagSum(1, 1, 1, EncodeDate(AJahr,AMonat,1),EncodeDate(AJahr,iMonat,iTag)));
-      lbl_TG1Dez.Caption:= GetTimeValue(Round(GetFehltagSum(1, 1, 1, EncodeDate(AJahr,AMonat,1),EncodeDate(AJahr,iMonat,iTag)) * 480));
+      lbl_TG1.Caption:= FormatFloat('0.0', GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,EncodeDate(AJahr,AMonat,1),EncodeDate(AJahr,iMonat,iTag)));
+      lbl_TG1Dez.Caption:= GetTimeValue(Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,EncodeDate(AJahr,AMonat,1),EncodeDate(AJahr,iMonat,iTag)) * 480));
 
-      lbl_TG2.Caption:= FormatFloat('0.0', GetFehltagSum(1, 1, 1, EncodeDate(AJahr,AMonat,iTag),EndOfAMonth(AJahr,AMonat)));
-      lbl_TG2Dez.Caption:= GetTimeValue(Round(GetFehltagSum(1, 1, 1, EncodeDate(AJahr,AMonat,itag),EndOfAMonth(AJahr,AMonat)) * 480));
+      lbl_TG2.Caption:= FormatFloat('0.0', GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,EncodeDate(AJahr,AMonat,iTag),EndOfAMonth(AJahr,AMonat)));
+      lbl_TG2Dez.Caption:= GetTimeValue(Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,EncodeDate(AJahr,AMonat,itag),EndOfAMonth(AJahr,AMonat)) * 480));
     end;
 
 
@@ -664,87 +720,100 @@ procedure Tfrm_PCM_Main.LoadData;
 var
   iJahr,iMonat,iTag: Word;
 begin
-  dm_PCM.qry_Kalender_Kalender.Open;
-  dm_PCM.qry_Work.SQL.Text:= ASSQL_GetUsername[dm_PCM.iDBType];
-  dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Work.Open;
-  brstc_User.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
-  dm_PCM.qry_Work.Close;
+  if dm_pcm.iIDZEPCM > 0 then
+  begin
+    iMonatswerte.Visible:= true;
+    iFehltage.Visible:= true;
+    iZeiterfassung.Visible:= true;
 
-  dm_PCM.qry_Work.SQL.Text:= 'SELECT Text From time_message';
-  dm_PCM.qry_Work.open;
-  lblitm_LastBooking.Caption:= dm_PCM.qry_Work.FieldByName('Text').AsString;
-  dm_PCM.qry_Work.Close;
+    dm_PCM.qry_Kalender_Kalender.Open;
+    dm_PCM.qry_Work.SQL.Text:= ASSQL_GetUsername[dm_PCM.iDBType];
+    dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_Work.Open;
+    brstc_User.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
+    dm_PCM.qry_Work.Close;
 
-  dm_PCM.qry_Work.SQL.Text:= 'SELECT Bezeichnung, Datum FROM time_feiertage WHERE Datum > NOW() LIMIT 1';
-  dm_PCM.qry_Work.open;
-  lblitm_NextFT.Caption:= dm_PCM.qry_Work.FieldByName('Bezeichnung').AsString + ' am ' + DateToStr(dm_PCM.qry_Work.FieldByName('Datum').AsDateTime);
-  dm_PCM.qry_Work.Close;
+    dm_PCM.qry_Work.SQL.Text:= 'SELECT Text From time_message';
+    dm_PCM.qry_Work.open;
+    lblitm_LastBooking.Caption:= dm_PCM.qry_Work.FieldByName('Text').AsString;
+    dm_PCM.qry_Work.Close;
 
-  dm_PCM.qry_Work.SQL.Text:= 'SELECT Kuerzel,Beschreibung,von,bis FROM time_buchungen tib '+
-                             'LEFT OUTER JOIN time_fehltage tift ON tift.ID = tib.ID_Fehltage '+
-                             'WHERE tib.Datum > NOW() and tib.ID_Fehltage >0 LIMIT 1';
-  dm_PCM.qry_Work.open;
-  lblitm_NextAbs.Caption:= dm_PCM.qry_Work.FieldByName('Kuerzel').AsString + ' - ' + dm_PCM.qry_Work.FieldByName('Beschreibung').AsString + ', Zeitraum: ' +  DateToStr(dm_PCM.qry_Work.FieldByName('Von').AsDateTime) + ' - '+  DateToStr(dm_PCM.qry_Work.FieldByName('Bis').AsDateTime);
-  dm_PCM.qry_Work.Close;
-  DecodeDate(Date,iJahr,iMonat,iTag);
-  GetData(iMonat,iJahr);
+    dm_PCM.qry_Work.SQL.Text:= 'SELECT Bezeichnung, Datum FROM time_feiertage WHERE Datum > NOW() LIMIT 1';
+    dm_PCM.qry_Work.open;
+    lblitm_NextFT.Caption:= dm_PCM.qry_Work.FieldByName('Bezeichnung').AsString + ' am ' + DateToStr(dm_PCM.qry_Work.FieldByName('Datum').AsDateTime);
+    dm_PCM.qry_Work.Close;
 
-
-  dm_PCM.qry_ChartGeburtstage.sql.Text:=  'Select Count(*) as Wert, Monat as Monat, ' +
-                                          'case Monat ' +
-                                          'when 1 then ''Januar'' ' +
-                                          'when 2 then ''Februar'' ' +
-                                          'when 3 then ''März'' ' +
-                                          'when 4 then ''April'' ' +
-                                          'when 5 then ''Mai'' ' +
-                                          'when 6 then ''Juni'' ' +
-                                          'when 7 then ''Juli'' ' +
-                                          'when 8 then ''August'' ' +
-                                          'when 9 then ''September'' ' +
-                                          'when 10 then ''Oktober'' ' +
-                                          'when 11 then ''November'' ' +
-                                          'ELSE ''Dezember'' ' +
-                                          'END AS Monatbes, ' +
-                                          'Cast(ID_benutzer AS UNSIGNED ) AS ID_Benutzer ' +
-                                          'From time_feiertage ' +
-                                          'Where Jahr = :Jahr ' +
-                                          'Group by Monat ' +
-                                          'Order by Monat ASC';
-  dm_PCM.qry_ChartGeburtstage.ParamByName('Jahr').AsInteger:= iJahr;
-  dm_PCM.qry_ChartGeburtstage.Open;
+    dm_PCM.qry_Work.SQL.Text:= 'SELECT Kuerzel,Beschreibung,von,bis FROM time_buchungen tib '+
+                               'LEFT OUTER JOIN time_fehltage tift ON tift.ID = tib.ID_Fehltage '+
+                               'WHERE tib.Datum > NOW() and tib.ID_Fehltage >0 LIMIT 1';
+    dm_PCM.qry_Work.open;
+    lblitm_NextAbs.Caption:= dm_PCM.qry_Work.FieldByName('Kuerzel').AsString + ' - ' + dm_PCM.qry_Work.FieldByName('Beschreibung').AsString + ', Zeitraum: ' +  DateToStr(dm_PCM.qry_Work.FieldByName('Von').AsDateTime) + ' - '+  DateToStr(dm_PCM.qry_Work.FieldByName('Bis').AsDateTime);
+    dm_PCM.qry_Work.Close;
+    DecodeDate(Date,iJahr,iMonat,iTag);
+    GetData(iMonat,iJahr);
 
 
-  dm_PCM.qry_FT.sql.Text:=  'SELECT Datum, Bezeichnung From time_feiertage ' +
-                            'Where Jahr = :Jahr ORDER BY Jahr, monat, tag';
-  dm_PCM.qry_FT.ParamByName('Jahr').AsInteger:= iJahr;
-  dm_PCM.qry_FT.Open;
+    dm_PCM.qry_ChartGeburtstage.sql.Text:=  'Select Count(*) as Wert, Monat as Monat, ' +
+                                            'case Monat ' +
+                                            'when 1 then ''Januar'' ' +
+                                            'when 2 then ''Februar'' ' +
+                                            'when 3 then ''März'' ' +
+                                            'when 4 then ''April'' ' +
+                                            'when 5 then ''Mai'' ' +
+                                            'when 6 then ''Juni'' ' +
+                                            'when 7 then ''Juli'' ' +
+                                            'when 8 then ''August'' ' +
+                                            'when 9 then ''September'' ' +
+                                            'when 10 then ''Oktober'' ' +
+                                            'when 11 then ''November'' ' +
+                                            'ELSE ''Dezember'' ' +
+                                            'END AS Monatbes, ' +
+                                            'Cast(ID_benutzer AS UNSIGNED ) AS ID_Benutzer ' +
+                                            'From time_feiertage ' +
+                                            'Where Jahr = :Jahr ' +
+                                            'Group by Monat ' +
+                                            'Order by Monat ASC';
+    dm_PCM.qry_ChartGeburtstage.ParamByName('Jahr').AsInteger:= iJahr;
+    dm_PCM.qry_ChartGeburtstage.Open;
 
-  dm_PCM.qry_abw.sql.Text:=   'Select Count(*) as Wert, MONTH(Von) as Monat,  case MONTH(Von) ' +
-                              'when 1 then ''Januar'' ' +
-                              'when 2 then ''Februar'' ' +
-                              'when 3 then ''März'' ' +
-                              'when 4 then ''April'' ' +
-                              'when 5 then ''Mai'' ' +
-                              'when 6 then ''Juni'' ' +
-                              'when 7 then ''Juli'' ' +
-                              'when 8 then ''August'' ' +
-                              'when 9 then ''September'' ' +
-                              'when 10 then ''Oktober'' ' +
-                              'when 11 then ''November'' ' +
-                              'ELSE ''Dezember'' ' +
-                              'END AS Monatbes ' +
-                              'From time_fehltage ' +
-                              'Where YEAR(Von) = :Jahr ' +
-                              'Group by MONTH(Von) ' +
-                              'Order by Monat ASC';
-  dm_PCM.qry_abw.ParamByName('Jahr').AsInteger:= iJahr;
-  dm_PCM.qry_abw.Open;
 
-  dm_PCM.qry_Fehltag.sql.Text:= 'Select Kuerzel,Beschreibung,Von,Bis from time_fehltage ' +
-                                'Where Year(Von) = :Jahr ORDER BY Von';
-  dm_PCM.qry_Fehltag.ParamByName('Jahr').AsInteger:= iJahr;
-  dm_PCM.qry_Fehltag.Open;
+    dm_PCM.qry_FT.sql.Text:=  'SELECT Datum, Bezeichnung From time_feiertage ' +
+                              'Where Jahr = :Jahr ORDER BY Jahr, monat, tag';
+    dm_PCM.qry_FT.ParamByName('Jahr').AsInteger:= iJahr;
+    dm_PCM.qry_FT.Open;
+
+    dm_PCM.qry_abw.sql.Text:=   'Select Count(*) as Wert, MONTH(Von) as Monat,  case MONTH(Von) ' +
+                                'when 1 then ''Januar'' ' +
+                                'when 2 then ''Februar'' ' +
+                                'when 3 then ''März'' ' +
+                                'when 4 then ''April'' ' +
+                                'when 5 then ''Mai'' ' +
+                                'when 6 then ''Juni'' ' +
+                                'when 7 then ''Juli'' ' +
+                                'when 8 then ''August'' ' +
+                                'when 9 then ''September'' ' +
+                                'when 10 then ''Oktober'' ' +
+                                'when 11 then ''November'' ' +
+                                'ELSE ''Dezember'' ' +
+                                'END AS Monatbes ' +
+                                'From time_fehltage ' +
+                                'Where YEAR(Von) = :Jahr ' +
+                                'Group by MONTH(Von) ' +
+                                'Order by Monat ASC';
+    dm_PCM.qry_abw.ParamByName('Jahr').AsInteger:= iJahr;
+    dm_PCM.qry_abw.Open;
+
+    dm_PCM.qry_Fehltag.sql.Text:= 'Select Kuerzel,Beschreibung,Von,Bis from time_fehltage ' +
+                                  'Where Year(Von) = :Jahr ORDER BY Von';
+    dm_PCM.qry_Fehltag.ParamByName('Jahr').AsInteger:= iJahr;
+    dm_PCM.qry_Fehltag.Open;
+  end
+  else begin
+    iMonatswerte.Visible:= false;
+    iFehltage.Visible:= false;
+    iZeiterfassung.Visible:= false;
+    ts_Dashboard.Destroy;
+  end;
 end;
 function Tfrm_PCM_Main.CurrentModule: TForm;
 begin
@@ -789,12 +858,16 @@ begin
   Modules.Clear;
   RegisterForm('iBenutzerverwaltung', Tfrm_PCM_User, @frm_PCM_User, 1);
   RegisterForm('iDesign', Tfrm_PCM_Design, @frm_PCM_Design, 1);
+  RegisterForm('iFirma', Tfrm_Firma, @frm_Firma, 1);
+  RegisterForm('iAbteilungen', Tfrm_Abteilung, @frm_Abteilung, 1);
   RegisterForm('iMitarbeiter', Tfrm_UserZE, @frm_UserZE, 1);
   RegisterForm('iFehltag', Tfrm_Fehltage, @frm_Fehltage, 1);
   RegisterForm('iFeiertage', Tfrm_Feiertage, @frm_Feiertage, 1);
   RegisterForm('iMonatswerte', Tfrm_monatswerte, @frm_monatswerte, 1);
+  RegisterForm('iReports', Tfrm_Reports, @frm_Reports, 1);
   RegisterForm('iFehltage', Tfrm_Fehltageeintragen, @frm_Fehltageeintragen, 1);
   RegisterForm('iZeiterfassung',Tfrm_ZE, @frm_ZE, 1);
+  RegisterForm('iZeitplan',Tfrm_Zeitplan, @frm_Zeitplan, 1);
   RegisterForm('iBuchungen',Tfrm_ZE, @frm_ZE, 1);
   RegisterForm('iKalender',Tfrm_ZE, @frm_ZE, 1);
   RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
@@ -808,6 +881,15 @@ end;
 // Navbarfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Navbarfunktionen}
+procedure Tfrm_PCM_Main.iReportsClick(Sender: TObject);
+var
+  iJahr,iMonat,iTag: Word;
+begin
+  DecodeDate(Date,iJahr,iMonat,iTag);
+  Application.CreateForm(Tfrm_Reports,frm_Reports);
+  frm_Reports.Execute('','','',iMonat,iJahr);
+  frm_Reports.ShowModal;
+end;
 procedure Tfrm_PCM_Main.iSpracheClick(Sender: TObject);
 var
   ifINI: TIniFile;
@@ -865,7 +947,7 @@ begin
       begin
         sModul:= Module.ModuleName;
         sModulCaption:= Module.ModuleName;
-        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iDesign','iMitarbeiter','iSysteminfo','iInfo','iHandbuch','iBuchungen','iZeiterfassung','iKalender']) of
+        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iDesign','iMitarbeiter','iSysteminfo','iInfo','iHandbuch','iBuchungen','iZeiterfassung','iKalender','iReports','iFirma','iAbteilungen','iZeitplan']) of
 
         0:
           begin
@@ -914,6 +996,26 @@ begin
             sModul:= 'i'  + rs_PCMTime_Zeiterfassung;
             sModulCaption := 'i'  + rs_PCMTime_Zeiterfassung;
             dm_PCM.iModulTab:= 3;
+          end;
+        9:
+					begin
+            sModulCaption := 'i'  + rs_PCMTime_Reports;
+
+          end;
+        10:
+					begin
+            sModulCaption := 'i'  + rs_PCMTime_Firma;
+
+          end;
+        11:
+					begin
+            sModulCaption := 'i'  + rs_PCMTime_Abteilungen;
+
+          end;
+        12:
+					begin
+            sModulCaption := 'i'  + rs_PCMTime_Zeitplan;
+
           end;
         end;
         iPageIndex := TabExist('tsh' + sModul);

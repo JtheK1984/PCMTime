@@ -51,7 +51,6 @@ type
     ds_rights: TDataSource;
     ds_User: TDataSource;
     imglst_16x16: TcxImageList;
-    imglst_24x24: TcxImageList;
     imglst_32x32: TcxImageList;
     qry_booking: TFDQuery;
     qry_Calc: TFDQuery;
@@ -84,7 +83,6 @@ type
     dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
     dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel;
     dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel;
-    imglst_32x32_1: TcxImageList;
     dxLayoutSkinLookAndFeel3: TdxLayoutSkinLookAndFeel;
     qry_ChartGeburtstage: TFDQuery;
     ds_ChartGeburtstage: TDataSource;
@@ -113,6 +111,7 @@ type
     iDBType: integer;
     iDesign: integer;
     iIDBenutzerPCM: integer;
+    iIDZEPCM: integer;
     iModulTab: integer;
     iScale: double;
     Firma: string;
@@ -148,7 +147,6 @@ resourcestring
   PCM_Programmname = 'PCM - Time 32-Bit';
   {$ENDIF}
   {$EndRegion RessourceString}
-
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}

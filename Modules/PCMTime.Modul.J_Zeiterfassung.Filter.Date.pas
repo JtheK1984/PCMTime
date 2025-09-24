@@ -1,0 +1,120 @@
+unit PCMTime.Modul.J_Zeiterfassung.Filter.Date;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
+  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
+  cxButtons, System.ImageList, Vcl.ImgList, cxControls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
+  cxLabel, cxGroupBox,system.UITypes, dxLayoutcxEditAdapters,
+  dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl,
+  dxUIAClasses;
+
+type
+  Tfrm_PCManagerChooseDate = class(TForm)
+    btn_PCManagerChooseDate_Ok: TcxButton;
+    btn_PCManagerChooseDate_Cancel: TcxButton;
+    cbx_PCManagerChooseDate_Year: TcxComboBox;
+    cbx_PCManagerChooseDate_Month: TcxComboBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    lbl_PCManagerChooseDate_Month: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    procedure btn_PCManagerChooseDate_CancelClick(Sender: TObject);
+    procedure btn_PCManagerChooseDate_OkClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private-Deklarationen }
+    FShowModal: boolean;
+  public
+    { Public-Deklarationen }
+    function Execute(const AShowModal: Boolean; out AMonat, AJahr: integer) : boolean; overload;
+    function Execute(const AShowModal,AOnlyYear: Boolean; out AJahr: integer) : boolean; overload;
+  end;
+
+var
+  frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate;
+
+implementation
+
+{$R *.dfm}
+
+uses
+      PCM.Data, PCm.Helper,
+      PCM.Time.Strings;
+
+function Tfrm_PCManagerChooseDate.Execute(const AShowModal: Boolean;out AMonat, AJahr: integer) : boolean;
+begin
+  AMonat := cbx_PCManagerChooseDate_Month.ItemIndex;
+  Ajahr:= StrToInt(cbx_PCManagerChooseDate_Year.properties.Items[cbx_PCManagerChooseDate_Year.ItemIndex]);
+  FShowModal := AShowModal;
+  result:= true;
+  if FShowModal then
+  begin
+    ShowModal;
+    if ModalResult = mrOK then
+    begin
+      AMonat:= cbx_PCManagerChooseDate_Month.ItemIndex + 1;
+      AJahr:= StrToInt(cbx_PCManagerChooseDate_Year.Properties.Items[cbx_PCManagerChooseDate_Year.ItemIndex]);
+      result:= true;
+    end;
+  end;
+end;
+function Tfrm_PCManagerChooseDate.Execute(const AShowModal,AOnlyYear: Boolean;out AJahr: integer) : boolean;
+begin
+  if AOnlyYear then
+  begin
+    lbl_PCManagerChooseDate_Month.Visible:= false;
+  end
+  else begin
+    lbl_PCManagerChooseDate_Month.Visible:= true;
+  end;
+  Ajahr:= StrToInt(cbx_PCManagerChooseDate_Year.properties.Items[cbx_PCManagerChooseDate_Year.ItemIndex]);
+  FShowModal := AShowModal;
+  result:= true;
+  if FShowModal then
+  begin
+    ShowModal;
+    if ModalResult = mrOK then
+    begin
+      AJahr:= StrToInt(cbx_PCManagerChooseDate_Year.Properties.Items[cbx_PCManagerChooseDate_Year.ItemIndex]);
+      result:= true;
+    end;
+  end;
+end;
+procedure Tfrm_PCManagerChooseDate.FormCreate(Sender: TObject);
+var
+  str_Year: string;
+  str_Month: string;
+begin
+  str_Month:=FormatDateTime('mmmm', now);
+  cbx_PCManagerChooseDate_Month.ItemIndex := cbx_PCManagerChooseDate_Month.properties.Items.IndexOf(str_Month);
+  str_Year:=FormatDateTime('yyyy', now);
+  cbx_PCManagerChooseDate_Year.ItemIndex := cbx_PCManagerChooseDate_Year.properties.Items.IndexOf(str_year);
+end;
+procedure Tfrm_PCManagerChooseDate.btn_PCManagerChooseDate_OkClick(Sender: TObject);
+begin
+  if cbx_PCManagerChooseDate_Month.ItemIndex = -1 then
+  begin
+    SetMessageDialog(2,rs_PCMManager_Monatwaehlen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+    exit;
+  end;
+
+  if cbx_PCManagerChooseDate_Year.ItemIndex = -1 then
+  begin
+   SetMessageDialog(2,rs_PCMManager_Jahrwaehlen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+   exit;
+  end;
+  Modalresult:= mrOk;
+end;
+procedure Tfrm_PCManagerChooseDate.btn_PCManagerChooseDate_CancelClick(Sender: TObject);
+begin
+  Modalresult:= mrOk;
+end;
+end.

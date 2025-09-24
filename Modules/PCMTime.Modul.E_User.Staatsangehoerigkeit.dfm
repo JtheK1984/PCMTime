@@ -1,0 +1,363 @@
+object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
+  Left = 565
+  Top = 212
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'PCM - Time: Staatsangeh'#246'rigkeit bearbeiten'
+  ClientHeight = 244
+  ClientWidth = 654
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poScreenCenter
+  OnShow = FormShow
+  TextHeight = 15
+  object lo_Nationality: TdxLayoutControl
+    Left = 0
+    Top = 0
+    Width = 654
+    Height = 244
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    object grd_Nationality: TcxGrid
+      Left = 12
+      Top = 77
+      Width = 630
+      Height = 155
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      LockedStateImageOptions.Effect = lsieDark
+      LookAndFeel.Kind = lfFlat
+      LookAndFeel.NativeStyle = False
+      object grdDBTblView_Nationality: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Inserting = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_NationalityBezeichnung: TcxGridDBColumn
+          Caption = 'Staatsangeh'#246'rigkeit'
+          DataBinding.FieldName = 'Bezeichnung'
+          DataBinding.IsNullValueType = True
+          Width = 600
+        end
+      end
+      object grdlvl_Nationality: TcxGridLevel
+        GridView = grdDBTblView_Nationality
+      end
+    end
+    object brdckCtrl_Nationality: TdxBarDockControl
+      Left = 12
+      Top = 12
+      Width = 630
+      Height = 58
+      Align = dalNone
+      BarManager = brmgr_Nationality
+    end
+    object lo_NationalityGroup_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object laitm_NationalityGrid: TdxLayoutItem
+      Parent = lagrp_Nationality
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_Staatsangehoerigkeit'
+      CaptionOptions.Visible = False
+      Control = grd_Nationality
+      ControlOptions.OriginalHeight = 244
+      ControlOptions.OriginalWidth = 658
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lagrp_Nationality: TdxLayoutGroup
+      Parent = lo_NationalityGroup_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object laitm_NationalityToolbar: TdxLayoutItem
+      Parent = lagrp_Nationality
+      CaptionOptions.Text = 'dxBarDockControl1'
+      CaptionOptions.Visible = False
+      Control = brdckCtrl_Nationality
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalWidth = 100
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+  end
+  object brmgr_Nationality: TdxBarManager
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    Categories.Strings = (
+      'Default')
+    Categories.ItemsVisibles = (
+      2)
+    Categories.Visibles = (
+      True)
+    ImageOptions.LargeImages = dm_PCM.imglst_32x32
+    ImageOptions.LargeIcons = True
+    ImageOptions.UseLargeImagesForLargeIcons = True
+    NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
+    PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
+    UseSystemFont = True
+    Left = 392
+    Top = 120
+    PixelsPerInch = 96
+    object tb_Staatsangehoerigkeit: TdxBar
+      Caption = 'tb_Staatsangehoerigkeit'
+      CaptionButtons = <>
+      DockControl = brdckCtrl_Nationality
+      DockedDockControl = brdckCtrl_Nationality
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 830
+      FloatTop = 2
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_StaatsangehoerigkeitNew'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_StaatsangehoerigkeitSave'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_StaatsangehoerigkeitCancel'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_StaatsangehoerigkeitDelete'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_StaatsangehoerigkeitClose'
+        end>
+      OneOnRow = True
+      Row = 0
+      ShowMark = False
+      SizeGrip = False
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
+    object btn_StaatsangehoerigkeitNew: TdxBarLargeButton
+      Caption = 'Staatsangeh'#246'rigkeit anlegen'
+      Category = 0
+      Hint = 'Staatsangeh'#246'rigkeit anlegen'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C61636B7B66696C6C3A233732373237
+        323B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A2346
+        46423131353B7D262331333B262331303B2623393B2E426C75657B66696C6C3A
+        233131373744373B7D262331333B262331303B2623393B2E5265647B66696C6C
+        3A234431314331433B7D262331333B262331303B2623393B2E57686974657B66
+        696C6C3A234646464646463B7D262331333B262331303B2623393B2E47726565
+        6E7B66696C6C3A233033394332333B7D262331333B262331303B2623393B2E73
+        74307B66696C6C3A233732373237323B7D262331333B262331303B2623393B2E
+        7374317B6F7061636974793A302E353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C672069
+        643D2241646446696C65223E0D0A09093C7061746820636C6173733D22426C61
+        636B2220643D224D31362C3236483656346831387631346832563363302D302E
+        352D302E352D312D312D31483543342E352C322C342C322E352C342C33763234
+        63302C302E352C302E352C312C312C316831315632367A222F3E0D0A09093C70
+        6F6C79676F6E20636C6173733D22477265656E2220706F696E74733D2233302C
+        32342032362C32342032362C32302032322C32302032322C32342031382C3234
+        2031382C32382032322C32382032322C33322032362C33322032362C32382033
+        302C3238202623393B222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_StaatsangehoerigkeitNewClick
+      AutoGrayScale = False
+      LargeImageIndex = 27
+    end
+    object btn_StaatsangehoerigkeitCancel: TdxBarLargeButton
+      Caption = 'Abbrechen'
+      Category = 0
+      Hint = 'Abbrechen'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076696577426F783D222D36202D362033322033
+        322220786D6C6E733D22687474703A2F2F7777772E77332E6F72672F32303030
+        2F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F7777772E7733
+        2E6F72672F313939392F786C696E6B223E0D0A093C672069643D224C61796572
+        5F3122207472616E73666F726D3D227472616E736C617465282D362C202D3629
+        22207374796C653D22656E61626C652D6261636B67726F756E643A6E65772030
+        2030203332203332223E0D0A09093C672069643D2244656C657465223E0D0A09
+        09093C673E0D0A090909093C7061746820643D224D31382E382C2031364C3235
+        2E372C20392E314332362E312C20382E372032362E312C20382E312032352E37
+        2C20372E374C32342E332C20362E334332332E392C20352E392032332E332C20
+        352E392032322E392C20362E334C31362C2031332E324C392E312C20362E3343
+        382E372C20352E3920382E312C20352E3920372E372C20362E334C362E332C20
+        372E3743352E392C20382E3120352E392C20382E3720362E332C20392E314C31
+        332E322C2031364C362E332C2032322E3943352E392C2032332E3320352E392C
+        2032332E3920362E332C2032342E334C372E372C2032352E3743382E312C2032
+        362E3120382E372C2032362E3120392E312C2032352E374C31362C2031382E38
+        4C32322E392C2032352E374332332E332C2032362E312032332E392C2032362E
+        312032342E332C2032352E374C32352E372C2032342E334332362E312C203233
+        2E392032362E312C2032332E332032352E372C2032322E394C31382E382C2031
+        367A222066696C6C3D22233131373744372220636C6173733D22426C7565222F
+        3E0D0A0909093C2F673E0D0A09093C2F673E0D0A093C2F673E0D0A093C672069
+        643D224C617965725F3122207472616E73666F726D3D227472616E736C617465
+        282D362C202D362922207374796C653D22656E61626C652D6261636B67726F75
+        6E643A6E657720302030203332203332223E0D0A09093C672069643D2244656C
+        657465223E0D0A0909093C673E0D0A090909093C7061746820643D224D31382E
+        382C2031364C32352E372C20392E314332362E312C20382E372032362E312C20
+        382E312032352E372C20372E374C32342E332C20362E334332332E392C20352E
+        392032332E332C20352E392032322E392C20362E334C31362C2031332E324C39
+        2E312C20362E3343382E372C20352E3920382E312C20352E3920372E372C2036
+        2E334C362E332C20372E3743352E392C20382E3120352E392C20382E3720362E
+        332C20392E314C31332E322C2031364C362E332C2032322E3943352E392C2032
+        332E3320352E392C2032332E3920362E332C2032342E334C372E372C2032352E
+        3743382E312C2032362E3120382E372C2032362E3120392E312C2032352E374C
+        31362C2031382E384C32322E392C2032352E374332332E332C2032362E312032
+        332E392C2032362E312032342E332C2032352E374C32352E372C2032342E3343
+        32362E312C2032332E392032362E312C2032332E332032352E372C2032322E39
+        4C31382E382C2031367A222066696C6C3D22233131373744372220636C617373
+        3D22426C7565222F3E0D0A0909093C2F673E0D0A09093C2F673E0D0A093C2F67
+        3E0D0A3C2F7376673E0D0A}
+      OnClick = btn_StaatsangehoerigkeitCancelClick
+      AutoGrayScale = False
+      LargeImageIndex = 0
+    end
+    object btn_StaatsangehoerigkeitSave: TdxBarLargeButton
+      Caption = 'Staatsangeh'#246'rigkeit speichern'
+      Category = 0
+      Hint = 'Staatsangeh'#246'rigkeit speichern'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D223020302033322033322220656E61626C65
+        2D6261636B67726F756E643D226E6577203020302033322033322220786D6C3A
+        73706163653D227072657365727665223E262331333B262331303B3C706F6C79
+        676F6E2066696C6C3D22233337374142352220706F696E74733D22322C322032
+        2C33302033302C33302033302C362032362C3220222F3E0D0A3C726563742078
+        3D22362220793D223134222066696C6C3D222346464646464622207769647468
+        3D22323022206865696768743D223134222F3E0D0A3C7265637420783D223622
+        20793D223222206F7061636974793D22302E36222066696C6C3D222346464646
+        46462220656E61626C652D6261636B67726F756E643D226E6577202020202220
+        77696474683D22313822206865696768743D223130222F3E0D0A3C7265637420
+        783D2232302220793D2232222066696C6C3D2223333737414235222077696474
+        683D223222206865696768743D2238222F3E0D0A3C2F7376673E0D0A}
+      OnClick = btn_StaatsangehoerigkeitSaveClick
+      AutoGrayScale = False
+      LargeImageIndex = 12
+    end
+    object btn_StaatsangehoerigkeitClose: TdxBarLargeButton
+      Caption = 'Schlie'#223'en'
+      Category = 0
+      Hint = 'Schlie'#223'en'
+      Visible = ivAlways
+      OnClick = btn_StaatsangehoerigkeitCloseClick
+      AutoGrayScale = False
+      LargeImageIndex = 23
+    end
+    object btn_StaatsangehoerigkeitDelete: TdxBarLargeButton
+      Caption = 'Staatsangeh'#246'rigkeit l'#246'schen'
+      Category = 0
+      Hint = 'Staatsangeh'#246'rigkeit l'#246'schen'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C61636B7B66696C6C3A233732373237
+        323B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A2346
+        46423131353B7D262331333B262331303B2623393B2E426C75657B66696C6C3A
+        233131373744373B7D262331333B262331303B2623393B2E477265656E7B6669
+        6C6C3A233033394332333B7D262331333B262331303B2623393B2E5265647B66
+        696C6C3A234431314331433B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374317B6F7061636974793A302E353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D2244656C6574654C697374223E0D0A09093C7061746820636C6173733D22
+        426C61636B2220643D224D362C323656346831387631332E326C322D32563363
+        302D302E362D302E342D312D312D31483543342E342C322C342C322E342C342C
+        3376323463302C302E362C302E342C312C312C3168382E326C322D3248367A22
+        2F3E0D0A09093C706F6C79676F6E20636C6173733D225265642220706F696E74
+        733D2232382C32302032362C31382032322C32322031382C31382031362C3230
+        2032302C32342031362C32382031382C33302032322C32362032362C33302032
+        382C32382032342C3234202623393B222F3E0D0A093C2F673E0D0A3C2F737667
+        3E0D0A}
+      OnClick = btn_StaatsangehoerigkeitDeleteClick
+      AutoGrayScale = False
+      LargeImageIndex = 24
+    end
+  end
+end

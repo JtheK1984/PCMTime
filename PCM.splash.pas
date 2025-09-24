@@ -249,6 +249,24 @@ begin
   end;
   if not dm_PCM.bLogin then
     Application.Terminate;
+
+  dm_pcm.qry_Work1.SQL.Text:= 'Select Count(*) as Anzahl From Time_user where ID_Benutzer = :ID';
+  dm_pcm.qry_Work1.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  dm_pcm.qry_Work1.Open;
+  var iANzahl := dm_pcm.qry_Work1.FieldByName('Anzahl').AsInteger;
+  dm_pcm.qry_Work1.Close;
+  if iANzahl > 0 then
+  begin
+    dm_pcm.qry_Work1.SQL.Text:= 'Select ID From Time_user where ID_Benutzer = :ID';
+    dm_pcm.qry_Work1.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_pcm.qry_Work1.Open;
+    dm_PCM.iIDZEPCM:= dm_pcm.qry_Work1.FieldByName('ID').AsInteger;
+    dm_pcm.qry_Work1.Close;
+  end
+  else begin
+    dm_PCM.iIDZEPCM:= 0;
+  end;
+
   frm_PCm_Main.bAbmelden:= False;
   Application.ProcessMessages;
   prgbr_Splash.Properties.Text:= rs_Splash_Rechte;

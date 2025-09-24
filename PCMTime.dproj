@@ -7,7 +7,7 @@
         <Program_Soluling>E:\Solu\SoluMake.exe</Program_Soluling>
         <MainSource>PCMTime.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -166,66 +166,82 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>SplashScreen</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Feiertage.Aktualisieren.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.G_Feiertage.Aktualisieren.pas">
             <Form>frm_FeiertageAktualisieren</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Feiertage.Neu.Berechnen.pas"/>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Feiertage.Neu.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.G_Feiertage.Neu.Berechnen.pas"/>
+        <DCCReference Include="Modules\PCMTime.Modul.G_Feiertage.Neu.pas">
             <Form>fFeiertageBerechnen</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.J_Zeiterfassung.Buchungen.pas">
             <Form>frm_Booking</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.ChooseMonth.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.J_Zeiterfassung.MonatJahrauswahl.pas">
             <Form>frm_ChooseDate</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Fehltage.Edit.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.I_Fehltage.Edit.pas">
             <Form>frm_Fehltageeintragen</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Fehltage.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.F_Fehltage.pas">
             <Form>frm_Fehltage</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Feiertage.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.G_Feiertage.pas">
             <Form>frm_Feiertage</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Monatswerte.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.K_Monatswerte.pas">
             <Form>frm_monatswerte</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.J_Zeiterfassung.pas">
             <Form>frm_ZE</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Booking.Filter.Date.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.J_Zeiterfassung.Filter.Date.pas">
             <Form>frm_PCManagerChooseDate</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Helper\PCMTime.Calculate.pas"/>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Contacts.Neu.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.E_User.Neu.pas">
             <Form>frm_PCManagerNewContact</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Contacts.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.E_User.pas">
             <Form>frm_Userze</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Contacts.Konfession.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.E_User.Konfession.pas">
             <Form>frm_PCM_Konfession</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCM.Modul.C_ZE.Contacts.Staatsangehoerigkeit.pas">
+        <DCCReference Include="Modules\PCMTime.Modul.E_User.Staatsangehoerigkeit.pas">
             <Form>frm_PCM_Staatsangehoerigkeit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="PCMTime.dxSettings.pas"/>
         <DCCReference Include="Modules\PCM.Time.Strings.pas"/>
+        <DCCReference Include="Modules\PCMTime.Modul.L_Reporting.pas">
+            <Form>frm_Reports</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMTime.Modul.C_Company.pas">
+            <Form>frm_Firma</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMTime.Modul.D_Department.pas">
+            <Form>Form1</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMTIme.Modul.H_Zeitpläne.pas">
+            <Form>frm_Zeitplan</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -285,6 +301,18 @@ $(PreBuildEvent)]]></PreBuildEvent>
                 <DeployFile LocalName="Win32\Release\PCMMP3Manager.exe" Configuration="Release" Class="ProjectOutput"/>
                 <DeployFile LocalName="Win32\Release\PCMTime.exe" Configuration="Release" Class="ProjectOutput"/>
                 <DeployFile LocalName="Win64\Debug\PCMTime.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Win64\Debug\PCMTime.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>PCMTime.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\PCMTime.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>PCMTime.rsm</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win64\Release\PCMTime.exe" Configuration="Release" Class="ProjectOutput"/>
                 <DeployFile LocalName="Win64\Release\PCMTime.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win64">
