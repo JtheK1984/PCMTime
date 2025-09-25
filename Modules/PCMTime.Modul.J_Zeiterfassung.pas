@@ -497,7 +497,7 @@ begin
 
   lbl_Netto.Caption:= 'Netto: '
   + GetTimeValue(Round(dm_PCM.qry_Work2.FieldByName('IStzeit').asInteger
-  - GetFeiertage(dm_pcm.iIDZEPCM,AVon,ABis * 480))
+  - GetFeiertage(dm_pcm.iIDZEPCM,AVon,ABis ) * 480)
   - Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,AVon,Abis) * 480 )
   - Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,AVon,Abis) * 480)) + ' | '
   + FormatFloat('0.00',dm_PCM.qry_Work2.FieldByName('IStzeitD').asFloat
@@ -621,6 +621,7 @@ begin
   qry_Buchungen.ParamByName('Von').AsDate:= dvon;
   qry_Buchungen.ParamByName('Bis').AsDate:= dbis;
   qry_Buchungen.open;
+  SetMonthValues(dvon, dbis,dm_pCm.iIDZEPCM);
 end;
 // ZE - Filter Von Bis
 procedure Tfrm_ZE.btn_FilterFromToClick(Sender: TObject);
