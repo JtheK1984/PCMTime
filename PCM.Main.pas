@@ -283,6 +283,13 @@ type
     iFirma: TdxNavBarItem;
     iAbteilungen: TdxNavBarItem;
     iZeitplan: TdxNavBarItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutLabeledItem10: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem15: TdxLayoutLabeledItem;
+    lbl_T41Dez: TdxLayoutLabeledItem;
+    lbl_T42Dez: TdxLayoutLabeledItem;
+    lbl_T41: TdxLayoutLabeledItem;
+    lbl_T42: TdxLayoutLabeledItem;
     procedure btn_CloseModulClick(Sender: TObject);
     procedure btn_ModulleisteClick(Sender: TObject);
     procedure btn_RefreshRightsClick(Sender: TObject);
@@ -566,9 +573,10 @@ procedure Tfrm_PCM_Main.LoadData;
     lbl_FT.Caption:= FormatFloat('0.0', GetFeiertage(dm_pcm.iIDZEPCM,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
     lbl_OffHomeOffGes.Caption:= '[B]' + IntToStr(GetBuchungsart(0,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))+GetBuchungsart(1,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))) + '[/B]';
 
-    dm_PCM.qry_Work.SQL.Text:=  'SELECT aktuelleMehrarbeit,cast(SEC_TO_TIME(aktuelleMehrarbeit * 60) AS char) as MehrarbeitT, aktuelleMehrarbeit / 60 as MehrarbeitD FROM time_Monatswerte WHERE Monat = :Monat AND Jahr = :Jahr';
+    dm_PCM.qry_Work.SQL.Text:=  'SELECT aktuelleMehrarbeit,cast(SEC_TO_TIME(aktuelleMehrarbeit * 60) AS char) as MehrarbeitT, aktuelleMehrarbeit / 60 as MehrarbeitD FROM time_Monatswerte WHERE ID_Benutzer = :ID AND Monat = :Monat AND Jahr = :Jahr';
     dm_PCM.qry_Work.ParamByName('Monat').AsInteger:= iVMonat;
     dm_PCM.qry_Work.ParamByName('Jahr').AsInteger:= iVJahr;
+    dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDZEPCM;
     dm_PCM.qry_Work.open;
     iGLZVMonat:= dm_PCM.qry_Work.FieldByName('aktuelleMehrarbeit').AsInteger;
     lbl_D6.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('MehrarbeitD').AsFloat);
@@ -591,12 +599,11 @@ procedure Tfrm_PCM_Main.LoadData;
                                 'Mehrarbeit,cast(SEC_TO_TIME(Mehrarbeit * 60) AS char) as MehrarbeitT, Mehrarbeit / 60 as MehrarbeitD,' +
                                 'aktuelleMehrarbeit,cast(SEC_TO_TIME(aktuelleMehrarbeit * 60) AS char) as MehrarbeitT, aktuelleMehrarbeit / 60 as MehrarbeitD,' +
                                 'Resturlaub ' +
-                                'FROM time_Monatswerte WHERE Monat = :Monat AND Jahr = :Jahr';
+                                'FROM time_Monatswerte WHERE ID_Benutzer = :ID and Monat = :Monat AND Jahr = :Jahr';
     dm_PCM.qry_Work.ParamByName('Monat').AsInteger:= AMonat;
     dm_PCM.qry_Work.ParamByName('Jahr').AsInteger:= AJahr;
+     dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDZEPCM;
     dm_PCM.qry_Work.open;
-
-
     lbl_T1.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('Brutto').asInteger);
     lbl_D1.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('BruttoD').AsFloat);
     lbl_T2.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('Pausen').asInteger);
@@ -608,12 +615,12 @@ procedure Tfrm_PCM_Main.LoadData;
     iGLZ:= dm_PCM.qry_Work.FieldByName('Mehrarbeit').asInteger;
     if dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat < 0 then
     begin
-       lbl_TG3.Caption:=  '-' + FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat * -1);
-       lbl_TG3Dez.Caption:= '-' + GetTimeValue(Round(dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat * -1  * 480));
+       lbl_TG3.Caption:=  '[B]-' + FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat * -1) + '[/B]';
+       lbl_TG3Dez.Caption:= '[B]-' + GetTimeValue(Round(dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat * -1  * 480)) + '[/B]';
     end
     else begin
-      lbl_TG3.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat);
-      lbl_TG3Dez.Caption:= GetTimeValue(Round(dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat * 480));
+      lbl_TG3.Caption:= '[B]'+FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat) + '[/B]';
+      lbl_TG3Dez.Caption:= '[B]' + GetTimeValue(Round(dm_PCM.qry_Work.FieldByName('Resturlaub').AsFloat * 480)) + '[/B]';
     end;
     if iGLZ < 0 then
     begin
@@ -646,6 +653,48 @@ procedure Tfrm_PCM_Main.LoadData;
     lbl_HODez.caption:= GetTimeValue(Round(iHO * 480 ));
     lbl_BHOGes.Caption:= '[B]' + FormatFloat('0.00',iHO + iBuero) + '[/B]';
     lbl_BHOGesDez.Caption:= '[B]' + GetTimeValue(Round((iHO + iBuero) * 480)) + '[/B]';
+
+
+
+
+
+    lbl_T41.Caption:= GetTimeValue(Round(ift * 480 )
+    + Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 )
+    + Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480)
+
+
+    );
+
+
+    lbl_T42.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('IStzeit').asInteger
+    - Round(ift * 480 )
+    - Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 )
+    - Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480)
+
+
+    );
+
+
+
+    lbl_T41Dez.Caption:= FormatFloat('0.00',Round(ift * 480 / 60)
+    + Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 / 60 )
+    + Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 / 60)
+
+
+    );
+
+
+    lbl_T42Dez.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('IStzeitD').asFloat
+    - (ift * 480 / 60)
+    - Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 / 60 )
+    - Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 / 60)
+    );
+
+
+
+
+
+
     iAktGLZ:= dm_PCM.qry_Work.FieldByName('aktuelleMehrarbeit').asInteger;
     if iAktGLZ < 0 then
     begin

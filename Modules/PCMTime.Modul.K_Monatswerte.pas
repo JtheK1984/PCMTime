@@ -320,6 +320,18 @@ type
     cxButton3: TcxButton;
     dxLayoutGroup41: TdxLayoutGroup;
     dxLayoutGroup42: TdxLayoutGroup;
+    dxLayoutGroup43: TdxLayoutGroup;
+    dxLayoutLabeledItem32: TdxLayoutLabeledItem;
+    dxLayoutItem53: TdxLayoutItem;
+    dxLayoutItem54: TdxLayoutItem;
+    lbl_T42: TcxLabel;
+    lbl_T42Dez: TcxLabel;
+    lbl_T41: TcxLabel;
+    lbl_T41Dez: TcxLabel;
+    dxLayoutGroup44: TdxLayoutGroup;
+    dxLayoutItem55: TdxLayoutItem;
+    dxLayoutItem56: TdxLayoutItem;
+    dxLayoutLabeledItem33: TdxLayoutLabeledItem;
     procedure AuswertungsJahrPropertiesChange(Sender: TObject);
     procedure SetMonatswerte(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -606,6 +618,49 @@ begin
   lbl_HODez.caption:= GetTimeValue(Round(iHO * 480 ));
   lbl_BHOGes.Caption:= FormatFloat('0.00',iHO + iBuero);
   lbl_BHOGesDez.Caption:= GetTimeValue(Round((iHO + iBuero) * 480));
+
+
+
+    lbl_T42.Caption:= GetTimeValue(Round(ift * 480 )
+    + Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 )
+    + Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480)
+
+
+    );
+
+
+    lbl_T41.Caption:= GetTimeValue(dm_PCM.qry_Work.FieldByName('IStzeit').asInteger
+    - Round(ift * 480 )
+    - Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 )
+    - Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480)
+
+
+    );
+
+
+
+    lbl_T42Dez.Caption:= FormatFloat('0.00',Round(ift * 480 / 60)
+    + Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 / 60 )
+    + Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 / 60)
+
+
+    );
+
+
+    lbl_T41Dez.Caption:= FormatFloat('0.00',dm_PCM.qry_Work.FieldByName('IStzeitD').asFloat
+    - (ift * 480 / 60)
+    - Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 / 60 )
+    - Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,StartOfAMonth(AJahr,AMonat),EndOfAMonth(AJahr,AMonat)) * 480 / 60)
+    );
+
+
+
+
+
+
+
+
+
   iAktGLZ:= dm_PCM.qry_Work.FieldByName('aktuelleMehrarbeit').asInteger;
   if iAktGLZ < 0 then
   begin

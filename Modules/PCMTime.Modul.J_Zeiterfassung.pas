@@ -125,7 +125,7 @@ uses
   Winapi.Messages,
   Winapi.Windows, dxLayoutcxEditAdapters, dxLayoutContainer, cxCurrencyEdit,
   dxLayoutControl, dxLayoutControlAdapters, dxUIAClasses, cxCheckBox,
-  cxCheckComboBox;
+  cxCheckComboBox, cxGridCustomPopupMenu, cxGridPopupMenu;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -364,6 +364,12 @@ type
     qry_abteilung: TFDQuery;
     qry_Firma: TFDQuery;
     ds_Firma: TDataSource;
+    dxLayoutGroup3: TdxLayoutGroup;
+    lbl_Soll: TdxLayoutLabeledItem;
+    lbl_Brutto: TdxLayoutLabeledItem;
+    lbl_Netto: TdxLayoutLabeledItem;
+    lbl_Abwesend: TdxLayoutLabeledItem;
+    lbl_Pausen: TdxLayoutLabeledItem;
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btn_ViewCalClick(Sender: TObject);
@@ -428,6 +434,7 @@ type
     defaultFontColor: integer;
     iView: Integer;
     iZE: integer;
+    procedure SetMonthValues(AVon,ABis: TDate;ABenutzer: integer);
   public
     { Public-Deklarationen }
   end;
@@ -460,6 +467,44 @@ uses
   PCM.SQL,
   PCM.Time.Strings;
   {$EndRegion Uses}
+
+
+
+procedure Tfrm_ZE.SetMonthValues(AVon,ABis: TDate;ABenutzer: integer);
+begin
+  //
+  dm_PCM.qry_work2.SQL.Text:=  'SELECT Sum(ArbeitszeitI + PausenI) AS Brutto,cast(SEC_TO_TIME((Sum(ArbeitszeitI + PausenI)) * 60) AS char) AS BruttoT, (Sum(ArbeitszeitI + PausenI)) /60 AS BruttoD,'+
+                               'Sum(PausenI) AS Pausen ,cast(SEC_TO_TIME(Sum(PausenI * 60)) AS char) as PausenT, Sum(PausenI / 60) as PausenD,' +
+                               'Sum(ArbeitszeitI) AS IStzeit,cast(SEC_TO_TIME(Sum(ArbeitszeitI * 60)) AS char) as IStzeitT, Sum(ArbeitszeitI / 60) as IStzeitD,' +
+                               'Sum(SollstundenI) as Sollzeit,cast(SEC_TO_TIME(Sum(SollstundenI * 60)) AS char) as SollzeitT, Sum(SollstundenI / 60) as SollzeitD ' +
+                               'FROM time_Buchungen WHERE Datum>= :Von AND Datum <= :Bis AND ID_Benutzer = :ID';
+  dm_PCM.qry_work2.ParamByName('Von').AsDate:= AVon;
+  dm_PCM.qry_work2.ParamByName('Bis').AsDate:= Abis;
+  dm_PCM.qry_work2.ParamByName('ID').AsInteger:= dm_pcm.iIDZEPCM;
+  dm_PCM.qry_work2.open;
+
+  lbl_Soll.Caption:= 'Soll: ' + Copy(dm_PCM.qry_work2.FieldByName('SollzeitT').asString,1, Length(dm_PCM.qry_work2.FieldByName('SollzeitT').asString) -3) + ' | ' + FormatFloat('0.00',dm_PCM.qry_work2.FieldByName('SollzeitD').AsFloat);
+  lbl_Brutto.Caption:= 'Brutto: ' + Copy(dm_PCM.qry_work2.FieldByName('BruttoT').asString,1, Length(dm_PCM.qry_work2.FieldByName('BruttoT').asString) -3) + ' | ' + FormatFloat('0.00',dm_PCM.qry_work2.FieldByName('BruttoD').AsFloat);
+  lbl_Pausen.Caption:= 'Pausen: ' + Copy(dm_PCM.qry_work2.FieldByName('PausenT').asString,1, Length(dm_PCM.qry_work2.FieldByName('PausenT').asString) -3) + ' | ' + FormatFloat('0.00',dm_PCM.qry_work2.FieldByName('PausenD').AsFloat);
+  lbl_Abwesend.Caption:= 'Abwesend: '
+  + GetTimeValue(Round(GetFeiertage(dm_pcm.iIDZEPCM,AVon,ABis) * 480)
+  + Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,AVon,Abis) * 480 )
+  + Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,AVon,Abis) * 480)) + ' | '
+  + FormatFloat('0.00',(GetFeiertage(dm_pcm.iIDZEPCM,AVon,ABis)  * 480
+  + (GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,AVon,Abis) * 480)
+  + (GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,AVon,Abis) * 480)) / 60);
+
+
+  lbl_Netto.Caption:= 'Netto: '
+  + GetTimeValue(Round(dm_PCM.qry_Work2.FieldByName('IStzeit').asInteger
+  - GetFeiertage(dm_pcm.iIDZEPCM,AVon,ABis * 480))
+  - Round(GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,AVon,Abis) * 480 )
+  - Round(GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,AVon,Abis) * 480)) + ' | '
+  + FormatFloat('0.00',dm_PCM.qry_Work2.FieldByName('IStzeitD').asFloat
+  - (GetFeiertage(dm_pcm.iIDZEPCM,AVon,ABis) * 480  / 60)
+  - (GetFehltagSum(1, 1, 1, dm_pcm.iIDZEPCM,AVon,Abis) * 480  / 60)
+  - (GetFehltagSum(1, 2, 1, dm_pcm.iIDZEPCM,AVon,Abis) * 480 / 60));
+end;
 ////////////////////////////////////////////////////////////////////////////////
 // Toolbar                                                                    //
 ////////////////////////////////////////////////////////////////////////////////
@@ -520,7 +565,7 @@ begin
   cbx_FilterMonth.ItemIndex := AProperties.Items.IndexOf(sMonat);
   AProperties := TcxComboBoxProperties(cbx_FilterYear.Properties);
   cbx_FilterYear.ItemIndex := AProperties.Items.IndexOf(IntToStr(iJahr));
- dedt_Von.EditValue:= '01.'+ inttoStr(iMonat) +'.' + inttoStr(iJahr);
+   dedt_Von.EditValue:= '01.'+ inttoStr(iMonat) +'.' + inttoStr(iJahr);
   dedt_Bis.EditValue:= DateToStr(EndOfAMonth(iJahr,iMonat));
   qry_Fehltag.open;
   qry_Buchungen.SQL.Text:= 'SELECT ID,Datum, Tag, Kommen, Gehen, Pause1Beginn, Pause1Ende,' +
@@ -532,8 +577,8 @@ begin
   qry_Buchungen.ParamByName('Von').AsDate:= StrToDate(dedt_Von.EditValue);
   qry_Buchungen.ParamByName('Bis').AsDate:= StrToDate(dedt_Bis.EditValue);
   qry_Buchungen.ParamByName('ID').AsInteger:= dm_pCm.iIDZEPCM;
-
   qry_Buchungen.open;
+  SetMonthValues(StrToDate(dedt_Von.EditValue), StrToDate(dedt_Bis.EditValue),dm_pCm.iIDZEPCM);
 end;
 procedure Tfrm_ZE.btn_ViewCalClick(Sender: TObject);
 begin
@@ -1055,20 +1100,17 @@ var
   wJahr,wMonat,wTag: word;
 begin
   ShowWaitForm(TForm(frm_ZE), PWideChar(rs_Function_Helper_BerechneTag1),1 ,417, 65);
-  DecodeDate(Date,wJahr,wMonat,wTag);
+  DecodeDate(qry_Buchungen.FieldByName('Datum').AsDateTime,wJahr,wMonat,wTag);
   BerechneTage(wTag,wMonat,wJahr,dm_pcm.iIDZEPCM);
   BerechneMonat(wMonat,wJahr,dm_pcm.iIDZEPCM);
   qry_Buchungen.Refresh;
   CloseWaitForm;
 end;
 procedure Tfrm_ZE.ppmbtn_CalcMonthClick(Sender: TObject);
-var
-  wJahr,wMonat,wTag: word;
 begin
   ShowWaitForm(TForm(frm_ZE), PWideChar(rs_Function_Helper_BerechneMonat1),1 ,417, 65);
-  DecodeDate(Date,wJahr,wMonat,wTag);
-  BerechneTage(0,wMonat,wJahr,dm_pcm.iIDZEPCM);
-  BerechneMonat(wMonat,wJahr,dm_pcm.iIDZEPCM);
+  BerechneTage(0,cbx_FilterMonth.itemindex+1,StrToInt(cbx_FilterYear.EditValue),dm_pcm.iIDZEPCM);
+  BerechneMonat(cbx_FilterMonth.itemindex+1,StrToInt(cbx_FilterYear.EditValue),dm_pcm.iIDZEPCM);
   qry_Buchungen.Refresh;
   CloseWaitForm;
 end;

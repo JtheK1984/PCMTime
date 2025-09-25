@@ -106,6 +106,8 @@ object frm_ZE: Tfrm_ZE
         Width = 300
       end>
     PaintStyle = stpsUseLookAndFeel
+    ExplicitTop = 661
+    ExplicitWidth = 1151
   end
   object dxLayoutControl2: TdxLayoutControl
     Left = 0
@@ -115,6 +117,8 @@ object frm_ZE: Tfrm_ZE
     Align = alClient
     TabOrder = 2
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitWidth = 1151
+    ExplicitHeight = 535
     object btn_BookingWorkBegin: TcxButton
       Left = 10000
       Top = 10000
@@ -961,12 +965,11 @@ object frm_ZE: Tfrm_ZE
       Width = 1022
     end
     object grd_Booking: TcxGrid
-      Left = 10000
-      Top = 10000
+      Left = 29
+      Top = 51
       Width = 1099
-      Height = 472
+      Height = 449
       TabOrder = 14
-      Visible = False
       object grdDBTblView_Booking: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         ScrollbarAnnotations.CustomAnnotations = <>
@@ -1247,20 +1250,20 @@ object frm_ZE: Tfrm_ZE
       TabOrder = 15
       Visible = False
       OnGetEventModernStyleHintInfo = sched_KalenderGetEventModernStyleHintInfo
-      Selection = 1
       Splitters = {
         BB0300007E0000004A04000083000000B603000001000000BB030000D7010000}
       StoredClientBounds = {01000000010000004A040000D7010000}
     end
     object btn_kontaktsuchen: TcxButton
-      Left = 24
-      Top = 163
+      Left = 10000
+      Top = 10000
       Width = 137
       Height = 27
       Caption = 'Mitarbeiter suchen'
       OptionsImage.ImageIndex = 14
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 6
+      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1270,14 +1273,15 @@ object frm_ZE: Tfrm_ZE
       OnClick = btn_kontaktsuchenClick
     end
     object btn_ClearFilter: TcxButton
-      Left = 168
-      Top = 163
+      Left = 10000
+      Top = 10000
       Width = 137
       Height = 27
       Caption = 'Filter l'#246'schen'
       OptionsImage.ImageIndex = 30
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 7
+      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1287,52 +1291,57 @@ object frm_ZE: Tfrm_ZE
       OnClick = btn_ClearFilterClick
     end
     object edt_personalnr: TcxTextEdit
-      Left = 101
-      Top = 123
+      Left = 10000
+      Top = 10000
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
+      Visible = False
       Width = 234
     end
     object edt_SearchName: TcxTextEdit
-      Left = 101
-      Top = 93
+      Left = 10000
+      Top = 10000
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
+      Visible = False
       Width = 234
     end
     object edt_SearchSurname: TcxTextEdit
-      Left = 101
-      Top = 63
+      Left = 10000
+      Top = 10000
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 0
+      Visible = False
       Width = 234
     end
     object cxCheckComboBox1: TcxCheckComboBox
-      Left = 403
-      Top = 63
+      Left = 10000
+      Top = 10000
       Properties.EmptySelectionText = 'Alle Firmen'
       Properties.Items = <>
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
+      Visible = False
       Width = 234
     end
     object cxCheckComboBox2: TcxCheckComboBox
-      Left = 403
-      Top = 93
+      Left = 10000
+      Top = 10000
       Properties.EmptySelectionText = 'Alle Abteilungen'
       Properties.Items = <>
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
+      Visible = False
       Width = 234
     end
     object edt_KontaktSucheFunktion: TcxTextEdit
-      Left = 403
-      Top = 123
+      Left = 10000
+      Top = 10000
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -1343,11 +1352,12 @@ object frm_ZE: Tfrm_ZE
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 5
+      Visible = False
       Width = 234
     end
     object grd_Suche: TcxGrid
-      Left = 24
-      Top = 197
+      Left = 10000
+      Top = 10000
       Width = 1109
       Height = 331
       BevelInner = bvNone
@@ -1359,6 +1369,7 @@ object frm_ZE: Tfrm_ZE
       Font.Style = []
       ParentFont = False
       TabOrder = 8
+      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       LookAndFeel.ScrollbarMode = sbmDefault
       object grdDBTblView_Suche: TcxGridDBTableView
@@ -1450,7 +1461,7 @@ object frm_ZE: Tfrm_ZE
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel2
-      ItemIndex = 2
+      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
       TabbedOptions.HideTabs = True
@@ -1480,6 +1491,7 @@ object frm_ZE: Tfrm_ZE
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+      ItemIndex = 1
       ShowBorder = False
       Index = 1
     end
@@ -1630,6 +1642,7 @@ object frm_ZE: Tfrm_ZE
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
       Index = 0
@@ -1770,6 +1783,49 @@ object frm_ZE: Tfrm_ZE
       ControlOptions.OriginalWidth = 234
       ControlOptions.ShowBorder = False
       Index = 0
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 4
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object lbl_Soll: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Soll: 160:00 | 160,00'
+      CaptionOptions.Width = 150
+      Index = 0
+    end
+    object lbl_Brutto: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Brutto: 150:00 | 150,00'
+      CaptionOptions.Width = 150
+      Index = 1
+    end
+    object lbl_Netto: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Netto: 100:00 | 100,00'
+      CaptionOptions.Width = 150
+      Index = 4
+    end
+    object lbl_Abwesend: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Abwesend: 40:00 | 40,00'
+      CaptionOptions.Width = 150
+      Index = 3
+    end
+    object lbl_Pausen: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Pausen: 10:00 | 10,00'
+      CaptionOptions.Width = 150
+      Index = 2
     end
   end
   object brmgr_Main: TdxBarManager
@@ -5882,7 +5938,6 @@ object frm_ZE: Tfrm_ZE
     Top = 523
   end
   object qry_abteilung: TFDQuery
-    Active = True
     Connection = dm_PCM.con_PCM
     SQL.Strings = (
       'Select * From time_Abteilung')
@@ -5890,7 +5945,6 @@ object frm_ZE: Tfrm_ZE
     Top = 450
   end
   object qry_Firma: TFDQuery
-    Active = True
     Connection = dm_PCM.con_PCM
     SQL.Strings = (
       

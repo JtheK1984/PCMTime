@@ -473,6 +473,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'Aktuelle Werte'
+            ItemIndex = 3
             Index = 0
           end
           object dxLayoutGroup4: TdxLayoutGroup
@@ -525,6 +526,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             CaptionOptions.Text = 
               '[B]Stundenwerte                                                 ' +
               '                    hh:mm         Dezimal[/B]'
+            ItemIndex = 2
             LayoutDirection = ldHorizontal
             Index = 0
           end
@@ -546,6 +548,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahLeft
             AlignVert = avTop
             CaptionOptions.Text = 'New Group'
+            ItemIndex = 4
             ShowBorder = False
             Index = 0
           end
@@ -553,12 +556,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Parent = dxLayoutGroup6
             CaptionOptions.Text = 'New Group'
             Offsets.Left = 16
+            ItemIndex = 3
             ShowBorder = False
             Index = 2
           end
           object dxLayoutGroup10: TdxLayoutGroup
             Parent = dxLayoutGroup6
             CaptionOptions.Text = 'New Group'
+            ItemIndex = 3
             ShowBorder = False
             Index = 1
           end
@@ -568,7 +573,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignVert = avTop
             CaptionOptions.Text = 'Gleitzeit'#252'bertrag Vormonat:'
             CaptionOptions.Width = 270
-            Index = 5
+            Index = 7
           end
           object dxLayoutLabeledItem3: TdxLayoutLabeledItem
             Parent = dxLayoutGroup8
@@ -576,7 +581,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignVert = avTop
             CaptionOptions.Text = 'Minder/Mehrarbeit:'
             CaptionOptions.Width = 270
-            Index = 4
+            Index = 6
           end
           object dxLayoutLabeledItem4: TdxLayoutLabeledItem
             Parent = dxLayoutGroup8
@@ -584,13 +589,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignVert = avTop
             CaptionOptions.Text = 'Sollstunden:'
             CaptionOptions.Width = 270
-            Index = 3
+            Index = 5
           end
           object dxLayoutLabeledItem5: TdxLayoutLabeledItem
             Parent = dxLayoutGroup8
             AlignHorz = ahLeft
             AlignVert = avTop
-            CaptionOptions.Text = 'Iststunden netto:'
+            CaptionOptions.Text = 'Iststunden netto (inkl Abwesend):'
             CaptionOptions.Width = 270
             Index = 2
           end
@@ -616,21 +621,21 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignVert = avTop
             CaptionOptions.Text = '[B]Gleitzeit'#252'bertrag Folgemonat:[/B]'
             CaptionOptions.Width = 270
-            Index = 6
+            Index = 8
           end
           object lbl_T6: TdxLayoutLabeledItem
             Parent = dxLayoutGroup10
             CaptionOptions.AlignHorz = taRightJustify
             CaptionOptions.Text = 'Label'
             CaptionOptions.Width = 50
-            Index = 5
+            Index = 7
           end
           object lbl_T5: TdxLayoutLabeledItem
             Parent = dxLayoutGroup10
             CaptionOptions.AlignHorz = taRightJustify
             CaptionOptions.Text = 'Label'
             CaptionOptions.Width = 50
-            Index = 4
+            Index = 6
           end
           object lbl_T2: TdxLayoutLabeledItem
             Parent = dxLayoutGroup10
@@ -651,7 +656,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             CaptionOptions.AlignHorz = taRightJustify
             CaptionOptions.Text = 'Label'
             CaptionOptions.Width = 50
-            Index = 3
+            Index = 5
           end
           object lbl_T1: TdxLayoutLabeledItem
             Parent = dxLayoutGroup10
@@ -672,14 +677,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             CaptionOptions.AlignHorz = taRightJustify
             CaptionOptions.Text = 'Label'
             CaptionOptions.Width = 50
-            Index = 6
+            Index = 8
           end
           object lbl_D4: TdxLayoutLabeledItem
             Parent = dxLayoutGroup9
             CaptionOptions.AlignHorz = taRightJustify
             CaptionOptions.Text = 'Label'
             CaptionOptions.Width = 50
-            Index = 3
+            Index = 5
           end
           object lbl_D3: TdxLayoutLabeledItem
             Parent = dxLayoutGroup9
@@ -706,21 +711,21 @@ object frm_PCM_Main: Tfrm_PCM_Main
             CaptionOptions.AlignHorz = taRightJustify
             CaptionOptions.Text = 'Label'
             CaptionOptions.Width = 50
-            Index = 6
+            Index = 8
           end
           object lbl_D6: TdxLayoutLabeledItem
             Parent = dxLayoutGroup9
             CaptionOptions.AlignHorz = taRightJustify
             CaptionOptions.Text = 'Label'
             CaptionOptions.Width = 50
-            Index = 5
+            Index = 7
           end
           object lbl_D5: TdxLayoutLabeledItem
             Parent = dxLayoutGroup9
             CaptionOptions.AlignHorz = taRightJustify
             CaptionOptions.Text = 'Label'
             CaptionOptions.Width = 50
-            Index = 4
+            Index = 6
           end
           object dxLayoutLabeledItem24: TdxLayoutLabeledItem
             Parent = dxLayoutGroup11
@@ -1114,6 +1119,44 @@ object frm_PCM_Main: Tfrm_PCM_Main
             ControlOptions.OriginalWidth = 577
             ControlOptions.ShowBorder = False
             Index = 1
+          end
+          object dxLayoutItem5: TdxLayoutItem
+            CaptionOptions.Text = 'New Item'
+            Index = -1
+          end
+          object dxLayoutLabeledItem10: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup8
+            CaptionOptions.Text = 'Abwesenheit:'
+            Index = 3
+          end
+          object dxLayoutLabeledItem15: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup8
+            CaptionOptions.Text = 'Iststunden netto:'
+            Index = 4
+          end
+          object lbl_T41Dez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup9
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            Index = 3
+          end
+          object lbl_T42Dez: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup9
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            Index = 4
+          end
+          object lbl_T41: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup10
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            Index = 3
+          end
+          object lbl_T42: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup10
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'Label'
+            Index = 4
           end
         end
       end
