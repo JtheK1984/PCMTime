@@ -35,7 +35,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-    ExplicitHeight = 702
+    ExplicitLeft = -1
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -971,6 +971,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avTop
             CaptionOptions.Text = 'Auswertung'
+            ItemIndex = 1
             LayoutDirection = ldTabbed
             ShowBorder = False
             Index = 3

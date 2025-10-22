@@ -568,10 +568,10 @@ procedure Tfrm_PCM_Main.LoadData;
     lbl_bezKr.Caption:= FormatFloat('0.0',GetFehltagSum(1, 2, 1,dm_pcm.iIDZEPCM,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
 //    lbl_unbKr.Caption:= FormatFloat('0.0',GetFehltagSum(1, 2, 2,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
 //    lbl_unbUL.Caption:= FormatFloat('0.0',  GetFehltagSum(1, 1, 0,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
-    lbl_OfficeGes.Caption:= IntToStr(GetBuchungsart(0,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
-    lbl_HomeOffGes.Caption:= IntToStr(GetBuchungsart(1,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
+    lbl_OfficeGes.Caption:= FormatFloat('0.0', GetBuchungsart(0,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
+    lbl_HomeOffGes.Caption:= FormatFloat('0.0', GetBuchungsart(1,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
     lbl_FT.Caption:= FormatFloat('0.0', GetFeiertage(dm_pcm.iIDZEPCM,EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31)));
-    lbl_OffHomeOffGes.Caption:= '[B]' + IntToStr(GetBuchungsart(0,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))+GetBuchungsart(1,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))) + '[/B]';
+    lbl_OffHomeOffGes.Caption:= '[B]' + FormatFloat('0.0', GetBuchungsart(0,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))+GetBuchungsart(1,dm_pcm.iIDZEPCM, EncodeDate(AJahr,1,1),EncodeDate(AJahr,12,31))) + '[/B]';
 
     dm_PCM.qry_Work.SQL.Text:=  'SELECT aktuelleMehrarbeit,cast(SEC_TO_TIME(aktuelleMehrarbeit * 60) AS char) as MehrarbeitT, aktuelleMehrarbeit / 60 as MehrarbeitD FROM time_Monatswerte WHERE ID_Benutzer = :ID AND Monat = :Monat AND Jahr = :Jahr';
     dm_PCM.qry_Work.ParamByName('Monat').AsInteger:= iVMonat;
