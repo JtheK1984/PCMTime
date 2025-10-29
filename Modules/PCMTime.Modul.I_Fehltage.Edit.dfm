@@ -289,7 +289,6 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 200
     Top = 352
@@ -371,6 +370,7 @@ object frm_Fehltageeintragen: Tfrm_Fehltageeintragen
       Category = 0
       Hint = 'Alle Fehltage'
       Visible = ivAlways
+      OnClick = btn_AllDaysClick
       AutoGrayScale = False
       LargeImageIndex = 9
       Width = 125

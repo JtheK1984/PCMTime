@@ -112,6 +112,7 @@ type
     procedure btn_FTSaveClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure dedt_VonPropertiesChange(Sender: TObject);
+    procedure btn_AllDaysClick(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -155,6 +156,24 @@ begin
   qry_Ft.Cancel;
   dxLayoutGroup3.Visible:= false;
 end;
+procedure Tfrm_Fehltageeintragen.btn_AllDaysClick(Sender: TObject);
+begin
+  if btn_AllDays.tag = 0  then
+  begin
+    btn_AllDays.tag:= 1;
+    btn_AllDays.Caption:= 'Fehltage akt. Jahr';
+    qry_FT.SQL.Text:= 'Select * From time_Fehltage';
+    qry_FT.Open;
+  end
+  else begin
+    btn_AllDays.tag:= 0;
+    btn_AllDays.Caption:= 'Alle Fehltage';
+    qry_FT.SQL.Text:= 'Select * From time_Fehltage Where Year(Von) = :Jahr';// and Year(Von) <= :Jahr1';
+    qry_FT.ParamByName('Jahr').asInteger:= Yearof (Date);
+    qry_FT.Open;
+  end;
+end;
+
 procedure Tfrm_Fehltageeintragen.btn_CloseClick(Sender: TObject);
 begin
   Close;
