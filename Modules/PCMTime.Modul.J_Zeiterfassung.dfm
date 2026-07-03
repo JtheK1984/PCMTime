@@ -106,8 +106,6 @@ object frm_ZE: Tfrm_ZE
         Width = 300
       end>
     PaintStyle = stpsUseLookAndFeel
-    ExplicitTop = 661
-    ExplicitWidth = 1151
   end
   object dxLayoutControl2: TdxLayoutControl
     Left = 0
@@ -117,8 +115,6 @@ object frm_ZE: Tfrm_ZE
     Align = alClient
     TabOrder = 2
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 1151
-    ExplicitHeight = 535
     object btn_BookingWorkBegin: TcxButton
       Left = 10000
       Top = 10000

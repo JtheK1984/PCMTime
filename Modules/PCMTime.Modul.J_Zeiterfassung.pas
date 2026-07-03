@@ -569,10 +569,10 @@ begin
   dedt_Bis.EditValue:= DateToStr(EndOfAMonth(iJahr,iMonat));
   qry_Fehltag.open;
   qry_Buchungen.SQL.Text:= 'SELECT ID,Datum, Tag, Kommen, Gehen, Pause1Beginn, Pause1Ende,' +
-                           'Pause2Beginn,Pause2Ende,Sollstunden,Sollstundeni,MinToHour(Sollstundeni) AS SollStundenStd,Round(Sollstundeni / 60,2) AS SollStundenDez,' +
-                           'Arbeitszeit,Arbeitszeiti,MinToHour(Arbeitszeiti) AS ArbeitszeitStd,Round(Arbeitszeiti / 60,2) AS ArbeitszeitDez,' +
-                           'Pauseni,MinToHour(Pauseni) AS PausenStd,Round(Pauseni / 60,2) AS PausenDez,'+
-                           'Mehrarbeiti,MinToHour(Mehrarbeiti) AS MehrarbeitStd,Round(Mehrarbeiti / 60,2) AS MehrarbeitDez,'+
+                           'Pause2Beginn,Pause2Ende,Sollstunden,Sollstundeni,MinToHour(Sollstundeni) AS SollStundenStd,Truncate(Sollstundeni / 60,2) AS SollStundenDez,' +
+                           'Arbeitszeit,Arbeitszeiti,MinToHour(Arbeitszeiti) AS ArbeitszeitStd,Truncate(Arbeitszeiti / 60,2) AS ArbeitszeitDez,' +
+                           'Pauseni,MinToHour(Pauseni) AS PausenStd,Truncate(Pauseni / 60,2) AS PausenDez,'+
+                           'Mehrarbeiti,MinToHour(Mehrarbeiti) AS MehrarbeitStd,Truncate(Mehrarbeiti / 60,2) AS MehrarbeitDez,'+
                            'Buchungsart,Feiertag,Fehltag From time_Buchungen Where Datum between :Von and :Bis and ID_Benutzer = :ID';
   qry_Buchungen.ParamByName('Von').AsDate:= StrToDate(dedt_Von.EditValue);
   qry_Buchungen.ParamByName('Bis').AsDate:= StrToDate(dedt_Bis.EditValue);
@@ -613,10 +613,10 @@ begin
   dVon:= StartOfAMonth(StrToInt(cbx_FilterYear.EditValue),cbx_FilterMonth.itemindex+1);
   dBis:= EndOfAMonth(StrToInt(cbx_FilterYear.EditValue),cbx_FilterMonth.itemindex+1);
   qry_Buchungen.SQL.Text:= 'SELECT ID,Datum, Tag, Kommen, Gehen, Pause1Beginn, Pause1Ende,' +
-                           'Pause2Beginn,Pause2Ende,Sollstunden,Sollstundeni,MinToHour(Sollstundeni) AS SollStundenStd,Round(Sollstundeni / 60,2) AS SollStundenDez,' +
-                           'Arbeitszeit,Arbeitszeiti,MinToHour(Arbeitszeiti) AS ArbeitszeitStd,Round(Arbeitszeiti / 60,2) AS ArbeitszeitDez,' +
-                           'Pauseni,MinToHour(Pauseni) AS PausenStd,Round(Pauseni / 60,2) AS PausenDez,'+
-                           'Mehrarbeiti,MinToHour(Mehrarbeiti) AS MehrarbeitStd,Round(Mehrarbeiti / 60,2) AS MehrarbeitDez,'+
+                           'Pause2Beginn,Pause2Ende,Sollstunden,Sollstundeni,MinToHour(Sollstundeni) AS SollStundenStd,Truncate(Sollstundeni / 60,2) AS SollStundenDez,' +
+                           'Arbeitszeit,Arbeitszeiti,MinToHour(Arbeitszeiti) AS ArbeitszeitStd,Truncate(Arbeitszeiti / 60,2) AS ArbeitszeitDez,' +
+                           'Pauseni,MinToHour(Pauseni) AS PausenStd,Truncate(Pauseni / 60,2) AS PausenDez,'+
+                           'Mehrarbeiti,MinToHour(Mehrarbeiti) AS MehrarbeitStd,Truncate(Mehrarbeiti / 60,2) AS MehrarbeitDez,'+
                            'Buchungsart,Feiertag,Fehltag From time_Buchungen Where Datum between :Von and :Bis';
   qry_Buchungen.ParamByName('Von').AsDate:= dvon;
   qry_Buchungen.ParamByName('Bis').AsDate:= dbis;
@@ -631,10 +631,10 @@ begin
   dVon:= StrToDate(dedt_von.EditValue);
   dBis:= StrToDate(dedt_bis.EditValue);
   qry_Buchungen.SQL.Text:= 'SELECT ID,Datum, Tag, Kommen, Gehen, Pause1Beginn, Pause1Ende,' +
-                           'Pause2Beginn,Pause2Ende,Sollstunden,Sollstundeni,MinToHour(Sollstundeni) AS SollStundenStd,Round(Sollstundeni / 60,2) AS SollStundenDez,' +
-                           'Arbeitszeit,Arbeitszeiti,MinToHour(Arbeitszeiti) AS ArbeitszeitStd,Round(Arbeitszeiti / 60,2) AS ArbeitszeitDez,' +
-                           'Pauseni,MinToHour(Pauseni) AS PausenStd,Round(Pauseni / 60,2) AS PausenDez,'+
-                           'Mehrarbeiti,MinToHour(Mehrarbeiti) AS MehrarbeitStd,Round(Mehrarbeiti / 60,2) AS MehrarbeitDez,'+
+                           'Pause2Beginn,Pause2Ende,Sollstunden,Sollstundeni,MinToHour(Sollstundeni) AS SollStundenStd,Truncate(Sollstundeni / 60,2) AS SollStundenDez,' +
+                           'Arbeitszeit,Arbeitszeiti,MinToHour(Arbeitszeiti) AS ArbeitszeitStd,Truncate(Arbeitszeiti / 60,2) AS ArbeitszeitDez,' +
+                           'Pauseni,MinToHour(Pauseni) AS PausenStd,Truncate(Pauseni / 60,2) AS PausenDez,'+
+                           'Mehrarbeiti,MinToHour(Mehrarbeiti) AS MehrarbeitStd,Truncate(Mehrarbeiti / 60,2) AS MehrarbeitDez,'+
                            'Buchungsart,Feiertag,Fehltag From time_Buchungen Where Datum between :Von and :Bis';
   qry_Buchungen.ParamByName('Von').AsDate:= dvon;
   qry_Buchungen.ParamByName('Bis').AsDate:= dbis;
@@ -805,10 +805,10 @@ begin
       dm_PCM.qry_Work.Unprepare
     end;
     qry_Buchungen.SQL.Text:= 'SELECT ID,Datum, Tag, Kommen, Gehen, Pause1Beginn, Pause1Ende,' +
-                           'Pause2Beginn,Pause2Ende,Sollstunden,Sollstundeni,MinToHour(Sollstundeni) AS SollStundenStd,Round(Sollstundeni / 60,2) AS SollStundenDez,' +
-                           'Arbeitszeit,Arbeitszeiti,MinToHour(Arbeitszeiti) AS ArbeitszeitStd,Round(Arbeitszeiti / 60,2) AS ArbeitszeitDez,' +
-                           'Pauseni,MinToHour(Pauseni) AS PausenStd,Round(Pauseni / 60,2) AS PausenDez,'+
-                           'Mehrarbeiti,MinToHour(Mehrarbeiti) AS MehrarbeitStd,Round(Mehrarbeiti / 60,2) AS MehrarbeitDez,'+
+                           'Pause2Beginn,Pause2Ende,Sollstunden,Sollstundeni,MinToHour(Sollstundeni) AS SollStundenStd,Truncate(Sollstundeni / 60,2) AS SollStundenDez,' +
+                           'Arbeitszeit,Arbeitszeiti,MinToHour(Arbeitszeiti) AS ArbeitszeitStd,Truncate(Arbeitszeiti / 60,2) AS ArbeitszeitDez,' +
+                           'Pauseni,MinToHour(Pauseni) AS PausenStd,Truncate(Pauseni / 60,2) AS PausenDez,'+
+                           'Mehrarbeiti,MinToHour(Mehrarbeiti) AS MehrarbeitStd,Truncate(Mehrarbeiti / 60,2) AS MehrarbeitDez,'+
                            'Buchungsart,Feiertag,Fehltag From time_Buchungen Where Datum between :Von and :Bis';
     if iMonat = 13 then
     begin
