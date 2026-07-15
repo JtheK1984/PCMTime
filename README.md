@@ -4,7 +4,7 @@
 # Kurzbeschreibung:
   PCM - Time
 
-# Kurzbeschreibung:
+# Beschreibung:
   reine Zeiterfassung mit Abwesenheitsverwaltung
 
 # Entwicklungsumgebung:
