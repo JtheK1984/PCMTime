@@ -264,7 +264,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitWidth = 1056
+    ExplicitWidth = 404
     ExplicitHeight = 702
     Height = 719
     Width = 410
@@ -288,7 +288,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       Properties.Style = 11
       OnPageChanging = pc_mainPageChanging
-      ExplicitWidth = 1052
+      ExplicitWidth = 400
       ExplicitHeight = 698
       ClientRectBottom = 715
       ClientRectRight = 406
@@ -296,7 +296,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 12
-        ExplicitWidth = 1052
+        ExplicitWidth = 400
         ExplicitHeight = 677
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
@@ -306,7 +306,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-          ExplicitWidth = 1052
+          ExplicitWidth = 400
           ExplicitHeight = 677
           object chartctrl_Birthday: TdxChartControl
             Left = 10000
