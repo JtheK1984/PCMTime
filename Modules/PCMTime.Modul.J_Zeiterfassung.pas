@@ -370,6 +370,7 @@ type
     lbl_Netto: TdxLayoutLabeledItem;
     lbl_Abwesend: TdxLayoutLabeledItem;
     lbl_Pausen: TdxLayoutLabeledItem;
+    btn_ImportPDF: TdxBarLargeButton;
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btn_ViewCalClick(Sender: TObject);
@@ -385,6 +386,7 @@ type
     procedure ppmbtn_ViewPlanungClick(Sender: TObject);
     procedure ppmbtn_ViewGanzertagClick(Sender: TObject);
     procedure btn_CalVorClick(Sender: TObject);
+    procedure btn_ImportPDFClick(Sender: TObject);
     procedure btn_DataNewClick(Sender: TObject);
     procedure btn_DataPrevClick(Sender: TObject);
     procedure btn_DataNextClick(Sender: TObject);
@@ -449,6 +451,7 @@ uses
   {$Region Uses}
   PCM.Browser.FullScreen,
   PCMTime.Calculate,
+  PCMTime.Modul.J_Zeiterfassung.Import,
   PCM.Data,
   PCM.Helper,
   PCM.Functions.Synch.Wait,
@@ -656,6 +659,24 @@ begin
   frm_Fehltageeintragen.ShowModal;
 end;
 // Edit
+procedure Tfrm_ZE.btn_ImportPDFClick(Sender: TObject);
+var
+  WasTimerEnabled: Boolean;
+begin
+  if qry_Buchungen.State in [dsInsert, dsEdit] then
+  begin
+    ShowMessage('Bitte die aktuelle Buchung zuerst speichern oder abbrechen.');
+    Exit;
+  end;
+  WasTimerEnabled := Timer1.Enabled;
+  Timer1.Enabled := False;
+  try
+    if ImportHRWorksPDF(Self, dm_PCM.iIDZEPCM) then
+      if qry_Buchungen.Active then qry_Buchungen.Refresh;
+  finally
+    Timer1.Enabled := WasTimerEnabled;
+  end;
+end;
 procedure Tfrm_ZE.btn_DataNewClick(Sender: TObject);
 var
   iMonat,iJahr: integer;

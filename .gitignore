@@ -67,5 +67,11 @@ __recovery/
 
 # Boss dependency manager vendor folder https://github.com/HashLoad/boss
 modules/
+!Modules/
+Modules/*
+!Modules/PCMTime.Modul.J_Zeiterfassung.Import.pas
+!Modules/PCMTime.Modul.J_Zeiterfassung.Import.dfm
+!PDFium/Win32/pdfium.dll
+!PDFium/Win64/pdfium.dll
 /Win64/Release/PCMTime.nds
 /Win64/Release/PCMTime.ntr

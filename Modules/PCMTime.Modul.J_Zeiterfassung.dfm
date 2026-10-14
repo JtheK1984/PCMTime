@@ -2,8 +2,8 @@ object frm_ZE: Tfrm_ZE
   Left = 0
   Top = 0
   Caption = 'frm_ZE'
-  ClientHeight = 696
-  ClientWidth = 1157
+  ClientHeight = 850
+  ClientWidth = 1890
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,7 +16,7 @@ object frm_ZE: Tfrm_ZE
   object rib: TdxRibbon
     Left = 0
     Top = 0
-    Width = 1157
+    Width = 1890
     Height = 126
     BarManager = brmgr_Main
     ColorSchemeAccent = rcsaBlue
@@ -24,6 +24,7 @@ object frm_ZE: Tfrm_ZE
     Contexts = <>
     TabOrder = 0
     TabStop = False
+    ExplicitWidth = 1157
     object ribTab1: TdxRibbonTab
       Caption = 'Mitarbeiter'
       Groups = <
@@ -91,8 +92,8 @@ object frm_ZE: Tfrm_ZE
   end
   object stbr_ZE: TdxStatusBar
     Left = 0
-    Top = 678
-    Width = 1157
+    Top = 832
+    Width = 1890
     Height = 18
     Panels = <
       item
@@ -105,15 +106,14 @@ object frm_ZE: Tfrm_ZE
         MinWidth = 255
         Width = 300
       end>
-    PaintStyle = stpsUseLookAndFeel
     ExplicitTop = 661
     ExplicitWidth = 1151
   end
   object dxLayoutControl2: TdxLayoutControl
     Left = 0
     Top = 126
-    Width = 1157
-    Height = 552
+    Width = 1890
+    Height = 706
     Align = alClient
     TabOrder = 2
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
@@ -967,17 +967,12 @@ object frm_ZE: Tfrm_ZE
     object grd_Booking: TcxGrid
       Left = 29
       Top = 51
-      Width = 1099
-      Height = 449
+      Width = 1832
+      Height = 603
       TabOrder = 14
       object grdDBTblView_Booking: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
-        ScrollbarAnnotations.CustomAnnotations = <>
         OnCellDblClick = grdDBTblView_BookingCellDblClick
         DataController.DataSource = ds_Buchungen
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <>
-        DataController.Summary.SummaryGroups = <>
         OptionsData.CancelOnExit = False
         OptionsData.Deleting = False
         OptionsData.DeletingConfirmation = False
@@ -990,18 +985,15 @@ object frm_ZE: Tfrm_ZE
         OptionsView.IndicatorWidth = 16
         object grdDBTblViewCol_BookingID: TcxGridDBColumn
           DataBinding.FieldName = 'ID'
-          DataBinding.IsNullValueType = True
           Visible = False
         end
         object grdDBTblViewCol_BookingTag: TcxGridDBColumn
           DataBinding.FieldName = 'Tag'
-          DataBinding.IsNullValueType = True
           OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
           Width = 30
         end
         object grdDBTblViewCol_BookingDatum: TcxGridDBColumn
           DataBinding.FieldName = 'Datum'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxDateEditProperties'
           Properties.DisplayFormat = 'dd.MM.YYYY'
           OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
@@ -1009,7 +1001,6 @@ object frm_ZE: Tfrm_ZE
         end
         object grdDBTblViewCol_BookingKommen: TcxGridDBColumn
           DataBinding.FieldName = 'Kommen'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTimeEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.SpinButtons.Visible = False
@@ -1019,7 +1010,6 @@ object frm_ZE: Tfrm_ZE
         end
         object grdDBTblViewCol_BookingGehen: TcxGridDBColumn
           DataBinding.FieldName = 'Gehen'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTimeEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.SpinButtons.Visible = False
@@ -1030,7 +1020,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblViewCol_BookingPause1Beginn: TcxGridDBColumn
           Caption = '1. Pau. Beg'
           DataBinding.FieldName = 'Pause1Beginn'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTimeEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.SpinButtons.Visible = False
@@ -1041,7 +1030,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblViewCol_BookingPause1Ende: TcxGridDBColumn
           Caption = '1. Pau. End'
           DataBinding.FieldName = 'Pause1Ende'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTimeEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.SpinButtons.Visible = False
@@ -1052,7 +1040,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblViewCol_BookingPause2Begin: TcxGridDBColumn
           Caption = '2. Pau. Beg'
           DataBinding.FieldName = 'Pause2Beginn'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTimeEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.SpinButtons.Visible = False
@@ -1063,7 +1050,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblViewCol_BookingPause2Ende: TcxGridDBColumn
           Caption = '2. Pau. End'
           DataBinding.FieldName = 'Pause2Ende'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTimeEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.SpinButtons.Visible = False
@@ -1074,7 +1060,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblViewCol_BookingSollstunden: TcxGridDBColumn
           Caption = 'Soll Std.'
           DataBinding.FieldName = 'SollStundenStd'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTimeEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.SpinButtons.Visible = False
@@ -1085,7 +1070,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblView_BookingColumn1: TcxGridDBColumn
           Caption = 'Soll Dez.'
           DataBinding.FieldName = 'SollStundenDez'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.DisplayFormat = ',0.00;-,0.00'
           OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
@@ -1094,7 +1078,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblView_BookingColumn2: TcxGridDBColumn
           Caption = 'Ist Std.'
           DataBinding.FieldName = 'ArbeitszeitStd'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTimeEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.TimeFormat = tfHourMin
@@ -1104,7 +1087,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblView_BookingColumn3: TcxGridDBColumn
           Caption = 'Ist Dez.'
           DataBinding.FieldName = 'ArbeitszeitDez'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.DisplayFormat = ',0.00;-,0.00'
           OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
@@ -1113,7 +1095,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblView_BookingColumn4: TcxGridDBColumn
           Caption = 'Pau. Std.'
           DataBinding.FieldName = 'PausenStd'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTimeEditProperties'
           Properties.Alignment.Horz = taRightJustify
           Properties.TimeFormat = tfHourMin
@@ -1123,7 +1104,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblView_BookingColumn5: TcxGridDBColumn
           Caption = 'Pau. Dez.'
           DataBinding.FieldName = 'PausenDez'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.DisplayFormat = ',0.00;-,0.00'
           OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
@@ -1132,7 +1112,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblViewCol_BookingMehrarbeit: TcxGridDBColumn
           Caption = 'GLZ Std.'
           DataBinding.FieldName = 'MehrarbeitStd'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTextEditProperties'
           Properties.Alignment.Horz = taRightJustify
           OnCustomDrawCell = grdDBTblViewCol_BookingMehrarbeitCustomDrawCell
@@ -1141,7 +1120,6 @@ object frm_ZE: Tfrm_ZE
         object grdDBTblView_BookingColumn6: TcxGridDBColumn
           Caption = 'GLZ Dez.'
           DataBinding.FieldName = 'MehrarbeitDez'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Properties.DisplayFormat = ',0.00;-,0.00'
           OnCustomDrawCell = grdDBTblViewCol_BookingMehrarbeitCustomDrawCell
@@ -1149,7 +1127,6 @@ object frm_ZE: Tfrm_ZE
         end
         object grdDBTblView_BookingBuchungsart: TcxGridDBColumn
           DataBinding.FieldName = 'Buchungsart'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxImageComboBoxProperties'
           Properties.Alignment.Horz = taLeftJustify
           Properties.Items = <
@@ -1170,7 +1147,6 @@ object frm_ZE: Tfrm_ZE
         end
         object grdDBTblViewCol_BookingFeiertag: TcxGridDBColumn
           DataBinding.FieldName = 'Feiertag'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxImageComboBoxProperties'
           Properties.Alignment.Horz = taLeftJustify
           Properties.Items = <
@@ -1191,7 +1167,6 @@ object frm_ZE: Tfrm_ZE
         end
         object grdDBTblViewCol_BookingFehltag: TcxGridDBColumn
           DataBinding.FieldName = 'Fehltag'
-          DataBinding.IsNullValueType = True
           OnCustomDrawCell = grdDBTblView_BookingColumn2CustomDrawCell
           Width = 60
         end
@@ -1373,8 +1348,6 @@ object frm_ZE: Tfrm_ZE
       LockedStateImageOptions.Effect = lsieDark
       LookAndFeel.ScrollbarMode = sbmDefault
       object grdDBTblView_Suche: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
-        ScrollbarAnnotations.CustomAnnotations = <>
         OnCellDblClick = grdDBTblView_SucheCellDblClick
         DataController.DataSource = ds_Kontakte
         DataController.Filter.Options = [fcoCaseInsensitive]
@@ -1382,7 +1355,6 @@ object frm_ZE: Tfrm_ZE
         DataController.Filter.UnderscoreWildcard = '?'
         DataController.KeyFieldNames = 'ID'
         DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-        DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
             Kind = skCount
@@ -1849,7 +1821,6 @@ object frm_ZE: Tfrm_ZE
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 256
     Top = 226
@@ -1984,6 +1955,10 @@ object frm_ZE: Tfrm_ZE
         item
           Visible = True
           ItemName = 'btn_DataNew'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_ImportPDF'
         end
         item
           Visible = True
@@ -2153,7 +2128,7 @@ object frm_ZE: Tfrm_ZE
     object tb_fehltage: TdxBar
       Caption = 'Fehltage'
       CaptionButtons = <>
-      DockedLeft = 1064
+      DockedLeft = 1078
       DockedTop = 0
       FloatLeft = 1028
       FloatTop = 2
@@ -2893,6 +2868,52 @@ object frm_ZE: Tfrm_ZE
       Hint = 'New Button'
       Visible = ivAlways
       LargeImageIndex = 8
+    end
+    object btn_ImportPDF: TdxBarLargeButton
+      Caption = 'Buchungen importieren'
+      Category = 0
+      Hint = 'Buchungen importieren'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C61636B7B66696C6C3A233732373237
+        323B7D262331333B262331303B2623393B2E5265647B66696C6C3A2344313143
+        31433B7D3C2F7374796C653E0D0A3C7061746820636C6173733D22426C61636B
+        2220643D224D382C3468313876366832563363302D302E352D302E352D312D31
+        2D31483743362E352C322C362C322E352C362C337637683256347A222F3E0D0A
+        3C7061746820636C6173733D22426C61636B2220643D224D32362C3238483856
+        3136483676313363302C302E352C302E352C312C312C3168323063302E352C30
+        2C312D302E352C312D31563136682D325632387A222F3E0D0A3C706174682063
+        6C6173733D225265642220643D224D31302E332C31312E3648392E3656313468
+        302E3663302E392C302C312E332D302E342C312E332D312E324331312E352C31
+        322C31312E312C31312E362C31302E332C31312E367A222F3E0D0A3C70617468
+        20636C6173733D225265642220643D224D31362E372C31312E37682D302E3876
+        342E3968302E3863302E372C302C312E332D302E322C312E362D302E3773302E
+        362D312E312C302E362D312E38732D302E322D312E332D302E362D312E374331
+        382C31312E392C31372E342C31312E372C31362E372C31312E377A2020262339
+        3B222F3E0D0A3C7061746820636C6173733D225265642220643D224D32392C38
+        483543342E342C382C342C382E342C342C3976313063302C302E362C302E342C
+        312C312C3168323463302E362C302C312D302E342C312D3156394333302C382E
+        342C32392E362C382C32392C387A204D31322E352C31342E3620202623393B63
+        2D302E352C302E352D312E322C302E372D322E312C302E3748392E3656313848
+        38762D372E3768322E3563312E382C302C322E372C302E382C322E372C322E35
+        4331332E322C31332E352C31332C31342E322C31322E352C31342E367A204D31
+        392E362C31362E3920202623393B4331382E392C31372E362C31382C31382C31
+        362E382C3138682D322E35762D372E3768322E3563322E352C302C332E382C31
+        2E332C332E382C332E384332302E372C31352E332C32302E332C31362E322C31
+        392E362C31362E397A204D32362C31312E37682D322E3576312E3968322E3356
+        3135682D322E33763320202623393B682D312E36762D372E374832365631312E
+        377A222F3E0D0A3C2F7376673E0D0A}
+      OnClick = btn_ImportPDFClick
     end
     object ppmbtn_ViewTag: TdxBarButton
       Tag = 1

@@ -4,7 +4,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
   AlphaBlend = True
   Caption = 's'
   ClientHeight = 749
-  ClientWidth = 1262
+  ClientWidth = 610
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -35,7 +35,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-    ExplicitLeft = -1
+    ExplicitHeight = 702
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -267,11 +267,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
     ExplicitWidth = 1056
     ExplicitHeight = 702
     Height = 719
-    Width = 1062
+    Width = 410
     object pc_main: TcxPageControl
       Left = 2
       Top = 2
-      Width = 1058
+      Width = 406
       Height = 715
       Margins.Left = 0
       Margins.Top = 0
@@ -291,7 +291,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
       ExplicitWidth = 1052
       ExplicitHeight = 698
       ClientRectBottom = 715
-      ClientRectRight = 1058
+      ClientRectRight = 406
       ClientRectTop = 21
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
@@ -301,7 +301,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
-          Width = 1058
+          Width = 406
           Height = 694
           Align = alClient
           TabOrder = 0
@@ -344,12 +344,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             TabOrder = 3
             Visible = False
             object cxGrid1DBTableView1: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              ScrollbarAnnotations.CustomAnnotations = <>
               DataController.DataSource = dm_PCM.ds_FT
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <>
-              DataController.Summary.SummaryGroups = <>
               OptionsData.CancelOnExit = False
               OptionsData.Deleting = False
               OptionsData.DeletingConfirmation = False
@@ -361,12 +356,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
               OptionsView.IndicatorWidth = 16
               object cxGrid1DBTableView1Datum: TcxGridDBColumn
                 DataBinding.FieldName = 'Datum'
-                DataBinding.IsNullValueType = True
                 Width = 100
               end
               object cxGrid1DBTableView1Bezeichnung: TcxGridDBColumn
                 DataBinding.FieldName = 'Bezeichnung'
-                DataBinding.IsNullValueType = True
                 Width = 500
               end
             end
@@ -410,12 +403,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             TabOrder = 1
             Visible = False
             object cxGrid2DBTableView1: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              ScrollbarAnnotations.CustomAnnotations = <>
               DataController.DataSource = dm_PCM.ds_Fehltag
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <>
-              DataController.Summary.SummaryGroups = <>
               OptionsData.CancelOnExit = False
               OptionsData.Deleting = False
               OptionsData.DeletingConfirmation = False
@@ -428,22 +416,18 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object cxGrid2DBTableView1Kuerzel: TcxGridDBColumn
                 Caption = 'K'#252'rzel'
                 DataBinding.FieldName = 'Kuerzel'
-                DataBinding.IsNullValueType = True
                 Width = 60
               end
               object cxGrid2DBTableView1Beschreibung: TcxGridDBColumn
                 DataBinding.FieldName = 'Beschreibung'
-                DataBinding.IsNullValueType = True
                 Width = 200
               end
               object cxGrid2DBTableView1Von: TcxGridDBColumn
                 DataBinding.FieldName = 'Von'
-                DataBinding.IsNullValueType = True
                 Width = 100
               end
               object cxGrid2DBTableView1Bis: TcxGridDBColumn
                 DataBinding.FieldName = 'Bis'
-                DataBinding.IsNullValueType = True
                 Width = 100
               end
             end
@@ -1169,7 +1153,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Top = 104
   end
   object lafCtrl_Main: TcxLookAndFeelController
-    NativeStyle = True
     Left = 88
     Top = 104
   end
@@ -4944,7 +4927,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     MenusShowRecentItemsFirst = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 472
     Top = 192

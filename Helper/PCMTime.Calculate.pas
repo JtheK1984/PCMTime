@@ -60,6 +60,19 @@ uses
 {$EndRegion Uses}
 // Functions
 {$Region Functions}
+function ReadIntegerField(AField: TField): Integer;
+begin
+  try
+    Result := AField.AsInteger;
+  except
+    on E: EConvertError do
+    begin
+      E.Message := Format('Feld %s, Wert "%s": %s',
+        [AField.FieldName, AField.AsString, E.Message]);
+      raise;
+    end;
+  end;
+end;
 function GetBuchungsart(ATyp,AMitarbeiter: integer; AVon,ABis: TDate) : integer;
 var
   qry_BA: TFDQuery;
@@ -77,7 +90,7 @@ begin
   qry_BA.ParamByName('ID').asInteger:= AMitarbeiter;
   qry_BA.Prepare;
   qry_BA.open;
-  Result:= qry_BA.FieldByName('Anzahl').AsInteger;
+  Result:= ReadIntegerField(qry_BA.FieldByName('Anzahl'));
   qry_BA.close;
   qry_BA.UnPrepare;
   qry_BA.free;
@@ -112,7 +125,7 @@ var
 begin
   qry_FT:= TFDQuery.Create(nil);
   qry_FT.Connection:= dm_PCM.con_PCM;
-  qry_FT.SQL.Text:=  'SELECT Sum(Zeb.SollstundenI / zeft.faktor) / (HOUR(zzp.Sollzeit) * 60) + Minute(zzp.Sollzeit) as Anzahl  ' +
+  qry_FT.SQL.Text:=  'SELECT COALESCE(SUM(Zeb.SollstundenI / NULLIF(zeft.Faktor, 0) / NULLIF(HOUR(zzp.Sollzeit) * 60 + MINUTE(zzp.Sollzeit), 0)), 0) AS Anzahl ' +
                      'FROM time_buchungen zeb ' +
                      'LEFT OUTER JOIN time_buchung zeb1 ON zeb1.ID = zeb.ID_Buchung ' +
                      'LEFT OUTER JOIN time_zeitplan zzp ON zzp.id = zeb1.ID_Tagesplan ' +
@@ -186,7 +199,7 @@ begin
   qry_MA.ParamByName('Monat').AsInteger:= AMonat;
   qry_MA.Prepare;
   qry_MA.open;
-  result:= qry_MA.FieldByName('aktuelleMehrarbeit').AsInteger;
+  result:= ReadIntegerField(qry_MA.FieldByName('aktuelleMehrarbeit'));
   qry_MA.close;
   qry_MA.UnPrepare;
   qry_MA.free;
@@ -242,19 +255,12 @@ begin
 end;
 function GetTimeValue(AValue: integer) : String;
 var
-  iHour,iMin: integer;
-  sHour,sMin: String;
+  iMinutes: Int64;
 begin
-  iHour:= AValue div 60;
-  iMin:= AValue mod 60;
-  sHour:= IntToStr(iHour);
-  if iMin < 10 then
-    sMin:= '0' + IntToStr(iMin)
-  else
-    sMin:= IntToStr(iMin);
-  if Length(sHour) = 1 then
-    sHour:= '0' + sHour;
-  result:= sHour + ':' + sMin
+  iMinutes := Abs(Int64(AValue));
+  Result := Format('%.2d:%.2d', [iMinutes div 60, iMinutes mod 60]);
+  if AValue < 0 then
+    Result := '-' + Result;
 end;
 function GetULAnspruch(AMitarbeiter: Integer): double;
 var
@@ -293,7 +299,7 @@ begin
   dm_pcm.qry_Work1.ParamByName('ID').AsInteger:= AMitarbeiter;
   dm_pcm.qry_Work1.Open;
   var fOffsetResturlaub:= dm_pcm.qry_Work1.FieldByName('OffsetResturlaub').AsFloat;
-  var iOffsetResturlaubJahr:= dm_pcm.qry_Work1.FieldByName('OffsetResturlaubJahr').AsInteger;
+  var iOffsetResturlaubJahr:= ReadIntegerField(dm_pcm.qry_Work1.FieldByName('OffsetResturlaubJahr'));
   dm_pcm.qry_Work1.Close;
   if (iOffsetResturlaubJahr = AJahr) and (AMonat = 12) then
   begin
@@ -351,10 +357,10 @@ begin
   dm_PCM.qry_work.SQL.Text:= 'Select ColFontWork,ColCalWork,ColFontBreak,ColCalBreak From time_user Where ID = :ID';
   dm_PCM.qry_work.ParamByName('ID').AsInteger:= AMitarbeiter;
   dm_PCM.qry_work.open;
-  iWorkFontCol:= dm_PCM.qry_work.FieldByName('ColFontWork').AsInteger;
-  iWorkCalCol:= dm_PCM.qry_work.FieldByName('ColCalWork').AsInteger;
-  iBreakFontCol:= dm_PCM.qry_work.FieldByName('ColFontBreak').AsInteger;
-  iBreakCalCol:= dm_PCM.qry_work.FieldByName('ColCalBreak').AsInteger;
+  iWorkFontCol:= ReadIntegerField(dm_PCM.qry_work.FieldByName('ColFontWork'));
+  iWorkCalCol:= ReadIntegerField(dm_PCM.qry_work.FieldByName('ColCalWork'));
+  iBreakFontCol:= ReadIntegerField(dm_PCM.qry_work.FieldByName('ColFontBreak'));
+  iBreakCalCol:= ReadIntegerField(dm_PCM.qry_work.FieldByName('ColCalBreak'));
   dm_PCM.qry_work.close;
 
   if ATag > 0 then
@@ -402,22 +408,22 @@ begin
     if dm_pcm.qry_Calc.FieldByName('Datum').asDateTime < Date then
     begin
       iSollstunden:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
-      if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
+      if ((ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Bezahlt')) = 1) and  (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Faktor')) = 1))  then
       begin
         iFehltag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
-        if dm_pcm.qry_Calc.FieldByName('SollAbziehen').AsInteger = 1 then
+        if ReadIntegerField(dm_pcm.qry_Calc.FieldByName('SollAbziehen')) = 1 then
           iFehltag:= 0;
 
       end;
 
-      if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 0) and  (dm_pcm.qry_Calc.FieldByName('SollAbziehen').AsInteger = 1))  then
+      if ((ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Bezahlt')) = 0) and  (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('SollAbziehen')) = 1))  then
         iSollstunden:= 0;
 
-      if  ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 2)) then
+      if  ((ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Bezahlt')) = 1) and  (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Faktor')) = 2)) then
         iFehltag:= Round(MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
-      if (dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger = 2) then
+      if (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Feiertag')) = 2) then
         iFeiertag:= Round(MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
-      if (dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger = 1) then
+      if (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Feiertag')) = 1) then
         iFeiertag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
       if (iFeiertag = iFehltag) and (iFeiertag = 480) then
         iFehltag := 0;
@@ -430,30 +436,30 @@ begin
       begin
         iSollstunden:= MinutesBetween(dm_PCM.qry_Calc.FieldByName('Sollstunden').AsDateTime,StrToTime('00:00'));
         // Bezahlte Abwesenheit ganzer Tag
-        if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
+        if ((ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Bezahlt')) = 1) and  (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Faktor')) = 1))  then
           iFehltag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
         // Bezahlte Abwesenheit halber Tag
-        if  ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 2)) then
+        if  ((ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Bezahlt')) = 1) and  (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Faktor')) = 2)) then
           iFehltag:= Round(MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
-        if (dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger = 2) then
+        if (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Feiertag')) = 2) then
           iFeiertag:= Round(MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
-        if (dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger = 1) then
+        if (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Feiertag')) = 1) then
           iFeiertag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
         if (iFeiertag = iFehltag) and (iFeiertag = 480) then
           iFehltag := 0;
       end;
-      if (dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger > 0 ) or ((dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger > 0 ) and (dm_pcm.qry_Calc.FieldByName('Sollstunden').AsDateTime <> StrToTime('00:00:00'))) then
+      if (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Bezahlt')) > 0 ) or ((ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Feiertag')) > 0 ) and (dm_pcm.qry_Calc.FieldByName('Sollstunden').AsDateTime <> StrToTime('00:00:00'))) then
       begin
         iSollstunden:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
         // Bezahlte Abwesenheit ganzer Tag
-        if ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 1))  then
+        if ((ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Bezahlt')) = 1) and  (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Faktor')) = 1))  then
           iFehltag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
         // Bezahlte Abwesenheit halber Tag
-        if  ((dm_pcm.qry_Calc.FieldByName('Bezahlt').AsInteger = 1) and  (dm_pcm.qry_Calc.FieldByName('Faktor').AsInteger = 2)) then
+        if  ((ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Bezahlt')) = 1) and  (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Faktor')) = 2)) then
           iFehltag:= Round(MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
-        if (dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger = 2) then
+        if (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Feiertag')) = 2) then
           iFeiertag:= Round(MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00')) / 2);
-        if (dm_pcm.qry_Calc.FieldByName('Feiertag').AsInteger = 1) then
+        if (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Feiertag')) = 1) then
           iFeiertag:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
         if (iFeiertag = iFehltag) and (iFeiertag = 480) then
           iFehltag := 0;
@@ -499,7 +505,7 @@ begin
                               'Where Datum = :Datum and ID_Benutzer =:ID';
     dm_pcm.qry_Work2.ParamByname('SollstundenI').AsInteger:= iSollstunden; //MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
     dm_pcm.qry_Work2.ParamByname('ArbeitszeitI').AsInteger:= iArbeitszeit - iPause1 - iPause2 + iFehltag + iFeiertag;
-    dm_pcm.qry_Work2.ParamByname('Arbeitszeit').AsTime:= StrToTime(GetTimeValue(iArbeitszeit - iPause1 - iPause2 + iFehltag + iFeiertag));
+    dm_pcm.qry_Work2.ParamByname('Arbeitszeit').AsString:= GetTimeValue(iArbeitszeit - iPause1 - iPause2 + iFehltag + iFeiertag);
     dm_pcm.qry_Work2.ParamByname('MehrarbeitI').AsInteger:= iMehrarbeit;
     if iMehrarbeit < 0  then
       dm_pcm.qry_Work2.ParamByname('Mehrarbeit').asString:= '-' + GetTimeValue(iMehrarbeit *-1)
@@ -587,8 +593,8 @@ begin
       dm_PCM.qry_Work.ParamByName('Kuerzel').asString:= sFehltag;
       dm_PCM.qry_Work.open;
       var sFehltagDesc:= dm_PCM.qry_Work.Fieldbyname('Beschreibung').asString;
-      var iCol:= dm_PCM.qry_Work.Fieldbyname('Color').AsInteger;
-      var iColFont:= dm_PCM.qry_Work.Fieldbyname('ColorFont').AsInteger;
+      var iCol:= ReadIntegerField(dm_PCM.qry_Work.Fieldbyname('Color'));
+      var iColFont:= ReadIntegerField(dm_PCM.qry_Work.Fieldbyname('ColorFont'));
       dm_PCM.qry_Work.Close;
       if sFehltagDesc <> '' then
       begin
@@ -641,7 +647,7 @@ begin
     dm_pcm.qry_Work1.ParamByName('ID').AsInteger:= AMitarbeiter;
     dm_pcm.qry_Work1.Open;
     fOffsetResturlaub:= dm_pcm.qry_Work1.FieldByName('OffsetResturlaub').AsFloat;
-    iOffsetResturlaubJahr:= dm_pcm.qry_Work1.FieldByName('OffsetResturlaubJahr').AsInteger;
+    iOffsetResturlaubJahr:= ReadIntegerField(dm_pcm.qry_Work1.FieldByName('OffsetResturlaubJahr'));
     dm_pcm.qry_Work1.Close;
     fResturlaub:= GetULVorMonat(AMitarbeiter,iVJahr,iVMonat);
     if (iOffsetResturlaubJahr = iVJahr) and (iVMonat = 12) then
@@ -661,16 +667,16 @@ begin
     dm_pcm.qry_Work1.ParamByName('jahr').AsInteger:= Ajahr;
     dm_pcm.qry_Work1.ParamByName('ID').AsInteger:= AMitarbeiter;
     dm_pcm.qry_Work1.Open;
-    iSollzeit:= dm_pcm.qry_Work1.FieldByName('Sollstunden').AsInteger;
-    iIStzeit:= dm_pcm.qry_Work1.FieldByName('Arbeitszeit').AsInteger;
-    iMehrarbeit:= dm_pcm.qry_Work1.FieldByName('Mehrarbeit').AsInteger;
-    iPausen:= dm_pcm.qry_Work1.FieldByName('Pausen').AsInteger;
-    iFeiertag:= dm_pcm.qry_Work1.FieldByName('Feiertag').AsInteger;
+    iSollzeit:= ReadIntegerField(dm_pcm.qry_Work1.FieldByName('Sollstunden'));
+    iIStzeit:= ReadIntegerField(dm_pcm.qry_Work1.FieldByName('Arbeitszeit'));
+    iMehrarbeit:= ReadIntegerField(dm_pcm.qry_Work1.FieldByName('Mehrarbeit'));
+    iPausen:= ReadIntegerField(dm_pcm.qry_Work1.FieldByName('Pausen'));
+    iFeiertag:= ReadIntegerField(dm_pcm.qry_Work1.FieldByName('Feiertag'));
     dm_pcm.qry_Work1.Close;
     iUrlaub_bezahlt:= GetFehltagSum(1,1,1,AMitarbeiter,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
-    iUrlaub_unbezahlt:= GetFehltagSum(1,1,2,AMitarbeiter,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
+    iUrlaub_unbezahlt:= GetFehltagSum(1,1,0,AMitarbeiter,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
     iKrank_bezahlt:= GetFehltagSum(1,2,1,AMitarbeiter,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
-    iKrank_unbezahlt:= GetFehltagSum(1,2,2,AMitarbeiter,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
+    iKrank_unbezahlt:= GetFehltagSum(1,2,0,AMitarbeiter,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
     dm_pcm.qry_Work1.close;
     if AMonat = 1 then
       fULges:=  fResturlaub - fULgen + fJahresAnspruch
@@ -681,61 +687,55 @@ begin
 end;
 procedure BerechneMonate(AMitarbeiter: integer);
 var
-  fResturlaub: double;
-  fULgen: double;
-  fULges: double;
-  iaktGLZ: integer;
-  iBJahr: integer;
-  iBMonat: integer;
-  iFeiertag: integer;
-  iIStzeit: integer;
-  iJahresAnspruch: double;
-  iKrank_bezahlt: integer;
-  iKrank_unbezahlt: integer;
-  iMehrarbeit: integer;
-  iMonthCount: integer;
-  iPausen: integer;
-  iSollzeit: integer;
-  iUrlaub_bezahlt: integer;
-  iUrlaub_unbezahlt: integer;
   qry_Month: TFDQuery;
-  wJahr: Word;
-  wMonat: Word;
-  wTag: Word;
+  iBMonat, iBJahr, iMonthCount, i: Integer;
 begin
-  DecodeDate(Date,wJahr,wMonat,wTag);
-  qry_Month:= TFDQuery.Create(nil);
-  qry_Month.Connection:= dm_PCM.con_PCM;
-  qry_Month.SQL.Text:= 'SELECT MONTH(Datum) AS Monat,YEAR(Datum) AS Jahr FROM time_buchungen WHERE Abgeschlossen IS NULL and ID_Benutzer = :ID ' +
-                             'GROUP BY MONTH(Datum),YEAR(Datum)' +
-                             'Order by Year(Datum),MONTH(Datum)';
-  qry_Month.ParamByName('ID').AsInteger:= AMitarbeiter;
-  qry_Month.Prepare;
-  qry_Month.open;
-  iMonthCount:= qry_Month.RecordCount;
-  ShowWaitForm(TForm(frm_PCM_Main), PWideChar(rs_Function_Helper_BerechneMonate1),iMonthCount ,417, 65);
-  for var i := 1 to qry_Month.RecordCount do
-  begin
-    iBMonat:= qry_Month.FieldByName('Monat').AsInteger;
-    iBJahr:= qry_Month.FieldByName('jahr').AsInteger;
-    WaitFormSetText(rs_Function_Helper_BerechneMonatfuerMonat + GetMonthName(iBMonat) + rs_Function_Helper_BerechneYearEnd + IntToStr(iBJahr));
-    WaitFormSetNewCount(iMonthCount);
-    WaitFormPosition(i+1);
-    var iVMonat := iBMonat -1;
-    var iVJahr:= iBjahr;
-    if iVMonat = 0 then
-    begin
-      iVMonat := 12;
-      iVJahr:= iBjahr-1;
+  qry_Month := TFDQuery.Create(nil);
+  try
+    qry_Month.Connection := dm_PCM.con_PCM;
+    qry_Month.SQL.Text :=
+      'SELECT MONTH(Datum) AS Monat, YEAR(Datum) AS Jahr ' +
+      'FROM time_buchungen WHERE Abgeschlossen IS NULL AND ID_Benutzer = :ID ' +
+      'GROUP BY MONTH(Datum), YEAR(Datum) ' +
+      'ORDER BY YEAR(Datum), MONTH(Datum)';
+    qry_Month.ParamByName('ID').AsInteger := AMitarbeiter;
+    qry_Month.Open;
+    qry_Month.FetchAll;
+    iMonthCount := qry_Month.RecordCount;
+    if iMonthCount = 0 then
+      Exit;
+    try
+      ShowWaitForm(TForm(frm_PCM_Main), PWideChar(rs_Function_Helper_BerechneMonate1), iMonthCount, 417, 65);
+      i := 0;
+      while not qry_Month.Eof do
+      begin
+        iBMonat := ReadIntegerField(qry_Month.FieldByName('Monat'));
+        iBJahr := ReadIntegerField(qry_Month.FieldByName('Jahr'));
+        try
+          WaitFormSetText(rs_Function_Helper_BerechneMonatfuerMonat +
+            GetMonthName(iBMonat) + rs_Function_Helper_BerechneYearEnd + IntToStr(iBJahr));
+          BerechneTage(0, iBMonat, iBJahr, AMitarbeiter);
+          BerechneMonat(iBMonat, iBJahr, AMitarbeiter);
+        except
+          on E: Exception do
+          begin
+            E.Message := Format('Monatsberechnung %d/%.2d (Mitarbeiter %d): %s',
+              [iBJahr, iBMonat, AMitarbeiter, E.Message]);
+            raise;
+          end;
+        end;
+        Inc(i);
+        WaitFormSetNewCount(iMonthCount);
+        WaitFormPosition(i);
+        qry_Month.Next;
+      end;
+    finally
+      dm_PCM.qry_Calc.Close;
+      CloseWaitForm;
     end;
-    BerechneTage(0,iBMonat,iBJahr,AMitarbeiter);
-    BerechneMonat(iBMonat,iBJahr,AMitarbeiter);
-    qry_Month.Next;
+  finally
+    qry_Month.Free;
   end;
-  CloseWaitForm;
-  qry_Month.UnPrepare;
-  qry_Month.close;
-  qry_Month.Free;
 end;
 procedure StartBooking(AMitarbeiter: integer; ACaption,AMessage,ALocation: String;AStart,AFinish: TDateTime; ACalCol,AFontCol: integer);
 begin
@@ -754,7 +754,7 @@ begin
   dm_PCM.qry_Work.ParamByName('RecurrenceInfo').AsString := '';
   dm_PCM.qry_Work.ParamByName('Kalender').AsString := 'Buchungen';
   dm_PCM.qry_Work.ParamByName('ganzerTag').AsString := 'false';
-  dm_PCM.qry_Work.ParamByName('ID').asInteger := dm_PCM.iIDZEPCM;
+  dm_PCM.qry_Work.ParamByName('ID').asInteger := AMitarbeiter;
   dm_PCM.qry_Work.ParamByName('SUMMARY').AsString := ACaption;
   dm_PCM.qry_Work.ParamByName('DateBegin').AsDateTime := AStart;
   dm_PCM.qry_Work.ParamByName('DateEnd').AsDateTime := AFinish;
@@ -772,7 +772,7 @@ begin
   dm_pcm.qry_Calc.ParamByName('jahr').AsInteger:= AJahr;
   dm_pcm.qry_Calc.ParamByName('ID').AsInteger:= AMitarbeiter;
   dm_pcm.qry_Calc.open;
-  iAnzahl:= dm_pcm.qry_Calc.FieldByName('Anzahl').AsInteger;
+  iAnzahl:= ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Anzahl'));
   dm_pcm.qry_Calc.Close;
   if iAnzahl > 0 then
   begin
