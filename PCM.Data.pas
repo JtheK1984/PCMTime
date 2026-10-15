@@ -92,6 +92,8 @@ type
     ds_Abw: TDataSource;
     qry_Fehltag: TFDQuery;
     ds_Fehltag: TDataSource;
+    qry_Fehler: TFDQuery;
+    ds_Fehler: TDataSource;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

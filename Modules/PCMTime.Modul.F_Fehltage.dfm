@@ -23,7 +23,6 @@ object frm_Fehltage: Tfrm_Fehltage
     Align = alClient
     TabOrder = 0
     AutoSize = True
-    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object brdckCtrl_Fehltage: TdxBarDockControl
       Left = 12
       Top = 12
@@ -33,10 +32,10 @@ object frm_Fehltage: Tfrm_Fehltage
       BarManager = brmgr_Fehltage
     end
     object grd_Fehltage: TcxGrid
-      Left = 22
-      Top = 184
-      Width = 1156
-      Height = 494
+      Left = 26
+      Top = 188
+      Width = 1148
+      Height = 486
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -48,14 +47,11 @@ object frm_Fehltage: Tfrm_Fehltage
       TabStop = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Fehltage: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
         FilterBox.CustomizeDialog = False
-        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = ds_FT
         DataController.Filter.PercentWildcard = '*'
         DataController.Filter.UnderscoreWildcard = '?'
         DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-        DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
             Kind = skCount
@@ -181,29 +177,29 @@ object frm_Fehltage: Tfrm_Fehltage
     end
     object edt_FehltageKuerzel: TcxDBTextEdit
       AlignWithMargins = True
-      Left = 107
-      Top = 94
+      Left = 111
+      Top = 98
       DataBinding.DataField = 'Kuerzel'
       DataBinding.DataSource = ds_FT
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 490
+      Width = 486
     end
     object edt_FehltageDesc: TcxDBTextEdit
       AlignWithMargins = True
       Left = 689
-      Top = 94
+      Top = 98
       DataBinding.DataField = 'Beschreibung'
       DataBinding.DataSource = ds_FT
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 489
+      Width = 485
     end
     object imgcmbbx_FehltageSoll: TcxDBImageComboBox
       Left = 689
-      Top = 124
+      Top = 128
       DataBinding.DataField = 'Bezahlt'
       DataBinding.DataSource = ds_FT
       Properties.Items = <
@@ -219,11 +215,11 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 5
-      Width = 198
+      Width = 196
     end
     object imgcmbbx_FehltageGutschrift: TcxDBImageComboBox
-      Left = 398
-      Top = 124
+      Left = 400
+      Top = 128
       DataBinding.DataField = 'Faktor'
       DataBinding.DataSource = ds_FT
       Properties.Alignment.Horz = taLeftJustify
@@ -244,11 +240,11 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
-      Width = 199
+      Width = 197
     end
     object imgcmbbx_FehltageTyp: TcxDBImageComboBox
-      Left = 107
-      Top = 124
+      Left = 111
+      Top = 128
       DataBinding.DataField = 'Typ'
       DataBinding.DataSource = ds_FT
       Properties.Alignment.Horz = taLeftJustify
@@ -277,11 +273,11 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Width = 199
+      Width = 197
     end
     object colcmbbx_FehltageFarbeFehltag: TcxDBColorComboBox
-      Left = 107
-      Top = 154
+      Left = 111
+      Top = 158
       DataBinding.DataField = 'Color'
       DataBinding.DataSource = ds_FT
       Properties.AllowSelectColor = True
@@ -292,11 +288,11 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 7
-      Width = 490
+      Width = 486
     end
     object colcmbbx_FehltageFarbeFont: TcxDBColorComboBox
       Left = 689
-      Top = 154
+      Top = 158
       DataBinding.DataField = 'ColorFont'
       DataBinding.DataSource = ds_FT
       Properties.AllowSelectColor = True
@@ -306,11 +302,11 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 8
-      Width = 489
+      Width = 485
     end
     object imgcmbbx_FehltageSollAbzug: TcxDBImageComboBox
-      Left = 979
-      Top = 124
+      Left = 977
+      Top = 128
       DataBinding.DataField = 'SollAbziehen'
       DataBinding.DataSource = ds_FT
       Properties.Items = <
@@ -326,7 +322,7 @@ object frm_Fehltage: Tfrm_Fehltage
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 6
-      Width = 199
+      Width = 197
     end
     object lagrp_FehltageRoot: TdxLayoutGroup
       AlignHorz = ahClient
@@ -549,7 +545,6 @@ object frm_Fehltage: Tfrm_Fehltage
     ImageOptions.LargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 400
     Top = 313

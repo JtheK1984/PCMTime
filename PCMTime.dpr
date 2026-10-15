@@ -25,6 +25,8 @@ uses
   PCMTime.Modul.K_Monatswerte in 'Modules\PCMTime.Modul.K_Monatswerte.pas' {frm_monatswerte},
   PCMTime.Modul.J_Zeiterfassung in 'Modules\PCMTime.Modul.J_Zeiterfassung.pas' {frm_ZE},
   PCMTime.Modul.J_Zeiterfassung.Filter.Date in 'Modules\PCMTime.Modul.J_Zeiterfassung.Filter.Date.pas' {frm_PCManagerChooseDate},
+  PCMTime.BookingValidation in 'Helper\PCMTime.BookingValidation.pas',
+  PCMTime.Modul.M_Error in 'Modules\PCMTime.Modul.M_Error.pas' {frm_Buchungsfehler},
   PCMTime.Calculate in 'Helper\PCMTime.Calculate.pas',
   PCMTime.Import.HRWorks in 'Helper\PCMTime.Import.HRWorks.pas',
   PCMTime.Import.PDF in 'Helper\PCMTime.Import.PDF.pas',
@@ -36,6 +38,7 @@ uses
   PCMTime.dxSettings in 'PCMTime.dxSettings.pas',
   PCM.Time.Strings in 'Modules\PCM.Time.Strings.pas',
   PCMTime.Modul.L_Reporting in 'Modules\PCMTime.Modul.L_Reporting.pas' {frm_Reports},
+  PCMTime.Modul.B_Config in 'Modules\PCMTime.Modul.B_Config.pas' {frm_Config},
   PCMTime.Modul.C_Company in 'Modules\PCMTime.Modul.C_Company.pas' {frm_Firma},
   PCMTime.Modul.D_Department in 'Modules\PCMTime.Modul.D_Department.pas' {Form1},
   PCMTIme.Modul.H_Zeitpläne in 'Modules\PCMTIme.Modul.H_Zeitpläne.pas' {frm_Zeitplan};
