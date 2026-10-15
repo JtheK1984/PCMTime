@@ -127,6 +127,7 @@ implementation
 uses
   {$Region Uses}
   PCMTime.Calculate,
+  PCMTime.Modul.I_Fehltage.Edit,
   PCM.Data,
   PCm.Helper,
   PCM.Time.Strings,
@@ -231,6 +232,8 @@ begin
   if frm_ZE.qry_Buchungen.State in [dsInsert, dsEdit] then
   begin
     frm_ZE.qry_Buchungen.post;
+    if lucmbbx_Fehltag.Enabled then
+      RegisterBookingFehltag(frm_ZE.qry_Buchungen.FieldByName('ID').AsInteger, dm_PCM.iIDZEPCM);
     iFehltag:= 0;
     iFeiertag:= 0;
     iSollstunden:= MinutesBetween(frm_ZE.qry_Buchungen.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));

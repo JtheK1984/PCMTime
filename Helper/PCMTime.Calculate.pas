@@ -638,9 +638,9 @@ begin
       BookingDay.Pause1Ende := BookingMinute(dm_pcm.qry_Calc.FieldByName('Pause1Ende'));
       BookingDay.Pause2Beginn := BookingMinute(dm_pcm.qry_Calc.FieldByName('Pause2Beginn'));
       BookingDay.Pause2Ende := BookingMinute(dm_pcm.qry_Calc.FieldByName('Pause2Ende'));
-      BookingDay.ExpectedWork := (iSollstunden > 0) and
-        (dm_pcm.qry_Calc.FieldByName('Fehltag').AsString = '') and
-        (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Feiertag')) = 0);
+      BookingDay.ExpectedWork := IsExpectedWorkday(iSollstunden,
+        dm_pcm.qry_Calc.FieldByName('Fehltag').AsString,
+        ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Feiertag')));
       BookingMessages := ValidateBooking(BookingDay, Checks);
     end;
     SaveBookingMessages(AMitarbeiter,

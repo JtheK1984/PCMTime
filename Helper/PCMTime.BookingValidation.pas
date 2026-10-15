@@ -14,12 +14,17 @@ type
     BookingDate: TDateTime;
   end;
 
+function IsExpectedWorkday(SollMinutes: Integer; const Absence: string; Holiday: Integer): Boolean;
 function ValidateBooking(const Day: TBookingDay; const Checks: TBookingChecks): string;
 
 implementation
 
 uses System.SysUtils;
 
+function IsExpectedWorkday(SollMinutes: Integer; const Absence: string; Holiday: Integer): Boolean;
+begin
+  Result := (SollMinutes > 0) and (Trim(Absence) = '') and (Holiday = 0);
+end;
 function ValidateBooking(const Day: TBookingDay; const Checks: TBookingChecks): string;
 var
   Valid: Boolean;

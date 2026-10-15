@@ -438,7 +438,7 @@ type
     iZE: integer;
     procedure SetMonthValues(AVon,ABis: TDate;ABenutzer: integer);
   public
-    function SelectBooking(AEmployee, ABookingID: Integer; ADate: TDate): Boolean;
+    function SelectBooking(AEmployee, ABookingID: Integer; ADate: TDate; AAllowAbsence: Boolean): Boolean;
     { Public-Deklarationen }
   end;
   {$EndRegion Type}
@@ -474,7 +474,7 @@ uses
 
 
 
-function Tfrm_ZE.SelectBooking(AEmployee, ABookingID: Integer; ADate: TDate): Boolean;
+function Tfrm_ZE.SelectBooking(AEmployee, ABookingID: Integer; ADate: TDate; AAllowAbsence: Boolean): Boolean;
 var
   Found: Boolean;
 begin
@@ -510,6 +510,12 @@ begin
     grdDBTblView_Booking.Controller.MakeFocusedRecordVisible;
     grd_Booking.SetFocus;
     Application.CreateForm(Tfrm_Booking, frm_Booking);
+    if AAllowAbsence then
+    begin
+      frm_Booking.itm_103Fehltag.Enabled := True;
+      frm_Booking.lucmbbx_Fehltag.Enabled := True;
+      frm_Booking.lucmbbx_Fehltag.TabStop := True;
+    end;
     frm_Booking.Caption := 'PCM - Manager: ' + qry_Buchungen.FieldByName('Datum').AsString +
       ' - ' + qry_Buchungen.FieldByName('Tag').AsString;
     Result := True;
