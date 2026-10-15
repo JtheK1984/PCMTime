@@ -4,7 +4,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
   AlphaBlend = True
   Caption = 's'
   ClientHeight = 749
-  ClientWidth = 610
+  ClientWidth = 1646
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -43,6 +43,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Links = <
         item
           Item = iBenutzerverwaltung
+        end
+        item
+          Item = iKonfiguration
         end
         item
           Item = iDesign
@@ -88,6 +91,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
         end
         item
           Item = iKalender
+        end
+        item
+          Item = iBuchungsfehler
         end>
     end
     object navbrgrp_Auswertung: TdxNavBarGroup
@@ -246,6 +252,17 @@ object frm_PCM_Main: Tfrm_PCM_Main
       SmallImageIndex = 45
       OnClick = NavBarClick
     end
+    object iKonfiguration: TdxNavBarItem
+      Tag = 2
+      Caption = 'Konfiguration'
+      SmallImageIndex = 1
+      OnClick = NavBarClick
+    end
+    object iBuchungsfehler: TdxNavBarItem
+      Caption = 'Buchungsfehler'
+      SmallImageIndex = 35
+      OnClick = NavBarClick
+    end
     object navbrStyleIt_main: TdxNavBarStyleItem
       Style.BackColor = clGray
       Style.BackColor2 = clBtnFace
@@ -264,14 +281,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitWidth = 404
+    ExplicitWidth = 1440
     ExplicitHeight = 702
     Height = 719
-    Width = 410
+    Width = 1446
     object pc_main: TcxPageControl
       Left = 2
       Top = 2
-      Width = 406
+      Width = 1442
       Height = 715
       Margins.Left = 0
       Margins.Top = 0
@@ -288,25 +305,25 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       Properties.Style = 11
       OnPageChanging = pc_mainPageChanging
-      ExplicitWidth = 400
+      ExplicitWidth = 1436
       ExplicitHeight = 698
       ClientRectBottom = 715
-      ClientRectRight = 406
+      ClientRectRight = 1442
       ClientRectTop = 21
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 12
-        ExplicitWidth = 400
+        ExplicitWidth = 1436
         ExplicitHeight = 677
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
-          Width = 406
+          Width = 1442
           Height = 694
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-          ExplicitWidth = 400
+          ExplicitWidth = 1436
           ExplicitHeight = 677
           object chartctrl_Birthday: TdxChartControl
             Left = 10000
@@ -341,7 +358,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Top = 10000
             Width = 1018
             Height = 400
-            TabOrder = 3
+            TabOrder = 4
             Visible = False
             object cxGrid1DBTableView1: TcxGridDBTableView
               DataController.DataSource = dm_PCM.ds_FT
@@ -400,7 +417,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Top = 10000
             Width = 1018
             Height = 400
-            TabOrder = 1
+            TabOrder = 2
             Visible = False
             object cxGrid2DBTableView1: TcxGridDBTableView
               DataController.DataSource = dm_PCM.ds_Fehltag
@@ -433,6 +450,50 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
             object cxGrid2Level1: TcxGridLevel
               GridView = cxGrid2DBTableView1
+            end
+          end
+          object grd_Booking: TcxGrid
+            Left = 30
+            Top = 188
+            Width = 1365
+            Height = 100
+            TabOrder = 0
+            object grdDBTblView_Booking: TcxGridDBTableView
+              DataController.DataSource = dm_PCM.ds_Fehler
+              OptionsData.CancelOnExit = False
+              OptionsData.Deleting = False
+              OptionsData.DeletingConfirmation = False
+              OptionsData.Editing = False
+              OptionsData.Inserting = False
+              OptionsSelection.CellSelect = False
+              OptionsView.GroupByBox = False
+              OptionsView.HeaderFilterButtonShowMode = fbmButton
+              OptionsView.Indicator = True
+              OptionsView.IndicatorWidth = 16
+              object grdDBTblView_BookingID_Benutzer: TcxGridDBColumn
+                DataBinding.FieldName = 'ID_Benutzer'
+                Visible = False
+                VisibleForCustomization = False
+              end
+              object grdDBTblView_BookingColumn1: TcxGridDBColumn
+                DataBinding.FieldName = 'Name'
+                Width = 400
+              end
+              object grdDBTblView_BookingDatum: TcxGridDBColumn
+                DataBinding.FieldName = 'Datum'
+              end
+              object grdDBTblView_BookingMeldung: TcxGridDBColumn
+                DataBinding.FieldName = 'Meldung'
+                Width = 500
+              end
+              object grdDBTblView_BookingID_Buchung: TcxGridDBColumn
+                DataBinding.FieldName = 'ID_Buchung'
+                Visible = False
+                VisibleForCustomization = False
+              end
+            end
+            object grdLvl_Booking: TcxGridLevel
+              GridView = grdDBTblView_Booking
             end
           end
           object dxLayoutControl1Group_Root: TdxLayoutGroup
@@ -870,7 +931,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lblitm_NextAbs: TdxLayoutLabeledItem
             Parent = dxLayoutGroup15
-            CaptionOptions.Text = 'Label'
+            CaptionOptions.Text = ' - '
             Index = 0
           end
           object lblitm_NextFT: TdxLayoutLabeledItem
@@ -955,10 +1016,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avTop
             CaptionOptions.Text = 'Auswertung'
-            ItemIndex = 1
             LayoutDirection = ldTabbed
             ShowBorder = False
-            Index = 3
+            Index = 4
           end
           object dxLayoutGroup17: TdxLayoutGroup
             Parent = dxLayoutGroup16
@@ -1106,8 +1166,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Index = 1
           end
           object dxLayoutItem5: TdxLayoutItem
+            Parent = dxLayoutGroup20
             CaptionOptions.Text = 'New Item'
-            Index = -1
+            CaptionOptions.Visible = False
+            Control = grd_Booking
+            ControlOptions.OriginalHeight = 100
+            ControlOptions.OriginalWidth = 1157
+            ControlOptions.ShowBorder = False
+            Index = 0
           end
           object dxLayoutLabeledItem10: TdxLayoutLabeledItem
             Parent = dxLayoutGroup8
@@ -1142,6 +1208,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
             CaptionOptions.AlignHorz = taRightJustify
             CaptionOptions.Text = 'Label'
             Index = 4
+          end
+          object dxLayoutGroup20: TdxLayoutGroup
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avTop
+            CaptionOptions.Text = '[B]fehlerhafte Buchungen[/B]'
+            Index = 3
           end
         end
       end

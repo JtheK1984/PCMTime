@@ -43,6 +43,8 @@ uses
   FireDAC.Stan.Option,
   FireDAC.Stan.Param,
   PCM.Data,
+  PCMTime.BookingValidation,
+  PCMTime.Modul.M_Error,
   PCM.Functions.Synch.Wait,
   PCM.Strings,
   PCM.Main,
@@ -330,8 +332,138 @@ end;
 {$EndRegion Functions}
 // Proceduren
 {$Region Procedures}
+function ReadBookingChecks: TBookingChecks;
+var
+  Query: TFDQuery;
+begin
+  Result := Default(TBookingChecks);
+  Query := TFDQuery.Create(nil);
+  try
+    Query.Connection := dm_PCM.con_PCM;
+    Query.Open('SELECT * FROM time_config WHERE ID = 1');
+    if Query.IsEmpty then Exit;
+    Result.MeldungenErzeugen := Query.FieldByName('MeldungenErzeugen').AsInteger = 1;
+    // The master switch is checked before the individual options.
+    if not Result.MeldungenErzeugen then Exit;
+    Result.Pausenpruefung := Query.FieldByName('Pausenpruefung').AsInteger = 1;
+    Result.LogischeBuchungen := Query.FieldByName('LogischeBuchungen').AsInteger = 1;
+    Result.BeginnEndeFehler := Query.FieldByName('BeginnEndeFehler').AsInteger = 1;
+    Result.MaximalArbeitszeit := Query.FieldByName('MaximalArbeitszeit').AsInteger = 1;
+  finally
+    Query.Free;
+  end;
+end;
+
+procedure EnsureBookingMessageTable;
+var
+  Tables: TStringList;
+  Query: TFDQuery;
+begin
+  Tables := TStringList.Create;
+  try
+    dm_PCM.con_PCM.GetTableNames('', '', 'time_meldungen', Tables);
+    if Tables.Count = 0 then
+      dm_PCM.con_PCM.ExecSQL(
+        'CREATE TABLE time_meldungen (' +
+        'ID_Benutzer INTEGER NOT NULL, Datum DATE NOT NULL, ID_Buchung INTEGER, ' +
+        'Meldung VARCHAR(4000) NOT NULL, ' +
+        'PRIMARY KEY (ID_Benutzer, Datum))');
+  finally
+    Tables.Free;
+  end;
+  Query := TFDQuery.Create(nil);
+  try
+    Query.Connection := dm_PCM.con_PCM;
+    Query.Open('SELECT * FROM time_meldungen WHERE 1 = 0');
+    if Query.FindField('ID_Buchung') = nil then
+    begin
+      Query.Close;
+      dm_PCM.con_PCM.ExecSQL('ALTER TABLE time_meldungen ADD ID_Buchung INTEGER');
+      // Backfill only days that identify exactly one booking.
+      dm_PCM.con_PCM.ExecSQL(
+        'UPDATE time_meldungen SET ID_Buchung = ' +
+        '(SELECT MIN(b.ID) FROM time_buchungen b ' +
+        'WHERE b.ID_Benutzer = time_meldungen.ID_Benutzer ' +
+        'AND b.Datum = time_meldungen.Datum HAVING COUNT(*) = 1)');
+    end;
+  finally
+    Query.Free;
+  end;
+end;
+
+procedure SaveBookingMessages(Employee, BookingID: Integer; BookingDate: TDate;
+  const Messages: string);
+var
+  Query: TFDQuery;
+  OwnTransaction: Boolean;
+begin
+  Query := TFDQuery.Create(nil);
+  try
+    Query.Connection := dm_PCM.con_PCM;
+    OwnTransaction := not dm_PCM.con_PCM.InTransaction;
+    if OwnTransaction then dm_PCM.con_PCM.StartTransaction;
+    try
+      if Trim(Messages) = '' then
+      begin
+        Query.SQL.Text := 'DELETE FROM time_meldungen ' +
+          'WHERE ID_Buchung = :Buchung OR (ID_Benutzer = :ID AND Datum = :Datum)';
+        Query.ParamByName('Buchung').AsInteger := BookingID;
+        Query.ParamByName('ID').AsInteger := Employee;
+        Query.ParamByName('Datum').AsDate := BookingDate;
+        Query.ExecSQL;
+      end
+      else
+      begin
+        // Keep one current result per employee/day, including legacy rows
+        // whose booking ID has not yet been populated.
+        Query.SQL.Text := 'SELECT COUNT(*) AS Anzahl FROM time_meldungen ' +
+          'WHERE ID_Benutzer = :ID AND Datum = :Datum';
+        Query.ParamByName('ID').AsInteger := Employee;
+        Query.ParamByName('Datum').AsDate := BookingDate;
+        Query.Open;
+        var Exists := Query.FieldByName('Anzahl').AsInteger > 0;
+        Query.Close;
+        // A booking may have moved to a different date since its last check.
+        Query.SQL.Text := 'DELETE FROM time_meldungen WHERE ID_Buchung = :Buchung ' +
+          'AND (ID_Benutzer <> :ID OR Datum <> :Datum)';
+        Query.ParamByName('Buchung').AsInteger := BookingID;
+        Query.ParamByName('ID').AsInteger := Employee;
+        Query.ParamByName('Datum').AsDate := BookingDate;
+        Query.ExecSQL;
+        if Exists then
+          Query.SQL.Text := 'UPDATE time_meldungen SET ID_Buchung = :Buchung, Meldung = :Meldung ' +
+            'WHERE ID_Benutzer = :ID AND Datum = :Datum'
+        else
+          Query.SQL.Text := 'INSERT INTO time_meldungen (ID_Benutzer, ID_Buchung, Datum, Meldung) ' +
+            'VALUES (:ID, :Buchung, :Datum, :Meldung)';
+        Query.ParamByName('Buchung').AsInteger := BookingID;
+        Query.ParamByName('ID').AsInteger := Employee;
+        Query.ParamByName('Datum').AsDate := BookingDate;
+        Query.ParamByName('Meldung').AsString := Messages;
+        Query.ExecSQL;
+      end;
+      if OwnTransaction then dm_PCM.con_PCM.Commit;
+    except
+      if OwnTransaction then dm_PCM.con_PCM.Rollback;
+      raise;
+    end;
+  finally
+    Query.Free;
+  end;
+end;
+
+function BookingMinute(Field: TField): Integer;
+begin
+  // Existing booking forms use 00:00 for an absent booking.
+  if Field.IsNull or (TimeOf(Field.AsDateTime) = 0) then Exit(-1);
+  Result := HourOf(Field.AsDateTime) * 60 + MinuteOf(Field.AsDateTime);
+end;
+
 procedure BerechneTage(ATag,AMonat,AJahr,AMitarbeiter: integer);
 var
+  Checks: TBookingChecks;
+  BookingDay: TBookingDay;
+  BookingMessages: string;
   dtFinish: TDateTime;
   dtStart: TDateTime;
   iArbeitszeit: integer;
@@ -354,6 +486,8 @@ var
   tPause2Beginn: TTime;
   tPause2Ende: TTime;
 begin
+  Checks := ReadBookingChecks;
+  EnsureBookingMessageTable;
   dm_PCM.qry_work.SQL.Text:= 'Select ColFontWork,ColCalWork,ColFontBreak,ColCalBreak From time_user Where ID = :ID';
   dm_PCM.qry_work.ParamByName('ID').AsInteger:= AMitarbeiter;
   dm_PCM.qry_work.open;
@@ -365,7 +499,7 @@ begin
 
   if ATag > 0 then
   begin
-    dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM time_buchungen ze_B ' +
+    dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_B.ID AS BuchungsID, ze_b.*, ze_FT.* FROM time_buchungen ze_B ' +
                                'LEFT OUTER  JOIN time_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
                                'WHERE ze_B.Datum = :Datum and ID_Benutzer =:ID order by ze_B.Datum';
     dm_pcm.qry_Calc.ParamByName('Datum').AsDate:= EncodeDate(AJahr,AMonat,ATag);
@@ -375,7 +509,7 @@ begin
   else begin
     if AMonat > 0 then
     begin
-      dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM time_buchungen ze_B ' +
+      dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_B.ID AS BuchungsID, ze_b.*, ze_FT.* FROM time_buchungen ze_B ' +
                                  'LEFT OUTER  JOIN time_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
                                  'WHERE MONTH(ze_B.Datum) = :monat and YEAR(ze_B.Datum) = :jahr and abgeschlossen is null and ID_Benutzer =:ID order by ze_B.Datum';
       dm_pcm.qry_Calc.ParamByName('monat').AsInteger:= AMonat;
@@ -384,7 +518,7 @@ begin
       WaitFormSetText(rs_Function_Helper_BerechneMonat + GetMonthName(AMonat) + rs_Function_Helper_BerechneYearEnd + IntToStr(AJahr));
     end
     else begin
-      dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM time_buchungen ze_B ' +
+      dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_B.ID AS BuchungsID, ze_b.*, ze_FT.* FROM time_buchungen ze_B ' +
                                  'LEFT OUTER  JOIN time_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
                                  'WHERE ze_B.Datum >= :Von and ze_B.Datum <= :Bis and abgeschlossen is null and ID_Benutzer =:ID order by ze_B.Datum';
       dm_pcm.qry_Calc.ParamByName('Von').AsDate:= EncodeDate(AJahr,1,1);
@@ -493,6 +627,24 @@ begin
         iPause2:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Pause2Ende').asDateTime,dm_pcm.qry_Calc.FieldByName('Pause2Beginn').asDateTime);
       end;
     end;
+    BookingMessages := '';
+    if Checks.MeldungenErzeugen and
+      (dm_pcm.qry_Calc.FieldByName('Datum').AsDateTime <= Date) then
+    begin
+      BookingDay.Kommen := BookingMinute(dm_pcm.qry_Calc.FieldByName('Kommen'));
+      BookingDay.Gehen := BookingMinute(dm_pcm.qry_Calc.FieldByName('Gehen'));
+      BookingDay.Pause1Beginn := BookingMinute(dm_pcm.qry_Calc.FieldByName('Pause1Beginn'));
+      BookingDay.Pause1Ende := BookingMinute(dm_pcm.qry_Calc.FieldByName('Pause1Ende'));
+      BookingDay.Pause2Beginn := BookingMinute(dm_pcm.qry_Calc.FieldByName('Pause2Beginn'));
+      BookingDay.Pause2Ende := BookingMinute(dm_pcm.qry_Calc.FieldByName('Pause2Ende'));
+      BookingDay.ExpectedWork := (iSollstunden > 0) and
+        (dm_pcm.qry_Calc.FieldByName('Fehltag').AsString = '') and
+        (ReadIntegerField(dm_pcm.qry_Calc.FieldByName('Feiertag')) = 0);
+      BookingMessages := ValidateBooking(BookingDay, Checks);
+    end;
+    SaveBookingMessages(AMitarbeiter,
+      ReadIntegerField(dm_pcm.qry_Calc.FieldByName('BuchungsID')),
+      dm_pcm.qry_Calc.FieldByName('Datum').AsDateTime, BookingMessages);
     iMehrarbeit:= iArbeitszeit - iSollstunden - iPause1 - iPause2 + iFehltag + iFeiertag;
     dm_pcm.qry_Work2.SQL.Text:= 'Update time_buchungen set ' +
                               'SollstundenI = :SollstundenI,' +
@@ -606,6 +758,10 @@ begin
     dm_pcm.qry_Calc.next;
   end;
   dm_pcm.qry_Calc.close;
+  // A removed database message must also disappear from an already open list.
+  for var FormIndex := 0 to Screen.FormCount - 1 do
+    if Screen.Forms[FormIndex] is Tfrm_Buchungsfehler then
+      Tfrm_Buchungsfehler(Screen.Forms[FormIndex]).RefreshMessages;
 //  frm_ZE.qry_Buchungen.refresh;
   if dm_PCm.qry_Kalender_Kalender.Active then
     dm_PCm.qry_Kalender_Kalender.Refresh;

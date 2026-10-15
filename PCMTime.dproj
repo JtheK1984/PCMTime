@@ -208,6 +208,11 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>frm_PCManagerChooseDate</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Helper\PCMTime.BookingValidation.pas"/>
+        <DCCReference Include="Modules\PCMTime.Modul.M_Error.pas">
+            <Form>frm_Buchungsfehler</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="Helper\PCMTime.Calculate.pas"/>
         <DCCReference Include="Helper\PCMTime.Import.HRWorks.pas"/>
         <DCCReference Include="Helper\PCMTime.Import.PDF.pas"/>
@@ -235,6 +240,9 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DCCReference Include="Modules\PCMTime.Modul.L_Reporting.pas">
             <Form>frm_Reports</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMTime.Modul.B_Config.pas">
+            <Form>frm_Config</Form>
         </DCCReference>
         <DCCReference Include="Modules\PCMTime.Modul.C_Company.pas">
             <Form>frm_Firma</Form>

@@ -76,3 +76,9 @@ Modules/*
 /Win64/Release/PCMTime.nds
 /Win64/Release/PCMTime.ntr
 /Win64/Debug/Report_Monatsbericht.html
+
+!Modules/PCM.Modul.B_Config.pas
+!Modules/PCM.Modul.B_Config.dfm
+
+!Modules/PCMTime.Modul.M_Error.pas
+!Modules/PCMTime.Modul.M_Error.dfm
