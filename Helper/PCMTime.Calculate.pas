@@ -631,6 +631,7 @@ begin
     if Checks.MeldungenErzeugen and
       (dm_pcm.qry_Calc.FieldByName('Datum').AsDateTime <= Date) then
     begin
+      BookingDay.BookingDate := dm_pcm.qry_Calc.FieldByName('Datum').AsDateTime;
       BookingDay.Kommen := BookingMinute(dm_pcm.qry_Calc.FieldByName('Kommen'));
       BookingDay.Gehen := BookingMinute(dm_pcm.qry_Calc.FieldByName('Gehen'));
       BookingDay.Pause1Beginn := BookingMinute(dm_pcm.qry_Calc.FieldByName('Pause1Beginn'));
