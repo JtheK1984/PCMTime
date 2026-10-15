@@ -81,6 +81,7 @@ var
   Employee, BookingID: Integer;
   BookingDate: TDate;
   BookingPage: TcxTabSheet;
+  AllowAbsence: Boolean;
 begin
   if (AButton <> mbLeft) or (ACellViewInfo = nil) or
     not qry_Backup.Active or qry_Backup.IsEmpty then Exit;
@@ -93,12 +94,14 @@ begin
   Employee := qry_Backup.FieldByName('ID_Benutzer').AsInteger;
   BookingID := qry_Backup.FieldByName('ID_Buchung').AsInteger;
   BookingDate := qry_Backup.FieldByName('Datum').AsDateTime;
+  AllowAbsence := Pos('Keine Buchung am Arbeitstag vorhanden',
+    qry_Backup.FieldByName('Meldung').AsString) > 0;
   if Employee <= 0 then Exit;
   frm_PCM_Main.NavBarClick(frm_PCM_Main.iBuchungen);
   if Assigned(frm_ZE) then
   begin
     BookingPage := frm_ZE.Parent as TcxTabSheet;
-    if frm_ZE.SelectBooking(Employee, BookingID, BookingDate) then
+    if frm_ZE.SelectBooking(Employee, BookingID, BookingDate, AllowAbsence) then
     begin
       // Only this error-list workflow closes the overview after the editor.
       FreeAndNil(frm_ZE);

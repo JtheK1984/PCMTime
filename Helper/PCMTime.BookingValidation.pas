@@ -11,14 +11,20 @@ type
     // Minutes since midnight; -1 denotes a missing booking.
     Kommen, Gehen, Pause1Beginn, Pause1Ende, Pause2Beginn, Pause2Ende: Integer;
     ExpectedWork: Boolean;
+    BookingDate: TDateTime;
   end;
 
+function IsExpectedWorkday(SollMinutes: Integer; const Absence: string; Holiday: Integer): Boolean;
 function ValidateBooking(const Day: TBookingDay; const Checks: TBookingChecks): string;
 
 implementation
 
 uses System.SysUtils;
 
+function IsExpectedWorkday(SollMinutes: Integer; const Absence: string; Holiday: Integer): Boolean;
+begin
+  Result := (SollMinutes > 0) and (Trim(Absence) = '') and (Holiday = 0);
+end;
 function ValidateBooking(const Day: TBookingDay; const Checks: TBookingChecks): string;
 var
   Valid: Boolean;
@@ -62,7 +68,12 @@ begin
   HasBooking := (Day.Kommen >= 0) or (Day.Gehen >= 0) or
     (Day.Pause1Beginn >= 0) or (Day.Pause1Ende >= 0) or
     (Day.Pause2Beginn >= 0) or (Day.Pause2Ende >= 0);
-  if not HasBooking and not Day.ExpectedWork then Exit;
+  if not HasBooking then
+  begin
+    if Day.ExpectedWork and (Trunc(Day.BookingDate) < Trunc(Date)) then
+      Add('Keine Buchung am Arbeitstag vorhanden');
+    Exit;
+  end;
   Valid := (Day.Kommen >= 0) and (Day.Gehen >= 0);
   if Checks.BeginnEndeFehler then
   begin

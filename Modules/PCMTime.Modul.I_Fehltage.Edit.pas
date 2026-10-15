@@ -124,6 +124,8 @@ var
   {$Region var}
   frm_Fehltageeintragen: Tfrm_Fehltageeintragen;
   {$EndRegion var}
+procedure RegisterBookingFehltag(ABookingID, AEmployee: Integer);
+
 implementation
 
 {$R *.dfm}
@@ -138,6 +140,101 @@ uses
 // Hilfsunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Hilfsunktionen}
+procedure StoreFehltag(Entries: TFDQuery; const Code, Description: string;
+  DateFrom, DateTo: TDate; Employee: Integer);
+var
+  Query: TFDQuery;
+  AbsenceID: Integer;
+begin
+  Query := TFDQuery.Create(nil);
+  try
+    Query.Connection := dm_PCM.con_PCM;
+    Entries.FieldByName('Kuerzel').AsString := Code;
+    Entries.FieldByName('Beschreibung').AsString := Description;
+    Entries.FieldByName('Von').AsDateTime := DateFrom;
+    Entries.FieldByName('Bis').AsDateTime := DateTo;
+    Entries.FieldByName('ID_Benutzer').AsInteger := Employee;
+    Entries.Post;
+    AbsenceID := Entries.FieldByName('ID').AsInteger;
+    if AbsenceID <= 0 then
+    begin
+      Query.Open('SELECT LAST_INSERT_ID() AS ID');
+      AbsenceID := Query.FieldByName('ID').AsInteger;
+      Query.Close;
+    end;
+    Query.SQL.Text := 'Update time_buchungen Set Fehltag = :Fehltag, ID_Fehltage = :ID, ' +
+      'SollstundenI = Round(TIME_TO_SEC(Sollstunden) / 60) ' +
+      'Where ID_Benutzer = :Employee and Sollstunden <> :Soll and Feiertag <> 1 ' +
+      'and Datum >= :Von and Datum <= :Bis';
+    Query.ParamByName('Fehltag').AsString := Code;
+    Query.ParamByName('ID').AsInteger := AbsenceID;
+    Query.ParamByName('Employee').AsInteger := Employee;
+    Query.ParamByName('Soll').AsTime := 0;
+    Query.ParamByName('Von').AsDate := DateFrom;
+    Query.ParamByName('Bis').AsDate := DateTo;
+    Query.ExecSQL;
+    var Days := GetFehltagTage(AbsenceID, Employee);
+    Query.SQL.Text := 'Update time_Fehltage Set Tage = :Tage Where ID = :ID';
+    Query.ParamByName('Tage').AsFloat := Days;
+    Query.ParamByName('ID').AsInteger := AbsenceID;
+    Query.ExecSQL;
+  finally
+    Query.Free;
+  end;
+end;
+
+procedure RegisterBookingFehltag(ABookingID, AEmployee: Integer);
+var
+  Booking, Entries: TFDQuery;
+  Code, Description: string;
+  DateFrom, DateTo: TDate;
+  OwnTransaction: Boolean;
+begin
+  Booking := TFDQuery.Create(nil);
+  Entries := TFDQuery.Create(nil);
+  try
+    Booking.Connection := dm_PCM.con_PCM;
+    Entries.Connection := dm_PCM.con_PCM;
+    Booking.SQL.Text := 'SELECT b.Datum, b.Fehltag, f.Beschreibung FROM time_buchungen b ' +
+      'INNER JOIN time_Fehltag f ON f.Kuerzel = TRIM(b.Fehltag) ' +
+      'WHERE b.ID = :ID AND b.ID_Benutzer = :Employee';
+    Booking.ParamByName('ID').AsInteger := ABookingID;
+    Booking.ParamByName('Employee').AsInteger := AEmployee;
+    Booking.Open;
+    if Booking.IsEmpty then Exit;
+    Code := Trim(Booking.FieldByName('Fehltag').AsString);
+    if Code = '' then Exit;
+    Description := Booking.FieldByName('Beschreibung').AsString;
+    DateFrom := Booking.FieldByName('Datum').AsDateTime;
+    DateTo := DateFrom;
+    Booking.Close;
+    OwnTransaction := not dm_PCM.con_PCM.InTransaction;
+    if OwnTransaction then dm_PCM.con_PCM.StartTransaction;
+    try
+      Entries.SQL.Text := 'SELECT * FROM time_Fehltage WHERE ID_Benutzer = :Employee ' +
+        'AND Kuerzel = :Code AND Von <= :Datum AND Bis >= :Datum';
+      Entries.ParamByName('Employee').AsInteger := AEmployee;
+      Entries.ParamByName('Code').AsString := Code;
+      Entries.ParamByName('Datum').AsDate := DateFrom;
+      Entries.Open;
+      if Entries.IsEmpty then Entries.Append
+      else
+      begin
+        DateFrom := Entries.FieldByName('Von').AsDateTime;
+        DateTo := Entries.FieldByName('Bis').AsDateTime;
+        Entries.Edit;
+      end;
+      StoreFehltag(Entries, Code, Description, DateFrom, DateTo, AEmployee);
+      if OwnTransaction then dm_PCM.con_PCM.Commit;
+    except
+      if OwnTransaction then dm_PCM.con_PCM.Rollback;
+      raise;
+    end;
+  finally
+    Entries.Free;
+    Booking.Free;
+  end;
+end;
 procedure Tfrm_Fehltageeintragen.SetButtons;
 begin
   btn_Delete.Enabled := (not qry_Ft.Eof) and not (qry_Ft.State in [dsInsert, dsEdit]);
@@ -250,8 +347,6 @@ procedure Tfrm_Fehltageeintragen.btn_FTSaveClick(Sender: TObject);
     qry_FehltageCHk.Free;
   end;
 var
-  iID_Fehltage: integer;
-  fAnzahl: double;
   qry_Fehltage: TFDQuery;
   sFehltag: String;
   sFehltagDesc: String;
@@ -277,37 +372,7 @@ begin
     begin
       if qry_Ft.State in [dsInsert, dsEdit] then
       begin
-        qry_Ft.FieldByName('Kuerzel').asString:= sFehltag;
-        qry_Ft.FieldByName('Beschreibung').asString:= sFehltagDesc;
-        qry_Ft.FieldByName('Von').AsDateTime:= dedt_Von.Date;
-        qry_Ft.FieldByName('Bis').AsDateTime:= dedt_Bis.Date;
-        qry_Ft.FieldByName('ID_Benutzer').AsInteger:= dm_pcm.iIDZEPCM;
-        qry_Ft.Post;
-
-        qry_Fehltage.SQL.Text:= 'SELECT LAST_INSERT_ID() as ID';
-        qry_Fehltage.Prepare;
-        qry_Fehltage.open;
-        iID_Fehltage:= qry_Fehltage.FieldByName('ID').AsInteger;
-        qry_Fehltage.Close;
-
-        qry_Fehltage.UnPrepare;
-        qry_Fehltage.SQL.Text:= 'Update time_buchungen Set Fehltag = :Fehltag, ID_Fehltage = :ID, SollstundenI = Round(TIME_TO_SEC(Sollstunden) / 60) Where ID_Benutzer = :ID_Benutzer and Sollstunden <> :Soll and Feiertag <> 1 and Datum >= :Von and Datum <= :Bis';
-        qry_Fehltage.ParamByName('Soll').AsTime:= StrToTime('00:00:00');
-        qry_Fehltage.ParamByName('Fehltag').AsString:= sFehltag;
-        qry_Fehltage.ParamByName('ID').asInteger:= iID_Fehltage;
-        qry_Fehltage.ParamByName('Von').AsDate:= dedt_Von.Date;
-        qry_Fehltage.ParamByName('Bis').AsDate:= dedt_Bis.Date;
-        qry_Fehltage.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDZEPCM;
-        qry_Fehltage.Prepare;
-        qry_Fehltage.ExecSQL;;
-        qry_Fehltage.UnPrepare;
-        fAnzahl:= GetFehltagTage(iID_Fehltage,dm_PCM.iIDZEPCM);
-        qry_Fehltage.SQL.Text:= 'Update time_Fehltage Set Tage = :Tage Where ID = :ID';
-        qry_Fehltage.ParamByName('Tage').AsFloat:= fAnzahl;
-        qry_Fehltage.ParamByName('ID').asInteger:= iID_Fehltage;
-        qry_Fehltage.Prepare;
-        qry_Fehltage.ExecSQL;
-        qry_Fehltage.UnPrepare;
+        StoreFehltag(qry_Ft, sFehltag, sFehltagDesc, dedt_Von.Date, dedt_Bis.Date, dm_PCM.iIDZEPCM);
         qry_Fehltage.Free;
         qry_FT.Refresh;
         dxLayoutGroup3.Visible:= false;
