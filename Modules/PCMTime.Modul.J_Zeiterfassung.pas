@@ -438,6 +438,7 @@ type
     iZE: integer;
     procedure SetMonthValues(AVon,ABis: TDate;ABenutzer: integer);
   public
+    function SelectBooking(AEmployee, ABookingID: Integer; ADate: TDate): Boolean;
     { Public-Deklarationen }
   end;
   {$EndRegion Type}
@@ -473,6 +474,54 @@ uses
 
 
 
+function Tfrm_ZE.SelectBooking(AEmployee, ABookingID: Integer; ADate: TDate): Boolean;
+var
+  Found: Boolean;
+begin
+  Result := False;
+  if qry_Buchungen.State in [dsEdit, dsInsert] then
+  begin
+    ShowMessage('Bitte die aktuelle Buchung zuerst speichern oder abbrechen.');
+    Exit;
+  end;
+  dm_PCM.iIDZEPCM := AEmployee;
+  dm_PCM.iModulTab := 2;
+  iZE := AEmployee;
+  lagrp_ZETab.ItemIndex := 1;
+  ribTab_1View.Visible := True;
+  ribTab_2Edit.Visible := True;
+  ribTab_4Print.Visible := True;
+  btn_ViewGridClick(Self);
+  cbx_FilterMonth.ItemIndex := MonthOf(ADate) - 1;
+  cbx_FilterYear.EditValue := IntToStr(YearOf(ADate));
+  dedt_Von.EditValue := DateToStr(DateOf(ADate));
+  dedt_Bis.EditValue := DateToStr(DateOf(ADate));
+  qry_Buchungen.Filtered := False;
+  grdDBTblView_Booking.DataController.Filter.Clear;
+  btn_FilterFromTo.Click;
+  Found := False;
+  if ABookingID > 0 then Found := qry_Buchungen.Locate('ID', ABookingID, []);
+  if not Found then Found := qry_Buchungen.Locate('Datum', ADate, []);
+  if Found then
+  begin
+    grdDBTblView_Booking.Controller.ClearSelection;
+    if grdDBTblView_Booking.Controller.FocusedRecord <> nil then
+      grdDBTblView_Booking.Controller.FocusedRecord.Selected := True;
+    grdDBTblView_Booking.Controller.MakeFocusedRecordVisible;
+    grd_Booking.SetFocus;
+    Application.CreateForm(Tfrm_Booking, frm_Booking);
+    frm_Booking.Caption := 'PCM - Manager: ' + qry_Buchungen.FieldByName('Datum').AsString +
+      ' - ' + qry_Buchungen.FieldByName('Tag').AsString;
+    Result := True;
+    try
+      frm_Booking.ShowModal;
+    finally
+      FreeAndNil(frm_Booking);
+    end;
+  end
+  else
+    ShowMessage('Die zugehoerige Buchung wurde nicht gefunden.');
+end;
 procedure Tfrm_ZE.SetMonthValues(AVon,ABis: TDate;ABenutzer: integer);
 begin
   //
@@ -633,15 +682,18 @@ var
 begin
   dVon:= StrToDate(dedt_von.EditValue);
   dBis:= StrToDate(dedt_bis.EditValue);
+  qry_Buchungen.Close;
   qry_Buchungen.SQL.Text:= 'SELECT ID,Datum, Tag, Kommen, Gehen, Pause1Beginn, Pause1Ende,' +
                            'Pause2Beginn,Pause2Ende,Sollstunden,Sollstundeni,MinToHour(Sollstundeni) AS SollStundenStd,Truncate(Sollstundeni / 60,2) AS SollStundenDez,' +
                            'Arbeitszeit,Arbeitszeiti,MinToHour(Arbeitszeiti) AS ArbeitszeitStd,Truncate(Arbeitszeiti / 60,2) AS ArbeitszeitDez,' +
                            'Pauseni,MinToHour(Pauseni) AS PausenStd,Truncate(Pauseni / 60,2) AS PausenDez,'+
                            'Mehrarbeiti,MinToHour(Mehrarbeiti) AS MehrarbeitStd,Truncate(Mehrarbeiti / 60,2) AS MehrarbeitDez,'+
-                           'Buchungsart,Feiertag,Fehltag From time_Buchungen Where Datum between :Von and :Bis';
+                           'Buchungsart,Feiertag,Fehltag From time_Buchungen Where Datum between :Von and :Bis and ID_Benutzer = :ID';
   qry_Buchungen.ParamByName('Von').AsDate:= dvon;
   qry_Buchungen.ParamByName('Bis').AsDate:= dbis;
+  qry_Buchungen.ParamByName('ID').AsInteger := dm_PCM.iIDZEPCM;
   qry_Buchungen.open;
+  SetMonthValues(dVon, dBis, dm_PCM.iIDZEPCM);
 end;
 // ZE - Monatswerte
 procedure Tfrm_ZE.btn_MonthviewClick(Sender: TObject);

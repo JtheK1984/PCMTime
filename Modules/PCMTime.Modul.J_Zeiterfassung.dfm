@@ -24,7 +24,6 @@ object frm_ZE: Tfrm_ZE
     Contexts = <>
     TabOrder = 0
     TabStop = False
-    ExplicitWidth = 1157
     object ribTab1: TdxRibbonTab
       Caption = 'Mitarbeiter'
       Groups = <
@@ -106,8 +105,6 @@ object frm_ZE: Tfrm_ZE
         MinWidth = 255
         Width = 300
       end>
-    ExplicitTop = 661
-    ExplicitWidth = 1151
   end
   object dxLayoutControl2: TdxLayoutControl
     Left = 0
@@ -117,8 +114,6 @@ object frm_ZE: Tfrm_ZE
     Align = alClient
     TabOrder = 2
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 1151
-    ExplicitHeight = 535
     object btn_BookingWorkBegin: TcxButton
       Left = 10000
       Top = 10000
@@ -2264,6 +2259,8 @@ object frm_ZE: Tfrm_ZE
         6C6173733D22426C61636B222077696474683D223222206865696768743D2234
         222F3E0D0A3C2F673E0D0A3C2F7376673E0D0A}
       Properties.DateButtons = [btnClear, btnNow, btnToday]
+      Properties.SaveTime = False
+      Properties.ShowTime = False
       Properties.View = cavModern
       Properties.WeekNumbers = True
     end
@@ -2317,6 +2314,8 @@ object frm_ZE: Tfrm_ZE
         696768743D2234222F3E0D0A093C7265637420783D22382220793D2232222063
         6C6173733D22426C61636B222077696474683D223222206865696768743D2234
         222F3E0D0A3C2F673E0D0A3C2F7376673E0D0A}
+      Properties.SaveTime = False
+      Properties.ShowTime = False
     end
     object btn_ViewCal: TdxBarLargeButton
       Caption = 'Kalender'

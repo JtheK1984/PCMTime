@@ -283,6 +283,17 @@ type
     lbl_T42Dez: TdxLayoutLabeledItem;
     lbl_T41: TdxLayoutLabeledItem;
     lbl_T42: TdxLayoutLabeledItem;
+    iKonfiguration: TdxNavBarItem;
+    iBuchungsfehler: TdxNavBarItem;
+    dxLayoutGroup20: TdxLayoutGroup;
+    grd_Booking: TcxGrid;
+    grdDBTblView_Booking: TcxGridDBTableView;
+    grdDBTblView_BookingID_Benutzer: TcxGridDBColumn;
+    grdDBTblView_BookingDatum: TcxGridDBColumn;
+    grdDBTblView_BookingMeldung: TcxGridDBColumn;
+    grdDBTblView_BookingID_Buchung: TcxGridDBColumn;
+    grdLvl_Booking: TcxGridLevel;
+    grdDBTblView_BookingColumn1: TcxGridDBColumn;
     procedure btn_CloseModulClick(Sender: TObject);
     procedure btn_ModulleisteClick(Sender: TObject);
     procedure btn_RefreshRightsClick(Sender: TObject);
@@ -344,6 +355,7 @@ uses
   PCM.Functions.Login,
   PCM.Functions.Synch.Wait,
   PCM.Handbuch,
+  PCMTime.Modul.B_Config,
   PCMTime.Modul.C_Company,
   PCMTime.Modul.D_Department,
   PCMTime.Modul.E_User,
@@ -357,7 +369,8 @@ uses
   PCM.Time.Strings,
   PCM.SQL,
   PCM.splash,
-  PCMTime.Calculate;
+  PCMTime.Calculate,
+  PCMTime.Modul.M_Error;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -780,6 +793,16 @@ begin
     lblitm_LastBooking.Caption:= dm_PCM.qry_Work.FieldByName('Text').AsString;
     dm_PCM.qry_Work.Close;
 
+
+
+
+
+    dm_PCM.qry_Fehler.SQL.Text:=  'SELECT Concat(tu.Nachname,'', '',tu.Vorname) AS Name , tm.`*`   FROM time_user tu LEFT OUTER JOIN time_meldungen tm ON tm.ID_Benutzer = tu.ID WHERE tu.ID_benutzer = :ID';
+    dm_PCM.qry_Fehler.ParamByName('ID').AsInteger := dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_Fehler.open;
+
+
+
     dm_PCM.qry_Work.SQL.Text:= 'SELECT Bezeichnung, Datum FROM time_feiertage WHERE Datum > NOW() LIMIT 1';
     dm_PCM.qry_Work.open;
     lblitm_NextFT.Caption:= dm_PCM.qry_Work.FieldByName('Bezeichnung').AsString + ' am ' + DateToStr(dm_PCM.qry_Work.FieldByName('Datum').AsDateTime);
@@ -791,6 +814,9 @@ begin
     dm_PCM.qry_Work.open;
     lblitm_NextAbs.Caption:= dm_PCM.qry_Work.FieldByName('Kuerzel').AsString + ' - ' + dm_PCM.qry_Work.FieldByName('Beschreibung').AsString + ', Zeitraum: ' +  DateToStr(dm_PCM.qry_Work.FieldByName('Von').AsDateTime) + ' - '+  DateToStr(dm_PCM.qry_Work.FieldByName('Bis').AsDateTime);
     dm_PCM.qry_Work.Close;
+    if lblitm_NextAbs.Caption = ' - , Zeitraum: 30.12.1899 - 30.12.1899' then
+      lblitm_NextAbs.Caption:= ' - ';
+
     DecodeDate(Date,iJahr,iMonat,iTag);
     GetData(iMonat,iJahr);
 
@@ -899,12 +925,14 @@ procedure Tfrm_PCM_Main.RegisterNavBarItems;
 begin
   Modules.Clear;
   RegisterForm('iBenutzerverwaltung', Tfrm_PCM_User, @frm_PCM_User, 1);
+  RegisterForm('iKonfiguration', Tfrm_Config, @frm_Config, 1);
   RegisterForm('iDesign', Tfrm_PCM_Design, @frm_PCM_Design, 1);
   RegisterForm('iFirma', Tfrm_Firma, @frm_Firma, 1);
   RegisterForm('iAbteilungen', Tfrm_Abteilung, @frm_Abteilung, 1);
   RegisterForm('iMitarbeiter', Tfrm_UserZE, @frm_UserZE, 1);
   RegisterForm('iFehltag', Tfrm_Fehltage, @frm_Fehltage, 1);
   RegisterForm('iFeiertage', Tfrm_Feiertage, @frm_Feiertage, 1);
+  RegisterForm('iBuchungsfehler', Tfrm_Buchungsfehler, @frm_Buchungsfehler, 1);
   RegisterForm('iMonatswerte', Tfrm_monatswerte, @frm_monatswerte, 1);
   RegisterForm('iReports', Tfrm_Reports, @frm_Reports, 1);
   RegisterForm('iFehltage', Tfrm_Fehltageeintragen, @frm_Fehltageeintragen, 1);
@@ -989,8 +1017,9 @@ begin
       begin
         sModul:= Module.ModuleName;
         sModulCaption:= Module.ModuleName;
-        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iDesign','iMitarbeiter','iSysteminfo','iInfo','iHandbuch','iBuchungen','iZeiterfassung','iKalender','iReports','iFirma','iAbteilungen','iZeitplan']) of
 
+
+        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iDesign','iMitarbeiter','iSysteminfo','iInfo','iHandbuch','iBuchungen','iZeiterfassung','iKalender','iReports','iFirma','iAbteilungen','iZeitplan', 'iKonfiguration','iBuchungsfehler']) of
         0:
           begin
             sModulCaption := 'i'  + rs_PCM_Benutzerverwaltung;
@@ -1058,6 +1087,16 @@ begin
 					begin
             sModulCaption := 'i'  + rs_PCMTime_Zeitplan;
 
+          end;
+        13:
+          begin
+            sModulCaption := 'i'  + rs_PCM_Konfiguration;
+            dm_PCM.iModulTab:= 1;
+          end;
+        14:
+          begin
+            sModulCaption := 'i'  + 'Buchungsfehler';
+            dm_PCM.iModulTab:= 1;
           end;
         end;
         iPageIndex := TabExist('tsh' + sModul);
